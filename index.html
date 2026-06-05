@@ -9,315 +9,120 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #f2f4f7;
-    color: #041E42;
-    font-size: 15px;
-    line-height: 1.5;
-  }
+  body { font-family: 'Inter', sans-serif; background: #f2f4f7; color: #041E42; font-size: 15px; line-height: 1.5; }
   a { color: inherit; text-decoration: none; }
   ul { list-style: none; }
-
   :root {
-    --navy:   #041E42;
-    --blue:   #00A3E0;
-    --red:    #E40046;
-    --white:  #FFFFFF;
-    --light:  #f2f4f7;
-    --grey:   #6b7280;
-    --shadow: 0 2px 12px rgba(4,30,66,0.10);
-    --radius: 12px;
+    --navy: #041E42; --blue: #00A3E0; --red: #E40046;
+    --white: #FFFFFF; --light: #f2f4f7; --grey: #6b7280;
+    --shadow: 0 2px 12px rgba(4,30,66,0.10); --radius: 12px;
   }
 
-  /* ===== LOGO SVG ===== */
+  /* HEADER */
+  .top-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 12px rgba(4,30,66,0.06); }
+  .top-header-inner { max-width: 1200px; margin: 0 auto; padding: 11px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .logo-svg { height: 38px; width: auto; }
-
-  /* ===== TOP HEADER ===== */
-  .top-header {
-    background: var(--white);
-    border-bottom: 1px solid #e5e7eb;
-    position: sticky; top: 0; z-index: 1000;
-    box-shadow: 0 2px 12px rgba(4,30,66,0.06);
-  }
-  .top-header-inner {
-    max-width: 1200px; margin: 0 auto;
-    padding: 11px 24px;
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  }
-  .search-wrap {
-    flex: 1; min-width: 220px; max-width: 540px; position: relative;
-  }
-  .search-wrap input {
-    width: 100%;
-    padding: 11px 48px 11px 18px;
-    border: 2px solid #e5e7eb;
-    border-radius: 50px;
-    font-size: 14px; font-family: inherit;
-    outline: none; background: #f9fafb;
-    transition: border-color .2s, box-shadow .2s;
-  }
-  .search-wrap input:focus {
-    border-color: var(--blue);
-    background: #fff;
-    box-shadow: 0 0 0 4px rgba(0,163,224,0.10);
-  }
-  .search-wrap button {
-    position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
-    background: var(--navy); border: none; cursor: pointer;
-    color: #fff; font-size: 15px;
-    width: 34px; height: 34px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    transition: background .2s;
-  }
+  .search-wrap { flex: 1; min-width: 220px; max-width: 540px; position: relative; }
+  .search-wrap input { width: 100%; padding: 11px 48px 11px 18px; border: 2px solid #e5e7eb; border-radius: 50px; font-size: 14px; font-family: inherit; outline: none; background: #f9fafb; transition: border-color .2s, box-shadow .2s; }
+  .search-wrap input:focus { border-color: var(--blue); background: #fff; box-shadow: 0 0 0 4px rgba(0,163,224,0.10); }
+  .search-wrap button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: var(--navy); border: none; cursor: pointer; color: #fff; font-size: 15px; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .2s; }
   .search-wrap button:hover { background: var(--blue); }
-  .header-actions {
-    display: flex; align-items: center; gap: 8px; flex-shrink: 0;
-  }
-  .header-actions a {
-    font-size: 13px; color: var(--grey); font-weight: 500;
-    display: flex; align-items: center; gap: 5px;
-    padding: 8px 12px; border-radius: 8px;
-    transition: background .2s, color .2s;
-  }
+  .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .header-actions a { font-size: 13px; color: var(--grey); font-weight: 500; display: flex; align-items: center; gap: 5px; padding: 8px 12px; border-radius: 8px; transition: background .2s, color .2s; }
   .header-actions a:hover { color: var(--navy); background: #f0f4f8; }
-  .btn-list {
-    background: var(--red) !important; color: #fff !important;
-    padding: 9px 20px !important; border-radius: 50px !important;
-    font-weight: 700 !important;
-    box-shadow: 0 4px 12px rgba(228,0,70,0.25);
-  }
+  .btn-list { background: var(--red) !important; color: #fff !important; padding: 9px 20px !important; border-radius: 50px !important; font-weight: 700 !important; box-shadow: 0 4px 12px rgba(228,0,70,0.25); }
   .btn-list:hover { background: #c4003c !important; }
 
-  /* ===== TRUST BAR ===== */
-  .trust-bar {
-    background: var(--navy);
-    padding: 8px 24px;
-  }
-  .trust-bar-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 8px;
-  }
+  /* TRUST BAR */
+  .trust-bar { background: var(--navy); padding: 8px 24px; }
+  .trust-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
   .trust-items { display: flex; flex-wrap: wrap; gap: 8px 28px; }
-  .trust-item {
-    font-size: 12px; color: rgba(255,255,255,0.80); font-weight: 500;
-    display: flex; align-items: center; gap: 6px;
-  }
+  .trust-item { font-size: 12px; color: rgba(255,255,255,0.80); font-weight: 500; display: flex; align-items: center; gap: 6px; }
   .trust-item .check { color: var(--blue); font-size: 13px; }
-  .score-badge {
-    background: var(--blue); color: #fff;
-    border-radius: 8px; padding: 3px 10px;
-    font-weight: 800; font-size: 14px;
-  }
+  .score-badge { background: var(--blue); color: #fff; border-radius: 8px; padding: 3px 10px; font-weight: 800; font-size: 14px; }
 
-  /* ===== MEGA NAV ===== */
-  .mega-nav {
-    background: var(--white);
-    border-bottom: 3px solid var(--blue);
-    position: sticky; top: 62px; z-index: 999;
-  }
-  .mega-nav-inner {
-    max-width: 1200px; margin: 0 auto; padding: 0 24px;
-    display: flex; align-items: center;
-  }
+  /* MEGA NAV */
+  .mega-nav { background: var(--white); border-bottom: 3px solid var(--blue); position: sticky; top: 62px; z-index: 999; }
+  .mega-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; }
   .nav-item { position: relative; }
-  .nav-item > a {
-    display: flex; align-items: center; gap: 5px;
-    padding: 13px 16px;
-    font-size: 13.5px; font-weight: 600; color: var(--navy);
-    white-space: nowrap; cursor: pointer;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -3px;
-    transition: color .2s, border-color .2s;
-  }
+  .nav-item > a { display: flex; align-items: center; gap: 5px; padding: 13px 16px; font-size: 13.5px; font-weight: 600; color: var(--navy); white-space: nowrap; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -3px; transition: color .2s, border-color .2s; }
   .nav-item > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
   .nav-item > a .arrow { font-size: 10px; opacity: .5; }
-  .dropdown {
-    display: none;
-    position: absolute; top: 100%; left: 0;
-    background: var(--white);
-    border: 1px solid #e5e7eb;
-    border-radius: var(--radius);
-    box-shadow: 0 12px 32px rgba(4,30,66,0.14);
-    min-width: 200px; padding: 8px; z-index: 2000;
-  }
+  .dropdown { display: none; position: absolute; top: 100%; left: 0; background: var(--white); border: 1px solid #e5e7eb; border-radius: var(--radius); box-shadow: 0 12px 32px rgba(4,30,66,0.14); min-width: 200px; padding: 8px; z-index: 2000; }
   .dropdown.wide { min-width: 640px; display: none; padding: 20px; gap: 8px; }
   .dropdown.wide .dd-col { flex: 1; min-width: 140px; }
-  .dropdown.wide .dd-col h4 {
-    font-size: 11px; text-transform: uppercase; color: var(--grey);
-    margin-bottom: 10px; letter-spacing: .8px; font-weight: 700;
-  }
+  .dropdown.wide .dd-col h4 { font-size: 11px; text-transform: uppercase; color: var(--grey); margin-bottom: 10px; letter-spacing: .8px; font-weight: 700; }
   .nav-item:hover .dropdown { display: flex; flex-direction: column; }
   .nav-item:hover .dropdown.wide { display: flex; flex-direction: row; }
-  .dropdown a {
-    padding: 8px 12px; font-size: 13px; color: var(--navy);
-    display: block; border-radius: 8px; font-weight: 500;
-  }
+  .dropdown a { padding: 8px 12px; font-size: 13px; color: var(--navy); display: block; border-radius: 8px; font-weight: 500; }
   .dropdown a:hover { background: #eaf6fd; color: var(--blue); }
   .nav-red { color: var(--red) !important; font-weight: 700 !important; }
   .nav-blue { color: var(--blue) !important; font-weight: 700 !important; }
   .nav-service { margin-left: auto; }
   .nav-service > a { color: var(--grey); }
 
-  /* ===== HERO ===== */
-  .hero {
-    background: linear-gradient(135deg, var(--navy) 0%, #0a3060 60%, #0d4080 100%);
-    margin: 0 -24px 0;
-    padding: 60px 24px 52px;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .hero::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--red) 0%, var(--blue) 100%);
-  }
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--navy) 0%, #0a3060 60%, #0d4080 100%); padding: 60px 24px 52px; text-align: center; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red) 0%, var(--blue) 100%); }
   .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-  .hero h1 {
-    font-size: 44px; font-weight: 900; color: #fff;
-    line-height: 1.12; margin-bottom: 14px; letter-spacing: -1.5px;
-  }
+  .hero h1 { font-size: 44px; font-weight: 900; color: #fff; line-height: 1.12; margin-bottom: 14px; letter-spacing: -1.5px; }
   .hero h1 .accent { color: var(--blue); }
   .hero h1 .accent-red { color: var(--red); }
-  .hero p { font-size: 17px; color: rgba(255,255,255,0.78); margin-bottom: 30px; font-weight: 400; }
+  .hero p { font-size: 17px; color: rgba(255,255,255,0.78); margin-bottom: 30px; }
   .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .hero-tag {
-    background: rgba(255,255,255,0.10); color: rgba(255,255,255,0.90);
-    padding: 7px 16px; border-radius: 50px; font-size: 13px; font-weight: 600;
-    cursor: pointer; border: 1px solid rgba(255,255,255,0.18);
-    transition: background .2s, border-color .2s;
-  }
+  .hero-tag { background: rgba(255,255,255,0.10); color: rgba(255,255,255,0.90); padding: 7px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.18); transition: background .2s; }
   .hero-tag:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
 
-  /* ===== MAIN ===== */
+  /* MAIN */
   main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-  /* ===== SECTION HEADER ===== */
-  .section-header {
-    display: flex; align-items: baseline; justify-content: space-between;
-    margin: 36px 0 16px;
-  }
+  /* SECTION */
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin: 36px 0 16px; }
   .section-title { font-size: 22px; font-weight: 800; color: var(--navy); }
   .section-sub { font-size: 13px; color: var(--grey); margin-top: 3px; font-weight: 500; }
   .see-all { font-size: 13px; color: var(--blue); font-weight: 600; }
   .see-all:hover { text-decoration: underline; }
 
-  /* ===== CAROUSEL ===== */
+  /* CAROUSEL */
   .carousel-wrapper { position: relative; }
-  .carousel {
-    display: flex; gap: 14px;
-    overflow-x: auto; padding-bottom: 10px;
-    scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
+  .carousel { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 10px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .carousel::-webkit-scrollbar { display: none; }
-  .carousel-btn {
-    position: absolute; top: 50%; transform: translateY(-60%);
-    background: var(--white); border: 1.5px solid #e5e7eb;
-    border-radius: 50%; width: 38px; height: 38px;
-    cursor: pointer; font-size: 16px; color: var(--navy);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 12px rgba(4,30,66,0.10); z-index: 10;
-    transition: all .2s;
-  }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-60%); background: var(--white); border: 1.5px solid #e5e7eb; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; font-size: 16px; color: var(--navy); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(4,30,66,0.10); z-index: 10; transition: all .2s; }
   .carousel-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
   .carousel-btn.prev { left: -18px; }
   .carousel-btn.next { right: -18px; }
 
-  /* ===== CATEGORY CARD ===== */
-  .cat-card {
-    flex: 0 0 165px;
-    border-radius: var(--radius);
-    overflow: hidden; cursor: pointer;
-    box-shadow: var(--shadow);
-    transition: transform .25s, box-shadow .25s;
-    background: var(--white);
-    border-bottom: 3px solid transparent;
-  }
-  .cat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(4,30,66,0.14);
-    border-bottom-color: var(--blue);
-  }
-  .cat-card-img {
-    width: 100%; height: 115px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 46px;
-  }
-  .cat-card-label {
-    padding: 10px 12px 13px;
-    font-size: 13.5px; font-weight: 700; color: var(--navy); text-align: center;
-  }
+  /* CATEGORY CARD */
+  .cat-card { flex: 0 0 165px; border-radius: var(--radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; background: var(--white); border-bottom: 3px solid transparent; }
+  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(4,30,66,0.14); border-bottom-color: var(--blue); }
+  .cat-card-img { width: 100%; height: 115px; display: flex; align-items: center; justify-content: center; font-size: 46px; }
+  .cat-card-label { padding: 10px 12px 13px; font-size: 13.5px; font-weight: 700; color: var(--navy); text-align: center; }
   .cat-card-count { font-size: 11px; color: var(--grey); font-weight: 500; margin-top: 2px; }
 
-  /* ===== ACT CARD ===== */
-  .act-card {
-    flex: 0 0 220px;
-    background: var(--white);
-    border-radius: var(--radius);
-    overflow: hidden; box-shadow: var(--shadow);
-    cursor: pointer;
-    transition: transform .25s, box-shadow .25s;
-    border-top: 3px solid transparent;
-  }
-  .act-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(4,30,66,0.14);
-    border-top-color: var(--blue);
-  }
-  .act-card-img {
-    width: 100%; height: 150px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 60px; position: relative;
-  }
-  .act-badge {
-    position: absolute; top: 10px; right: 10px;
-    background: var(--red); color: #fff;
-    font-size: 10px; font-weight: 700;
-    padding: 3px 8px; border-radius: 50px;
-  }
+  /* ACT CARD */
+  .act-card { flex: 0 0 220px; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); cursor: pointer; transition: transform .25s, box-shadow .25s; border-top: 3px solid transparent; }
+  .act-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(4,30,66,0.14); border-top-color: var(--blue); }
+  .act-card-img { width: 100%; height: 150px; display: flex; align-items: center; justify-content: center; font-size: 60px; position: relative; overflow: hidden; }
+  .act-card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .act-card-img .emoji-fallback { font-size: 60px; }
+  .act-badge { position: absolute; top: 10px; right: 10px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 50px; }
   .act-card-body { padding: 12px 14px 14px; }
-  .act-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .act-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .act-type { font-size: 12px; color: var(--grey); margin-bottom: 10px; font-weight: 500; }
   .act-footer { display: flex; align-items: center; justify-content: space-between; }
   .stars { color: #f59e0b; font-size: 12px; }
-  .act-reviews { font-size: 11px; color: var(--grey); margin-left: 4px; }
   .act-price { font-size: 14px; font-weight: 800; color: var(--navy); }
   .act-price span { font-size: 11px; font-weight: 500; color: var(--grey); }
 
-  /* ===== EVENT CARDS ===== */
-  .event-card {
-    flex: 0 0 185px;
-    border-radius: var(--radius); overflow: hidden;
-    cursor: pointer; box-shadow: var(--shadow);
-    transition: transform .25s, box-shadow .25s;
-    position: relative; height: 130px;
-    display: flex; align-items: flex-end;
-  }
-  .event-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(4,30,66,0.18); }
-  .event-card-bg {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center; font-size: 52px;
-  }
-  .event-card-label {
-    position: relative; z-index: 1; width: 100%;
-    background: linear-gradient(transparent, rgba(4,30,66,0.82));
-    color: #fff; padding: 24px 14px 12px;
-    font-size: 13px; font-weight: 700;
-  }
+  /* EVENT CARDS */
+  .event-card { flex: 0 0 185px; border-radius: var(--radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow); transition: transform .25s; position: relative; height: 130px; display: flex; align-items: flex-end; }
+  .event-card:hover { transform: translateY(-4px); }
+  .event-card-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+  .event-card-label { position: relative; z-index: 1; width: 100%; background: linear-gradient(transparent, rgba(4,30,66,0.82)); color: #fff; padding: 24px 14px 12px; font-size: 13px; font-weight: 700; }
 
-  /* ===== PROMO BANNERS ===== */
-  .promo-row {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 14px; margin: 32px 0;
-  }
-  .promo-tile {
-    border-radius: var(--radius); padding: 24px 20px;
-    display: flex; flex-direction: column; gap: 6px;
-    cursor: pointer; transition: transform .2s, box-shadow .2s;
-  }
+  /* PROMO */
+  .promo-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 32px 0; }
+  .promo-tile { border-radius: var(--radius); padding: 24px 20px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; transition: transform .2s, box-shadow .2s; }
   .promo-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(4,30,66,0.2); }
   .promo-tile.navy { background: var(--navy); color: #fff; }
   .promo-tile.blue-t { background: var(--blue); color: #fff; }
@@ -327,49 +132,20 @@
   .promo-sub { font-size: 12.5px; opacity: .82; }
   .promo-icon { font-size: 34px; margin-bottom: 4px; }
 
-  /* ===== HOW IT WORKS ===== */
-  .hiw-section {
-    background: var(--navy);
-    border-radius: var(--radius);
-    padding: 40px 32px;
-    margin: 8px 0 36px;
-    position: relative; overflow: hidden;
-  }
-  .hiw-section::before {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, var(--red), var(--blue));
-  }
-  .hiw-section h2 {
-    font-size: 24px; font-weight: 800; margin-bottom: 32px;
-    color: #fff; text-align: center;
-  }
+  /* HOW IT WORKS */
+  .hiw-section { background: var(--navy); border-radius: var(--radius); padding: 40px 32px; margin: 8px 0 36px; position: relative; overflow: hidden; }
+  .hiw-section::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red), var(--blue)); }
+  .hiw-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 32px; color: #fff; text-align: center; }
   .hiw-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .hiw-step { text-align: center; position: relative; }
-  .hiw-step:not(:last-child)::after {
-    content: "→";
-    position: absolute; right: -14px; top: 20px;
-    font-size: 22px; color: rgba(255,255,255,0.25); font-weight: 700;
-  }
-  .hiw-num {
-    width: 52px; height: 52px; margin: 0 auto 14px;
-    background: var(--blue);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; color: #fff; font-weight: 800;
-    box-shadow: 0 6px 16px rgba(0,163,224,0.35);
-  }
+  .hiw-step:not(:last-child)::after { content: "→"; position: absolute; right: -14px; top: 20px; font-size: 22px; color: rgba(255,255,255,0.25); font-weight: 700; }
+  .hiw-num { width: 52px; height: 52px; margin: 0 auto 14px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; font-weight: 800; box-shadow: 0 6px 16px rgba(0,163,224,0.35); }
   .hiw-step h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; }
   .hiw-step p { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.6; }
 
-  /* ===== WHY ===== */
+  /* WHY */
   .why-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 36px; }
-  .why-card {
-    background: var(--white); border-radius: var(--radius);
-    padding: 24px 20px; box-shadow: var(--shadow);
-    border-left: 4px solid var(--blue);
-    transition: transform .2s;
-  }
+  .why-card { background: var(--white); border-radius: var(--radius); padding: 24px 20px; box-shadow: var(--shadow); border-left: 4px solid var(--blue); transition: transform .2s; }
   .why-card:nth-child(2) { border-left-color: var(--red); }
   .why-card:nth-child(3) { border-left-color: var(--navy); }
   .why-card:hover { transform: translateY(-3px); }
@@ -377,69 +153,41 @@
   .why-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
   .why-card p { font-size: 13px; color: var(--grey); line-height: 1.6; }
 
-  /* ===== FOOTER ===== */
+  /* LOADING */
+  .loading-cards { display: flex; gap: 14px; }
+  .skeleton { flex: 0 0 165px; height: 175px; background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--radius); }
+  .skeleton.act { flex: 0 0 220px; height: 240px; }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+  /* FOOTER */
   footer { background: var(--navy); color: #aaa; margin-top: 48px; }
-  .footer-inner {
-    max-width: 1200px; margin: 0 auto; padding: 48px 24px 32px;
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
-  }
+  .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--red) 0%, var(--blue) 100%); }
+  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 48px 24px 32px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
   .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 14px; line-height: 1.7; max-width: 280px; }
   .footer-score { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
-  .score-circle {
-    background: var(--blue); color: #fff;
-    width: 46px; height: 46px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; font-weight: 800; flex-shrink: 0;
-  }
+  .score-circle { background: var(--blue); color: #fff; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; flex-shrink: 0; }
   .score-stars { color: #f59e0b; font-size: 16px; }
   .score-reviews { font-size: 12px; color: rgba(255,255,255,0.4); }
-  .footer-col h4 {
-    font-size: 12px; font-weight: 700; color: #fff;
-    margin-bottom: 16px; text-transform: uppercase; letter-spacing: .8px;
-  }
+  .footer-col h4 { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .8px; }
   .footer-col ul li { margin-bottom: 10px; }
   .footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.5); transition: color .2s; }
   .footer-col ul li a:hover { color: var(--blue); }
   .pay-logos { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-  .pay-logo {
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 6px; padding: 5px 10px;
-    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6);
-  }
-  .footer-stripe {
-    height: 4px;
-    background: linear-gradient(90deg, var(--red) 0%, var(--blue) 100%);
-  }
+  .pay-logo { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 5px 10px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); }
   .footer-bottom { background: rgba(0,0,0,0.25); padding: 18px 24px; }
-  .footer-bottom-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px;
-  }
+  .footer-bottom-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   .footer-bottom-copy { font-size: 12px; color: rgba(255,255,255,0.35); }
   .social-links { display: flex; gap: 14px; }
   .social-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color .2s; }
   .social-links a:hover { color: var(--blue); }
-
-  /* ===== BACK TO TOP ===== */
-  #back-top {
-    position: fixed; bottom: 28px; right: 28px;
-    background: var(--navy); color: #fff;
-    border: none; border-radius: 50%; width: 44px; height: 44px;
-    font-size: 18px; cursor: pointer;
-    display: none; align-items: center; justify-content: center;
-    box-shadow: 0 6px 16px rgba(4,30,66,0.35); z-index: 9999;
-    transition: background .2s;
-  }
+  #back-top { position: fixed; bottom: 28px; right: 28px; background: var(--navy); color: #fff; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 18px; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(4,30,66,0.35); z-index: 9999; transition: background .2s; }
   #back-top:hover { background: var(--blue); }
   #back-top.visible { display: flex; }
 
-  /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
     .hero h1 { font-size: 30px; }
     .promo-row { grid-template-columns: 1fr 1fr; }
     .hiw-steps { grid-template-columns: repeat(2, 1fr); }
-    .hiw-step:nth-child(2)::after { display: none; }
     .why-section { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: repeat(2, 1fr); }
   }
@@ -447,17 +195,14 @@
     .hero h1 { font-size: 24px; }
     .promo-row { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: 1fr; }
-    .cat-card { flex: 0 0 145px; }
-    .act-card { flex: 0 0 185px; }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="top-header">
   <div class="top-header-inner">
-    <a href="#">
+    <a href="/">
       <svg class="logo-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
         <g transform="translate(100, 50)">
           <rect x="8" y="0" width="44" height="72" rx="22" fill="#041E42"/>
@@ -482,19 +227,17 @@
     <div class="header-actions">
       <a href="#">♡ Saved</a>
       <a href="#">👤 Login</a>
-      <a href="#" class="btn-list">★ List Your Act</a>
+      <a href="/admin.html" class="btn-list">★ List Your Act</a>
     </div>
   </div>
 </header>
 
-<!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-bar-inner">
     <div class="trust-items">
-      <span class="trust-item"><span class="check">✔</span> 15,000+ happy clients</span>
-      <span class="trust-item"><span class="check">✔</span> Average rating 9.4</span>
       <span class="trust-item"><span class="check">✔</span> Direct contact with the artist</span>
       <span class="trust-item"><span class="check">✔</span> Best price guarantee</span>
+      <span class="trust-item"><span class="check">✔</span> Verified artists</span>
       <span class="trust-item"><span class="check">✔</span> Secure escrow payment</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
@@ -504,7 +247,6 @@
   </div>
 </div>
 
-<!-- MEGA NAV -->
 <nav class="mega-nav">
   <div class="mega-nav-inner">
     <div class="nav-item">
@@ -512,74 +254,41 @@
       <div class="dropdown wide">
         <div class="dd-col">
           <h4>Music</h4>
-          <a href="#">Live Bands</a>
-          <a href="#">DJs</a>
-          <a href="#">Singers</a>
-          <a href="#">Classical Music</a>
-          <a href="#">Oud Players</a>
+          <a href="#">Live Bands</a><a href="#">DJs</a><a href="#">Singers</a><a href="#">Classical Music</a><a href="#">Oud Players</a>
         </div>
         <div class="dd-col">
           <h4>Performance</h4>
-          <a href="#">Dancers</a>
-          <a href="#">Acrobats</a>
-          <a href="#">Magicians</a>
-          <a href="#">Fire Shows</a>
-          <a href="#">Stunt Shows</a>
+          <a href="#">Dancers</a><a href="#">Acrobats</a><a href="#">Magicians</a><a href="#">Fire Shows</a>
         </div>
         <div class="dd-col">
           <h4>Special</h4>
-          <a href="#">Comedians</a>
-          <a href="#">Caricaturists</a>
-          <a href="#">Hosts / MCs</a>
-          <a href="#">Children's Shows</a>
-          <a href="#">Unique Acts</a>
+          <a href="#">Comedians</a><a href="#">Hosts / MCs</a><a href="#">Children's Shows</a><a href="#">Unique Acts</a>
         </div>
         <div class="dd-col">
           <h4>Corporate</h4>
-          <a href="#">Keynote Speakers</a>
-          <a href="#">Motivational Speakers</a>
-          <a href="#">Corporate Hosts</a>
-          <a href="#">Team Building</a>
+          <a href="#">Keynote Speakers</a><a href="#">Motivational Speakers</a><a href="#">Team Building</a>
         </div>
       </div>
     </div>
     <div class="nav-item">
       <a href="#">By Event <span class="arrow">▾</span></a>
       <div class="dropdown">
-        <a href="#">Wedding</a>
-        <a href="#">Corporate Event</a>
-        <a href="#">Children's Party</a>
-        <a href="#">Birthday</a>
-        <a href="#">National Day</a>
-        <a href="#">Festival</a>
-        <a href="#">Hotel / Restaurant</a>
-        <a href="#">Product Launch</a>
-        <a href="#">Gala Dinner</a>
-        <a href="#">Graduation</a>
+        <a href="#">Wedding</a><a href="#">Corporate Event</a><a href="#">Birthday</a>
+        <a href="#">National Day</a><a href="#">Festival</a><a href="#">Gala Dinner</a><a href="#">Graduation</a>
       </div>
     </div>
     <div class="nav-item">
       <a href="#">By Location <span class="arrow">▾</span></a>
       <div class="dropdown">
-        <a href="#">Dubai</a>
-        <a href="#">Abu Dhabi</a>
-        <a href="#">Sharjah</a>
-        <a href="#">Ajman</a>
-        <a href="#">Ras Al Khaimah</a>
-        <a href="#">Fujairah</a>
-        <a href="#">Umm Al Quwain</a>
+        <a href="#">Dubai</a><a href="#">Abu Dhabi</a><a href="#">Sharjah</a>
+        <a href="#">Ajman</a><a href="#">Ras Al Khaimah</a><a href="#">Fujairah</a>
       </div>
     </div>
     <div class="nav-item">
       <a href="#">By Theme <span class="arrow">▾</span></a>
       <div class="dropdown">
-        <a href="#">Arabian Night</a>
-        <a href="#">Bollywood</a>
-        <a href="#">International</a>
-        <a href="#">Jazz & Lounge</a>
-        <a href="#">Luxury & VIP</a>
-        <a href="#">Family-Friendly</a>
-        <a href="#">Cultural Heritage</a>
+        <a href="#">Arabian Night</a><a href="#">Bollywood</a><a href="#">Jazz & Lounge</a>
+        <a href="#">Luxury & VIP</a><a href="#">Family-Friendly</a><a href="#">Cultural Heritage</a>
       </div>
     </div>
     <div class="nav-item"><a href="#" class="nav-blue">Speakers</a></div>
@@ -588,18 +297,16 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-content">
     <h1>Book <span class="accent">Amazing Artists</span><br>Across the <span class="accent-red">UAE</span></h1>
-    <p>Connect directly with 5,000+ verified performers — no agency, no markup.</p>
-    <div class="hero-tags">
+    <p>Connect directly with verified performers — no agency, no markup.</p>
+    <div class="hero-tags" id="heroTags">
       <span class="hero-tag">🎤 Singers</span>
       <span class="hero-tag">🎧 DJs</span>
       <span class="hero-tag">🎸 Live Bands</span>
       <span class="hero-tag">💃 Dancers</span>
       <span class="hero-tag">🎩 Magicians</span>
-      <span class="hero-tag">🎭 Comedians</span>
       <span class="hero-tag">🎙️ Speakers</span>
     </div>
   </div>
@@ -607,108 +314,42 @@
 
 <main>
 
-  <!-- CATEGORIES -->
+  <!-- LIVE CATEGORIES -->
   <div class="section-header">
     <div>
-      <div class="section-title">Popular Categories</div>
-      <div class="section-sub">5,000+ acts available across the UAE</div>
+      <div class="section-title">Browse by Category</div>
+      <div class="section-sub" id="catSubtitle">Loading categories...</div>
     </div>
     <a href="#" class="see-all">View all →</a>
   </div>
   <div class="carousel-wrapper">
-    <button class="carousel-btn prev" onclick="scrollCarousel(this,-1)">‹</button>
-    <div class="carousel">
-      <div class="cat-card"><div class="cat-card-img" style="background:#eaf6fd">🎤</div><div class="cat-card-label">Singers<div class="cat-card-count">842 acts</div></div></div>
-      <div class="cat-card"><div class="cat-card-img" style="background:#fff0f3">🎧</div><div class="cat-card-label">DJs<div class="cat-card-count">614 acts</div></div></div>
-      <div class="cat-card"><div class="cat-card-img" style="background:#eaf0fa">🎸</div><div class="cat-card-label">Live Bands<div class="cat-card-count">318 acts</div></div></div>
-      <div class="cat-card"><div class="cat-card-img" style="background:#fff0f3">💃</div><div class="cat-card-label">Dancers<div class="cat-card-count">427 acts</div></div></div>
-      <div class="cat-card"><div class="cat-card-img" style="background:#eaf6fd">🎩</div><div class="cat-card-label">Magicians<div class="cat-card-count">156 acts</div></div></div>
-      <div class="cat-card"><div class="cat-card-img" style="background:#eaf0fa">🎭</div><div class="cat-card-label">Comedians<div class="cat-card-count">98 acts</div></div></div>
-      <div class="cat-card"><div class="cat-card-img" style="background:#eaf6fd">🎙️</div><div class="cat-card-label">Speakers<div class="cat-card-count">273 acts</div></div></div>
-      <div class="cat-card"><div class="cat-card-img" style="background:#fff0f3">🪄</div><div class="cat-card-label">Unique Acts<div class="cat-card-count">201 acts</div></div></div>
+    <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
+    <div class="carousel" id="categoriesCarousel">
+      <div class="loading-cards">
+        <div class="skeleton"></div><div class="skeleton"></div>
+        <div class="skeleton"></div><div class="skeleton"></div>
+      </div>
     </div>
-    <button class="carousel-btn next" onclick="scrollCarousel(this,1)">›</button>
+    <button class="carousel-btn next" onclick="scrollC(this,1)">›</button>
   </div>
 
-  <!-- TOP ACTS -->
+  <!-- TOP ARTISTS -->
   <div class="section-header">
     <div>
-      <div class="section-title">Top Acts in the UAE</div>
+      <div class="section-title">Top Artists in the UAE</div>
       <div class="section-sub">Highly rated, instantly available</div>
     </div>
     <a href="#" class="see-all">View all →</a>
   </div>
   <div class="carousel-wrapper">
-    <button class="carousel-btn prev" onclick="scrollCarousel(this,-1)">‹</button>
-    <div class="carousel">
-      <div class="act-card">
-        <div class="act-card-img" style="background:#eaf6fd">🎤<span class="act-badge">Top Rated</span></div>
-        <div class="act-card-body">
-          <div class="act-name">Layla Al Mansoori</div>
-          <div class="act-type">Arabic & Western Singer · Dubai</div>
-          <div class="act-footer">
-            <div><span class="stars">★★★★★</span><span class="act-reviews">(48)</span></div>
-            <div class="act-price">AED 2,500 <span>/ show</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="act-card">
-        <div class="act-card-img" style="background:#fff0f3">🎧<span class="act-badge">Popular</span></div>
-        <div class="act-card-body">
-          <div class="act-name">DJ Khalid Omar</div>
-          <div class="act-type">Club & Event DJ · Abu Dhabi</div>
-          <div class="act-footer">
-            <div><span class="stars">★★★★★</span><span class="act-reviews">(63)</span></div>
-            <div class="act-price">AED 1,800 <span>/ show</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="act-card">
-        <div class="act-card-img" style="background:#eaf0fa">🎸</div>
-        <div class="act-card-body">
-          <div class="act-name">Desert Groove Band</div>
-          <div class="act-type">Live Band · Dubai</div>
-          <div class="act-footer">
-            <div><span class="stars">★★★★★</span><span class="act-reviews">(31)</span></div>
-            <div class="act-price">AED 5,500 <span>/ show</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="act-card">
-        <div class="act-card-img" style="background:#fff0f3">💃<span class="act-badge">New</span></div>
-        <div class="act-card-body">
-          <div class="act-name">Nour Dance Collective</div>
-          <div class="act-type">Contemporary Dance · Sharjah</div>
-          <div class="act-footer">
-            <div><span class="stars">★★★★☆</span><span class="act-reviews">(19)</span></div>
-            <div class="act-price">AED 3,200 <span>/ show</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="act-card">
-        <div class="act-card-img" style="background:#eaf6fd">🎩</div>
-        <div class="act-card-body">
-          <div class="act-name">Marco The Illusionist</div>
-          <div class="act-type">Magician & Illusionist · Dubai</div>
-          <div class="act-footer">
-            <div><span class="stars">★★★★★</span><span class="act-reviews">(55)</span></div>
-            <div class="act-price">AED 4,000 <span>/ show</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="act-card">
-        <div class="act-card-img" style="background:#eaf0fa">🎙️<span class="act-badge">Top Rated</span></div>
-        <div class="act-card-body">
-          <div class="act-name">Ahmed Hassan</div>
-          <div class="act-type">Motivational Speaker · Dubai</div>
-          <div class="act-footer">
-            <div><span class="stars">★★★★★</span><span class="act-reviews">(42)</span></div>
-            <div class="act-price">AED 8,000 <span>/ event</span></div>
-          </div>
-        </div>
+    <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
+    <div class="carousel" id="artistsCarousel">
+      <div class="loading-cards">
+        <div class="skeleton act"></div><div class="skeleton act"></div>
+        <div class="skeleton act"></div><div class="skeleton act"></div>
       </div>
     </div>
-    <button class="carousel-btn next" onclick="scrollCarousel(this,1)">›</button>
+    <button class="carousel-btn next" onclick="scrollC(this,1)">›</button>
   </div>
 
   <!-- FOR EVERY EVENT -->
@@ -717,10 +358,9 @@
       <div class="section-title">For Every Event</div>
       <div class="section-sub">From intimate gatherings to grand celebrations</div>
     </div>
-    <a href="#" class="see-all">View all →</a>
   </div>
   <div class="carousel-wrapper">
-    <button class="carousel-btn prev" onclick="scrollCarousel(this,-1)">‹</button>
+    <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
     <div class="carousel">
       <div class="event-card" style="background:#041E42"><div class="event-card-bg">💍</div><div class="event-card-label">Wedding</div></div>
       <div class="event-card" style="background:#00A3E0"><div class="event-card-bg">🏢</div><div class="event-card-label">Corporate Event</div></div>
@@ -730,83 +370,37 @@
       <div class="event-card" style="background:#00A3E0"><div class="event-card-bg">🍽️</div><div class="event-card-label">Gala Dinner</div></div>
       <div class="event-card" style="background:#E40046"><div class="event-card-bg">🎓</div><div class="event-card-label">Graduation</div></div>
     </div>
-    <button class="carousel-btn next" onclick="scrollCarousel(this,1)">›</button>
+    <button class="carousel-btn next" onclick="scrollC(this,1)">›</button>
   </div>
 
   <!-- PROMO -->
   <div class="promo-row">
-    <div class="promo-tile navy">
-      <div class="promo-icon">🎙️</div>
-      <div class="promo-label">Featured</div>
-      <div class="promo-title">Book a Keynote Speaker</div>
-      <div class="promo-sub">World-class speakers for corporate events</div>
-    </div>
-    <div class="promo-tile blue-t">
-      <div class="promo-icon">⭐</div>
-      <div class="promo-label">Best Value</div>
-      <div class="promo-title">Acts from AED 500</div>
-      <div class="promo-sub">Quality entertainment for every budget</div>
-    </div>
-    <div class="promo-tile red-t">
-      <div class="promo-icon">🎤</div>
-      <div class="promo-label">Join Free</div>
-      <div class="promo-title">Are You an Artist?</div>
-      <div class="promo-sub">List free, get booked, earn more</div>
-    </div>
+    <div class="promo-tile navy"><div class="promo-icon">🎙️</div><div class="promo-label">Featured</div><div class="promo-title">Book a Keynote Speaker</div><div class="promo-sub">World-class speakers for corporate events</div></div>
+    <div class="promo-tile blue-t"><div class="promo-icon">⭐</div><div class="promo-label">Best Value</div><div class="promo-title">Acts from AED 500</div><div class="promo-sub">Quality entertainment for every budget</div></div>
+    <div class="promo-tile red-t"><div class="promo-icon">🎤</div><div class="promo-label">Join Free</div><div class="promo-title">Are You an Artist?</div><div class="promo-sub">List free, get booked, earn more</div></div>
   </div>
 
   <!-- HOW IT WORKS -->
   <div class="hiw-section">
     <h2>How Stagely Works</h2>
     <div class="hiw-steps">
-      <div class="hiw-step">
-        <div class="hiw-num">1</div>
-        <h4>Search & Browse</h4>
-        <p>Filter by category, location, event type and budget to find your perfect act.</p>
-      </div>
-      <div class="hiw-step">
-        <div class="hiw-num">2</div>
-        <h4>Contact Directly</h4>
-        <p>Message the artist directly. No agency middleman. Discuss dates and details.</p>
-      </div>
-      <div class="hiw-step">
-        <div class="hiw-num">3</div>
-        <h4>Book Securely</h4>
-        <p>Confirm via our secure escrow payment. Your money is fully protected.</p>
-      </div>
-      <div class="hiw-step">
-        <div class="hiw-num">4</div>
-        <h4>Enjoy Your Event</h4>
-        <p>Sit back and enjoy. Leave a review to help others find great talent.</p>
-      </div>
+      <div class="hiw-step"><div class="hiw-num">1</div><h4>Search & Browse</h4><p>Filter by category, location, event type and budget.</p></div>
+      <div class="hiw-step"><div class="hiw-num">2</div><h4>Contact Directly</h4><p>Message the artist directly. No agency middleman.</p></div>
+      <div class="hiw-step"><div class="hiw-num">3</div><h4>Book Securely</h4><p>Confirm via our secure escrow payment system.</p></div>
+      <div class="hiw-step"><div class="hiw-num">4</div><h4>Enjoy Your Event</h4><p>Sit back and enjoy. Leave a review afterwards.</p></div>
     </div>
   </div>
 
-  <!-- WHY STAGELY -->
-  <div class="section-header">
-    <div><div class="section-title">Why Choose Stagely?</div></div>
-  </div>
+  <!-- WHY -->
+  <div class="section-header"><div><div class="section-title">Why Choose Stagely?</div></div></div>
   <div class="why-section">
-    <div class="why-card">
-      <div class="why-icon">💰</div>
-      <h3>No Agency Fees</h3>
-      <p>Book directly with artists. No 25–30% agency markup. The price you see is the price you pay.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">✅</div>
-      <h3>Verified Artists</h3>
-      <p>Every artist is verified with real reviews from real clients. What you see is what you get.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">🔒</div>
-      <h3>Secure Payments</h3>
-      <p>Your payment is held in escrow until after the event. Book with total confidence.</p>
-    </div>
+    <div class="why-card"><div class="why-icon">💰</div><h3>No Agency Fees</h3><p>Book directly with artists. No 25–30% agency markup. The price you see is the price you pay.</p></div>
+    <div class="why-card"><div class="why-icon">✅</div><h3>Verified Artists</h3><p>Every artist is verified with real reviews from real clients. What you see is what you get.</p></div>
+    <div class="why-card"><div class="why-icon">🔒</div><h3>Secure Payments</h3><p>Your payment is held in escrow until after the event. Book with total confidence.</p></div>
   </div>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-stripe"></div>
   <div class="footer-inner">
@@ -827,62 +421,35 @@
           <text font-family="Inter, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text>
         </g>
       </svg>
-      <p>The UAE's premier direct booking platform for live entertainment. Connect with 5,000+ verified artists across Dubai, Abu Dhabi and beyond.</p>
+      <p>The UAE's premier direct booking platform. Connect with verified artists across Dubai, Abu Dhabi and beyond.</p>
       <div class="footer-score">
         <div class="score-circle">9.4</div>
-        <div>
-          <div class="score-stars">★★★★★</div>
-          <div class="score-reviews">Based on 3,200+ verified reviews</div>
-        </div>
+        <div><div class="score-stars">★★★★★</div><div class="score-reviews">Based on verified reviews</div></div>
       </div>
       <div class="pay-logos">
-        <span class="pay-logo">Visa</span>
-        <span class="pay-logo">Mastercard</span>
-        <span class="pay-logo">Apple Pay</span>
-        <span class="pay-logo">Tabby</span>
+        <span class="pay-logo">Visa</span><span class="pay-logo">Mastercard</span>
+        <span class="pay-logo">Apple Pay</span><span class="pay-logo">Tabby</span>
       </div>
     </div>
     <div class="footer-col">
       <h4>For Clients</h4>
-      <ul>
-        <li><a href="#">How it Works</a></li>
-        <li><a href="#">Browse All Acts</a></li>
-        <li><a href="#">Browse by Event</a></li>
-        <li><a href="#">Browse by Location</a></li>
-        <li><a href="#">Safe Booking</a></li>
-        <li><a href="#">Reviews</a></li>
-      </ul>
+      <ul><li><a href="#">How it Works</a></li><li><a href="#">Browse All Acts</a></li><li><a href="#">Browse by Event</a></li><li><a href="#">Browse by Location</a></li><li><a href="#">Safe Booking</a></li></ul>
     </div>
     <div class="footer-col">
       <h4>For Artists</h4>
-      <ul>
-        <li><a href="#">List Your Act</a></li>
-        <li><a href="#">Artist Portal</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Success Stories</a></li>
-        <li><a href="#">Artist Support</a></li>
-      </ul>
+      <ul><li><a href="/admin.html">List Your Act</a></li><li><a href="/admin.html">Artist Portal</a></li><li><a href="#">Success Stories</a></li><li><a href="#">Artist Support</a></li></ul>
     </div>
     <div class="footer-col">
       <h4>Stagely</h4>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul>
+      <ul><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li><li><a href="#">Blog</a></li><li><a href="#">Terms & Conditions</a></li><li><a href="#">Privacy Policy</a></li></ul>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
-      <div class="footer-bottom-copy">© 2025 Stagely UAE. All rights reserved. Dubai, UAE 🇦🇪</div>
+      <div class="footer-bottom-copy">© 2025 Stagely UAE. All rights reserved. 🇦🇪</div>
       <div class="social-links">
-        <a href="#">📘 Facebook</a>
-        <a href="#">📸 Instagram</a>
-        <a href="#">💼 LinkedIn</a>
-        <a href="#">🎵 TikTok</a>
+        <a href="#">📘 Facebook</a><a href="#">📸 Instagram</a>
+        <a href="#">💼 LinkedIn</a><a href="#">🎵 TikTok</a>
       </div>
     </div>
   </div>
@@ -891,13 +458,121 @@
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-  function scrollCarousel(btn, dir) {
-    const carousel = btn.parentElement.querySelector('.carousel');
-    carousel.scrollBy({ left: dir * 280, behavior: 'smooth' });
-  }
-  window.addEventListener('scroll', () => {
-    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
+const SUPABASE_URL = 'https://darbunnlilqwbeobcelp.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
+
+const CAT_COLORS = {
+  singers:   { bg: '#eaf6fd', emoji: '🎤' },
+  djs:       { bg: '#fff0f3', emoji: '🎧' },
+  bands:     { bg: '#eaf0fa', emoji: '🎸' },
+  dancers:   { bg: '#fff0f3', emoji: '💃' },
+  magicians: { bg: '#f3eafd', emoji: '🎩' },
+  comedians: { bg: '#fdf5ea', emoji: '🎭' },
+  speakers:  { bg: '#eaf6fd', emoji: '🎙️' },
+};
+
+async function fetchSupabase(path) {
+  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+    }
   });
+  return res.json();
+}
+
+function starsHtml(rating) {
+  const full = Math.round(rating || 5);
+  return '★'.repeat(full) + '☆'.repeat(5 - full);
+}
+
+async function loadCategories() {
+  try {
+    const cats = await fetchSupabase('categories?is_live=eq.true&order=sort_order');
+    const carousel = document.getElementById('categoriesCarousel');
+    const subtitle = document.getElementById('catSubtitle');
+
+    if (!cats || !cats.length) {
+      carousel.innerHTML = '<div style="padding:20px;color:#999">No categories live yet.</div>';
+      subtitle.textContent = 'Coming soon';
+      return;
+    }
+
+    subtitle.textContent = cats.length + ' categories available across the UAE';
+
+    carousel.innerHTML = cats.map(cat => {
+      const style = CAT_COLORS[cat.slug] || { bg: '#f0f0f0', emoji: '🎭' };
+      const emoji = cat.emoji || style.emoji;
+      return `
+        <div class="cat-card" onclick="window.location='singers.html'">
+          <div class="cat-card-img" style="background:${style.bg}">${emoji}</div>
+          <div class="cat-card-label">
+            ${cat.name}
+            <div class="cat-card-count">Browse artists</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    // update hero tags
+    const heroTags = document.getElementById('heroTags');
+    heroTags.innerHTML = cats.map(cat => {
+      const style = CAT_COLORS[cat.slug] || { emoji: '🎭' };
+      return `<span class="hero-tag">${cat.emoji || style.emoji} ${cat.name}</span>`;
+    }).join('');
+
+  } catch(e) {
+    console.error('Categories error:', e);
+  }
+}
+
+async function loadArtists() {
+  try {
+    const artists = await fetchSupabase('artists?active=eq.true&order=rating.desc&limit=8');
+    const carousel = document.getElementById('artistsCarousel');
+
+    if (!artists || !artists.length) {
+      carousel.innerHTML = '<div style="padding:20px;color:#999;font-size:14px">Artists coming soon — check back shortly!</div>';
+      return;
+    }
+
+    carousel.innerHTML = artists.map((a, i) => {
+      const style = CAT_COLORS[a.category] || { bg: '#f0f0f0', emoji: '🎭' };
+      const badge = i === 0 ? '<span class="act-badge">Top Rated</span>' : i === 1 ? '<span class="act-badge">Popular</span>' : '';
+      const imgContent = a.photo_url
+        ? `<img src="${a.photo_url}" alt="${a.name}" />`
+        : `<span class="emoji-fallback">${style.emoji}</span>`;
+      return `
+        <div class="act-card">
+          <div class="act-card-img" style="background:${style.bg}">
+            ${imgContent}${badge}
+          </div>
+          <div class="act-card-body">
+            <div class="act-name">${a.name}</div>
+            <div class="act-type">${a.category ? a.category.charAt(0).toUpperCase() + a.category.slice(1) : 'Artist'} · ${a.city || 'UAE'}</div>
+            <div class="act-footer">
+              <div><span class="stars">${starsHtml(a.rating)}</span></div>
+              <div class="act-price">AED ${(a.price_from||0).toLocaleString()} <span>/ show</span></div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+  } catch(e) {
+    console.error('Artists error:', e);
+  }
+}
+
+function scrollC(btn, dir) {
+  const c = btn.parentElement.querySelector('.carousel');
+  c.scrollBy({ left: dir * 280, behavior: 'smooth' });
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
+});
+
+// Load on page start
+loadCategories();
+loadArtists();
 </script>
 </body>
 </html>
