@@ -199,14 +199,35 @@
   .mobile-bottom-bar a.cta { background: var(--red); color: #fff; border-radius: 0; }
   .mobile-bottom-bar a.cta:hover { background: #c4003c; color: #fff; }
 
-  /* BOTTOM BAR SPACER */
-  .mobile-spacer { height: 64px; display: block; }
+  /* BOTTOM BAR SPACER — extra tall so content never hides behind bar */
+  .mobile-spacer { height: 80px; display: block; }
   @media (min-width: 768px) { .mobile-spacer { display: none; } }
 
   /* BACK TO TOP */
   #back-top { position: fixed; bottom: 80px; right: 16px; background: var(--navy); color: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 16px; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(4,30,66,0.3); z-index: 998; }
   @media (min-width: 768px) { #back-top { bottom: 28px; right: 28px; width: 44px; height: 44px; } }
   #back-top.visible { display: flex; }
+
+  /* MOBILE TAP FIXES */
+  .hero-tag { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .cat-card { -webkit-tap-highlight-color: transparent; touch-action: manipulation; cursor: pointer; }
+  .act-card { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .event-card { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .promo-tile { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .btn-list { display: inline-block; -webkit-tap-highlight-color: transparent; touch-action: manipulation; min-height: 44px; display: flex; align-items: center; }
+  .mobile-bottom-bar a { min-height: 56px; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .mobile-nav-inner a { min-height: 44px; -webkit-tap-highlight-color: transparent; }
+  .see-all { min-height: 44px; display: flex; align-items: center; padding: 0 4px; }
+
+  /* MOBILE BOTTOM BAR higher z-index but not over modals */
+  .mobile-bottom-bar { z-index: 990; }
+
+  /* Bigger touch targets on mobile */
+  @media (max-width: 767px) {
+    .cat-card { min-width: 130px; }
+    .search-wrap input { font-size: 16px; } /* prevents iOS zoom */
+    .hero-search input { font-size: 16px; }
+  }
 </style>
 </head>
 <body>
