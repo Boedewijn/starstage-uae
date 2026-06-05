@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>StarStage UAE – Book Live Entertainment in the UAE | 5,000+ Acts</title>
-<meta name="description" content="StarStage is the UAE's premier platform to book live entertainment. Find and hire singers, DJs, bands, dancers, magicians and more for any event in Dubai, Abu Dhabi and beyond." />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Stagely – Book Live Artists in the UAE</title>
+<meta name="description" content="Stagely is the UAE's premier platform to book live entertainment. Find and hire singers, DJs, bands, dancers, magicians and more for any event in Dubai, Abu Dhabi and beyond." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: #f4f4f4;
-    color: #333;
+    font-family: 'Inter', sans-serif;
+    background: #f2f4f7;
+    color: #041E42;
     font-size: 15px;
     line-height: 1.5;
   }
@@ -20,111 +20,78 @@
   ul { list-style: none; }
 
   :root {
-    --blue: #0077c8;
-    --blue-dark: #005fa3;
-    --gold: #c8972a;
-    --light-bg: #f4f4f4;
-    --white: #ffffff;
-    --dark: #1a1a2e;
-    --grey-text: #666;
-    --card-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    --navy:   #041E42;
+    --blue:   #00A3E0;
+    --red:    #E40046;
+    --white:  #FFFFFF;
+    --light:  #f2f4f7;
+    --grey:   #6b7280;
+    --shadow: 0 2px 12px rgba(4,30,66,0.10);
     --radius: 12px;
   }
+
+  /* ===== LOGO SVG ===== */
+  .logo-svg { height: 38px; width: auto; }
 
   /* ===== TOP HEADER ===== */
   .top-header {
     background: var(--white);
-    border-bottom: 1px solid #e8e8e8;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 12px rgba(4,30,66,0.06);
   }
   .top-header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    max-width: 1200px; margin: 0 auto;
+    padding: 11px 24px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
   }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-  .logo-icon {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, var(--gold), var(--blue));
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0,119,200,0.3);
-  }
-  .logo-text { font-size: 22px; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
-  .logo-text span { color: var(--blue); }
-
   .search-wrap {
-    flex: 1;
-    min-width: 220px;
-    max-width: 540px;
-    position: relative;
+    flex: 1; min-width: 220px; max-width: 540px; position: relative;
   }
   .search-wrap input {
     width: 100%;
     padding: 11px 48px 11px 18px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #e5e7eb;
     border-radius: 50px;
-    font-size: 14px;
-    font-family: inherit;
-    outline: none;
+    font-size: 14px; font-family: inherit;
+    outline: none; background: #f9fafb;
     transition: border-color .2s, box-shadow .2s;
-    background: #f8f9fa;
   }
   .search-wrap input:focus {
     border-color: var(--blue);
     background: #fff;
-    box-shadow: 0 0 0 4px rgba(0,119,200,0.08);
+    box-shadow: 0 0 0 4px rgba(0,163,224,0.10);
   }
   .search-wrap button {
     position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
-    background: var(--blue); border: none; cursor: pointer;
+    background: var(--navy); border: none; cursor: pointer;
     color: #fff; font-size: 15px;
     width: 34px; height: 34px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     transition: background .2s;
   }
-  .search-wrap button:hover { background: var(--blue-dark); }
-
+  .search-wrap button:hover { background: var(--blue); }
   .header-actions {
-    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+    display: flex; align-items: center; gap: 8px; flex-shrink: 0;
   }
   .header-actions a {
-    font-size: 13px; color: var(--grey-text);
+    font-size: 13px; color: var(--grey); font-weight: 500;
     display: flex; align-items: center; gap: 5px;
-    cursor: pointer;
-    white-space: nowrap;
-    font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 8px 12px; border-radius: 8px;
     transition: background .2s, color .2s;
   }
-  .header-actions a:hover { color: var(--blue); background: #f0f7ff; }
-  .btn-artist {
-    background: var(--blue) !important; color: #fff !important;
-    padding: 9px 18px !important; border-radius: 50px !important;
+  .header-actions a:hover { color: var(--navy); background: #f0f4f8; }
+  .btn-list {
+    background: var(--red) !important; color: #fff !important;
+    padding: 9px 20px !important; border-radius: 50px !important;
     font-weight: 700 !important;
-    box-shadow: 0 4px 12px rgba(0,119,200,0.25);
+    box-shadow: 0 4px 12px rgba(228,0,70,0.25);
   }
-  .btn-artist:hover { background: var(--blue-dark) !important; }
+  .btn-list:hover { background: #c4003c !important; }
 
   /* ===== TRUST BAR ===== */
   .trust-bar {
-    background: #f0f7ff;
-    border-bottom: 1px solid #d0e8f8;
+    background: var(--navy);
     padding: 8px 24px;
   }
   .trust-bar-inner {
@@ -134,22 +101,21 @@
   }
   .trust-items { display: flex; flex-wrap: wrap; gap: 8px 28px; }
   .trust-item {
-    font-size: 12.5px; color: #444; font-weight: 500;
+    font-size: 12px; color: rgba(255,255,255,0.80); font-weight: 500;
     display: flex; align-items: center; gap: 6px;
   }
-  .trust-item .check { color: #27ae60; font-size: 14px; }
-  .trust-badges { display: flex; align-items: center; gap: 10px; }
+  .trust-item .check { color: var(--blue); font-size: 13px; }
   .score-badge {
     background: var(--blue); color: #fff;
     border-radius: 8px; padding: 3px 10px;
-    font-weight: 800; font-size: 15px;
+    font-weight: 800; font-size: 14px;
   }
 
   /* ===== MEGA NAV ===== */
   .mega-nav {
     background: var(--white);
-    border-bottom: 1px solid #e8e8e8;
-    position: sticky; top: 65px; z-index: 999;
+    border-bottom: 3px solid var(--blue);
+    position: sticky; top: 62px; z-index: 999;
   }
   .mega-nav-inner {
     max-width: 1200px; margin: 0 auto; padding: 0 24px;
@@ -158,89 +124,83 @@
   .nav-item { position: relative; }
   .nav-item > a {
     display: flex; align-items: center; gap: 5px;
-    padding: 14px 16px;
-    font-size: 13.5px; font-weight: 600; color: var(--dark);
+    padding: 13px 16px;
+    font-size: 13.5px; font-weight: 600; color: var(--navy);
     white-space: nowrap; cursor: pointer;
-    transition: color .2s;
     border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    transition: color .2s, border-color .2s;
   }
   .nav-item > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
-  .nav-item > a .arrow { font-size: 10px; opacity: .6; }
+  .nav-item > a .arrow { font-size: 10px; opacity: .5; }
   .dropdown {
     display: none;
     position: absolute; top: 100%; left: 0;
     background: var(--white);
-    border: 1px solid #e8e8e8;
+    border: 1px solid #e5e7eb;
     border-radius: var(--radius);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-    min-width: 200px;
-    padding: 8px;
-    z-index: 2000;
+    box-shadow: 0 12px 32px rgba(4,30,66,0.14);
+    min-width: 200px; padding: 8px; z-index: 2000;
   }
-  .dropdown.wide {
-    min-width: 640px;
-    display: none;
-    padding: 20px;
-    gap: 8px;
-  }
+  .dropdown.wide { min-width: 640px; display: none; padding: 20px; gap: 8px; }
   .dropdown.wide .dd-col { flex: 1; min-width: 140px; }
   .dropdown.wide .dd-col h4 {
-    font-size: 11px; text-transform: uppercase; color: var(--grey-text);
+    font-size: 11px; text-transform: uppercase; color: var(--grey);
     margin-bottom: 10px; letter-spacing: .8px; font-weight: 700;
   }
   .nav-item:hover .dropdown { display: flex; flex-direction: column; }
   .nav-item:hover .dropdown.wide { display: flex; flex-direction: row; }
   .dropdown a {
-    padding: 8px 12px;
-    font-size: 13px; color: var(--dark);
+    padding: 8px 12px; font-size: 13px; color: var(--navy);
     display: block; border-radius: 8px; font-weight: 500;
   }
-  .dropdown a:hover { background: #f0f7ff; color: var(--blue); }
-  .nav-speaker { color: var(--blue) !important; font-weight: 700 !important; }
-  .nav-famous { color: var(--gold) !important; font-weight: 700 !important; }
+  .dropdown a:hover { background: #eaf6fd; color: var(--blue); }
+  .nav-red { color: var(--red) !important; font-weight: 700 !important; }
+  .nav-blue { color: var(--blue) !important; font-weight: 700 !important; }
   .nav-service { margin-left: auto; }
-  .nav-service a { color: var(--grey-text); font-size: 13px; padding: 14px 8px; display: flex; align-items: center; gap: 5px; }
-  .nav-service a:hover { color: var(--blue); }
+  .nav-service > a { color: var(--grey); }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #0a3060 60%, #0d4080 100%);
+    margin: 0 -24px 0;
+    padding: 60px 24px 52px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--red) 0%, var(--blue) 100%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .hero h1 {
+    font-size: 44px; font-weight: 900; color: #fff;
+    line-height: 1.12; margin-bottom: 14px; letter-spacing: -1.5px;
+  }
+  .hero h1 .accent { color: var(--blue); }
+  .hero h1 .accent-red { color: var(--red); }
+  .hero p { font-size: 17px; color: rgba(255,255,255,0.78); margin-bottom: 30px; font-weight: 400; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .hero-tag {
+    background: rgba(255,255,255,0.10); color: rgba(255,255,255,0.90);
+    padding: 7px 16px; border-radius: 50px; font-size: 13px; font-weight: 600;
+    cursor: pointer; border: 1px solid rgba(255,255,255,0.18);
+    transition: background .2s, border-color .2s;
+  }
+  .hero-tag:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
 
   /* ===== MAIN ===== */
   main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-  /* ===== HERO SECTION ===== */
-  .hero {
-    background: linear-gradient(135deg, #0055a5 0%, #0077c8 50%, #1a9cd8 100%);
-    margin: 0 -24px;
-    padding: 56px 24px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-  .hero h1 {
-    font-size: 42px; font-weight: 800; color: #fff;
-    line-height: 1.15; margin-bottom: 14px; letter-spacing: -1px;
-  }
-  .hero h1 span { color: var(--gold); }
-  .hero p { font-size: 17px; color: rgba(255,255,255,0.85); margin-bottom: 28px; }
-  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .hero-tag {
-    background: rgba(255,255,255,0.15); color: #fff;
-    padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600;
-    cursor: pointer; transition: background .2s; border: 1px solid rgba(255,255,255,0.2);
-  }
-  .hero-tag:hover { background: rgba(255,255,255,0.28); }
-
-  /* ===== SECTION TITLES ===== */
+  /* ===== SECTION HEADER ===== */
   .section-header {
     display: flex; align-items: baseline; justify-content: space-between;
     margin: 36px 0 16px;
   }
-  .section-title { font-size: 22px; font-weight: 800; color: var(--dark); }
-  .section-sub { font-size: 13.5px; color: var(--grey-text); margin-top: 2px; font-weight: 500; }
+  .section-title { font-size: 22px; font-weight: 800; color: var(--navy); }
+  .section-sub { font-size: 13px; color: var(--grey); margin-top: 3px; font-weight: 500; }
   .see-all { font-size: 13px; color: var(--blue); font-weight: 600; }
   .see-all:hover { text-decoration: underline; }
 
@@ -248,241 +208,230 @@
   .carousel-wrapper { position: relative; }
   .carousel {
     display: flex; gap: 14px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: auto; padding-bottom: 10px;
+    scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
   .carousel::-webkit-scrollbar { display: none; }
   .carousel-btn {
     position: absolute; top: 50%; transform: translateY(-60%);
-    background: var(--white); border: 1.5px solid #e0e0e0;
+    background: var(--white); border: 1.5px solid #e5e7eb;
     border-radius: 50%; width: 38px; height: 38px;
-    cursor: pointer; font-size: 15px; color: var(--blue);
+    cursor: pointer; font-size: 16px; color: var(--navy);
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10); z-index: 10;
+    box-shadow: 0 4px 12px rgba(4,30,66,0.10); z-index: 10;
     transition: all .2s;
   }
-  .carousel-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .carousel-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
   .carousel-btn.prev { left: -18px; }
   .carousel-btn.next { right: -18px; }
 
   /* ===== CATEGORY CARD ===== */
   .cat-card {
-    flex: 0 0 170px;
+    flex: 0 0 165px;
     border-radius: var(--radius);
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: var(--card-shadow);
+    overflow: hidden; cursor: pointer;
+    box-shadow: var(--shadow);
     transition: transform .25s, box-shadow .25s;
     background: var(--white);
+    border-bottom: 3px solid transparent;
   }
-  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.14); }
+  .cat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(4,30,66,0.14);
+    border-bottom-color: var(--blue);
+  }
   .cat-card-img {
-    width: 100%; height: 120px;
+    width: 100%; height: 115px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 48px;
+    font-size: 46px;
   }
   .cat-card-label {
-    padding: 10px 12px 12px;
-    font-size: 13.5px; font-weight: 700; color: var(--dark);
-    text-align: center;
+    padding: 10px 12px 13px;
+    font-size: 13.5px; font-weight: 700; color: var(--navy); text-align: center;
   }
-  .cat-card-count { font-size: 11px; color: var(--grey-text); font-weight: 500; margin-top: 2px; }
+  .cat-card-count { font-size: 11px; color: var(--grey); font-weight: 500; margin-top: 2px; }
 
   /* ===== ACT CARD ===== */
   .act-card {
     flex: 0 0 220px;
     background: var(--white);
     border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
+    overflow: hidden; box-shadow: var(--shadow);
     cursor: pointer;
     transition: transform .25s, box-shadow .25s;
+    border-top: 3px solid transparent;
   }
-  .act-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.14); }
+  .act-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(4,30,66,0.14);
+    border-top-color: var(--blue);
+  }
   .act-card-img {
-    width: 100%; height: 155px;
+    width: 100%; height: 150px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 64px;
-    position: relative;
+    font-size: 60px; position: relative;
   }
   .act-badge {
     position: absolute; top: 10px; right: 10px;
-    background: var(--gold); color: #fff;
+    background: var(--red); color: #fff;
     font-size: 10px; font-weight: 700;
     padding: 3px 8px; border-radius: 50px;
   }
   .act-card-body { padding: 12px 14px 14px; }
-  .act-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
-  .act-type { font-size: 12px; color: var(--grey-text); margin-bottom: 10px; font-weight: 500; }
+  .act-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .act-type { font-size: 12px; color: var(--grey); margin-bottom: 10px; font-weight: 500; }
   .act-footer { display: flex; align-items: center; justify-content: space-between; }
-  .stars { color: var(--gold); font-size: 12px; }
-  .act-reviews { font-size: 11px; color: var(--grey-text); margin-left: 4px; }
-  .act-price { font-size: 14px; font-weight: 800; color: var(--blue); }
-  .act-price span { font-size: 11px; font-weight: 500; color: var(--grey-text); }
+  .stars { color: #f59e0b; font-size: 12px; }
+  .act-reviews { font-size: 11px; color: var(--grey); margin-left: 4px; }
+  .act-price { font-size: 14px; font-weight: 800; color: var(--navy); }
+  .act-price span { font-size: 11px; font-weight: 500; color: var(--grey); }
 
   /* ===== EVENT CARDS ===== */
   .event-card {
-    flex: 0 0 190px;
-    border-radius: var(--radius);
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: var(--card-shadow);
+    flex: 0 0 185px;
+    border-radius: var(--radius); overflow: hidden;
+    cursor: pointer; box-shadow: var(--shadow);
     transition: transform .25s, box-shadow .25s;
-    position: relative;
-    height: 130px;
+    position: relative; height: 130px;
     display: flex; align-items: flex-end;
   }
-  .event-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+  .event-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(4,30,66,0.18); }
   .event-card-bg {
     position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 56px;
+    display: flex; align-items: center; justify-content: center; font-size: 52px;
   }
   .event-card-label {
-    position: relative; z-index: 1;
-    width: 100%;
-    background: linear-gradient(transparent, rgba(0,0,0,0.72));
+    position: relative; z-index: 1; width: 100%;
+    background: linear-gradient(transparent, rgba(4,30,66,0.82));
     color: #fff; padding: 24px 14px 12px;
-    font-size: 13.5px; font-weight: 700;
+    font-size: 13px; font-weight: 700;
   }
 
   /* ===== PROMO BANNERS ===== */
   .promo-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin: 32px 0;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 14px; margin: 32px 0;
   }
   .promo-tile {
-    border-radius: var(--radius);
-    padding: 22px 20px;
+    border-radius: var(--radius); padding: 24px 20px;
     display: flex; flex-direction: column; gap: 6px;
     cursor: pointer; transition: transform .2s, box-shadow .2s;
-    position: relative; overflow: hidden;
   }
-  .promo-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
-  .promo-tile.blue { background: linear-gradient(135deg, #0077c8, #005fa3); color: #fff; }
-  .promo-tile.gold { background: linear-gradient(135deg, #c8972a, #a87a1e); color: #fff; }
-  .promo-tile.dark { background: linear-gradient(135deg, #1a1a2e, #16213e); color: #fff; }
-  .promo-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: .75; font-weight: 700; }
+  .promo-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(4,30,66,0.2); }
+  .promo-tile.navy { background: var(--navy); color: #fff; }
+  .promo-tile.blue-t { background: var(--blue); color: #fff; }
+  .promo-tile.red-t { background: var(--red); color: #fff; }
+  .promo-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; opacity: .75; font-weight: 700; }
   .promo-title { font-size: 17px; font-weight: 800; line-height: 1.2; }
-  .promo-sub { font-size: 12.5px; opacity: .85; }
-  .promo-icon { font-size: 36px; margin-bottom: 4px; }
+  .promo-sub { font-size: 12.5px; opacity: .82; }
+  .promo-icon { font-size: 34px; margin-bottom: 4px; }
 
   /* ===== HOW IT WORKS ===== */
   .hiw-section {
-    background: var(--white);
+    background: var(--navy);
     border-radius: var(--radius);
-    padding: 36px 28px;
+    padding: 40px 32px;
     margin: 8px 0 36px;
-    box-shadow: var(--card-shadow);
+    position: relative; overflow: hidden;
   }
-  .hiw-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 28px; color: var(--dark); text-align: center; }
+  .hiw-section::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--red), var(--blue));
+  }
+  .hiw-section h2 {
+    font-size: 24px; font-weight: 800; margin-bottom: 32px;
+    color: #fff; text-align: center;
+  }
   .hiw-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .hiw-step { text-align: center; position: relative; }
   .hiw-step:not(:last-child)::after {
     content: "→";
-    position: absolute; right: -14px; top: 22px;
-    font-size: 22px; color: #ccd; font-weight: 700;
+    position: absolute; right: -14px; top: 20px;
+    font-size: 22px; color: rgba(255,255,255,0.25); font-weight: 700;
   }
   .hiw-num {
     width: 52px; height: 52px; margin: 0 auto 14px;
-    background: linear-gradient(135deg, var(--blue), #1a9cd8);
+    background: var(--blue);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px; color: #fff; font-weight: 800;
-    box-shadow: 0 6px 16px rgba(0,119,200,0.28);
+    font-size: 20px; color: #fff; font-weight: 800;
+    box-shadow: 0 6px 16px rgba(0,163,224,0.35);
   }
-  .hiw-step h4 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-  .hiw-step p { font-size: 12.5px; color: var(--grey-text); line-height: 1.6; }
+  .hiw-step h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .hiw-step p { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.6; }
 
-  /* ===== WHY STARSTAGE ===== */
-  .why-section {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-    margin: 0 0 36px;
-  }
+  /* ===== WHY ===== */
+  .why-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 36px; }
   .why-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 24px 20px;
-    box-shadow: var(--card-shadow);
-    border-top: 4px solid var(--blue);
+    background: var(--white); border-radius: var(--radius);
+    padding: 24px 20px; box-shadow: var(--shadow);
+    border-left: 4px solid var(--blue);
     transition: transform .2s;
   }
-  .why-card:nth-child(2) { border-top-color: var(--gold); }
-  .why-card:nth-child(3) { border-top-color: #2ecc71; }
+  .why-card:nth-child(2) { border-left-color: var(--red); }
+  .why-card:nth-child(3) { border-left-color: var(--navy); }
   .why-card:hover { transform: translateY(-3px); }
-  .why-icon { font-size: 32px; margin-bottom: 12px; }
-  .why-card h3 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-  .why-card p { font-size: 13px; color: var(--grey-text); line-height: 1.6; }
+  .why-icon { font-size: 30px; margin-bottom: 12px; }
+  .why-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .why-card p { font-size: 13px; color: var(--grey); line-height: 1.6; }
 
   /* ===== FOOTER ===== */
-  footer {
-    background: var(--dark);
-    color: #aaa;
-    margin-top: 48px;
-  }
+  footer { background: var(--navy); color: #aaa; margin-top: 48px; }
   .footer-inner {
     max-width: 1200px; margin: 0 auto; padding: 48px 24px 32px;
     display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
   }
-  .footer-brand .logo-text { color: #fff; font-size: 24px; }
-  .footer-brand p { font-size: 13px; color: #888; margin-top: 12px; line-height: 1.7; max-width: 280px; }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 14px; line-height: 1.7; max-width: 280px; }
   .footer-score { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
   .score-circle {
-    background: var(--gold); color: #fff;
-    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--blue); color: #fff;
+    width: 46px; height: 46px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 17px; font-weight: 800; flex-shrink: 0;
+    font-size: 16px; font-weight: 800; flex-shrink: 0;
   }
-  .score-stars { color: var(--gold); font-size: 17px; }
-  .score-reviews { font-size: 12px; color: #777; }
+  .score-stars { color: #f59e0b; font-size: 16px; }
+  .score-reviews { font-size: 12px; color: rgba(255,255,255,0.4); }
   .footer-col h4 {
-    font-size: 13px; font-weight: 700; color: #fff;
-    margin-bottom: 16px; text-transform: uppercase; letter-spacing: .5px;
+    font-size: 12px; font-weight: 700; color: #fff;
+    margin-bottom: 16px; text-transform: uppercase; letter-spacing: .8px;
   }
   .footer-col ul li { margin-bottom: 10px; }
-  .footer-col ul li a { font-size: 13px; color: #888; transition: color .2s; }
-  .footer-col ul li a:hover { color: #fff; }
-  .footer-bottom {
-    border-top: 1px solid #2a2a3e;
-    background: #111122;
-    padding: 18px 24px;
+  .footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.5); transition: color .2s; }
+  .footer-col ul li a:hover { color: var(--blue); }
+  .pay-logos { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .pay-logo {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px; padding: 5px 10px;
+    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6);
   }
+  .footer-stripe {
+    height: 4px;
+    background: linear-gradient(90deg, var(--red) 0%, var(--blue) 100%);
+  }
+  .footer-bottom { background: rgba(0,0,0,0.25); padding: 18px 24px; }
   .footer-bottom-inner {
     max-width: 1200px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 12px;
   }
-  .footer-bottom-copy { font-size: 12px; color: #666; }
+  .footer-bottom-copy { font-size: 12px; color: rgba(255,255,255,0.35); }
   .social-links { display: flex; gap: 14px; }
-  .social-links a {
-    font-size: 13px; color: #666;
-    display: flex; align-items: center; gap: 5px;
-    transition: color .2s;
-  }
-  .social-links a:hover { color: #fff; }
-  .pay-logos { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-  .pay-logo {
-    background: #2a2a3e; border: 1px solid #3a3a50;
-    border-radius: 6px; padding: 5px 10px;
-    font-size: 11px; font-weight: 700; color: #aaa;
-  }
+  .social-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color .2s; }
+  .social-links a:hover { color: var(--blue); }
 
   /* ===== BACK TO TOP ===== */
   #back-top {
     position: fixed; bottom: 28px; right: 28px;
-    background: var(--blue); color: #fff;
+    background: var(--navy); color: #fff;
     border: none; border-radius: 50%; width: 44px; height: 44px;
     font-size: 18px; cursor: pointer;
     display: none; align-items: center; justify-content: center;
-    box-shadow: 0 6px 16px rgba(0,119,200,0.35);
-    z-index: 9999; transition: background .2s;
+    box-shadow: 0 6px 16px rgba(4,30,66,0.35); z-index: 9999;
+    transition: background .2s;
   }
-  #back-top:hover { background: var(--blue-dark); }
+  #back-top:hover { background: var(--blue); }
   #back-top.visible { display: flex; }
 
   /* ===== RESPONSIVE ===== */
@@ -505,26 +454,40 @@
 </head>
 <body>
 
-<!-- ===== TOP HEADER ===== -->
+<!-- HEADER -->
 <header class="top-header">
   <div class="top-header-inner">
-    <a href="#" class="logo">
-      <div class="logo-icon">⭐</div>
-      <div class="logo-text">Star<span>Stage</span></div>
+    <a href="#">
+      <svg class="logo-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(100, 50)">
+          <rect x="8" y="0" width="44" height="72" rx="22" fill="#041E42"/>
+          <rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/>
+          <rect x="8" y="12" width="44" height="12" fill="#00A3E0"/>
+          <path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="30" y1="100" x2="30" y2="125" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/>
+          <rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/>
+        </g>
+        <g transform="translate(200, 62)">
+          <text font-family="Inter, Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#041E42" x="0" y="78">stagely</text>
+          <circle cx="364" cy="22" r="10" fill="#E40046"/>
+          <rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/>
+          <text font-family="Inter, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text>
+        </g>
+      </svg>
     </a>
     <div class="search-wrap">
-      <input type="text" id="mainSearch" placeholder="Search singers, DJs, bands, speakers..." autocomplete="off" />
-      <button aria-label="Search">🔍</button>
+      <input type="text" placeholder="Search singers, DJs, bands, speakers..." autocomplete="off" />
+      <button>🔍</button>
     </div>
     <div class="header-actions">
       <a href="#">♡ Saved</a>
       <a href="#">👤 Login</a>
-      <a href="#" class="btn-artist">★ List Your Act</a>
+      <a href="#" class="btn-list">★ List Your Act</a>
     </div>
   </div>
 </header>
 
-<!-- ===== TRUST BAR ===== -->
+<!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-bar-inner">
     <div class="trust-items">
@@ -532,16 +495,16 @@
       <span class="trust-item"><span class="check">✔</span> Average rating 9.4</span>
       <span class="trust-item"><span class="check">✔</span> Direct contact with the artist</span>
       <span class="trust-item"><span class="check">✔</span> Best price guarantee</span>
-      <span class="trust-item"><span class="check">✔</span> Secure payment via escrow</span>
+      <span class="trust-item"><span class="check">✔</span> Secure escrow payment</span>
     </div>
-    <div class="trust-badges">
+    <div style="display:flex;align-items:center;gap:10px;">
       <span class="score-badge">9.4</span>
-      <span style="font-size:12px;color:#666;font-weight:500;">Verified Reviews</span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:500;">Verified Reviews</span>
     </div>
   </div>
 </div>
 
-<!-- ===== MEGA NAV ===== -->
+<!-- MEGA NAV -->
 <nav class="mega-nav">
   <div class="mega-nav-inner">
     <div class="nav-item">
@@ -619,23 +582,17 @@
         <a href="#">Cultural Heritage</a>
       </div>
     </div>
-    <div class="nav-item">
-      <a href="#" class="nav-speaker">Speakers</a>
-    </div>
-    <div class="nav-item">
-      <a href="#" class="nav-famous">Famous Artists</a>
-    </div>
-    <div class="nav-item nav-service">
-      <a href="#">💬 Customer Service</a>
-    </div>
+    <div class="nav-item"><a href="#" class="nav-blue">Speakers</a></div>
+    <div class="nav-item"><a href="#" class="nav-red">Famous Artists</a></div>
+    <div class="nav-item nav-service"><a href="#">💬 Support</a></div>
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-content">
-    <h1>Book <span>Amazing Entertainment</span><br>Anywhere in the UAE</h1>
-    <p>Connect directly with 5,000+ verified artists — no agency, no markup, no hassle.</p>
+    <h1>Book <span class="accent">Amazing Artists</span><br>Across the <span class="accent-red">UAE</span></h1>
+    <p>Connect directly with 5,000+ verified performers — no agency, no markup.</p>
     <div class="hero-tags">
       <span class="hero-tag">🎤 Singers</span>
       <span class="hero-tag">🎧 DJs</span>
@@ -650,7 +607,7 @@
 
 <main>
 
-  <!-- ===== POPULAR CATEGORIES ===== -->
+  <!-- CATEGORIES -->
   <div class="section-header">
     <div>
       <div class="section-title">Popular Categories</div>
@@ -659,45 +616,21 @@
     <a href="#" class="see-all">View all →</a>
   </div>
   <div class="carousel-wrapper">
-    <button class="carousel-btn prev" onclick="scroll(this,-1)">‹</button>
-    <div class="carousel" id="cat-carousel">
-      <div class="cat-card">
-        <div class="cat-card-img" style="background:linear-gradient(135deg,#e8f4ff,#c5e0f5)">🎤</div>
-        <div class="cat-card-label">Singers<div class="cat-card-count">842 acts</div></div>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-img" style="background:linear-gradient(135deg,#fff0e8,#ffd5b8)">🎧</div>
-        <div class="cat-card-label">DJs<div class="cat-card-count">614 acts</div></div>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-img" style="background:linear-gradient(135deg,#e8fff0,#b8f0cc)">🎸</div>
-        <div class="cat-card-label">Live Bands<div class="cat-card-count">318 acts</div></div>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-img" style="background:linear-gradient(135deg,#ffe8f5,#f5b8df)">💃</div>
-        <div class="cat-card-label">Dancers<div class="cat-card-count">427 acts</div></div>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-img" style="background:linear-gradient(135deg,#f5f0ff,#ddb8f5)">🎩</div>
-        <div class="cat-card-label">Magicians<div class="cat-card-count">156 acts</div></div>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-img" style="background:linear-gradient(135deg,#fff8e8,#f5ddb8)">🎭</div>
-        <div class="cat-card-label">Comedians<div class="cat-card-count">98 acts</div></div>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-img" style="background:linear-gradient(135deg,#e8f8ff,#b8e8f5)">🎙️</div>
-        <div class="cat-card-label">Speakers<div class="cat-card-count">273 acts</div></div>
-      </div>
-      <div class="cat-card">
-        <div class="cat-card-img" style="background:linear-gradient(135deg,#fff0f0,#f5c5c5)">🪄</div>
-        <div class="cat-card-label">Unique Acts<div class="cat-card-count">201 acts</div></div>
-      </div>
+    <button class="carousel-btn prev" onclick="scrollCarousel(this,-1)">‹</button>
+    <div class="carousel">
+      <div class="cat-card"><div class="cat-card-img" style="background:#eaf6fd">🎤</div><div class="cat-card-label">Singers<div class="cat-card-count">842 acts</div></div></div>
+      <div class="cat-card"><div class="cat-card-img" style="background:#fff0f3">🎧</div><div class="cat-card-label">DJs<div class="cat-card-count">614 acts</div></div></div>
+      <div class="cat-card"><div class="cat-card-img" style="background:#eaf0fa">🎸</div><div class="cat-card-label">Live Bands<div class="cat-card-count">318 acts</div></div></div>
+      <div class="cat-card"><div class="cat-card-img" style="background:#fff0f3">💃</div><div class="cat-card-label">Dancers<div class="cat-card-count">427 acts</div></div></div>
+      <div class="cat-card"><div class="cat-card-img" style="background:#eaf6fd">🎩</div><div class="cat-card-label">Magicians<div class="cat-card-count">156 acts</div></div></div>
+      <div class="cat-card"><div class="cat-card-img" style="background:#eaf0fa">🎭</div><div class="cat-card-label">Comedians<div class="cat-card-count">98 acts</div></div></div>
+      <div class="cat-card"><div class="cat-card-img" style="background:#eaf6fd">🎙️</div><div class="cat-card-label">Speakers<div class="cat-card-count">273 acts</div></div></div>
+      <div class="cat-card"><div class="cat-card-img" style="background:#fff0f3">🪄</div><div class="cat-card-label">Unique Acts<div class="cat-card-count">201 acts</div></div></div>
     </div>
-    <button class="carousel-btn next" onclick="scroll(this,1)">›</button>
+    <button class="carousel-btn next" onclick="scrollCarousel(this,1)">›</button>
   </div>
 
-  <!-- ===== TOP ACTS ===== -->
+  <!-- TOP ACTS -->
   <div class="section-header">
     <div>
       <div class="section-title">Top Acts in the UAE</div>
@@ -706,14 +639,10 @@
     <a href="#" class="see-all">View all →</a>
   </div>
   <div class="carousel-wrapper">
-    <button class="carousel-btn prev" onclick="scroll(this,-1)">‹</button>
-    <div class="carousel" id="acts-carousel">
-
+    <button class="carousel-btn prev" onclick="scrollCarousel(this,-1)">‹</button>
+    <div class="carousel">
       <div class="act-card">
-        <div class="act-card-img" style="background:linear-gradient(135deg,#e8f4ff,#c5e0f5)">
-          🎤
-          <span class="act-badge">Top Rated</span>
-        </div>
+        <div class="act-card-img" style="background:#eaf6fd">🎤<span class="act-badge">Top Rated</span></div>
         <div class="act-card-body">
           <div class="act-name">Layla Al Mansoori</div>
           <div class="act-type">Arabic & Western Singer · Dubai</div>
@@ -723,12 +652,8 @@
           </div>
         </div>
       </div>
-
       <div class="act-card">
-        <div class="act-card-img" style="background:linear-gradient(135deg,#fff0e8,#ffd5b8)">
-          🎧
-          <span class="act-badge">Popular</span>
-        </div>
+        <div class="act-card-img" style="background:#fff0f3">🎧<span class="act-badge">Popular</span></div>
         <div class="act-card-body">
           <div class="act-name">DJ Khalid Omar</div>
           <div class="act-type">Club & Event DJ · Abu Dhabi</div>
@@ -738,11 +663,8 @@
           </div>
         </div>
       </div>
-
       <div class="act-card">
-        <div class="act-card-img" style="background:linear-gradient(135deg,#e8fff0,#b8f0cc)">
-          🎸
-        </div>
+        <div class="act-card-img" style="background:#eaf0fa">🎸</div>
         <div class="act-card-body">
           <div class="act-name">Desert Groove Band</div>
           <div class="act-type">Live Band · Dubai</div>
@@ -752,12 +674,8 @@
           </div>
         </div>
       </div>
-
       <div class="act-card">
-        <div class="act-card-img" style="background:linear-gradient(135deg,#ffe8f5,#f5b8df)">
-          💃
-          <span class="act-badge">New</span>
-        </div>
+        <div class="act-card-img" style="background:#fff0f3">💃<span class="act-badge">New</span></div>
         <div class="act-card-body">
           <div class="act-name">Nour Dance Collective</div>
           <div class="act-type">Contemporary Dance · Sharjah</div>
@@ -767,11 +685,8 @@
           </div>
         </div>
       </div>
-
       <div class="act-card">
-        <div class="act-card-img" style="background:linear-gradient(135deg,#f5f0ff,#ddb8f5)">
-          🎩
-        </div>
+        <div class="act-card-img" style="background:#eaf6fd">🎩</div>
         <div class="act-card-body">
           <div class="act-name">Marco The Illusionist</div>
           <div class="act-type">Magician & Illusionist · Dubai</div>
@@ -781,12 +696,8 @@
           </div>
         </div>
       </div>
-
       <div class="act-card">
-        <div class="act-card-img" style="background:linear-gradient(135deg,#fff8e8,#f5ddb8)">
-          🎙️
-          <span class="act-badge">Top Rated</span>
-        </div>
+        <div class="act-card-img" style="background:#eaf0fa">🎙️<span class="act-badge">Top Rated</span></div>
         <div class="act-card-body">
           <div class="act-name">Ahmed Hassan</div>
           <div class="act-type">Motivational Speaker · Dubai</div>
@@ -796,12 +707,11 @@
           </div>
         </div>
       </div>
-
     </div>
-    <button class="carousel-btn next" onclick="scroll(this,1)">›</button>
+    <button class="carousel-btn next" onclick="scrollCarousel(this,1)">›</button>
   </div>
 
-  <!-- ===== FOR EVERY EVENT ===== -->
+  <!-- FOR EVERY EVENT -->
   <div class="section-header">
     <div>
       <div class="section-title">For Every Event</div>
@@ -810,80 +720,59 @@
     <a href="#" class="see-all">View all →</a>
   </div>
   <div class="carousel-wrapper">
-    <button class="carousel-btn prev" onclick="scroll(this,-1)">‹</button>
-    <div class="carousel" id="event-carousel">
-      <div class="event-card" style="background:#1a237e">
-        <div class="event-card-bg">💍</div>
-        <div class="event-card-label">Wedding</div>
-      </div>
-      <div class="event-card" style="background:#1b5e20">
-        <div class="event-card-bg">🏢</div>
-        <div class="event-card-label">Corporate Event</div>
-      </div>
-      <div class="event-card" style="background:#4a148c">
-        <div class="event-card-bg">🎂</div>
-        <div class="event-card-label">Birthday Party</div>
-      </div>
-      <div class="event-card" style="background:#b71c1c">
-        <div class="event-card-bg">🇦🇪</div>
-        <div class="event-card-label">National Day</div>
-      </div>
-      <div class="event-card" style="background:#e65100">
-        <div class="event-card-bg">🎪</div>
-        <div class="event-card-label">Festival</div>
-      </div>
-      <div class="event-card" style="background:#006064">
-        <div class="event-card-bg">🍽️</div>
-        <div class="event-card-label">Gala Dinner</div>
-      </div>
-      <div class="event-card" style="background:#37474f">
-        <div class="event-card-bg">🎓</div>
-        <div class="event-card-label">Graduation</div>
-      </div>
+    <button class="carousel-btn prev" onclick="scrollCarousel(this,-1)">‹</button>
+    <div class="carousel">
+      <div class="event-card" style="background:#041E42"><div class="event-card-bg">💍</div><div class="event-card-label">Wedding</div></div>
+      <div class="event-card" style="background:#00A3E0"><div class="event-card-bg">🏢</div><div class="event-card-label">Corporate Event</div></div>
+      <div class="event-card" style="background:#E40046"><div class="event-card-bg">🎂</div><div class="event-card-label">Birthday Party</div></div>
+      <div class="event-card" style="background:#0a3060"><div class="event-card-bg">🇦🇪</div><div class="event-card-label">National Day</div></div>
+      <div class="event-card" style="background:#041E42"><div class="event-card-bg">🎪</div><div class="event-card-label">Festival</div></div>
+      <div class="event-card" style="background:#00A3E0"><div class="event-card-bg">🍽️</div><div class="event-card-label">Gala Dinner</div></div>
+      <div class="event-card" style="background:#E40046"><div class="event-card-bg">🎓</div><div class="event-card-label">Graduation</div></div>
     </div>
-    <button class="carousel-btn next" onclick="scroll(this,1)">›</button>
+    <button class="carousel-btn next" onclick="scrollCarousel(this,1)">›</button>
   </div>
 
-  <!-- ===== PROMO BANNERS ===== -->
+  <!-- PROMO -->
   <div class="promo-row">
-    <div class="promo-tile blue">
+    <div class="promo-tile navy">
       <div class="promo-icon">🎙️</div>
       <div class="promo-label">Featured</div>
       <div class="promo-title">Book a Keynote Speaker</div>
-      <div class="promo-sub">World-class speakers for your next corporate event</div>
+      <div class="promo-sub">World-class speakers for corporate events</div>
     </div>
-    <div class="promo-tile gold">
+    <div class="promo-tile blue-t">
       <div class="promo-icon">⭐</div>
       <div class="promo-label">Best Value</div>
       <div class="promo-title">Acts from AED 500</div>
       <div class="promo-sub">Quality entertainment for every budget</div>
     </div>
-    <div class="promo-tile dark">
-      <div class="promo-icon">🎁</div>
-      <div class="promo-label">List Free</div>
+    <div class="promo-tile red-t">
+      <div class="promo-icon">🎤</div>
+      <div class="promo-label">Join Free</div>
       <div class="promo-title">Are You an Artist?</div>
-      <div class="promo-sub">Join 5,000+ acts. List free, earn more.</div>
+      <div class="promo-sub">List free, get booked, earn more</div>
     </div>
   </div>
 
-  <!-- ===== HOW IT WORKS ===== -->
+  <!-- HOW IT WORKS -->
   <div class="hiw-section">
-    <h2>How StarStage Works</h2>
+    <h2>How Stagely Works</h2>
     <div class="hiw-steps">
       <div class="hiw-step">
         <div class="hiw-num">1</div>
         <h4>Search & Browse</h4>
-        <p>Filter by category, location, event type, budget and availability to find your perfect act.</p>
+        <p>Filter by category, location, event type and budget to find your perfect act.</p>
       </div>
       <div class="hiw-step">
         <div class="hiw-num">2</div>
         <h4>Contact Directly</h4>
-        <p>Message the artist directly. No agency middleman. Discuss details, dates and requirements.</p>
+        <p>Message the artist directly. No agency middleman. Discuss dates and details.</p>
       </div>
       <div class="hiw-step">
         <div class="hiw-num">3</div>
         <h4>Book Securely</h4>
-        <p>Confirm your booking through our secure escrow payment system. Your money is protected.</p>
+        <p>Confirm via our secure escrow payment. Your money is fully protected.</p>
       </div>
       <div class="hiw-step">
         <div class="hiw-num">4</div>
@@ -893,9 +782,9 @@
     </div>
   </div>
 
-  <!-- ===== WHY STARSTAGE ===== -->
+  <!-- WHY STAGELY -->
   <div class="section-header">
-    <div><div class="section-title">Why Choose StarStage?</div></div>
+    <div><div class="section-title">Why Choose Stagely?</div></div>
   </div>
   <div class="why-section">
     <div class="why-card">
@@ -917,14 +806,27 @@
 
 </main>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
+  <div class="footer-stripe"></div>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="logo">
-        <div class="logo-icon">⭐</div>
-        <div class="logo-text" style="color:#fff">Star<span style="color:var(--blue)">Stage</span></div>
-      </div>
+      <svg style="height:32px;width:auto" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(100, 50)">
+          <rect x="8" y="0" width="44" height="72" rx="22" fill="#fff"/>
+          <rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/>
+          <rect x="8" y="12" width="44" height="12" fill="#00A3E0"/>
+          <path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="30" y1="100" x2="30" y2="125" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+          <rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/>
+        </g>
+        <g transform="translate(200, 62)">
+          <text font-family="Inter, Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#ffffff" x="0" y="78">stagely</text>
+          <circle cx="364" cy="22" r="10" fill="#E40046"/>
+          <rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/>
+          <text font-family="Inter, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text>
+        </g>
+      </svg>
       <p>The UAE's premier direct booking platform for live entertainment. Connect with 5,000+ verified artists across Dubai, Abu Dhabi and beyond.</p>
       <div class="footer-score">
         <div class="score-circle">9.4</div>
@@ -940,7 +842,6 @@
         <span class="pay-logo">Tabby</span>
       </div>
     </div>
-
     <div class="footer-col">
       <h4>For Clients</h4>
       <ul>
@@ -952,7 +853,6 @@
         <li><a href="#">Reviews</a></li>
       </ul>
     </div>
-
     <div class="footer-col">
       <h4>For Artists</h4>
       <ul>
@@ -963,24 +863,21 @@
         <li><a href="#">Artist Support</a></li>
       </ul>
     </div>
-
     <div class="footer-col">
-      <h4>StarStage</h4>
+      <h4>Stagely</h4>
       <ul>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">Careers</a></li>
-        <li><a href="#">Press</a></li>
         <li><a href="#">Terms & Conditions</a></li>
         <li><a href="#">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
-
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
-      <div class="footer-bottom-copy">© 2025 StarStage UAE. All rights reserved. Dubai, UAE 🇦🇪</div>
+      <div class="footer-bottom-copy">© 2025 Stagely UAE. All rights reserved. Dubai, UAE 🇦🇪</div>
       <div class="social-links">
         <a href="#">📘 Facebook</a>
         <a href="#">📸 Instagram</a>
@@ -994,18 +891,13 @@
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-  // Carousel scroll
-  function scroll(btn, dir) {
+  function scrollCarousel(btn, dir) {
     const carousel = btn.parentElement.querySelector('.carousel');
     carousel.scrollBy({ left: dir * 280, behavior: 'smooth' });
   }
-
-  // Back to top
   window.addEventListener('scroll', () => {
-    const btn = document.getElementById('back-top');
-    btn.classList.toggle('visible', window.scrollY > 300);
+    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
   });
 </script>
-
 </body>
 </html>
