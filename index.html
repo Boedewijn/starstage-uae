@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>StarStage UAE – Book Live Entertainment in the UAE | 5,000+ Acts</title>
 <meta name="description" content="StarStage is the UAE's premier platform to book live entertainment. Find and hire singers, DJs, bands, dancers, magicians and more for any event in Dubai, Abu Dhabi and beyond." />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* ===== RESET & BASE ===== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     background: #f4f4f4;
     color: #333;
     font-size: 15px;
@@ -18,34 +18,32 @@
   }
   a { color: inherit; text-decoration: none; }
   ul { list-style: none; }
-  img { max-width: 100%; display: block; }
 
-  /* ===== VARIABLES ===== */
   :root {
     --blue: #0077c8;
     --blue-dark: #005fa3;
     --gold: #c8972a;
     --light-bg: #f4f4f4;
     --white: #ffffff;
-    --dark: #3a3a3a;
+    --dark: #1a1a2e;
     --grey-text: #666;
-    --card-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    --radius: 6px;
+    --card-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    --radius: 12px;
   }
 
   /* ===== TOP HEADER ===== */
   .top-header {
     background: var(--white);
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e8e8e8;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   }
   .top-header-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 10px 20px;
+    padding: 12px 24px;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -54,206 +52,244 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex-shrink: 0;
   }
   .logo-icon {
-    width: 38px; height: 38px;
+    width: 40px; height: 40px;
     background: linear-gradient(135deg, var(--gold), var(--blue));
-    border-radius: 50%;
+    border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
     font-size: 20px;
     color: #fff;
+    box-shadow: 0 4px 12px rgba(0,119,200,0.3);
   }
-  .logo-text { font-size: 22px; font-weight: 700; color: var(--blue); letter-spacing: -0.5px; }
-  .logo-text span { color: var(--gold); }
+  .logo-text { font-size: 22px; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
+  .logo-text span { color: var(--blue); }
 
-  /* search bar */
   .search-wrap {
     flex: 1;
     min-width: 220px;
-    max-width: 520px;
+    max-width: 540px;
     position: relative;
   }
   .search-wrap input {
     width: 100%;
-    padding: 10px 44px 10px 16px;
-    border: 2px solid #ccc;
-    border-radius: 24px;
+    padding: 11px 48px 11px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
     font-size: 14px;
+    font-family: inherit;
     outline: none;
-    transition: border-color .2s;
+    transition: border-color .2s, box-shadow .2s;
+    background: #f8f9fa;
   }
-  .search-wrap input:focus { border-color: var(--blue); }
+  .search-wrap input:focus {
+    border-color: var(--blue);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0,119,200,0.08);
+  }
   .search-wrap button {
-    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
-    background: none; border: none; cursor: pointer; color: var(--blue); font-size: 17px;
+    position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+    background: var(--blue); border: none; cursor: pointer;
+    color: #fff; font-size: 15px;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
   }
+  .search-wrap button:hover { background: var(--blue-dark); }
 
-  /* header actions */
   .header-actions {
-    display: flex; align-items: center; gap: 14px; flex-shrink: 0;
+    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
   }
   .header-actions a {
     font-size: 13px; color: var(--grey-text);
-    display: flex; align-items: center; gap: 4px;
+    display: flex; align-items: center; gap: 5px;
     cursor: pointer;
     white-space: nowrap;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background .2s, color .2s;
   }
-  .header-actions a:hover { color: var(--blue); }
+  .header-actions a:hover { color: var(--blue); background: #f0f7ff; }
   .btn-artist {
-    background: var(--blue); color: #fff !important;
-    padding: 7px 14px; border-radius: 20px; font-size: 13px !important;
-    font-weight: 600;
+    background: var(--blue) !important; color: #fff !important;
+    padding: 9px 18px !important; border-radius: 50px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 12px rgba(0,119,200,0.25);
   }
-  .btn-artist:hover { background: var(--blue-dark) !important; color: #fff !important; }
+  .btn-artist:hover { background: var(--blue-dark) !important; }
 
   /* ===== TRUST BAR ===== */
   .trust-bar {
-    background: var(--white);
-    border-bottom: 2px solid var(--blue);
-    padding: 6px 20px;
+    background: #f0f7ff;
+    border-bottom: 1px solid #d0e8f8;
+    padding: 8px 24px;
   }
   .trust-bar-inner {
     max-width: 1200px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 6px;
+    flex-wrap: wrap; gap: 8px;
   }
-  .trust-items {
-    display: flex; flex-wrap: wrap; gap: 10px 24px;
-  }
+  .trust-items { display: flex; flex-wrap: wrap; gap: 8px 28px; }
   .trust-item {
-    font-size: 12px; color: #444;
-    display: flex; align-items: center; gap: 5px;
+    font-size: 12.5px; color: #444; font-weight: 500;
+    display: flex; align-items: center; gap: 6px;
   }
-  .trust-item .check { color: #27ae60; font-size: 13px; }
-  .trust-badges { display: flex; align-items: center; gap: 12px; }
+  .trust-item .check { color: #27ae60; font-size: 14px; }
+  .trust-badges { display: flex; align-items: center; gap: 10px; }
   .score-badge {
-    background: #e8f4ff; border: 2px solid var(--blue);
-    border-radius: 8px; padding: 2px 8px;
-    font-weight: 700; font-size: 14px; color: var(--blue);
+    background: var(--blue); color: #fff;
+    border-radius: 8px; padding: 3px 10px;
+    font-weight: 800; font-size: 15px;
   }
 
   /* ===== MEGA NAV ===== */
   .mega-nav {
     background: var(--white);
-    border-bottom: 1px solid #e0e0e0;
-    position: sticky; top: 57px; z-index: 999;
+    border-bottom: 1px solid #e8e8e8;
+    position: sticky; top: 65px; z-index: 999;
   }
   .mega-nav-inner {
-    max-width: 1200px; margin: 0 auto; padding: 0 20px;
-    display: flex; align-items: center; gap: 0;
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center;
   }
-  .nav-item {
-    position: relative;
-  }
+  .nav-item { position: relative; }
   .nav-item > a {
-    display: flex; align-items: center; gap: 4px;
-    padding: 12px 14px;
+    display: flex; align-items: center; gap: 5px;
+    padding: 14px 16px;
     font-size: 13.5px; font-weight: 600; color: var(--dark);
-    white-space: nowrap;
-    cursor: pointer;
+    white-space: nowrap; cursor: pointer;
     transition: color .2s;
     border-bottom: 3px solid transparent;
   }
-  .nav-item > a:hover, .nav-item > a.active {
-    color: var(--blue);
-    border-bottom-color: var(--blue);
-  }
-  .nav-item > a .arrow { font-size: 10px; }
+  .nav-item > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+  .nav-item > a .arrow { font-size: 10px; opacity: .6; }
   .dropdown {
     display: none;
     position: absolute; top: 100%; left: 0;
     background: var(--white);
-    border: 1px solid #ddd;
+    border: 1px solid #e8e8e8;
     border-radius: var(--radius);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
     min-width: 200px;
-    padding: 10px 0;
+    padding: 8px;
     z-index: 2000;
   }
   .dropdown.wide {
-    min-width: 600px;
+    min-width: 640px;
     display: none;
-    flex-wrap: wrap;
-    padding: 16px;
+    padding: 20px;
     gap: 8px;
   }
-  .dropdown.wide .dd-col { flex: 1; min-width: 150px; }
-  .dropdown.wide .dd-col h4 { font-size: 12px; text-transform: uppercase; color: var(--grey-text); margin-bottom: 8px; letter-spacing: .5px; }
+  .dropdown.wide .dd-col { flex: 1; min-width: 140px; }
+  .dropdown.wide .dd-col h4 {
+    font-size: 11px; text-transform: uppercase; color: var(--grey-text);
+    margin-bottom: 10px; letter-spacing: .8px; font-weight: 700;
+  }
   .nav-item:hover .dropdown { display: flex; flex-direction: column; }
   .nav-item:hover .dropdown.wide { display: flex; flex-direction: row; }
   .dropdown a {
-    padding: 7px 16px;
+    padding: 8px 12px;
     font-size: 13px; color: var(--dark);
-    display: block;
+    display: block; border-radius: 8px; font-weight: 500;
   }
   .dropdown a:hover { background: #f0f7ff; color: var(--blue); }
   .nav-speaker { color: var(--blue) !important; font-weight: 700 !important; }
   .nav-famous { color: var(--gold) !important; font-weight: 700 !important; }
   .nav-service { margin-left: auto; }
-  .nav-service a { color: var(--grey-text); font-size: 13px; display: flex; align-items: center; gap: 5px; padding: 12px 8px; }
+  .nav-service a { color: var(--grey-text); font-size: 13px; padding: 14px 8px; display: flex; align-items: center; gap: 5px; }
   .nav-service a:hover { color: var(--blue); }
 
   /* ===== MAIN ===== */
-  main { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    background: linear-gradient(135deg, #0055a5 0%, #0077c8 50%, #1a9cd8 100%);
+    margin: 0 -24px;
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .hero h1 {
+    font-size: 42px; font-weight: 800; color: #fff;
+    line-height: 1.15; margin-bottom: 14px; letter-spacing: -1px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p { font-size: 17px; color: rgba(255,255,255,0.85); margin-bottom: 28px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .hero-tag {
+    background: rgba(255,255,255,0.15); color: #fff;
+    padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: background .2s; border: 1px solid rgba(255,255,255,0.2);
+  }
+  .hero-tag:hover { background: rgba(255,255,255,0.28); }
 
   /* ===== SECTION TITLES ===== */
-  .section-title {
-    font-size: 22px; font-weight: 700; color: var(--dark);
-    margin: 28px 0 16px;
+  .section-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin: 36px 0 16px;
   }
-  .see-all {
-    float: right; font-size: 13px; color: var(--blue);
-    font-weight: 500; margin-top: 6px;
-  }
+  .section-title { font-size: 22px; font-weight: 800; color: var(--dark); }
+  .section-sub { font-size: 13.5px; color: var(--grey-text); margin-top: 2px; font-weight: 500; }
+  .see-all { font-size: 13px; color: var(--blue); font-weight: 600; }
   .see-all:hover { text-decoration: underline; }
 
-  /* ===== CAROUSEL WRAPPER ===== */
+  /* ===== CAROUSEL ===== */
   .carousel-wrapper { position: relative; }
   .carousel {
     display: flex; gap: 14px;
     overflow-x: auto;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
   .carousel::-webkit-scrollbar { display: none; }
   .carousel-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: var(--white); border: 1px solid #ccc;
-    border-radius: 50%; width: 36px; height: 36px;
-    cursor: pointer; font-size: 16px; color: var(--blue);
+    position: absolute; top: 50%; transform: translateY(-60%);
+    background: var(--white); border: 1.5px solid #e0e0e0;
+    border-radius: 50%; width: 38px; height: 38px;
+    cursor: pointer; font-size: 15px; color: var(--blue);
     display: flex; align-items: center; justify-content: center;
-    box-shadow: var(--card-shadow); z-index: 10;
-    transition: background .2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10); z-index: 10;
+    transition: all .2s;
   }
-  .carousel-btn:hover { background: var(--blue); color: #fff; }
-  .carousel-btn.prev { left: -16px; }
-  .carousel-btn.next { right: -16px; }
+  .carousel-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .carousel-btn.prev { left: -18px; }
+  .carousel-btn.next { right: -18px; }
 
   /* ===== CATEGORY CARD ===== */
   .cat-card {
-    flex: 0 0 220px;
+    flex: 0 0 170px;
     border-radius: var(--radius);
     overflow: hidden;
-    position: relative;
     cursor: pointer;
     box-shadow: var(--card-shadow);
-  }
-  .cat-card img {
-    width: 100%; height: 148px;
-    object-fit: cover;
-    transition: transform .35s;
-  }
-  .cat-card:hover img { transform: scale(1.05); }
-  .cat-card-label {
+    transition: transform .25s, box-shadow .25s;
     background: var(--white);
-    padding: 8px 12px;
-    font-size: 14px; font-weight: 600; color: var(--dark);
+  }
+  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.14); }
+  .cat-card-img {
+    width: 100%; height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+  }
+  .cat-card-label {
+    padding: 10px 12px 12px;
+    font-size: 13.5px; font-weight: 700; color: var(--dark);
     text-align: center;
   }
+  .cat-card-count { font-size: 11px; color: var(--grey-text); font-weight: 500; margin-top: 2px; }
 
   /* ===== ACT CARD ===== */
   .act-card {
@@ -263,324 +299,207 @@
     overflow: hidden;
     box-shadow: var(--card-shadow);
     cursor: pointer;
-    transition: box-shadow .2s;
+    transition: transform .25s, box-shadow .25s;
   }
-  .act-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.14); }
-  .act-card img {
-    width: 100%; height: 148px; object-fit: cover;
+  .act-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.14); }
+  .act-card-img {
+    width: 100%; height: 155px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px;
+    position: relative;
   }
-  .act-card-body { padding: 10px 12px; }
-  .act-name { font-size: 13.5px; font-weight: 700; color: var(--dark); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .act-type { font-size: 11.5px; color: var(--grey-text); margin-bottom: 6px; }
+  .act-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: var(--gold); color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 3px 8px; border-radius: 50px;
+  }
+  .act-card-body { padding: 12px 14px 14px; }
+  .act-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+  .act-type { font-size: 12px; color: var(--grey-text); margin-bottom: 10px; font-weight: 500; }
   .act-footer { display: flex; align-items: center; justify-content: space-between; }
   .stars { color: var(--gold); font-size: 12px; }
-  .act-price { font-size: 13px; font-weight: 700; color: var(--dark); }
+  .act-reviews { font-size: 11px; color: var(--grey-text); margin-left: 4px; }
+  .act-price { font-size: 14px; font-weight: 800; color: var(--blue); }
+  .act-price span { font-size: 11px; font-weight: 500; color: var(--grey-text); }
+
+  /* ===== EVENT CARDS ===== */
+  .event-card {
+    flex: 0 0 190px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+    transition: transform .25s, box-shadow .25s;
+    position: relative;
+    height: 130px;
+    display: flex; align-items: flex-end;
+  }
+  .event-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+  .event-card-bg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 56px;
+  }
+  .event-card-label {
+    position: relative; z-index: 1;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.72));
+    color: #fff; padding: 24px 14px 12px;
+    font-size: 13.5px; font-weight: 700;
+  }
 
   /* ===== PROMO BANNERS ===== */
   .promo-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
-    margin: 24px 0;
+    margin: 32px 0;
   }
   .promo-tile {
-    background: var(--blue);
-    color: #fff; border-radius: var(--radius);
-    padding: 20px 18px;
+    border-radius: var(--radius);
+    padding: 22px 20px;
     display: flex; flex-direction: column; gap: 6px;
-    cursor: pointer;
-    transition: background .2s;
+    cursor: pointer; transition: transform .2s, box-shadow .2s;
+    position: relative; overflow: hidden;
   }
-  .promo-tile:hover { background: var(--blue-dark); }
-  .promo-tile.gold { background: var(--gold); }
-  .promo-tile.gold:hover { background: #a87a1e; }
-  .promo-tile.dark { background: #3a3a3a; }
-  .promo-tile.dark:hover { background: #222; }
-  .promo-label { font-size: 11px; text-transform: uppercase; letter-spacing: .8px; opacity: .85; }
-  .promo-title { font-size: 16px; font-weight: 700; line-height: 1.2; }
-  .promo-sub { font-size: 12px; opacity: .85; }
-  .promo-link { font-size: 12px; text-decoration: underline; margin-top: 6px; }
-
-  /* ===== OUR STORY ===== */
-  .our-story-section {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 24px;
-    margin: 32px 0 0;
-    align-items: start;
-  }
-  .mosaic {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 130px);
-    gap: 4px;
-    border-radius: var(--radius);
-    overflow: hidden;
-    position: relative;
-  }
-  .mosaic img { width: 100%; height: 100%; object-fit: cover; }
-  .mosaic-overlay {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,.6));
-    color: #fff; padding: 12px 16px;
-    font-size: 18px; font-weight: 700; line-height: 1.2;
-  }
-  .welcome-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: var(--card-shadow);
-  }
-  .welcome-card h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
-  .welcome-card p { font-size: 13.5px; color: #555; line-height: 1.6; margin-bottom: 10px; }
-  .welcome-card strong { color: var(--blue); }
-  .welcome-diagram {
-    display: flex; align-items: center; justify-content: center;
-    gap: 0; margin-top: 14px;
-    background: #f0f7ff; border-radius: 8px; padding: 10px;
-  }
-  .wd-box {
-    flex: 1; text-align: center; font-size: 12px; font-weight: 700; color: var(--blue);
-    padding: 6px 4px;
-  }
-  .wd-arrow { color: var(--gold); font-size: 18px; }
-
-  /* feature tiles */
-  .feature-tiles {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-    margin: 16px 0 28px;
-  }
-  .feature-tile {
-    background: var(--blue); color: #fff;
-    border-radius: var(--radius); padding: 16px 14px;
-    text-align: center;
-  }
-  .feature-tile:nth-child(2) { background: var(--gold); }
-  .feature-tile:nth-child(3) { background: #2ecc71; }
-  .feature-tile .ft-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-  .feature-tile .ft-sub { font-size: 11.5px; opacity: .9; }
+  .promo-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+  .promo-tile.blue { background: linear-gradient(135deg, #0077c8, #005fa3); color: #fff; }
+  .promo-tile.gold { background: linear-gradient(135deg, #c8972a, #a87a1e); color: #fff; }
+  .promo-tile.dark { background: linear-gradient(135deg, #1a1a2e, #16213e); color: #fff; }
+  .promo-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: .75; font-weight: 700; }
+  .promo-title { font-size: 17px; font-weight: 800; line-height: 1.2; }
+  .promo-sub { font-size: 12.5px; opacity: .85; }
+  .promo-icon { font-size: 36px; margin-bottom: 4px; }
 
   /* ===== HOW IT WORKS ===== */
   .hiw-section {
     background: var(--white);
     border-radius: var(--radius);
-    padding: 32px 24px;
-    margin: 0 0 24px;
+    padding: 36px 28px;
+    margin: 8px 0 36px;
     box-shadow: var(--card-shadow);
   }
-  .hiw-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: var(--dark); }
-  .hiw-steps {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-  }
+  .hiw-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 28px; color: var(--dark); text-align: center; }
+  .hiw-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .hiw-step { text-align: center; position: relative; }
   .hiw-step:not(:last-child)::after {
     content: "→";
-    position: absolute; right: -12px; top: 24px;
-    font-size: 20px; color: var(--blue); font-weight: 700;
+    position: absolute; right: -14px; top: 22px;
+    font-size: 22px; color: #ccd; font-weight: 700;
   }
-  .hiw-icon {
-    width: 52px; height: 52px; margin: 0 auto 10px;
-    background: #e8f4ff; border-radius: 50%;
+  .hiw-num {
+    width: 52px; height: 52px; margin: 0 auto 14px;
+    background: linear-gradient(135deg, var(--blue), #1a9cd8);
+    border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
+    font-size: 22px; color: #fff; font-weight: 800;
+    box-shadow: 0 6px 16px rgba(0,119,200,0.28);
   }
-  .hiw-step h4 { font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
-  .hiw-step p { font-size: 12px; color: var(--grey-text); }
+  .hiw-step h4 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .hiw-step p { font-size: 12.5px; color: var(--grey-text); line-height: 1.6; }
 
-  /* ===== SAFE BOOKING WIDGET ===== */
-  .safe-widget {
+  /* ===== WHY STARSTAGE ===== */
+  .why-section {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin: 0 0 36px;
+  }
+  .why-card {
     background: var(--white);
     border-radius: var(--radius);
-    padding: 20px;
+    padding: 24px 20px;
     box-shadow: var(--card-shadow);
-    margin-bottom: 24px;
+    border-top: 4px solid var(--blue);
+    transition: transform .2s;
   }
-  .safe-widget h3 { font-size: 15px; font-weight: 700; text-transform: uppercase; color: var(--dark); margin-bottom: 8px; }
-  .safe-widget p { font-size: 12.5px; color: #666; margin-bottom: 12px; }
-  .payment-logos { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .pay-logo {
-    background: #f5f5f5; border: 1px solid #ddd;
-    border-radius: 4px; padding: 4px 10px;
-    font-size: 11px; font-weight: 700; color: #555;
-  }
-
-  /* ===== SEO TEXT ===== */
-  .seo-section { margin: 8px 0 32px; }
-  .seo-section h2 { font-size: 22px; font-weight: 700; color: var(--dark); margin: 20px 0 10px; }
-  .seo-section h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin: 16px 0 8px; }
-  .seo-section p { font-size: 14px; color: #555; margin-bottom: 10px; line-height: 1.7; }
-  .seo-section ul { margin-left: 20px; margin-bottom: 12px; }
-  .seo-section ul li { font-size: 13.5px; color: #555; margin-bottom: 5px; list-style: disc; }
+  .why-card:nth-child(2) { border-top-color: var(--gold); }
+  .why-card:nth-child(3) { border-top-color: #2ecc71; }
+  .why-card:hover { transform: translateY(-3px); }
+  .why-icon { font-size: 32px; margin-bottom: 12px; }
+  .why-card h3 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .why-card p { font-size: 13px; color: var(--grey-text); line-height: 1.6; }
 
   /* ===== FOOTER ===== */
   footer {
-    background: #555;
-    color: #ccc;
-    margin-top: 32px;
+    background: var(--dark);
+    color: #aaa;
+    margin-top: 48px;
   }
   .footer-inner {
-    max-width: 1200px; margin: 0 auto; padding: 36px 20px 24px;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    max-width: 1200px; margin: 0 auto; padding: 48px 24px 32px;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
   }
-  .footer-col h4 {
-    font-size: 14px; font-weight: 700; color: #fff;
-    margin-bottom: 14px;
-  }
-  .footer-col ul li { margin-bottom: 8px; }
-  .footer-col ul li a { font-size: 13px; color: #bbb; transition: color .2s; }
-  .footer-col ul li a:hover { color: #fff; }
-  .footer-col .flag { margin-top: 12px; font-size: 22px; cursor: pointer; }
-
-  .footer-score {
-    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
-  }
+  .footer-brand .logo-text { color: #fff; font-size: 24px; }
+  .footer-brand p { font-size: 13px; color: #888; margin-top: 12px; line-height: 1.7; max-width: 280px; }
+  .footer-score { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
   .score-circle {
     background: var(--gold); color: #fff;
-    width: 44px; height: 44px; border-radius: 50%;
+    width: 48px; height: 48px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 16px; font-weight: 700; flex-shrink: 0;
+    font-size: 17px; font-weight: 800; flex-shrink: 0;
   }
-  .score-stars { color: var(--gold); font-size: 16px; }
-  .score-reviews { font-size: 12px; color: #aaa; }
-
+  .score-stars { color: var(--gold); font-size: 17px; }
+  .score-reviews { font-size: 12px; color: #777; }
+  .footer-col h4 {
+    font-size: 13px; font-weight: 700; color: #fff;
+    margin-bottom: 16px; text-transform: uppercase; letter-spacing: .5px;
+  }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { font-size: 13px; color: #888; transition: color .2s; }
+  .footer-col ul li a:hover { color: #fff; }
   .footer-bottom {
-    border-top: 1px solid #666;
-    background: #444;
-    padding: 14px 20px;
+    border-top: 1px solid #2a2a3e;
+    background: #111122;
+    padding: 18px 24px;
   }
   .footer-bottom-inner {
     max-width: 1200px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 10px;
+    flex-wrap: wrap; gap: 12px;
   }
-  .footer-bottom a { color: #aaa; font-size: 12px; }
-  .footer-bottom a:hover { color: #fff; }
-  .footer-bottom-copy { font-size: 12px; color: #888; }
-  .social-links { display: flex; gap: 12px; }
-  .social-links a { font-size: 13px; color: #aaa; display: flex; align-items: center; gap: 5px; }
+  .footer-bottom-copy { font-size: 12px; color: #666; }
+  .social-links { display: flex; gap: 14px; }
+  .social-links a {
+    font-size: 13px; color: #666;
+    display: flex; align-items: center; gap: 5px;
+    transition: color .2s;
+  }
   .social-links a:hover { color: #fff; }
+  .pay-logos { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .pay-logo {
+    background: #2a2a3e; border: 1px solid #3a3a50;
+    border-radius: 6px; padding: 5px 10px;
+    font-size: 11px; font-weight: 700; color: #aaa;
+  }
 
   /* ===== BACK TO TOP ===== */
   #back-top {
-    position: fixed; bottom: 24px; right: 24px;
+    position: fixed; bottom: 28px; right: 28px;
     background: var(--blue); color: #fff;
-    border: none; border-radius: 50%; width: 42px; height: 42px;
+    border: none; border-radius: 50%; width: 44px; height: 44px;
     font-size: 18px; cursor: pointer;
     display: none; align-items: center; justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: background .2s;
-    z-index: 9999;
+    box-shadow: 0 6px 16px rgba(0,119,200,0.35);
+    z-index: 9999; transition: background .2s;
   }
   #back-top:hover { background: var(--blue-dark); }
   #back-top.visible { display: flex; }
 
-  /* ===== CHAT WIDGET ===== */
-  .chat-widget {
-    position: fixed; bottom: 78px; right: 24px; z-index: 9000;
-  }
-  .chat-btn {
-    width: 50px; height: 50px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold), var(--blue));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    border: none; color: #fff;
-  }
-  .chat-box {
-    display: none;
-    position: absolute; bottom: 60px; right: 0;
-    width: 280px; background: var(--white);
-    border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    overflow: hidden;
-  }
-  .chat-box.open { display: block; }
-  .chat-header {
-    background: var(--blue); color: #fff;
-    padding: 12px 14px; font-size: 14px; font-weight: 700;
-  }
-  .chat-messages {
-    padding: 12px; height: 160px; overflow-y: auto;
-    font-size: 13px; color: #444; display: flex; flex-direction: column; gap: 8px;
-  }
-  .chat-msg-bot {
-    background: #f0f7ff; padding: 8px 10px; border-radius: 10px 10px 10px 0;
-    max-width: 85%; align-self: flex-start;
-  }
-  .chat-msg-user {
-    background: var(--blue); color: #fff;
-    padding: 8px 10px; border-radius: 10px 10px 0 10px;
-    max-width: 85%; align-self: flex-end;
-  }
-  .chat-input-row {
-    display: flex; border-top: 1px solid #eee;
-  }
-  .chat-input-row input {
-    flex: 1; padding: 10px 12px; border: none; font-size: 13px; outline: none;
-  }
-  .chat-input-row button {
-    background: var(--blue); color: #fff; border: none;
-    padding: 0 14px; cursor: pointer; font-size: 14px;
-  }
-
-  /* ===== MODAL (ACT DETAIL) ===== */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,.5); z-index: 10000;
-    align-items: center; justify-content: center;
-  }
-  .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--white); border-radius: 10px;
-    max-width: 500px; width: 90%; padding: 28px;
-    position: relative;
-  }
-  .modal-close {
-    position: absolute; top: 12px; right: 14px;
-    background: none; border: none; font-size: 20px; cursor: pointer; color: #888;
-  }
-  .modal h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .modal .modal-type { color: var(--grey-text); font-size: 13px; margin-bottom: 14px; }
-  .modal .modal-price { font-size: 18px; font-weight: 700; color: var(--blue); margin-bottom: 14px; }
-  .modal p { font-size: 13.5px; color: #555; margin-bottom: 16px; line-height: 1.6; }
-  .btn-primary {
-    background: var(--blue); color: #fff;
-    padding: 11px 24px; border-radius: 24px;
-    border: none; cursor: pointer; font-size: 14px; font-weight: 700;
-    transition: background .2s; display: inline-block;
-  }
-  .btn-primary:hover { background: var(--blue-dark); }
-  .btn-secondary {
-    background: transparent; color: var(--blue);
-    padding: 10px 20px; border-radius: 24px;
-    border: 2px solid var(--blue); cursor: pointer; font-size: 14px; font-weight: 600;
-    margin-left: 10px;
-    transition: all .2s;
-  }
-  .btn-secondary:hover { background: var(--blue); color: #fff; }
-
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
-    .our-story-section { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
     .promo-row { grid-template-columns: 1fr 1fr; }
     .hiw-steps { grid-template-columns: repeat(2, 1fr); }
     .hiw-step:nth-child(2)::after { display: none; }
+    .why-section { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 600px) {
-    .top-header-inner { padding: 8px 12px; gap: 10px; }
-    .logo-text { font-size: 18px; }
+    .hero h1 { font-size: 24px; }
     .promo-row { grid-template-columns: 1fr; }
-    .hiw-steps { grid-template-columns: 1fr 1fr; }
-    .feature-tiles { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: 1fr; }
-    .trust-items { gap: 4px 14px; }
-    .cat-card, .act-card { flex: 0 0 180px; }
-    .section-title { font-size: 18px; }
-    .mega-nav-inner { overflow-x: auto; }
-  }
-  @media (max-width: 400px) {
-    .header-actions .btn-artist { display: none; }
-    .cat-card, .act-card { flex: 0 0 155px; }
+    .cat-card { flex: 0 0 145px; }
+    .act-card { flex: 0 0 185px; }
   }
 </style>
 </head>
@@ -593,16 +512,14 @@
       <div class="logo-icon">⭐</div>
       <div class="logo-text">Star<span>Stage</span></div>
     </a>
-
     <div class="search-wrap">
-      <input type="text" id="mainSearch" placeholder="What entertainment are you looking for?" autocomplete="off" />
-      <button onclick="handleSearch()" aria-label="Search">🔍</button>
+      <input type="text" id="mainSearch" placeholder="Search singers, DJs, bands, speakers..." autocomplete="off" />
+      <button aria-label="Search">🔍</button>
     </div>
-
     <div class="header-actions">
-      <a href="#" onclick="showLogin(event)">♡</a>
-      <a href="#" onclick="showLogin(event)">👤 Login</a>
-      <a href="#" class="btn-artist" onclick="showArtistPortal(event)">★ Artist Portal</a>
+      <a href="#">♡ Saved</a>
+      <a href="#">👤 Login</a>
+      <a href="#" class="btn-artist">★ List Your Act</a>
     </div>
   </div>
 </header>
@@ -615,10 +532,11 @@
       <span class="trust-item"><span class="check">✔</span> Average rating 9.4</span>
       <span class="trust-item"><span class="check">✔</span> Direct contact with the artist</span>
       <span class="trust-item"><span class="check">✔</span> Best price guarantee</span>
+      <span class="trust-item"><span class="check">✔</span> Secure payment via escrow</span>
     </div>
     <div class="trust-badges">
       <span class="score-badge">9.4</span>
-      <span style="font-size:12px;color:#888;">Verified Reviews</span>
+      <span style="font-size:12px;color:#666;font-weight:500;">Verified Reviews</span>
     </div>
   </div>
 </div>
@@ -651,7 +569,7 @@
           <a href="#">Caricaturists</a>
           <a href="#">Hosts / MCs</a>
           <a href="#">Children's Shows</a>
-          <a href="#">Food & Drinks</a>
+          <a href="#">Unique Acts</a>
         </div>
         <div class="dd-col">
           <h4>Corporate</h4>
@@ -660,7 +578,6 @@
           <a href="#">Corporate Hosts</a>
           <a href="#">Team Building</a>
         </div>
-        <a href="#" style="display:block;width:100%;padding:10px 0;color:var(--blue);font-weight:700;font-size:13px;">View all 5,000+ acts →</a>
       </div>
     </div>
     <div class="nav-item">
@@ -676,7 +593,6 @@
         <a href="#">Product Launch</a>
         <a href="#">Gala Dinner</a>
         <a href="#">Graduation</a>
-        <a href="#">Sports Event</a>
       </div>
     </div>
     <div class="nav-item">
@@ -697,7 +613,6 @@
         <a href="#">Arabian Night</a>
         <a href="#">Bollywood</a>
         <a href="#">International</a>
-        <a href="#">Western / Pop</a>
         <a href="#">Jazz & Lounge</a>
         <a href="#">Luxury & VIP</a>
         <a href="#">Family-Friendly</a>
@@ -710,10 +625,387 @@
     <div class="nav-item">
       <a href="#" class="nav-famous">Famous Artists</a>
     </div>
-    <div class="nav-item nav-service" style="margin-left:auto;">
+    <div class="nav-item nav-service">
       <a href="#">💬 Customer Service</a>
     </div>
   </div>
 </nav>
 
-<!-- =====
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Book <span>Amazing Entertainment</span><br>Anywhere in the UAE</h1>
+    <p>Connect directly with 5,000+ verified artists — no agency, no markup, no hassle.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">🎤 Singers</span>
+      <span class="hero-tag">🎧 DJs</span>
+      <span class="hero-tag">🎸 Live Bands</span>
+      <span class="hero-tag">💃 Dancers</span>
+      <span class="hero-tag">🎩 Magicians</span>
+      <span class="hero-tag">🎭 Comedians</span>
+      <span class="hero-tag">🎙️ Speakers</span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ===== POPULAR CATEGORIES ===== -->
+  <div class="section-header">
+    <div>
+      <div class="section-title">Popular Categories</div>
+      <div class="section-sub">5,000+ acts available across the UAE</div>
+    </div>
+    <a href="#" class="see-all">View all →</a>
+  </div>
+  <div class="carousel-wrapper">
+    <button class="carousel-btn prev" onclick="scroll(this,-1)">‹</button>
+    <div class="carousel" id="cat-carousel">
+      <div class="cat-card">
+        <div class="cat-card-img" style="background:linear-gradient(135deg,#e8f4ff,#c5e0f5)">🎤</div>
+        <div class="cat-card-label">Singers<div class="cat-card-count">842 acts</div></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-img" style="background:linear-gradient(135deg,#fff0e8,#ffd5b8)">🎧</div>
+        <div class="cat-card-label">DJs<div class="cat-card-count">614 acts</div></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-img" style="background:linear-gradient(135deg,#e8fff0,#b8f0cc)">🎸</div>
+        <div class="cat-card-label">Live Bands<div class="cat-card-count">318 acts</div></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-img" style="background:linear-gradient(135deg,#ffe8f5,#f5b8df)">💃</div>
+        <div class="cat-card-label">Dancers<div class="cat-card-count">427 acts</div></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-img" style="background:linear-gradient(135deg,#f5f0ff,#ddb8f5)">🎩</div>
+        <div class="cat-card-label">Magicians<div class="cat-card-count">156 acts</div></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-img" style="background:linear-gradient(135deg,#fff8e8,#f5ddb8)">🎭</div>
+        <div class="cat-card-label">Comedians<div class="cat-card-count">98 acts</div></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-img" style="background:linear-gradient(135deg,#e8f8ff,#b8e8f5)">🎙️</div>
+        <div class="cat-card-label">Speakers<div class="cat-card-count">273 acts</div></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-card-img" style="background:linear-gradient(135deg,#fff0f0,#f5c5c5)">🪄</div>
+        <div class="cat-card-label">Unique Acts<div class="cat-card-count">201 acts</div></div>
+      </div>
+    </div>
+    <button class="carousel-btn next" onclick="scroll(this,1)">›</button>
+  </div>
+
+  <!-- ===== TOP ACTS ===== -->
+  <div class="section-header">
+    <div>
+      <div class="section-title">Top Acts in the UAE</div>
+      <div class="section-sub">Highly rated, instantly available</div>
+    </div>
+    <a href="#" class="see-all">View all →</a>
+  </div>
+  <div class="carousel-wrapper">
+    <button class="carousel-btn prev" onclick="scroll(this,-1)">‹</button>
+    <div class="carousel" id="acts-carousel">
+
+      <div class="act-card">
+        <div class="act-card-img" style="background:linear-gradient(135deg,#e8f4ff,#c5e0f5)">
+          🎤
+          <span class="act-badge">Top Rated</span>
+        </div>
+        <div class="act-card-body">
+          <div class="act-name">Layla Al Mansoori</div>
+          <div class="act-type">Arabic & Western Singer · Dubai</div>
+          <div class="act-footer">
+            <div><span class="stars">★★★★★</span><span class="act-reviews">(48)</span></div>
+            <div class="act-price">AED 2,500 <span>/ show</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="act-card">
+        <div class="act-card-img" style="background:linear-gradient(135deg,#fff0e8,#ffd5b8)">
+          🎧
+          <span class="act-badge">Popular</span>
+        </div>
+        <div class="act-card-body">
+          <div class="act-name">DJ Khalid Omar</div>
+          <div class="act-type">Club & Event DJ · Abu Dhabi</div>
+          <div class="act-footer">
+            <div><span class="stars">★★★★★</span><span class="act-reviews">(63)</span></div>
+            <div class="act-price">AED 1,800 <span>/ show</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="act-card">
+        <div class="act-card-img" style="background:linear-gradient(135deg,#e8fff0,#b8f0cc)">
+          🎸
+        </div>
+        <div class="act-card-body">
+          <div class="act-name">Desert Groove Band</div>
+          <div class="act-type">Live Band · Dubai</div>
+          <div class="act-footer">
+            <div><span class="stars">★★★★★</span><span class="act-reviews">(31)</span></div>
+            <div class="act-price">AED 5,500 <span>/ show</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="act-card">
+        <div class="act-card-img" style="background:linear-gradient(135deg,#ffe8f5,#f5b8df)">
+          💃
+          <span class="act-badge">New</span>
+        </div>
+        <div class="act-card-body">
+          <div class="act-name">Nour Dance Collective</div>
+          <div class="act-type">Contemporary Dance · Sharjah</div>
+          <div class="act-footer">
+            <div><span class="stars">★★★★☆</span><span class="act-reviews">(19)</span></div>
+            <div class="act-price">AED 3,200 <span>/ show</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="act-card">
+        <div class="act-card-img" style="background:linear-gradient(135deg,#f5f0ff,#ddb8f5)">
+          🎩
+        </div>
+        <div class="act-card-body">
+          <div class="act-name">Marco The Illusionist</div>
+          <div class="act-type">Magician & Illusionist · Dubai</div>
+          <div class="act-footer">
+            <div><span class="stars">★★★★★</span><span class="act-reviews">(55)</span></div>
+            <div class="act-price">AED 4,000 <span>/ show</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="act-card">
+        <div class="act-card-img" style="background:linear-gradient(135deg,#fff8e8,#f5ddb8)">
+          🎙️
+          <span class="act-badge">Top Rated</span>
+        </div>
+        <div class="act-card-body">
+          <div class="act-name">Ahmed Hassan</div>
+          <div class="act-type">Motivational Speaker · Dubai</div>
+          <div class="act-footer">
+            <div><span class="stars">★★★★★</span><span class="act-reviews">(42)</span></div>
+            <div class="act-price">AED 8,000 <span>/ event</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-btn next" onclick="scroll(this,1)">›</button>
+  </div>
+
+  <!-- ===== FOR EVERY EVENT ===== -->
+  <div class="section-header">
+    <div>
+      <div class="section-title">For Every Event</div>
+      <div class="section-sub">From intimate gatherings to grand celebrations</div>
+    </div>
+    <a href="#" class="see-all">View all →</a>
+  </div>
+  <div class="carousel-wrapper">
+    <button class="carousel-btn prev" onclick="scroll(this,-1)">‹</button>
+    <div class="carousel" id="event-carousel">
+      <div class="event-card" style="background:#1a237e">
+        <div class="event-card-bg">💍</div>
+        <div class="event-card-label">Wedding</div>
+      </div>
+      <div class="event-card" style="background:#1b5e20">
+        <div class="event-card-bg">🏢</div>
+        <div class="event-card-label">Corporate Event</div>
+      </div>
+      <div class="event-card" style="background:#4a148c">
+        <div class="event-card-bg">🎂</div>
+        <div class="event-card-label">Birthday Party</div>
+      </div>
+      <div class="event-card" style="background:#b71c1c">
+        <div class="event-card-bg">🇦🇪</div>
+        <div class="event-card-label">National Day</div>
+      </div>
+      <div class="event-card" style="background:#e65100">
+        <div class="event-card-bg">🎪</div>
+        <div class="event-card-label">Festival</div>
+      </div>
+      <div class="event-card" style="background:#006064">
+        <div class="event-card-bg">🍽️</div>
+        <div class="event-card-label">Gala Dinner</div>
+      </div>
+      <div class="event-card" style="background:#37474f">
+        <div class="event-card-bg">🎓</div>
+        <div class="event-card-label">Graduation</div>
+      </div>
+    </div>
+    <button class="carousel-btn next" onclick="scroll(this,1)">›</button>
+  </div>
+
+  <!-- ===== PROMO BANNERS ===== -->
+  <div class="promo-row">
+    <div class="promo-tile blue">
+      <div class="promo-icon">🎙️</div>
+      <div class="promo-label">Featured</div>
+      <div class="promo-title">Book a Keynote Speaker</div>
+      <div class="promo-sub">World-class speakers for your next corporate event</div>
+    </div>
+    <div class="promo-tile gold">
+      <div class="promo-icon">⭐</div>
+      <div class="promo-label">Best Value</div>
+      <div class="promo-title">Acts from AED 500</div>
+      <div class="promo-sub">Quality entertainment for every budget</div>
+    </div>
+    <div class="promo-tile dark">
+      <div class="promo-icon">🎁</div>
+      <div class="promo-label">List Free</div>
+      <div class="promo-title">Are You an Artist?</div>
+      <div class="promo-sub">Join 5,000+ acts. List free, earn more.</div>
+    </div>
+  </div>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <div class="hiw-section">
+    <h2>How StarStage Works</h2>
+    <div class="hiw-steps">
+      <div class="hiw-step">
+        <div class="hiw-num">1</div>
+        <h4>Search & Browse</h4>
+        <p>Filter by category, location, event type, budget and availability to find your perfect act.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-num">2</div>
+        <h4>Contact Directly</h4>
+        <p>Message the artist directly. No agency middleman. Discuss details, dates and requirements.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-num">3</div>
+        <h4>Book Securely</h4>
+        <p>Confirm your booking through our secure escrow payment system. Your money is protected.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-num">4</div>
+        <h4>Enjoy Your Event</h4>
+        <p>Sit back and enjoy. Leave a review to help others find great talent.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WHY STARSTAGE ===== -->
+  <div class="section-header">
+    <div><div class="section-title">Why Choose StarStage?</div></div>
+  </div>
+  <div class="why-section">
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <h3>No Agency Fees</h3>
+      <p>Book directly with artists. No 25–30% agency markup. The price you see is the price you pay.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✅</div>
+      <h3>Verified Artists</h3>
+      <p>Every artist is verified with real reviews from real clients. What you see is what you get.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h3>Secure Payments</h3>
+      <p>Your payment is held in escrow until after the event. Book with total confidence.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-icon">⭐</div>
+        <div class="logo-text" style="color:#fff">Star<span style="color:var(--blue)">Stage</span></div>
+      </div>
+      <p>The UAE's premier direct booking platform for live entertainment. Connect with 5,000+ verified artists across Dubai, Abu Dhabi and beyond.</p>
+      <div class="footer-score">
+        <div class="score-circle">9.4</div>
+        <div>
+          <div class="score-stars">★★★★★</div>
+          <div class="score-reviews">Based on 3,200+ verified reviews</div>
+        </div>
+      </div>
+      <div class="pay-logos">
+        <span class="pay-logo">Visa</span>
+        <span class="pay-logo">Mastercard</span>
+        <span class="pay-logo">Apple Pay</span>
+        <span class="pay-logo">Tabby</span>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>For Clients</h4>
+      <ul>
+        <li><a href="#">How it Works</a></li>
+        <li><a href="#">Browse All Acts</a></li>
+        <li><a href="#">Browse by Event</a></li>
+        <li><a href="#">Browse by Location</a></li>
+        <li><a href="#">Safe Booking</a></li>
+        <li><a href="#">Reviews</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>For Artists</h4>
+      <ul>
+        <li><a href="#">List Your Act</a></li>
+        <li><a href="#">Artist Portal</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Success Stories</a></li>
+        <li><a href="#">Artist Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>StarStage</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <div class="footer-bottom-copy">© 2025 StarStage UAE. All rights reserved. Dubai, UAE 🇦🇪</div>
+      <div class="social-links">
+        <a href="#">📘 Facebook</a>
+        <a href="#">📸 Instagram</a>
+        <a href="#">💼 LinkedIn</a>
+        <a href="#">🎵 TikTok</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Carousel scroll
+  function scroll(btn, dir) {
+    const carousel = btn.parentElement.querySelector('.carousel');
+    carousel.scrollBy({ left: dir * 280, behavior: 'smooth' });
+  }
+
+  // Back to top
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('back-top');
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+</script>
+
+</body>
+</html>
