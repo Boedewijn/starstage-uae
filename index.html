@@ -14,299 +14,257 @@
   ul { list-style: none; }
   :root {
     --navy: #041E42; --blue: #00A3E0; --red: #E40046;
-    --white: #FFFFFF; --light: #f2f4f7; --grey: #6b7280;
+    --white: #FFFFFF; --grey: #6b7280;
     --shadow: 0 2px 12px rgba(4,30,66,0.10); --radius: 12px;
   }
 
-  /* HEADER */
+  /* ===== HEADER ===== */
   .top-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 12px rgba(4,30,66,0.06); }
-  .top-header-inner { max-width: 1200px; margin: 0 auto; padding: 11px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .logo-svg { height: 38px; width: auto; }
-  .search-wrap { flex: 1; min-width: 220px; max-width: 540px; position: relative; }
-  .search-wrap input { width: 100%; padding: 11px 48px 11px 18px; border: 2px solid #e5e7eb; border-radius: 50px; font-size: 14px; font-family: inherit; outline: none; background: #f9fafb; transition: border-color .2s, box-shadow .2s; }
-  .search-wrap input:focus { border-color: var(--blue); background: #fff; box-shadow: 0 0 0 4px rgba(0,163,224,0.10); }
-  .search-wrap button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: var(--navy); border: none; cursor: pointer; color: #fff; font-size: 15px; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+  .top-header-inner { max-width: 1200px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
+  .logo-svg { height: 34px; width: auto; flex-shrink: 0; }
+  .search-wrap { flex: 1; position: relative; min-width: 0; }
+  .search-wrap input { width: 100%; padding: 10px 44px 10px 16px; border: 2px solid #e5e7eb; border-radius: 50px; font-size: 14px; font-family: inherit; outline: none; background: #f9fafb; transition: border-color .2s; }
+  .search-wrap input:focus { border-color: var(--blue); background: #fff; }
+  .search-wrap button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: var(--navy); border: none; cursor: pointer; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
   .search-wrap button:hover { background: var(--blue); }
-  .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-  .header-actions a { font-size: 13px; color: var(--grey); font-weight: 500; display: flex; align-items: center; gap: 5px; padding: 8px 12px; border-radius: 8px; transition: background .2s, color .2s; }
-  .header-actions a:hover { color: var(--navy); background: #f0f4f8; }
-  .btn-list { background: var(--red) !important; color: #fff !important; padding: 9px 20px !important; border-radius: 50px !important; font-weight: 700 !important; box-shadow: 0 4px 12px rgba(228,0,70,0.25); }
-  .btn-list:hover { background: #c4003c !important; }
+  .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .btn-list { background: var(--red); color: #fff; padding: 9px 16px; border-radius: 50px; font-weight: 700; font-size: 13px; white-space: nowrap; }
+  .btn-login { color: var(--grey); font-size: 13px; padding: 8px; display: none; }
+  @media (min-width: 640px) { .btn-login { display: flex; align-items: center; gap: 4px; } }
 
-  /* TRUST BAR */
-  .trust-bar { background: var(--navy); padding: 8px 24px; }
-  .trust-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-  .trust-items { display: flex; flex-wrap: wrap; gap: 8px 28px; }
-  .trust-item { font-size: 12px; color: rgba(255,255,255,0.80); font-weight: 500; display: flex; align-items: center; gap: 6px; }
-  .trust-item .check { color: var(--blue); font-size: 13px; }
-  .score-badge { background: var(--blue); color: #fff; border-radius: 8px; padding: 3px 10px; font-weight: 800; font-size: 14px; }
+  /* ===== TRUST BAR ===== */
+  .trust-bar { background: var(--navy); padding: 7px 16px; overflow-x: auto; scrollbar-width: none; }
+  .trust-bar::-webkit-scrollbar { display: none; }
+  .trust-bar-inner { display: flex; align-items: center; gap: 20px; white-space: nowrap; max-width: 1200px; margin: 0 auto; }
+  .trust-item { font-size: 11.5px; color: rgba(255,255,255,0.80); font-weight: 500; display: flex; align-items: center; gap: 5px; }
+  .trust-item .check { color: var(--blue); }
 
-  /* MEGA NAV */
-  .mega-nav { background: var(--white); border-bottom: 3px solid var(--blue); position: sticky; top: 62px; z-index: 999; }
-  .mega-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; }
-  .nav-item { position: relative; }
-  .nav-item > a { display: flex; align-items: center; gap: 5px; padding: 13px 16px; font-size: 13.5px; font-weight: 600; color: var(--navy); white-space: nowrap; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -3px; transition: color .2s, border-color .2s; }
-  .nav-item > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
-  .nav-item > a .arrow { font-size: 10px; opacity: .5; }
-  .dropdown { display: none; position: absolute; top: 100%; left: 0; background: var(--white); border: 1px solid #e5e7eb; border-radius: var(--radius); box-shadow: 0 12px 32px rgba(4,30,66,0.14); min-width: 200px; padding: 8px; z-index: 2000; }
-  .dropdown.wide { min-width: 640px; display: none; padding: 20px; gap: 8px; }
-  .dropdown.wide .dd-col { flex: 1; min-width: 140px; }
-  .dropdown.wide .dd-col h4 { font-size: 11px; text-transform: uppercase; color: var(--grey); margin-bottom: 10px; letter-spacing: .8px; font-weight: 700; }
-  .nav-item:hover .dropdown { display: flex; flex-direction: column; }
-  .nav-item:hover .dropdown.wide { display: flex; flex-direction: row; }
-  .dropdown a { padding: 8px 12px; font-size: 13px; color: var(--navy); display: block; border-radius: 8px; font-weight: 500; }
-  .dropdown a:hover { background: #eaf6fd; color: var(--blue); }
-  .nav-red { color: var(--red) !important; font-weight: 700 !important; }
-  .nav-blue { color: var(--blue) !important; font-weight: 700 !important; }
-  .nav-service { margin-left: auto; }
-  .nav-service > a { color: var(--grey); }
+  /* ===== MOBILE NAV ===== */
+  .mobile-nav { background: var(--white); border-bottom: 1px solid #e5e7eb; overflow-x: auto; scrollbar-width: none; display: block; }
+  .mobile-nav::-webkit-scrollbar { display: none; }
+  .mobile-nav-inner { display: flex; padding: 0 16px; gap: 0; white-space: nowrap; max-width: 1200px; margin: 0 auto; }
+  .mobile-nav-inner a { padding: 12px 14px; font-size: 13px; font-weight: 600; color: var(--grey); border-bottom: 3px solid transparent; display: block; }
+  .mobile-nav-inner a:hover, .mobile-nav-inner a.active { color: var(--blue); border-bottom-color: var(--blue); }
+  .mobile-nav-inner a.red { color: var(--red); }
 
-  /* HERO */
-  .hero { background: linear-gradient(135deg, var(--navy) 0%, #0a3060 60%, #0d4080 100%); padding: 60px 24px 52px; text-align: center; position: relative; overflow: hidden; }
-  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red) 0%, var(--blue) 100%); }
-  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-  .hero h1 { font-size: 44px; font-weight: 900; color: #fff; line-height: 1.12; margin-bottom: 14px; letter-spacing: -1.5px; }
+  /* ===== HERO ===== */
+  .hero { background: linear-gradient(135deg, var(--navy) 0%, #0a3060 60%, #0d4080 100%); padding: 40px 16px 36px; text-align: center; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red), var(--blue)); }
+  .hero-content { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero h1 { font-size: 28px; font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 10px; letter-spacing: -0.5px; }
+  @media (min-width: 640px) { .hero h1 { font-size: 40px; } }
+  @media (min-width: 1024px) { .hero h1 { font-size: 48px; } }
   .hero h1 .accent { color: var(--blue); }
   .hero h1 .accent-red { color: var(--red); }
-  .hero p { font-size: 17px; color: rgba(255,255,255,0.78); margin-bottom: 30px; }
-  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .hero-tag { background: rgba(255,255,255,0.10); color: rgba(255,255,255,0.90); padding: 7px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.18); transition: background .2s; }
-  .hero-tag:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .hero p { font-size: 15px; color: rgba(255,255,255,0.78); margin-bottom: 20px; }
+  @media (min-width: 640px) { .hero p { font-size: 17px; } }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; }
+  .hero-tag { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.90); padding: 6px 14px; border-radius: 50px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.18); transition: background .2s; }
+  .hero-tag:hover, .hero-tag:active { background: var(--blue); border-color: var(--blue); color: #fff; }
 
-  /* MAIN */
-  main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  /* ===== MOBILE SEARCH (hero) ===== */
+  .hero-search { margin-bottom: 20px; position: relative; display: block; }
+  @media (min-width: 768px) { .hero-search { display: none; } }
+  .hero-search input { width: 100%; padding: 13px 50px 13px 18px; border: none; border-radius: 50px; font-size: 14px; font-family: inherit; outline: none; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+  .hero-search button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: var(--navy); border: none; width: 36px; height: 36px; border-radius: 50%; color: #fff; font-size: 15px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
 
-  /* SECTION */
-  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin: 36px 0 16px; }
-  .section-title { font-size: 22px; font-weight: 800; color: var(--navy); }
-  .section-sub { font-size: 13px; color: var(--grey); margin-top: 3px; font-weight: 500; }
-  .see-all { font-size: 13px; color: var(--blue); font-weight: 600; }
-  .see-all:hover { text-decoration: underline; }
+  /* ===== MAIN ===== */
+  main { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 640px) { main { padding: 0 24px; } }
 
-  /* CAROUSEL */
+  /* ===== SECTION HEADER ===== */
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin: 28px 0 14px; }
+  .section-title { font-size: 18px; font-weight: 800; color: var(--navy); }
+  @media (min-width: 640px) { .section-title { font-size: 22px; } }
+  .section-sub { font-size: 12px; color: var(--grey); margin-top: 2px; }
+  .see-all { font-size: 13px; color: var(--blue); font-weight: 600; white-space: nowrap; margin-left: 12px; }
+
+  /* ===== CAROUSEL ===== */
   .carousel-wrapper { position: relative; }
-  .carousel { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 10px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .carousel { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; scroll-snap-type: x mandatory; }
   .carousel::-webkit-scrollbar { display: none; }
-  .carousel-btn { position: absolute; top: 50%; transform: translateY(-60%); background: var(--white); border: 1.5px solid #e5e7eb; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; font-size: 16px; color: var(--navy); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(4,30,66,0.10); z-index: 10; transition: all .2s; }
-  .carousel-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
-  .carousel-btn.prev { left: -18px; }
-  .carousel-btn.next { right: -18px; }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-60%); background: var(--white); border: 1.5px solid #e5e7eb; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 15px; color: var(--navy); display: none; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(4,30,66,0.10); z-index: 10; transition: all .2s; }
+  @media (min-width: 768px) { .carousel-btn { display: flex; } }
+  .carousel-btn:hover { background: var(--navy); color: #fff; }
+  .carousel-btn.prev { left: -16px; }
+  .carousel-btn.next { right: -16px; }
 
-  /* CATEGORY CARD */
-  .cat-card { flex: 0 0 165px; border-radius: var(--radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; background: var(--white); border-bottom: 3px solid transparent; }
-  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(4,30,66,0.14); border-bottom-color: var(--blue); }
-  .cat-card-img { width: 100%; height: 115px; display: flex; align-items: center; justify-content: center; font-size: 46px; }
-  .cat-card-label { padding: 10px 12px 13px; font-size: 13.5px; font-weight: 700; color: var(--navy); text-align: center; }
-  .cat-card-count { font-size: 11px; color: var(--grey); font-weight: 500; margin-top: 2px; }
+  /* ===== CATEGORY CARD ===== */
+  .cat-card { flex: 0 0 140px; scroll-snap-align: start; border-radius: var(--radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow); transition: transform .2s; background: var(--white); border-bottom: 3px solid transparent; }
+  @media (min-width: 640px) { .cat-card { flex: 0 0 165px; } }
+  .cat-card:hover { transform: translateY(-3px); border-bottom-color: var(--blue); }
+  .cat-card-img { width: 100%; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  @media (min-width: 640px) { .cat-card-img { height: 115px; font-size: 46px; } }
+  .cat-card-label { padding: 8px 10px 11px; font-size: 13px; font-weight: 700; color: var(--navy); text-align: center; }
+  .cat-card-count { font-size: 11px; color: var(--grey); font-weight: 500; margin-top: 1px; }
 
-  /* ACT CARD */
-  .act-card { flex: 0 0 220px; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); cursor: pointer; transition: transform .25s, box-shadow .25s; border-top: 3px solid transparent; }
-  .act-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(4,30,66,0.14); border-top-color: var(--blue); }
-  .act-card-img { width: 100%; height: 150px; display: flex; align-items: center; justify-content: center; font-size: 60px; position: relative; overflow: hidden; }
+  /* ===== ACT CARD ===== */
+  .act-card { flex: 0 0 175px; scroll-snap-align: start; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); cursor: pointer; transition: transform .2s; border-top: 3px solid transparent; }
+  @media (min-width: 640px) { .act-card { flex: 0 0 220px; } }
+  .act-card:hover { transform: translateY(-3px); border-top-color: var(--blue); }
+  .act-card-img { width: 100%; height: 130px; display: flex; align-items: center; justify-content: center; font-size: 50px; position: relative; overflow: hidden; }
+  @media (min-width: 640px) { .act-card-img { height: 150px; font-size: 60px; } }
   .act-card-img img { width: 100%; height: 100%; object-fit: cover; }
-  .act-card-img .emoji-fallback { font-size: 60px; }
-  .act-badge { position: absolute; top: 10px; right: 10px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 50px; }
-  .act-card-body { padding: 12px 14px 14px; }
-  .act-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .act-type { font-size: 12px; color: var(--grey); margin-bottom: 10px; font-weight: 500; }
+  .act-badge { position: absolute; top: 8px; right: 8px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 50px; }
+  .act-card-body { padding: 10px 12px 12px; }
+  .act-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .act-type { font-size: 11px; color: var(--grey); margin-bottom: 8px; font-weight: 500; }
   .act-footer { display: flex; align-items: center; justify-content: space-between; }
-  .stars { color: #f59e0b; font-size: 12px; }
-  .act-price { font-size: 14px; font-weight: 800; color: var(--navy); }
-  .act-price span { font-size: 11px; font-weight: 500; color: var(--grey); }
+  .stars { color: #f59e0b; font-size: 11px; }
+  .act-price { font-size: 13px; font-weight: 800; color: var(--navy); }
+  .act-price span { font-size: 10px; font-weight: 500; color: var(--grey); }
 
-  /* EVENT CARDS */
-  .event-card { flex: 0 0 185px; border-radius: var(--radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow); transition: transform .25s; position: relative; height: 130px; display: flex; align-items: flex-end; }
-  .event-card:hover { transform: translateY(-4px); }
-  .event-card-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 52px; }
-  .event-card-label { position: relative; z-index: 1; width: 100%; background: linear-gradient(transparent, rgba(4,30,66,0.82)); color: #fff; padding: 24px 14px 12px; font-size: 13px; font-weight: 700; }
+  /* ===== EVENT CARDS ===== */
+  .event-card { flex: 0 0 150px; scroll-snap-align: start; border-radius: var(--radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow); transition: transform .2s; position: relative; height: 110px; display: flex; align-items: flex-end; }
+  @media (min-width: 640px) { .event-card { flex: 0 0 185px; height: 130px; } }
+  .event-card:hover { transform: translateY(-3px); }
+  .event-card-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 42px; }
+  .event-card-label { position: relative; z-index: 1; width: 100%; background: linear-gradient(transparent, rgba(4,30,66,0.82)); color: #fff; padding: 20px 12px 10px; font-size: 12px; font-weight: 700; }
 
-  /* PROMO */
-  .promo-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 32px 0; }
-  .promo-tile { border-radius: var(--radius); padding: 24px 20px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; transition: transform .2s, box-shadow .2s; }
-  .promo-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(4,30,66,0.2); }
+  /* ===== PROMO BANNERS ===== */
+  .promo-row { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 28px 0; }
+  @media (min-width: 640px) { .promo-row { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .promo-row { grid-template-columns: repeat(3, 1fr); } }
+  .promo-tile { border-radius: var(--radius); padding: 20px 18px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: transform .2s; }
+  @media (min-width: 640px) { .promo-tile { flex-direction: column; align-items: flex-start; gap: 6px; } }
+  .promo-tile:hover { transform: translateY(-2px); }
   .promo-tile.navy { background: var(--navy); color: #fff; }
   .promo-tile.blue-t { background: var(--blue); color: #fff; }
   .promo-tile.red-t { background: var(--red); color: #fff; }
-  .promo-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; opacity: .75; font-weight: 700; }
-  .promo-title { font-size: 17px; font-weight: 800; line-height: 1.2; }
-  .promo-sub { font-size: 12.5px; opacity: .82; }
-  .promo-icon { font-size: 34px; margin-bottom: 4px; }
+  .promo-icon { font-size: 30px; flex-shrink: 0; }
+  .promo-text .promo-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: .75; font-weight: 700; }
+  .promo-text .promo-title { font-size: 15px; font-weight: 800; line-height: 1.2; margin-top: 2px; }
+  .promo-text .promo-sub { font-size: 12px; opacity: .80; margin-top: 2px; }
 
-  /* HOW IT WORKS */
-  .hiw-section { background: var(--navy); border-radius: var(--radius); padding: 40px 32px; margin: 8px 0 36px; position: relative; overflow: hidden; }
+  /* ===== HOW IT WORKS ===== */
+  .hiw-section { background: var(--navy); border-radius: var(--radius); padding: 32px 20px; margin: 8px 0 32px; position: relative; overflow: hidden; }
   .hiw-section::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red), var(--blue)); }
-  .hiw-section h2 { font-size: 24px; font-weight: 800; margin-bottom: 32px; color: #fff; text-align: center; }
-  .hiw-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .hiw-step { text-align: center; position: relative; }
-  .hiw-step:not(:last-child)::after { content: "→"; position: absolute; right: -14px; top: 20px; font-size: 22px; color: rgba(255,255,255,0.25); font-weight: 700; }
-  .hiw-num { width: 52px; height: 52px; margin: 0 auto 14px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; font-weight: 800; box-shadow: 0 6px 16px rgba(0,163,224,0.35); }
-  .hiw-step h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-  .hiw-step p { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+  .hiw-section h2 { font-size: 20px; font-weight: 800; margin-bottom: 24px; color: #fff; text-align: center; }
+  @media (min-width: 640px) { .hiw-section h2 { font-size: 24px; } }
+  .hiw-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (min-width: 768px) { .hiw-steps { grid-template-columns: repeat(4, 1fr); } }
+  .hiw-step { text-align: center; }
+  .hiw-num { width: 48px; height: 48px; margin: 0 auto 12px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; font-weight: 800; box-shadow: 0 4px 12px rgba(0,163,224,0.35); }
+  .hiw-step h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .hiw-step p { font-size: 12px; color: rgba(255,255,255,0.60); line-height: 1.5; }
 
-  /* WHY */
-  .why-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 36px; }
-  .why-card { background: var(--white); border-radius: var(--radius); padding: 24px 20px; box-shadow: var(--shadow); border-left: 4px solid var(--blue); transition: transform .2s; }
+  /* ===== WHY ===== */
+  .why-section { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0 0 32px; }
+  @media (min-width: 640px) { .why-section { grid-template-columns: repeat(3, 1fr); } }
+  .why-card { background: var(--white); border-radius: var(--radius); padding: 20px 18px; box-shadow: var(--shadow); border-left: 4px solid var(--blue); display: flex; gap: 14px; align-items: flex-start; }
+  @media (min-width: 640px) { .why-card { flex-direction: column; gap: 10px; } }
   .why-card:nth-child(2) { border-left-color: var(--red); }
   .why-card:nth-child(3) { border-left-color: var(--navy); }
-  .why-card:hover { transform: translateY(-3px); }
-  .why-icon { font-size: 30px; margin-bottom: 12px; }
-  .why-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-  .why-card p { font-size: 13px; color: var(--grey); line-height: 1.6; }
+  .why-icon { font-size: 28px; flex-shrink: 0; }
+  .why-card h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+  .why-card p { font-size: 12.5px; color: var(--grey); line-height: 1.6; }
 
-  /* LOADING */
-  .loading-cards { display: flex; gap: 14px; }
-  .skeleton { flex: 0 0 165px; height: 175px; background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--radius); }
-  .skeleton.act { flex: 0 0 220px; height: 240px; }
+  /* ===== LOADING SKELETONS ===== */
+  .skeleton { flex: 0 0 140px; height: 165px; background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--radius); }
+  .skeleton.act { flex: 0 0 175px; height: 220px; }
   @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-  /* FOOTER */
-  footer { background: var(--navy); color: #aaa; margin-top: 48px; }
-  .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--red) 0%, var(--blue) 100%); }
-  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 48px 24px 32px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
-  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 14px; line-height: 1.7; max-width: 280px; }
-  .footer-score { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
-  .score-circle { background: var(--blue); color: #fff; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; flex-shrink: 0; }
-  .score-stars { color: #f59e0b; font-size: 16px; }
-  .score-reviews { font-size: 12px; color: rgba(255,255,255,0.4); }
-  .footer-col h4 { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .8px; }
-  .footer-col ul li { margin-bottom: 10px; }
-  .footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.5); transition: color .2s; }
+  /* ===== FOOTER ===== */
+  footer { background: var(--navy); color: rgba(255,255,255,0.5); margin-top: 48px; }
+  .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--red), var(--blue)); }
+  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 36px 16px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr 1fr; padding: 48px 24px 32px; } }
+  .footer-brand { grid-column: 1 / -1; }
+  @media (min-width: 768px) { .footer-brand { grid-column: auto; } }
+  .footer-brand p { font-size: 13px; margin-top: 12px; line-height: 1.7; max-width: 280px; }
+  .footer-score { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+  .score-circle { background: var(--blue); color: #fff; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; flex-shrink: 0; }
+  .score-stars { color: #f59e0b; font-size: 14px; }
+  .score-reviews { font-size: 11px; }
+  .footer-col h4 { font-size: 11px; font-weight: 700; color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .8px; }
+  .footer-col ul li { margin-bottom: 8px; }
+  .footer-col ul li a { font-size: 12.5px; transition: color .2s; }
   .footer-col ul li a:hover { color: var(--blue); }
-  .pay-logos { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-  .pay-logo { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 5px 10px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); }
-  .footer-bottom { background: rgba(0,0,0,0.25); padding: 18px 24px; }
-  .footer-bottom-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  .footer-bottom-copy { font-size: 12px; color: rgba(255,255,255,0.35); }
-  .social-links { display: flex; gap: 14px; }
-  .social-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color .2s; }
+  .pay-logos { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+  .pay-logo { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: 700; }
+  .footer-bottom { background: rgba(0,0,0,0.25); padding: 14px 16px; }
+  .footer-bottom-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+  @media (min-width: 640px) { .footer-bottom-inner { flex-direction: row; align-items: center; justify-content: space-between; } }
+  .footer-bottom-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
+  .social-links { display: flex; gap: 12px; }
+  .social-links a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color .2s; }
   .social-links a:hover { color: var(--blue); }
-  #back-top { position: fixed; bottom: 28px; right: 28px; background: var(--navy); color: #fff; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 18px; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(4,30,66,0.35); z-index: 9999; transition: background .2s; }
-  #back-top:hover { background: var(--blue); }
-  #back-top.visible { display: flex; }
 
-  @media (max-width: 900px) {
-    .hero h1 { font-size: 30px; }
-    .promo-row { grid-template-columns: 1fr 1fr; }
-    .hiw-steps { grid-template-columns: repeat(2, 1fr); }
-    .why-section { grid-template-columns: 1fr; }
-    .footer-inner { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 24px; }
-    .promo-row { grid-template-columns: 1fr; }
-    .footer-inner { grid-template-columns: 1fr; }
-  }
+  /* ===== MOBILE BOTTOM BAR ===== */
+  .mobile-bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid #e5e7eb; display: flex; z-index: 999; box-shadow: 0 -4px 16px rgba(4,30,66,0.10); }
+  @media (min-width: 768px) { .mobile-bottom-bar { display: none; } }
+  .mobile-bottom-bar a { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 10px 4px 8px; font-size: 10px; font-weight: 600; color: var(--grey); gap: 3px; transition: color .2s; }
+  .mobile-bottom-bar a.active, .mobile-bottom-bar a:hover { color: var(--blue); }
+  .mobile-bottom-bar a .icon { font-size: 20px; }
+  .mobile-bottom-bar a.cta { background: var(--red); color: #fff; border-radius: 0; }
+  .mobile-bottom-bar a.cta:hover { background: #c4003c; color: #fff; }
+
+  /* BOTTOM BAR SPACER */
+  .mobile-spacer { height: 64px; display: block; }
+  @media (min-width: 768px) { .mobile-spacer { display: none; } }
+
+  /* BACK TO TOP */
+  #back-top { position: fixed; bottom: 80px; right: 16px; background: var(--navy); color: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 16px; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(4,30,66,0.3); z-index: 998; }
+  @media (min-width: 768px) { #back-top { bottom: 28px; right: 28px; width: 44px; height: 44px; } }
+  #back-top.visible { display: flex; }
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="top-header">
   <div class="top-header-inner">
-    <a href="/">
-      <svg class="logo-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(100, 50)">
-          <rect x="8" y="0" width="44" height="72" rx="22" fill="#041E42"/>
-          <rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/>
-          <rect x="8" y="12" width="44" height="12" fill="#00A3E0"/>
-          <path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/>
-          <line x1="30" y1="100" x2="30" y2="125" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/>
-          <rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/>
-        </g>
-        <g transform="translate(200, 62)">
-          <text font-family="Inter, Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#041E42" x="0" y="78">stagely</text>
-          <circle cx="364" cy="22" r="10" fill="#E40046"/>
-          <rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/>
-          <text font-family="Inter, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text>
-        </g>
-      </svg>
-    </a>
-    <div class="search-wrap">
-      <input type="text" placeholder="Search singers, DJs, bands, speakers..." autocomplete="off" />
+    <a href="/"><svg class="logo-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg"><g transform="translate(100,50)"><rect x="8" y="0" width="44" height="72" rx="22" fill="#041E42"/><rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/><rect x="8" y="12" width="44" height="12" fill="#00A3E0"/><path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><line x1="30" y1="100" x2="30" y2="125" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/></g><g transform="translate(200,62)"><text font-family="Inter,Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#041E42" x="0" y="78">stagely</text><circle cx="364" cy="22" r="10" fill="#E40046"/><rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/><text font-family="Inter,Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text></g></svg></a>
+    <div class="search-wrap" style="display:none" id="desktopSearch">
+      <input type="text" placeholder="Search singers, DJs, bands..." autocomplete="off" />
       <button>🔍</button>
     </div>
+    <style>@media(min-width:768px){#desktopSearch{display:block!important}}</style>
     <div class="header-actions">
-      <a href="#">♡ Saved</a>
-      <a href="#">👤 Login</a>
+      <a href="#" class="btn-login">👤 Login</a>
       <a href="/admin.html" class="btn-list">★ List Your Act</a>
     </div>
   </div>
 </header>
 
+<!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-bar-inner">
-    <div class="trust-items">
-      <span class="trust-item"><span class="check">✔</span> Direct contact with the artist</span>
-      <span class="trust-item"><span class="check">✔</span> Best price guarantee</span>
-      <span class="trust-item"><span class="check">✔</span> Verified artists</span>
-      <span class="trust-item"><span class="check">✔</span> Secure escrow payment</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <span class="score-badge">9.4</span>
-      <span style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:500;">Verified Reviews</span>
-    </div>
+    <span class="trust-item"><span class="check">✔</span> Direct contact with artist</span>
+    <span class="trust-item"><span class="check">✔</span> Best price guarantee</span>
+    <span class="trust-item"><span class="check">✔</span> Verified artists</span>
+    <span class="trust-item"><span class="check">✔</span> Secure payment</span>
+    <span class="trust-item"><span class="check">✔</span> UAE's #1 booking platform</span>
   </div>
 </div>
 
-<nav class="mega-nav">
-  <div class="mega-nav-inner">
-    <div class="nav-item">
-      <a href="#">By Category <span class="arrow">▾</span></a>
-      <div class="dropdown wide">
-        <div class="dd-col">
-          <h4>Music</h4>
-          <a href="#">Live Bands</a><a href="#">DJs</a><a href="#">Singers</a><a href="#">Classical Music</a><a href="#">Oud Players</a>
-        </div>
-        <div class="dd-col">
-          <h4>Performance</h4>
-          <a href="#">Dancers</a><a href="#">Acrobats</a><a href="#">Magicians</a><a href="#">Fire Shows</a>
-        </div>
-        <div class="dd-col">
-          <h4>Special</h4>
-          <a href="#">Comedians</a><a href="#">Hosts / MCs</a><a href="#">Children's Shows</a><a href="#">Unique Acts</a>
-        </div>
-        <div class="dd-col">
-          <h4>Corporate</h4>
-          <a href="#">Keynote Speakers</a><a href="#">Motivational Speakers</a><a href="#">Team Building</a>
-        </div>
-      </div>
-    </div>
-    <div class="nav-item">
-      <a href="#">By Event <span class="arrow">▾</span></a>
-      <div class="dropdown">
-        <a href="#">Wedding</a><a href="#">Corporate Event</a><a href="#">Birthday</a>
-        <a href="#">National Day</a><a href="#">Festival</a><a href="#">Gala Dinner</a><a href="#">Graduation</a>
-      </div>
-    </div>
-    <div class="nav-item">
-      <a href="#">By Location <span class="arrow">▾</span></a>
-      <div class="dropdown">
-        <a href="#">Dubai</a><a href="#">Abu Dhabi</a><a href="#">Sharjah</a>
-        <a href="#">Ajman</a><a href="#">Ras Al Khaimah</a><a href="#">Fujairah</a>
-      </div>
-    </div>
-    <div class="nav-item">
-      <a href="#">By Theme <span class="arrow">▾</span></a>
-      <div class="dropdown">
-        <a href="#">Arabian Night</a><a href="#">Bollywood</a><a href="#">Jazz & Lounge</a>
-        <a href="#">Luxury & VIP</a><a href="#">Family-Friendly</a><a href="#">Cultural Heritage</a>
-      </div>
-    </div>
-    <div class="nav-item"><a href="#" class="nav-blue">Speakers</a></div>
-    <div class="nav-item"><a href="#" class="nav-red">Famous Artists</a></div>
-    <div class="nav-item nav-service"><a href="#">💬 Support</a></div>
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <a href="#" class="active">All</a>
+    <a href="#">Singers</a>
+    <a href="#">DJs</a>
+    <a href="#">Bands</a>
+    <a href="#">Dancers</a>
+    <a href="#">Speakers</a>
+    <a href="#" class="red">Famous</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
   <div class="hero-content">
-    <h1>Book <span class="accent">Amazing Artists</span><br>Across the <span class="accent-red">UAE</span></h1>
+    <h1>Book <span class="accent">Amazing Artists</span> in the <span class="accent-red">UAE</span></h1>
     <p>Connect directly with verified performers — no agency, no markup.</p>
+    <div class="hero-search">
+      <input type="text" placeholder="Search singers, DJs, speakers..." />
+      <button>🔍</button>
+    </div>
     <div class="hero-tags" id="heroTags">
       <span class="hero-tag">🎤 Singers</span>
       <span class="hero-tag">🎧 DJs</span>
-      <span class="hero-tag">🎸 Live Bands</span>
+      <span class="hero-tag">🎸 Bands</span>
       <span class="hero-tag">💃 Dancers</span>
-      <span class="hero-tag">🎩 Magicians</span>
       <span class="hero-tag">🎙️ Speakers</span>
     </div>
   </div>
@@ -314,21 +272,19 @@
 
 <main>
 
-  <!-- LIVE CATEGORIES -->
+  <!-- CATEGORIES -->
   <div class="section-header">
     <div>
-      <div class="section-title">Browse by Category</div>
-      <div class="section-sub" id="catSubtitle">Loading categories...</div>
+      <div class="section-title">Categories</div>
+      <div class="section-sub" id="catSub">Loading...</div>
     </div>
-    <a href="#" class="see-all">View all →</a>
+    <a href="#" class="see-all">All →</a>
   </div>
   <div class="carousel-wrapper">
     <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
     <div class="carousel" id="categoriesCarousel">
-      <div class="loading-cards">
-        <div class="skeleton"></div><div class="skeleton"></div>
-        <div class="skeleton"></div><div class="skeleton"></div>
-      </div>
+      <div class="skeleton"></div><div class="skeleton"></div>
+      <div class="skeleton"></div><div class="skeleton"></div>
     </div>
     <button class="carousel-btn next" onclick="scrollC(this,1)">›</button>
   </div>
@@ -336,35 +292,30 @@
   <!-- TOP ARTISTS -->
   <div class="section-header">
     <div>
-      <div class="section-title">Top Artists in the UAE</div>
+      <div class="section-title">Top Artists</div>
       <div class="section-sub">Highly rated, instantly available</div>
     </div>
-    <a href="#" class="see-all">View all →</a>
+    <a href="#" class="see-all">All →</a>
   </div>
   <div class="carousel-wrapper">
     <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
     <div class="carousel" id="artistsCarousel">
-      <div class="loading-cards">
-        <div class="skeleton act"></div><div class="skeleton act"></div>
-        <div class="skeleton act"></div><div class="skeleton act"></div>
-      </div>
+      <div class="skeleton act"></div><div class="skeleton act"></div>
+      <div class="skeleton act"></div><div class="skeleton act"></div>
     </div>
     <button class="carousel-btn next" onclick="scrollC(this,1)">›</button>
   </div>
 
   <!-- FOR EVERY EVENT -->
   <div class="section-header">
-    <div>
-      <div class="section-title">For Every Event</div>
-      <div class="section-sub">From intimate gatherings to grand celebrations</div>
-    </div>
+    <div><div class="section-title">For Every Event</div></div>
   </div>
   <div class="carousel-wrapper">
     <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
     <div class="carousel">
       <div class="event-card" style="background:#041E42"><div class="event-card-bg">💍</div><div class="event-card-label">Wedding</div></div>
-      <div class="event-card" style="background:#00A3E0"><div class="event-card-bg">🏢</div><div class="event-card-label">Corporate Event</div></div>
-      <div class="event-card" style="background:#E40046"><div class="event-card-bg">🎂</div><div class="event-card-label">Birthday Party</div></div>
+      <div class="event-card" style="background:#00A3E0"><div class="event-card-bg">🏢</div><div class="event-card-label">Corporate</div></div>
+      <div class="event-card" style="background:#E40046"><div class="event-card-bg">🎂</div><div class="event-card-label">Birthday</div></div>
       <div class="event-card" style="background:#0a3060"><div class="event-card-bg">🇦🇪</div><div class="event-card-label">National Day</div></div>
       <div class="event-card" style="background:#041E42"><div class="event-card-bg">🎪</div><div class="event-card-label">Festival</div></div>
       <div class="event-card" style="background:#00A3E0"><div class="event-card-bg">🍽️</div><div class="event-card-label">Gala Dinner</div></div>
@@ -375,202 +326,121 @@
 
   <!-- PROMO -->
   <div class="promo-row">
-    <div class="promo-tile navy"><div class="promo-icon">🎙️</div><div class="promo-label">Featured</div><div class="promo-title">Book a Keynote Speaker</div><div class="promo-sub">World-class speakers for corporate events</div></div>
-    <div class="promo-tile blue-t"><div class="promo-icon">⭐</div><div class="promo-label">Best Value</div><div class="promo-title">Acts from AED 500</div><div class="promo-sub">Quality entertainment for every budget</div></div>
-    <div class="promo-tile red-t"><div class="promo-icon">🎤</div><div class="promo-label">Join Free</div><div class="promo-title">Are You an Artist?</div><div class="promo-sub">List free, get booked, earn more</div></div>
+    <div class="promo-tile navy"><div class="promo-icon">🎙️</div><div class="promo-text"><div class="promo-label">Featured</div><div class="promo-title">Book a Speaker</div><div class="promo-sub">World-class for corporate events</div></div></div>
+    <div class="promo-tile blue-t"><div class="promo-icon">⭐</div><div class="promo-text"><div class="promo-label">Best Value</div><div class="promo-title">From AED 500</div><div class="promo-sub">Quality for every budget</div></div></div>
+    <div class="promo-tile red-t"><div class="promo-icon">🎤</div><div class="promo-text"><div class="promo-label">Join Free</div><div class="promo-title">Are You an Artist?</div><div class="promo-sub">List free, get booked, earn more</div></div></div>
   </div>
 
   <!-- HOW IT WORKS -->
   <div class="hiw-section">
     <h2>How Stagely Works</h2>
     <div class="hiw-steps">
-      <div class="hiw-step"><div class="hiw-num">1</div><h4>Search & Browse</h4><p>Filter by category, location, event type and budget.</p></div>
-      <div class="hiw-step"><div class="hiw-num">2</div><h4>Contact Directly</h4><p>Message the artist directly. No agency middleman.</p></div>
-      <div class="hiw-step"><div class="hiw-num">3</div><h4>Book Securely</h4><p>Confirm via our secure escrow payment system.</p></div>
-      <div class="hiw-step"><div class="hiw-num">4</div><h4>Enjoy Your Event</h4><p>Sit back and enjoy. Leave a review afterwards.</p></div>
+      <div class="hiw-step"><div class="hiw-num">1</div><h4>Search & Browse</h4><p>Filter by category, location and budget.</p></div>
+      <div class="hiw-step"><div class="hiw-num">2</div><h4>Contact Directly</h4><p>No agency. Message the artist directly.</p></div>
+      <div class="hiw-step"><div class="hiw-num">3</div><h4>Book Securely</h4><p>Escrow payment protects your money.</p></div>
+      <div class="hiw-step"><div class="hiw-num">4</div><h4>Enjoy!</h4><p>Sit back and enjoy your event.</p></div>
     </div>
   </div>
 
   <!-- WHY -->
-  <div class="section-header"><div><div class="section-title">Why Choose Stagely?</div></div></div>
+  <div class="section-header"><div><div class="section-title">Why Stagely?</div></div></div>
   <div class="why-section">
-    <div class="why-card"><div class="why-icon">💰</div><h3>No Agency Fees</h3><p>Book directly with artists. No 25–30% agency markup. The price you see is the price you pay.</p></div>
-    <div class="why-card"><div class="why-icon">✅</div><h3>Verified Artists</h3><p>Every artist is verified with real reviews from real clients. What you see is what you get.</p></div>
-    <div class="why-card"><div class="why-icon">🔒</div><h3>Secure Payments</h3><p>Your payment is held in escrow until after the event. Book with total confidence.</p></div>
+    <div class="why-card"><div class="why-icon">💰</div><div><h3>No Agency Fees</h3><p>Book directly. No 25–30% markup. The price you see is what you pay.</p></div></div>
+    <div class="why-card"><div class="why-icon">✅</div><div><h3>Verified Artists</h3><p>Real reviews from real clients. What you see is what you get.</p></div></div>
+    <div class="why-card"><div class="why-icon">🔒</div><div><h3>Secure Payments</h3><p>Money held in escrow until after your event.</p></div></div>
   </div>
 
+  <div class="mobile-spacer"></div>
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-stripe"></div>
   <div class="footer-inner">
     <div class="footer-brand">
-      <svg style="height:32px;width:auto" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(100, 50)">
-          <rect x="8" y="0" width="44" height="72" rx="22" fill="#fff"/>
-          <rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/>
-          <rect x="8" y="12" width="44" height="12" fill="#00A3E0"/>
-          <path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
-          <line x1="30" y1="100" x2="30" y2="125" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
-          <rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/>
-        </g>
-        <g transform="translate(200, 62)">
-          <text font-family="Inter, Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#ffffff" x="0" y="78">stagely</text>
-          <circle cx="364" cy="22" r="10" fill="#E40046"/>
-          <rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/>
-          <text font-family="Inter, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text>
-        </g>
-      </svg>
-      <p>The UAE's premier direct booking platform. Connect with verified artists across Dubai, Abu Dhabi and beyond.</p>
-      <div class="footer-score">
-        <div class="score-circle">9.4</div>
-        <div><div class="score-stars">★★★★★</div><div class="score-reviews">Based on verified reviews</div></div>
-      </div>
-      <div class="pay-logos">
-        <span class="pay-logo">Visa</span><span class="pay-logo">Mastercard</span>
-        <span class="pay-logo">Apple Pay</span><span class="pay-logo">Tabby</span>
-      </div>
+      <svg style="height:28px;width:auto" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg"><g transform="translate(100,50)"><rect x="8" y="0" width="44" height="72" rx="22" fill="#fff"/><rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/><rect x="8" y="12" width="44" height="12" fill="#00A3E0"/><path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><line x1="30" y1="100" x2="30" y2="125" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/></g><g transform="translate(200,62)"><text font-family="Inter,Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#ffffff" x="0" y="78">stagely</text><circle cx="364" cy="22" r="10" fill="#E40046"/><rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/><text font-family="Inter,Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text></g></svg>
+      <p>The UAE's premier direct booking platform. Dubai, Abu Dhabi and beyond.</p>
+      <div class="footer-score"><div class="score-circle">9.4</div><div><div class="score-stars">★★★★★</div><div class="score-reviews">Verified reviews</div></div></div>
+      <div class="pay-logos"><span class="pay-logo">Visa</span><span class="pay-logo">Mastercard</span><span class="pay-logo">Apple Pay</span><span class="pay-logo">Tabby</span></div>
     </div>
     <div class="footer-col">
       <h4>For Clients</h4>
-      <ul><li><a href="#">How it Works</a></li><li><a href="#">Browse All Acts</a></li><li><a href="#">Browse by Event</a></li><li><a href="#">Browse by Location</a></li><li><a href="#">Safe Booking</a></li></ul>
+      <ul><li><a href="#">How it Works</a></li><li><a href="#">Browse Acts</a></li><li><a href="#">By Event</a></li><li><a href="#">By Location</a></li><li><a href="#">Safe Booking</a></li></ul>
     </div>
     <div class="footer-col">
       <h4>For Artists</h4>
-      <ul><li><a href="/admin.html">List Your Act</a></li><li><a href="/admin.html">Artist Portal</a></li><li><a href="#">Success Stories</a></li><li><a href="#">Artist Support</a></li></ul>
+      <ul><li><a href="/admin.html">List Your Act</a></li><li><a href="/admin.html">Artist Portal</a></li><li><a href="#">Support</a></li></ul>
     </div>
     <div class="footer-col">
       <h4>Stagely</h4>
-      <ul><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li><li><a href="#">Blog</a></li><li><a href="#">Terms & Conditions</a></li><li><a href="#">Privacy Policy</a></li></ul>
+      <ul><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li><li><a href="#">Blog</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
-      <div class="footer-bottom-copy">© 2025 Stagely UAE. All rights reserved. 🇦🇪</div>
-      <div class="social-links">
-        <a href="#">📘 Facebook</a><a href="#">📸 Instagram</a>
-        <a href="#">💼 LinkedIn</a><a href="#">🎵 TikTok</a>
-      </div>
+      <div class="footer-bottom-copy">© 2025 Stagely UAE 🇦🇪</div>
+      <div class="social-links"><a href="#">📘 Facebook</a><a href="#">📸 Instagram</a><a href="#">🎵 TikTok</a></div>
     </div>
   </div>
 </footer>
+
+<!-- MOBILE BOTTOM BAR -->
+<nav class="mobile-bottom-bar">
+  <a href="/"><div class="icon">🏠</div>Home</a>
+  <a href="#"><div class="icon">🔍</div>Browse</a>
+  <a href="/admin.html" class="cta"><div class="icon">⭐</div>List Act</a>
+  <a href="#"><div class="icon">♡</div>Saved</a>
+  <a href="#"><div class="icon">👤</div>Login</a>
+</nav>
 
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
 const SUPABASE_URL = 'https://darbunnlilqwbeobcelp.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
+const CAT_COLORS = { singers:{bg:'#eaf6fd',emoji:'🎤'}, djs:{bg:'#fff0f3',emoji:'🎧'}, bands:{bg:'#eaf0fa',emoji:'🎸'}, dancers:{bg:'#fff0f3',emoji:'💃'}, magicians:{bg:'#f3eafd',emoji:'🎩'}, comedians:{bg:'#fdf5ea',emoji:'🎭'}, speakers:{bg:'#eaf6fd',emoji:'🎙️'} };
 
-const CAT_COLORS = {
-  singers:   { bg: '#eaf6fd', emoji: '🎤' },
-  djs:       { bg: '#fff0f3', emoji: '🎧' },
-  bands:     { bg: '#eaf0fa', emoji: '🎸' },
-  dancers:   { bg: '#fff0f3', emoji: '💃' },
-  magicians: { bg: '#f3eafd', emoji: '🎩' },
-  comedians: { bg: '#fdf5ea', emoji: '🎭' },
-  speakers:  { bg: '#eaf6fd', emoji: '🎙️' },
-};
-
-async function fetchSupabase(path) {
-  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_KEY,
-    }
-  });
-  return res.json();
+async function fetchDB(path) {
+  const r = await fetch(SUPABASE_URL+'/rest/v1/'+path, { headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY} });
+  return r.json();
 }
 
-function starsHtml(rating) {
-  const full = Math.round(rating || 5);
-  return '★'.repeat(full) + '☆'.repeat(5 - full);
-}
+function stars(n) { const f=Math.round(n||5); return '★'.repeat(f)+'☆'.repeat(5-f); }
 
 async function loadCategories() {
   try {
-    const cats = await fetchSupabase('categories?is_live=eq.true&order=sort_order');
-    const carousel = document.getElementById('categoriesCarousel');
-    const subtitle = document.getElementById('catSubtitle');
-
-    if (!cats || !cats.length) {
-      carousel.innerHTML = '<div style="padding:20px;color:#999">No categories live yet.</div>';
-      subtitle.textContent = 'Coming soon';
-      return;
-    }
-
-    subtitle.textContent = cats.length + ' categories available across the UAE';
-
-    carousel.innerHTML = cats.map(cat => {
-      const style = CAT_COLORS[cat.slug] || { bg: '#f0f0f0', emoji: '🎭' };
-      const emoji = cat.emoji || style.emoji;
-      return `
-        <div class="cat-card" onclick="window.location='singers.html'">
-          <div class="cat-card-img" style="background:${style.bg}">${emoji}</div>
-          <div class="cat-card-label">
-            ${cat.name}
-            <div class="cat-card-count">Browse artists</div>
-          </div>
-        </div>`;
+    const cats = await fetchDB('categories?is_live=eq.true&order=sort_order');
+    const el = document.getElementById('categoriesCarousel');
+    const sub = document.getElementById('catSub');
+    if (!cats||!cats.length) { el.innerHTML='<div style="padding:16px;color:#999;font-size:13px">Coming soon</div>'; return; }
+    sub.textContent = cats.length+' categories available';
+    el.innerHTML = cats.map(c => {
+      const s = CAT_COLORS[c.slug]||{bg:'#f0f0f0',emoji:'🎭'};
+      return `<div class="cat-card"><div class="cat-card-img" style="background:${s.bg}">${c.emoji||s.emoji}</div><div class="cat-card-label">${c.name}<div class="cat-card-count">Browse artists</div></div></div>`;
     }).join('');
-
-    // update hero tags
-    const heroTags = document.getElementById('heroTags');
-    heroTags.innerHTML = cats.map(cat => {
-      const style = CAT_COLORS[cat.slug] || { emoji: '🎭' };
-      return `<span class="hero-tag">${cat.emoji || style.emoji} ${cat.name}</span>`;
-    }).join('');
-
-  } catch(e) {
-    console.error('Categories error:', e);
-  }
+    document.getElementById('heroTags').innerHTML = cats.map(c=>{ const s=CAT_COLORS[c.slug]||{emoji:'🎭'}; return `<span class="hero-tag">${c.emoji||s.emoji} ${c.name}</span>`; }).join('');
+    // update mobile nav
+    document.querySelector('.mobile-nav-inner').innerHTML = '<a href="#" class="active">All</a>' + cats.map(c=>`<a href="#">${c.name}</a>`).join('') + '<a href="#" class="red">Famous</a>';
+  } catch(e) { console.error(e); }
 }
 
 async function loadArtists() {
   try {
-    const artists = await fetchSupabase('artists?active=eq.true&order=rating.desc&limit=8');
-    const carousel = document.getElementById('artistsCarousel');
-
-    if (!artists || !artists.length) {
-      carousel.innerHTML = '<div style="padding:20px;color:#999;font-size:14px">Artists coming soon — check back shortly!</div>';
-      return;
-    }
-
-    carousel.innerHTML = artists.map((a, i) => {
-      const style = CAT_COLORS[a.category] || { bg: '#f0f0f0', emoji: '🎭' };
-      const badge = i === 0 ? '<span class="act-badge">Top Rated</span>' : i === 1 ? '<span class="act-badge">Popular</span>' : '';
-      const imgContent = a.photo_url
-        ? `<img src="${a.photo_url}" alt="${a.name}" />`
-        : `<span class="emoji-fallback">${style.emoji}</span>`;
-      return `
-        <div class="act-card">
-          <div class="act-card-img" style="background:${style.bg}">
-            ${imgContent}${badge}
-          </div>
-          <div class="act-card-body">
-            <div class="act-name">${a.name}</div>
-            <div class="act-type">${a.category ? a.category.charAt(0).toUpperCase() + a.category.slice(1) : 'Artist'} · ${a.city || 'UAE'}</div>
-            <div class="act-footer">
-              <div><span class="stars">${starsHtml(a.rating)}</span></div>
-              <div class="act-price">AED ${(a.price_from||0).toLocaleString()} <span>/ show</span></div>
-            </div>
-          </div>
-        </div>`;
+    const artists = await fetchDB('artists?active=eq.true&order=rating.desc&limit=8');
+    const el = document.getElementById('artistsCarousel');
+    if (!artists||!artists.length) { el.innerHTML='<div style="padding:16px;color:#999;font-size:13px">Artists coming soon!</div>'; return; }
+    el.innerHTML = artists.map((a,i)=>{
+      const s = CAT_COLORS[a.category]||{bg:'#f0f0f0',emoji:'🎭'};
+      const badge = i===0?'<span class="act-badge">Top Rated</span>':i===1?'<span class="act-badge">Popular</span>':'';
+      const img = a.photo_url ? `<img src="${a.photo_url}" alt="${a.name}"/>` : `<span style="font-size:50px">${s.emoji}</span>`;
+      return `<div class="act-card"><div class="act-card-img" style="background:${s.bg}">${img}${badge}</div><div class="act-card-body"><div class="act-name">${a.name}</div><div class="act-type">${(a.category||'Artist')} · ${a.city||'UAE'}</div><div class="act-footer"><span class="stars">${stars(a.rating)}</span><div class="act-price">AED ${(a.price_from||0).toLocaleString()} <span>/ show</span></div></div></div></div>`;
     }).join('');
-  } catch(e) {
-    console.error('Artists error:', e);
-  }
+  } catch(e) { console.error(e); }
 }
 
-function scrollC(btn, dir) {
-  const c = btn.parentElement.querySelector('.carousel');
-  c.scrollBy({ left: dir * 280, behavior: 'smooth' });
-}
+function scrollC(btn,dir) { btn.parentElement.querySelector('.carousel').scrollBy({left:dir*260,behavior:'smooth'}); }
+window.addEventListener('scroll',()=>{ document.getElementById('back-top').classList.toggle('visible',window.scrollY>300); });
 
-window.addEventListener('scroll', () => {
-  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
-});
-
-// Load on page start
 loadCategories();
 loadArtists();
 </script>
