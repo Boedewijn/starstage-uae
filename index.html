@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StarStage UAE – Book Live Entertainment in the UAE | 5,000+ Acts</title>
+<meta name="description" content="StarStage is the UAE's premier platform to book live entertainment. Find and hire singers, DJs, bands, dancers, magicians and more for any event in Dubai, Abu Dhabi and beyond." />
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ===== VARIABLES ===== */
+  :root {
+    --blue: #0077c8;
+    --blue-dark: #005fa3;
+    --gold: #c8972a;
+    --light-bg: #f4f4f4;
+    --white: #ffffff;
+    --dark: #3a3a3a;
+    --grey-text: #666;
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    --radius: 6px;
+  }
+
+  /* ===== TOP HEADER ===== */
+  .top-header {
+    background: var(--white);
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .top-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .logo-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--gold), var(--blue));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    color: #fff;
+  }
+  .logo-text { font-size: 22px; font-weight: 700; color: var(--blue); letter-spacing: -0.5px; }
+  .logo-text span { color: var(--gold); }
+
+  /* search bar */
+  .search-wrap {
+    flex: 1;
+    min-width: 220px;
+    max-width: 520px;
+    position: relative;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 10px 44px 10px 16px;
+    border: 2px solid #ccc;
+    border-radius: 24px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-wrap input:focus { border-color: var(--blue); }
+  .search-wrap button {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; color: var(--blue); font-size: 17px;
+  }
+
+  /* header actions */
+  .header-actions {
+    display: flex; align-items: center; gap: 14px; flex-shrink: 0;
+  }
+  .header-actions a {
+    font-size: 13px; color: var(--grey-text);
+    display: flex; align-items: center; gap: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .header-actions a:hover { color: var(--blue); }
+  .btn-artist {
+    background: var(--blue); color: #fff !important;
+    padding: 7px 14px; border-radius: 20px; font-size: 13px !important;
+    font-weight: 600;
+  }
+  .btn-artist:hover { background: var(--blue-dark) !important; color: #fff !important; }
+
+  /* ===== TRUST BAR ===== */
+  .trust-bar {
+    background: var(--white);
+    border-bottom: 2px solid var(--blue);
+    padding: 6px 20px;
+  }
+  .trust-bar-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 6px;
+  }
+  .trust-items {
+    display: flex; flex-wrap: wrap; gap: 10px 24px;
+  }
+  .trust-item {
+    font-size: 12px; color: #444;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .trust-item .check { color: #27ae60; font-size: 13px; }
+  .trust-badges { display: flex; align-items: center; gap: 12px; }
+  .score-badge {
+    background: #e8f4ff; border: 2px solid var(--blue);
+    border-radius: 8px; padding: 2px 8px;
+    font-weight: 700; font-size: 14px; color: var(--blue);
+  }
+
+  /* ===== MEGA NAV ===== */
+  .mega-nav {
+    background: var(--white);
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky; top: 57px; z-index: 999;
+  }
+  .mega-nav-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    display: flex; align-items: center; gap: 0;
+  }
+  .nav-item {
+    position: relative;
+  }
+  .nav-item > a {
+    display: flex; align-items: center; gap: 4px;
+    padding: 12px 14px;
+    font-size: 13.5px; font-weight: 600; color: var(--dark);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color .2s;
+    border-bottom: 3px solid transparent;
+  }
+  .nav-item > a:hover, .nav-item > a.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+  .nav-item > a .arrow { font-size: 10px; }
+  .dropdown {
+    display: none;
+    position: absolute; top: 100%; left: 0;
+    background: var(--white);
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    min-width: 200px;
+    padding: 10px 0;
+    z-index: 2000;
+  }
+  .dropdown.wide {
+    min-width: 600px;
+    display: none;
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 8px;
+  }
+  .dropdown.wide .dd-col { flex: 1; min-width: 150px; }
+  .dropdown.wide .dd-col h4 { font-size: 12px; text-transform: uppercase; color: var(--grey-text); margin-bottom: 8px; letter-spacing: .5px; }
+  .nav-item:hover .dropdown { display: flex; flex-direction: column; }
+  .nav-item:hover .dropdown.wide { display: flex; flex-direction: row; }
+  .dropdown a {
+    padding: 7px 16px;
+    font-size: 13px; color: var(--dark);
+    display: block;
+  }
+  .dropdown a:hover { background: #f0f7ff; color: var(--blue); }
+  .nav-speaker { color: var(--blue) !important; font-weight: 700 !important; }
+  .nav-famous { color: var(--gold) !important; font-weight: 700 !important; }
+  .nav-service { margin-left: auto; }
+  .nav-service a { color: var(--grey-text); font-size: 13px; display: flex; align-items: center; gap: 5px; padding: 12px 8px; }
+  .nav-service a:hover { color: var(--blue); }
+
+  /* ===== MAIN ===== */
+  main { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    font-size: 22px; font-weight: 700; color: var(--dark);
+    margin: 28px 0 16px;
+  }
+  .see-all {
+    float: right; font-size: 13px; color: var(--blue);
+    font-weight: 500; margin-top: 6px;
+  }
+  .see-all:hover { text-decoration: underline; }
+
+  /* ===== CAROUSEL WRAPPER ===== */
+  .carousel-wrapper { position: relative; }
+  .carousel {
+    display: flex; gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .carousel::-webkit-scrollbar { display: none; }
+  .carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: var(--white); border: 1px solid #ccc;
+    border-radius: 50%; width: 36px; height: 36px;
+    cursor: pointer; font-size: 16px; color: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--card-shadow); z-index: 10;
+    transition: background .2s;
+  }
+  .carousel-btn:hover { background: var(--blue); color: #fff; }
+  .carousel-btn.prev { left: -16px; }
+  .carousel-btn.next { right: -16px; }
+
+  /* ===== CATEGORY CARD ===== */
+  .cat-card {
+    flex: 0 0 220px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+  }
+  .cat-card img {
+    width: 100%; height: 148px;
+    object-fit: cover;
+    transition: transform .35s;
+  }
+  .cat-card:hover img { transform: scale(1.05); }
+  .cat-card-label {
+    background: var(--white);
+    padding: 8px 12px;
+    font-size: 14px; font-weight: 600; color: var(--dark);
+    text-align: center;
+  }
+
+  /* ===== ACT CARD ===== */
+  .act-card {
+    flex: 0 0 220px;
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    cursor: pointer;
+    transition: box-shadow .2s;
+  }
+  .act-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.14); }
+  .act-card img {
+    width: 100%; height: 148px; object-fit: cover;
+  }
+  .act-card-body { padding: 10px 12px; }
+  .act-name { font-size: 13.5px; font-weight: 700; color: var(--dark); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .act-type { font-size: 11.5px; color: var(--grey-text); margin-bottom: 6px; }
+  .act-footer { display: flex; align-items: center; justify-content: space-between; }
+  .stars { color: var(--gold); font-size: 12px; }
+  .act-price { font-size: 13px; font-weight: 700; color: var(--dark); }
+
+  /* ===== PROMO BANNERS ===== */
+  .promo-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .promo-tile {
+    background: var(--blue);
+    color: #fff; border-radius: var(--radius);
+    padding: 20px 18px;
+    display: flex; flex-direction: column; gap: 6px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .promo-tile:hover { background: var(--blue-dark); }
+  .promo-tile.gold { background: var(--gold); }
+  .promo-tile.gold:hover { background: #a87a1e; }
+  .promo-tile.dark { background: #3a3a3a; }
+  .promo-tile.dark:hover { background: #222; }
+  .promo-label { font-size: 11px; text-transform: uppercase; letter-spacing: .8px; opacity: .85; }
+  .promo-title { font-size: 16px; font-weight: 700; line-height: 1.2; }
+  .promo-sub { font-size: 12px; opacity: .85; }
+  .promo-link { font-size: 12px; text-decoration: underline; margin-top: 6px; }
+
+  /* ===== OUR STORY ===== */
+  .our-story-section {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+    margin: 32px 0 0;
+    align-items: start;
+  }
+  .mosaic {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 130px);
+    gap: 4px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+  }
+  .mosaic img { width: 100%; height: 100%; object-fit: cover; }
+  .mosaic-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,.6));
+    color: #fff; padding: 12px 16px;
+    font-size: 18px; font-weight: 700; line-height: 1.2;
+  }
+  .welcome-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+  }
+  .welcome-card h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+  .welcome-card p { font-size: 13.5px; color: #555; line-height: 1.6; margin-bottom: 10px; }
+  .welcome-card strong { color: var(--blue); }
+  .welcome-diagram {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; margin-top: 14px;
+    background: #f0f7ff; border-radius: 8px; padding: 10px;
+  }
+  .wd-box {
+    flex: 1; text-align: center; font-size: 12px; font-weight: 700; color: var(--blue);
+    padding: 6px 4px;
+  }
+  .wd-arrow { color: var(--gold); font-size: 18px; }
+
+  /* feature tiles */
+  .feature-tiles {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin: 16px 0 28px;
+  }
+  .feature-tile {
+    background: var(--blue); color: #fff;
+    border-radius: var(--radius); padding: 16px 14px;
+    text-align: center;
+  }
+  .feature-tile:nth-child(2) { background: var(--gold); }
+  .feature-tile:nth-child(3) { background: #2ecc71; }
+  .feature-tile .ft-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .feature-tile .ft-sub { font-size: 11.5px; opacity: .9; }
+
+  /* ===== HOW IT WORKS ===== */
+  .hiw-section {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    margin: 0 0 24px;
+    box-shadow: var(--card-shadow);
+  }
+  .hiw-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: var(--dark); }
+  .hiw-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .hiw-step { text-align: center; position: relative; }
+  .hiw-step:not(:last-child)::after {
+    content: "→";
+    position: absolute; right: -12px; top: 24px;
+    font-size: 20px; color: var(--blue); font-weight: 700;
+  }
+  .hiw-icon {
+    width: 52px; height: 52px; margin: 0 auto 10px;
+    background: #e8f4ff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+  }
+  .hiw-step h4 { font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+  .hiw-step p { font-size: 12px; color: var(--grey-text); }
+
+  /* ===== SAFE BOOKING WIDGET ===== */
+  .safe-widget {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 24px;
+  }
+  .safe-widget h3 { font-size: 15px; font-weight: 700; text-transform: uppercase; color: var(--dark); margin-bottom: 8px; }
+  .safe-widget p { font-size: 12.5px; color: #666; margin-bottom: 12px; }
+  .payment-logos { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .pay-logo {
+    background: #f5f5f5; border: 1px solid #ddd;
+    border-radius: 4px; padding: 4px 10px;
+    font-size: 11px; font-weight: 700; color: #555;
+  }
+
+  /* ===== SEO TEXT ===== */
+  .seo-section { margin: 8px 0 32px; }
+  .seo-section h2 { font-size: 22px; font-weight: 700; color: var(--dark); margin: 20px 0 10px; }
+  .seo-section h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin: 16px 0 8px; }
+  .seo-section p { font-size: 14px; color: #555; margin-bottom: 10px; line-height: 1.7; }
+  .seo-section ul { margin-left: 20px; margin-bottom: 12px; }
+  .seo-section ul li { font-size: 13.5px; color: #555; margin-bottom: 5px; list-style: disc; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #555;
+    color: #ccc;
+    margin-top: 32px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto; padding: 36px 20px 24px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  .footer-col h4 {
+    font-size: 14px; font-weight: 700; color: #fff;
+    margin-bottom: 14px;
+  }
+  .footer-col ul li { margin-bottom: 8px; }
+  .footer-col ul li a { font-size: 13px; color: #bbb; transition: color .2s; }
+  .footer-col ul li a:hover { color: #fff; }
+  .footer-col .flag { margin-top: 12px; font-size: 22px; cursor: pointer; }
+
+  .footer-score {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  }
+  .score-circle {
+    background: var(--gold); color: #fff;
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; flex-shrink: 0;
+  }
+  .score-stars { color: var(--gold); font-size: 16px; }
+  .score-reviews { font-size: 12px; color: #aaa; }
+
+  .footer-bottom {
+    border-top: 1px solid #666;
+    background: #444;
+    padding: 14px 20px;
+  }
+  .footer-bottom-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .footer-bottom a { color: #aaa; font-size: 12px; }
+  .footer-bottom a:hover { color: #fff; }
+  .footer-bottom-copy { font-size: 12px; color: #888; }
+  .social-links { display: flex; gap: 12px; }
+  .social-links a { font-size: 13px; color: #aaa; display: flex; align-items: center; gap: 5px; }
+  .social-links a:hover { color: #fff; }
+
+  /* ===== BACK TO TOP ===== */
+  #back-top {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--blue); color: #fff;
+    border: none; border-radius: 50%; width: 42px; height: 42px;
+    font-size: 18px; cursor: pointer;
+    display: none; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: background .2s;
+    z-index: 9999;
+  }
+  #back-top:hover { background: var(--blue-dark); }
+  #back-top.visible { display: flex; }
+
+  /* ===== CHAT WIDGET ===== */
+  .chat-widget {
+    position: fixed; bottom: 78px; right: 24px; z-index: 9000;
+  }
+  .chat-btn {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--blue));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border: none; color: #fff;
+  }
+  .chat-box {
+    display: none;
+    position: absolute; bottom: 60px; right: 0;
+    width: 280px; background: var(--white);
+    border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    overflow: hidden;
+  }
+  .chat-box.open { display: block; }
+  .chat-header {
+    background: var(--blue); color: #fff;
+    padding: 12px 14px; font-size: 14px; font-weight: 700;
+  }
+  .chat-messages {
+    padding: 12px; height: 160px; overflow-y: auto;
+    font-size: 13px; color: #444; display: flex; flex-direction: column; gap: 8px;
+  }
+  .chat-msg-bot {
+    background: #f0f7ff; padding: 8px 10px; border-radius: 10px 10px 10px 0;
+    max-width: 85%; align-self: flex-start;
+  }
+  .chat-msg-user {
+    background: var(--blue); color: #fff;
+    padding: 8px 10px; border-radius: 10px 10px 0 10px;
+    max-width: 85%; align-self: flex-end;
+  }
+  .chat-input-row {
+    display: flex; border-top: 1px solid #eee;
+  }
+  .chat-input-row input {
+    flex: 1; padding: 10px 12px; border: none; font-size: 13px; outline: none;
+  }
+  .chat-input-row button {
+    background: var(--blue); color: #fff; border: none;
+    padding: 0 14px; cursor: pointer; font-size: 14px;
+  }
+
+  /* ===== MODAL (ACT DETAIL) ===== */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.5); z-index: 10000;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--white); border-radius: 10px;
+    max-width: 500px; width: 90%; padding: 28px;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute; top: 12px; right: 14px;
+    background: none; border: none; font-size: 20px; cursor: pointer; color: #888;
+  }
+  .modal h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .modal .modal-type { color: var(--grey-text); font-size: 13px; margin-bottom: 14px; }
+  .modal .modal-price { font-size: 18px; font-weight: 700; color: var(--blue); margin-bottom: 14px; }
+  .modal p { font-size: 13.5px; color: #555; margin-bottom: 16px; line-height: 1.6; }
+  .btn-primary {
+    background: var(--blue); color: #fff;
+    padding: 11px 24px; border-radius: 24px;
+    border: none; cursor: pointer; font-size: 14px; font-weight: 700;
+    transition: background .2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--blue-dark); }
+  .btn-secondary {
+    background: transparent; color: var(--blue);
+    padding: 10px 20px; border-radius: 24px;
+    border: 2px solid var(--blue); cursor: pointer; font-size: 14px; font-weight: 600;
+    margin-left: 10px;
+    transition: all .2s;
+  }
+  .btn-secondary:hover { background: var(--blue); color: #fff; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .our-story-section { grid-template-columns: 1fr; }
+    .promo-row { grid-template-columns: 1fr 1fr; }
+    .hiw-steps { grid-template-columns: repeat(2, 1fr); }
+    .hiw-step:nth-child(2)::after { display: none; }
+    .footer-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .top-header-inner { padding: 8px 12px; gap: 10px; }
+    .logo-text { font-size: 18px; }
+    .promo-row { grid-template-columns: 1fr; }
+    .hiw-steps { grid-template-columns: 1fr 1fr; }
+    .feature-tiles { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .trust-items { gap: 4px 14px; }
+    .cat-card, .act-card { flex: 0 0 180px; }
+    .section-title { font-size: 18px; }
+    .mega-nav-inner { overflow-x: auto; }
+  }
+  @media (max-width: 400px) {
+    .header-actions .btn-artist { display: none; }
+    .cat-card, .act-card { flex: 0 0 155px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP HEADER ===== -->
+<header class="top-header">
+  <div class="top-header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">⭐</div>
+      <div class="logo-text">Star<span>Stage</span></div>
+    </a>
+
+    <div class="search-wrap">
+      <input type="text" id="mainSearch" placeholder="What entertainment are you looking for?" autocomplete="off" />
+      <button onclick="handleSearch()" aria-label="Search">🔍</button>
+    </div>
+
+    <div class="header-actions">
+      <a href="#" onclick="showLogin(event)">♡</a>
+      <a href="#" onclick="showLogin(event)">👤 Login</a>
+      <a href="#" class="btn-artist" onclick="showArtistPortal(event)">★ Artist Portal</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== TRUST BAR ===== -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-items">
+      <span class="trust-item"><span class="check">✔</span> 15,000+ happy clients</span>
+      <span class="trust-item"><span class="check">✔</span> Average rating 9.4</span>
+      <span class="trust-item"><span class="check">✔</span> Direct contact with the artist</span>
+      <span class="trust-item"><span class="check">✔</span> Best price guarantee</span>
+    </div>
+    <div class="trust-badges">
+      <span class="score-badge">9.4</span>
+      <span style="font-size:12px;color:#888;">Verified Reviews</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MEGA NAV ===== -->
+<nav class="mega-nav">
+  <div class="mega-nav-inner">
+    <div class="nav-item">
+      <a href="#">By Category <span class="arrow">▾</span></a>
+      <div class="dropdown wide">
+        <div class="dd-col">
+          <h4>Music</h4>
+          <a href="#">Live Bands</a>
+          <a href="#">DJs</a>
+          <a href="#">Singers</a>
+          <a href="#">Classical Music</a>
+          <a href="#">Oud Players</a>
+        </div>
+        <div class="dd-col">
+          <h4>Performance</h4>
+          <a href="#">Dancers</a>
+          <a href="#">Acrobats</a>
+          <a href="#">Magicians</a>
+          <a href="#">Fire Shows</a>
+          <a href="#">Stunt Shows</a>
+        </div>
+        <div class="dd-col">
+          <h4>Special</h4>
+          <a href="#">Comedians</a>
+          <a href="#">Caricaturists</a>
+          <a href="#">Hosts / MCs</a>
+          <a href="#">Children's Shows</a>
+          <a href="#">Food & Drinks</a>
+        </div>
+        <div class="dd-col">
+          <h4>Corporate</h4>
+          <a href="#">Keynote Speakers</a>
+          <a href="#">Motivational Speakers</a>
+          <a href="#">Corporate Hosts</a>
+          <a href="#">Team Building</a>
+        </div>
+        <a href="#" style="display:block;width:100%;padding:10px 0;color:var(--blue);font-weight:700;font-size:13px;">View all 5,000+ acts →</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#">By Event <span class="arrow">▾</span></a>
+      <div class="dropdown">
+        <a href="#">Wedding</a>
+        <a href="#">Corporate Event</a>
+        <a href="#">Children's Party</a>
+        <a href="#">Birthday</a>
+        <a href="#">National Day</a>
+        <a href="#">Festival</a>
+        <a href="#">Hotel / Restaurant</a>
+        <a href="#">Product Launch</a>
+        <a href="#">Gala Dinner</a>
+        <a href="#">Graduation</a>
+        <a href="#">Sports Event</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#">By Location <span class="arrow">▾</span></a>
+      <div class="dropdown">
+        <a href="#">Dubai</a>
+        <a href="#">Abu Dhabi</a>
+        <a href="#">Sharjah</a>
+        <a href="#">Ajman</a>
+        <a href="#">Ras Al Khaimah</a>
+        <a href="#">Fujairah</a>
+        <a href="#">Umm Al Quwain</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#">By Theme <span class="arrow">▾</span></a>
+      <div class="dropdown">
+        <a href="#">Arabian Night</a>
+        <a href="#">Bollywood</a>
+        <a href="#">International</a>
+        <a href="#">Western / Pop</a>
+        <a href="#">Jazz & Lounge</a>
+        <a href="#">Luxury & VIP</a>
+        <a href="#">Family-Friendly</a>
+        <a href="#">Cultural Heritage</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#" class="nav-speaker">Speakers</a>
+    </div>
+    <div class="nav-item">
+      <a href="#" class="nav-famous">Famous Artists</a>
+    </div>
+    <div class="nav-item nav-service" style="margin-left:auto;">
+      <a href="#">💬 Customer Service</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =====
