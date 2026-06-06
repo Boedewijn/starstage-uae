@@ -1,254 +1,171 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Stagely – Book Live Artists in the UAE</title>
-<meta name="description" content="Stagely is the UAE's premier platform to book live entertainment. Find and hire singers, DJs, bands, dancers, magicians and more for any event in Dubai, Abu Dhabi and beyond." />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: #f2f4f7; color: #041E42; font-size: 15px; line-height: 1.5; }
-  a { color: inherit; text-decoration: none; }
-  ul { list-style: none; }
-  :root {
-    --navy: #041E42; --blue: #00A3E0; --red: #E40046;
-    --white: #FFFFFF; --grey: #6b7280;
-    --shadow: 0 2px 12px rgba(4,30,66,0.10); --radius: 12px;
-  }
-
-  /* ===== HEADER ===== */
-  .top-header { background: var(--white); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 12px rgba(4,30,66,0.06); }
-  .top-header-inner { max-width: 1200px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
-  .logo-svg { height: 34px; width: auto; flex-shrink: 0; }
-  .search-wrap { flex: 1; position: relative; min-width: 0; }
-  .search-wrap input { width: 100%; padding: 10px 44px 10px 16px; border: 2px solid #e5e7eb; border-radius: 50px; font-size: 14px; font-family: inherit; outline: none; background: #f9fafb; transition: border-color .2s; }
-  .search-wrap input:focus { border-color: var(--blue); background: #fff; }
-  .search-wrap button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: var(--navy); border: none; cursor: pointer; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
-  .search-wrap button:hover { background: var(--blue); }
-  .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-  .btn-list { background: var(--red); color: #fff; padding: 9px 16px; border-radius: 50px; font-weight: 700; font-size: 13px; white-space: nowrap; }
-  .btn-login { color: var(--grey); font-size: 13px; padding: 8px; display: none; }
-  @media (min-width: 640px) { .btn-login { display: flex; align-items: center; gap: 4px; } }
-
-  /* ===== TRUST BAR ===== */
-  .trust-bar { background: var(--navy); padding: 7px 16px; overflow-x: auto; scrollbar-width: none; }
-  .trust-bar::-webkit-scrollbar { display: none; }
-  .trust-bar-inner { display: flex; align-items: center; gap: 20px; white-space: nowrap; max-width: 1200px; margin: 0 auto; }
-  .trust-item { font-size: 11.5px; color: rgba(255,255,255,0.80); font-weight: 500; display: flex; align-items: center; gap: 5px; }
-  .trust-item .check { color: var(--blue); }
-
-  /* ===== MOBILE NAV ===== */
-  .mobile-nav { background: var(--white); border-bottom: 1px solid #e5e7eb; overflow-x: auto; scrollbar-width: none; display: block; }
-  .mobile-nav::-webkit-scrollbar { display: none; }
-  .mobile-nav-inner { display: flex; padding: 0 16px; gap: 0; white-space: nowrap; max-width: 1200px; margin: 0 auto; }
-  .mobile-nav-inner a { padding: 12px 14px; font-size: 13px; font-weight: 600; color: var(--grey); border-bottom: 3px solid transparent; display: block; }
-  .mobile-nav-inner a:hover, .mobile-nav-inner a.active { color: var(--blue); border-bottom-color: var(--blue); }
-  .mobile-nav-inner a.red { color: var(--red); }
-
-  /* ===== HERO ===== */
-  .hero { background: linear-gradient(135deg, var(--navy) 0%, #0a3060 60%, #0d4080 100%); padding: 40px 16px 36px; text-align: center; position: relative; overflow: hidden; }
-  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red), var(--blue)); }
-  .hero-content { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
-  .hero h1 { font-size: 28px; font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 10px; letter-spacing: -0.5px; }
-  @media (min-width: 640px) { .hero h1 { font-size: 40px; } }
-  @media (min-width: 1024px) { .hero h1 { font-size: 48px; } }
-  .hero h1 .accent { color: var(--blue); }
-  .hero h1 .accent-red { color: var(--red); }
-  .hero p { font-size: 15px; color: rgba(255,255,255,0.78); margin-bottom: 20px; }
-  @media (min-width: 640px) { .hero p { font-size: 17px; } }
-  .hero-tags { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; }
-  .hero-tag { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.90); padding: 6px 14px; border-radius: 50px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.18); transition: background .2s; }
-  .hero-tag:hover, .hero-tag:active { background: var(--blue); border-color: var(--blue); color: #fff; }
-
-  /* ===== MOBILE SEARCH (hero) ===== */
-  .hero-search { margin-bottom: 20px; position: relative; display: block; }
-  @media (min-width: 768px) { .hero-search { display: none; } }
-  .hero-search input { width: 100%; padding: 13px 50px 13px 18px; border: none; border-radius: 50px; font-size: 14px; font-family: inherit; outline: none; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-  .hero-search button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: var(--navy); border: none; width: 36px; height: 36px; border-radius: 50%; color: #fff; font-size: 15px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-
-  /* ===== MAIN ===== */
-  main { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-  @media (min-width: 640px) { main { padding: 0 24px; } }
-
-  /* ===== SECTION HEADER ===== */
-  .section-header { display: flex; align-items: center; justify-content: space-between; margin: 28px 0 14px; }
-  .section-title { font-size: 18px; font-weight: 800; color: var(--navy); }
-  @media (min-width: 640px) { .section-title { font-size: 22px; } }
-  .section-sub { font-size: 12px; color: var(--grey); margin-top: 2px; }
-  .see-all { font-size: 13px; color: var(--blue); font-weight: 600; white-space: nowrap; margin-left: 12px; }
-
-  /* ===== CAROUSEL ===== */
-  .carousel-wrapper { position: relative; }
-  .carousel { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; scroll-snap-type: x mandatory; }
-  .carousel::-webkit-scrollbar { display: none; }
-  .carousel-btn { position: absolute; top: 50%; transform: translateY(-60%); background: var(--white); border: 1.5px solid #e5e7eb; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 15px; color: var(--navy); display: none; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(4,30,66,0.10); z-index: 10; transition: all .2s; }
-  @media (min-width: 768px) { .carousel-btn { display: flex; } }
-  .carousel-btn:hover { background: var(--navy); color: #fff; }
-  .carousel-btn.prev { left: -16px; }
-  .carousel-btn.next { right: -16px; }
-
-  /* ===== CATEGORY CARD ===== */
-  .cat-card { flex: 0 0 140px; scroll-snap-align: start; border-radius: var(--radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow); transition: transform .2s; background: var(--white); border-bottom: 3px solid transparent; }
-  @media (min-width: 640px) { .cat-card { flex: 0 0 165px; } }
-  .cat-card:hover { transform: translateY(-3px); border-bottom-color: var(--blue); }
-  .cat-card-img { width: 100%; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
-  @media (min-width: 640px) { .cat-card-img { height: 115px; font-size: 46px; } }
-  .cat-card-label { padding: 8px 10px 11px; font-size: 13px; font-weight: 700; color: var(--navy); text-align: center; }
-  .cat-card-count { font-size: 11px; color: var(--grey); font-weight: 500; margin-top: 1px; }
-
-  /* ===== ACT CARD ===== */
-  .act-card { flex: 0 0 175px; scroll-snap-align: start; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); cursor: pointer; transition: transform .2s; border-top: 3px solid transparent; }
-  @media (min-width: 640px) { .act-card { flex: 0 0 220px; } }
-  .act-card:hover { transform: translateY(-3px); border-top-color: var(--blue); }
-  .act-card-img { width: 100%; height: 130px; display: flex; align-items: center; justify-content: center; font-size: 50px; position: relative; overflow: hidden; }
-  @media (min-width: 640px) { .act-card-img { height: 150px; font-size: 60px; } }
-  .act-card-img img { width: 100%; height: 100%; object-fit: cover; }
-  .act-badge { position: absolute; top: 8px; right: 8px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 50px; }
-  .act-card-body { padding: 10px 12px 12px; }
-  .act-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .act-type { font-size: 11px; color: var(--grey); margin-bottom: 8px; font-weight: 500; }
-  .act-footer { display: flex; align-items: center; justify-content: space-between; }
-  .stars { color: #f59e0b; font-size: 11px; }
-  .act-price { font-size: 13px; font-weight: 800; color: var(--navy); }
-  .act-price span { font-size: 10px; font-weight: 500; color: var(--grey); }
-
-  /* ===== EVENT CARDS ===== */
-  .event-card { flex: 0 0 150px; scroll-snap-align: start; border-radius: var(--radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow); transition: transform .2s; position: relative; height: 110px; display: flex; align-items: flex-end; }
-  @media (min-width: 640px) { .event-card { flex: 0 0 185px; height: 130px; } }
-  .event-card:hover { transform: translateY(-3px); }
-  .event-card-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 42px; }
-  .event-card-label { position: relative; z-index: 1; width: 100%; background: linear-gradient(transparent, rgba(4,30,66,0.82)); color: #fff; padding: 20px 12px 10px; font-size: 12px; font-weight: 700; }
-
-  /* ===== PROMO BANNERS ===== */
-  .promo-row { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 28px 0; }
-  @media (min-width: 640px) { .promo-row { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1024px) { .promo-row { grid-template-columns: repeat(3, 1fr); } }
-  .promo-tile { border-radius: var(--radius); padding: 20px 18px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: transform .2s; }
-  @media (min-width: 640px) { .promo-tile { flex-direction: column; align-items: flex-start; gap: 6px; } }
-  .promo-tile:hover { transform: translateY(-2px); }
-  .promo-tile.navy { background: var(--navy); color: #fff; }
-  .promo-tile.blue-t { background: var(--blue); color: #fff; }
-  .promo-tile.red-t { background: var(--red); color: #fff; }
-  .promo-icon { font-size: 30px; flex-shrink: 0; }
-  .promo-text .promo-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: .75; font-weight: 700; }
-  .promo-text .promo-title { font-size: 15px; font-weight: 800; line-height: 1.2; margin-top: 2px; }
-  .promo-text .promo-sub { font-size: 12px; opacity: .80; margin-top: 2px; }
-
-  /* ===== HOW IT WORKS ===== */
-  .hiw-section { background: var(--navy); border-radius: var(--radius); padding: 32px 20px; margin: 8px 0 32px; position: relative; overflow: hidden; }
-  .hiw-section::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red), var(--blue)); }
-  .hiw-section h2 { font-size: 20px; font-weight: 800; margin-bottom: 24px; color: #fff; text-align: center; }
-  @media (min-width: 640px) { .hiw-section h2 { font-size: 24px; } }
-  .hiw-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  @media (min-width: 768px) { .hiw-steps { grid-template-columns: repeat(4, 1fr); } }
-  .hiw-step { text-align: center; }
-  .hiw-num { width: 48px; height: 48px; margin: 0 auto 12px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; font-weight: 800; box-shadow: 0 4px 12px rgba(0,163,224,0.35); }
-  .hiw-step h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-  .hiw-step p { font-size: 12px; color: rgba(255,255,255,0.60); line-height: 1.5; }
-
-  /* ===== WHY ===== */
-  .why-section { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0 0 32px; }
-  @media (min-width: 640px) { .why-section { grid-template-columns: repeat(3, 1fr); } }
-  .why-card { background: var(--white); border-radius: var(--radius); padding: 20px 18px; box-shadow: var(--shadow); border-left: 4px solid var(--blue); display: flex; gap: 14px; align-items: flex-start; }
-  @media (min-width: 640px) { .why-card { flex-direction: column; gap: 10px; } }
-  .why-card:nth-child(2) { border-left-color: var(--red); }
-  .why-card:nth-child(3) { border-left-color: var(--navy); }
-  .why-icon { font-size: 28px; flex-shrink: 0; }
-  .why-card h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
-  .why-card p { font-size: 12.5px; color: var(--grey); line-height: 1.6; }
-
-  /* ===== LOADING SKELETONS ===== */
-  .skeleton { flex: 0 0 140px; height: 165px; background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--radius); }
-  .skeleton.act { flex: 0 0 175px; height: 220px; }
-  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-  /* ===== FOOTER ===== */
-  footer { background: var(--navy); color: rgba(255,255,255,0.5); margin-top: 48px; }
-  .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--red), var(--blue)); }
-  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 36px 16px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-  @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr 1fr; padding: 48px 24px 32px; } }
-  .footer-brand { grid-column: 1 / -1; }
-  @media (min-width: 768px) { .footer-brand { grid-column: auto; } }
-  .footer-brand p { font-size: 13px; margin-top: 12px; line-height: 1.7; max-width: 280px; }
-  .footer-score { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
-  .score-circle { background: var(--blue); color: #fff; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; flex-shrink: 0; }
-  .score-stars { color: #f59e0b; font-size: 14px; }
-  .score-reviews { font-size: 11px; }
-  .footer-col h4 { font-size: 11px; font-weight: 700; color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .8px; }
-  .footer-col ul li { margin-bottom: 8px; }
-  .footer-col ul li a { font-size: 12.5px; transition: color .2s; }
-  .footer-col ul li a:hover { color: var(--blue); }
-  .pay-logos { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
-  .pay-logo { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: 700; }
-  .footer-bottom { background: rgba(0,0,0,0.25); padding: 14px 16px; }
-  .footer-bottom-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
-  @media (min-width: 640px) { .footer-bottom-inner { flex-direction: row; align-items: center; justify-content: space-between; } }
-  .footer-bottom-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
-  .social-links { display: flex; gap: 12px; }
-  .social-links a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color .2s; }
-  .social-links a:hover { color: var(--blue); }
-
-  /* ===== MOBILE BOTTOM BAR ===== */
-  .mobile-bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid #e5e7eb; display: flex; z-index: 999; box-shadow: 0 -4px 16px rgba(4,30,66,0.10); }
-  @media (min-width: 768px) { .mobile-bottom-bar { display: none; } }
-  .mobile-bottom-bar a { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 10px 4px 8px; font-size: 10px; font-weight: 600; color: var(--grey); gap: 3px; transition: color .2s; }
-  .mobile-bottom-bar a.active, .mobile-bottom-bar a:hover { color: var(--blue); }
-  .mobile-bottom-bar a .icon { font-size: 20px; }
-  .mobile-bottom-bar a.cta { background: var(--red); color: #fff; border-radius: 0; }
-  .mobile-bottom-bar a.cta:hover { background: #c4003c; color: #fff; }
-
-  /* BOTTOM BAR SPACER — extra tall so content never hides behind bar */
-  .mobile-spacer { height: 80px; display: block; }
-  @media (min-width: 768px) { .mobile-spacer { display: none; } }
-
-  /* BACK TO TOP */
-  #back-top { position: fixed; bottom: 80px; right: 16px; background: var(--navy); color: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 16px; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(4,30,66,0.3); z-index: 998; }
-  @media (min-width: 768px) { #back-top { bottom: 28px; right: 28px; width: 44px; height: 44px; } }
-  #back-top.visible { display: flex; }
-
-  /* MOBILE TAP FIXES */
-  .hero-tag { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-  .cat-card { -webkit-tap-highlight-color: transparent; touch-action: manipulation; cursor: pointer; }
-  .act-card { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-  .event-card { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-  .promo-tile { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-  .btn-list { display: inline-block; -webkit-tap-highlight-color: transparent; touch-action: manipulation; min-height: 44px; display: flex; align-items: center; }
-  .mobile-bottom-bar a { min-height: 56px; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-  .mobile-nav-inner a { min-height: 44px; -webkit-tap-highlight-color: transparent; }
-  .see-all { min-height: 44px; display: flex; align-items: center; padding: 0 4px; }
-
-  /* MOBILE BOTTOM BAR higher z-index but not over modals */
-  .mobile-bottom-bar { z-index: 990; }
-
-  /* Bigger touch targets on mobile */
-  @media (max-width: 767px) {
-    .cat-card { min-width: 130px; }
-    .search-wrap input { font-size: 16px; } /* prevents iOS zoom */
-    .hero-search input { font-size: 16px; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f2f4f7;color:#041E42;font-size:15px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+:root{--navy:#041E42;--blue:#00A3E0;--red:#E40046;--white:#fff;--grey:#6b7280;--shadow:0 2px 12px rgba(4,30,66,0.10);--radius:12px}
+.top-header{background:var(--white);border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:1000;box-shadow:0 2px 12px rgba(4,30,66,0.06)}
+.top-header-inner{max-width:1200px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:12px}
+.logo-svg{height:34px;width:auto;flex-shrink:0}
+.search-wrap{flex:1;position:relative;min-width:0}
+.search-wrap input{width:100%;padding:10px 44px 10px 16px;border:2px solid #e5e7eb;border-radius:50px;font-size:16px;font-family:inherit;outline:none;background:#f9fafb;transition:border-color .2s}
+.search-wrap input:focus{border-color:var(--blue);background:#fff}
+.search-wrap button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:var(--navy);border:none;cursor:pointer;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.btn-list{background:var(--red);color:#fff;padding:9px 16px;border-radius:50px;font-weight:700;font-size:13px;white-space:nowrap}
+.btn-login{color:var(--grey);font-size:13px;padding:8px;display:none}
+@media(min-width:640px){.btn-login{display:flex;align-items:center;gap:4px}}
+.trust-bar{background:var(--navy);padding:7px 16px;overflow-x:auto;scrollbar-width:none}
+.trust-bar::-webkit-scrollbar{display:none}
+.trust-bar-inner{display:flex;align-items:center;gap:20px;white-space:nowrap;max-width:1200px;margin:0 auto}
+.trust-item{font-size:11.5px;color:rgba(255,255,255,0.80);font-weight:500;display:flex;align-items:center;gap:5px}
+.trust-item .check{color:var(--blue)}
+.mobile-nav{background:var(--white);border-bottom:1px solid #e5e7eb;overflow-x:auto;scrollbar-width:none}
+.mobile-nav::-webkit-scrollbar{display:none}
+.mobile-nav-inner{display:flex;padding:0 16px;white-space:nowrap;max-width:1200px;margin:0 auto}
+.mobile-nav-inner a{padding:12px 14px;font-size:13px;font-weight:600;color:var(--grey);border-bottom:3px solid transparent;display:block}
+.mobile-nav-inner a:hover,.mobile-nav-inner a.active{color:var(--blue);border-bottom-color:var(--blue)}
+.mobile-nav-inner a.red{color:var(--red)}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0a3060 60%,#0d4080 100%);padding:40px 16px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--blue))}
+.hero-content{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.hero h1{font-size:28px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:10px;letter-spacing:-0.5px}
+@media(min-width:640px){.hero h1{font-size:40px}}
+.accent{color:var(--blue)}.accent-red{color:var(--red)}
+.hero p{font-size:15px;color:rgba(255,255,255,0.78);margin-bottom:20px}
+.hero-search{margin-bottom:20px;position:relative;display:block}
+@media(min-width:768px){.hero-search{display:none}}
+.hero-search input{width:100%;padding:13px 50px 13px 18px;border:none;border-radius:50px;font-size:16px;font-family:inherit;outline:none;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+.hero-search button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:var(--navy);border:none;width:36px;height:36px;border-radius:50%;color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.hero-tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.hero-tag{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.90);padding:7px 16px;border-radius:50px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:background .2s}
+.hero-tag:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+main{max-width:1200px;margin:0 auto;padding:0 16px}
+@media(min-width:640px){main{padding:0 24px}}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin:28px 0 14px}
+.section-title{font-size:18px;font-weight:800;color:var(--navy)}
+@media(min-width:640px){.section-title{font-size:22px}}
+.section-sub{font-size:12px;color:var(--grey);margin-top:2px}
+.see-all{font-size:13px;color:var(--blue);font-weight:600;white-space:nowrap;margin-left:12px}
+.carousel-wrapper{position:relative}
+.carousel{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x mandatory}
+.carousel::-webkit-scrollbar{display:none}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-60%);background:var(--white);border:1.5px solid #e5e7eb;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:15px;color:var(--navy);display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(4,30,66,0.10);z-index:10;transition:all .2s}
+@media(min-width:768px){.carousel-btn{display:flex}}
+.carousel-btn:hover{background:var(--navy);color:#fff}
+.carousel-btn.prev{left:-16px}.carousel-btn.next{right:-16px}
+.cat-card{flex:0 0 140px;scroll-snap-align:start;border-radius:var(--radius);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:transform .2s;background:var(--white);border-bottom:3px solid transparent;display:block;text-decoration:none}
+@media(min-width:640px){.cat-card{flex:0 0 165px}}
+.cat-card:hover{transform:translateY(-3px);border-bottom-color:var(--blue)}
+.cat-card-img{width:100%;height:100px;display:flex;align-items:center;justify-content:center;font-size:40px}
+@media(min-width:640px){.cat-card-img{height:115px;font-size:46px}}
+.cat-card-label{padding:8px 10px 11px;font-size:13px;font-weight:700;color:var(--navy);text-align:center}
+.cat-card-count{font-size:11px;color:var(--grey);font-weight:500;margin-top:1px}
+.act-card{flex:0 0 175px;scroll-snap-align:start;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s;border-top:3px solid transparent}
+@media(min-width:640px){.act-card{flex:0 0 220px}}
+.act-card:hover{transform:translateY(-3px);border-top-color:var(--blue)}
+.act-card-img{width:100%;height:130px;display:flex;align-items:center;justify-content:center;font-size:50px;position:relative;overflow:hidden}
+@media(min-width:640px){.act-card-img{height:150px;font-size:60px}}
+.act-card-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.act-badge{position:absolute;top:8px;right:8px;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:50px}
+.act-card-body{padding:10px 12px 12px}
+.act-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.act-type{font-size:11px;color:var(--grey);margin-bottom:8px;font-weight:500}
+.act-footer{display:flex;align-items:center;justify-content:space-between}
+.stars{color:#f59e0b;font-size:11px}
+.act-price{font-size:13px;font-weight:800;color:var(--navy)}
+.act-price span{font-size:10px;font-weight:500;color:var(--grey)}
+.event-card{flex:0 0 150px;scroll-snap-align:start;border-radius:var(--radius);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:transform .2s;position:relative;height:110px;display:flex;align-items:flex-end}
+@media(min-width:640px){.event-card{flex:0 0 185px;height:130px}}
+.event-card:hover{transform:translateY(-3px)}
+.event-card-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px}
+.event-card-label{position:relative;z-index:1;width:100%;background:linear-gradient(transparent,rgba(4,30,66,0.82));color:#fff;padding:20px 12px 10px;font-size:12px;font-weight:700}
+.promo-row{display:grid;grid-template-columns:1fr;gap:12px;margin:28px 0}
+@media(min-width:640px){.promo-row{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.promo-row{grid-template-columns:repeat(3,1fr)}}
+.promo-tile{border-radius:var(--radius);padding:20px 18px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:transform .2s}
+@media(min-width:640px){.promo-tile{flex-direction:column;align-items:flex-start;gap:6px}}
+.promo-tile:hover{transform:translateY(-2px)}
+.promo-tile.navy{background:var(--navy);color:#fff}
+.promo-tile.blue-t{background:var(--blue);color:#fff}
+.promo-tile.red-t{background:var(--red);color:#fff}
+.promo-icon{font-size:30px;flex-shrink:0}
+.promo-text .promo-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;opacity:.75;font-weight:700}
+.promo-text .promo-title{font-size:15px;font-weight:800;line-height:1.2;margin-top:2px}
+.promo-text .promo-sub{font-size:12px;opacity:.80;margin-top:2px}
+.hiw-section{background:var(--navy);border-radius:var(--radius);padding:32px 20px;margin:8px 0 32px;position:relative;overflow:hidden}
+.hiw-section::before{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--blue))}
+.hiw-section h2{font-size:20px;font-weight:800;margin-bottom:24px;color:#fff;text-align:center}
+.hiw-steps{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(min-width:768px){.hiw-steps{grid-template-columns:repeat(4,1fr)}}
+.hiw-step{text-align:center}
+.hiw-num{width:48px;height:48px;margin:0 auto 12px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:800}
+.hiw-step h4{font-size:13px;font-weight:700;color:#fff;margin-bottom:6px}
+.hiw-step p{font-size:12px;color:rgba(255,255,255,0.60);line-height:1.5}
+.why-section{display:grid;grid-template-columns:1fr;gap:12px;margin:0 0 32px}
+@media(min-width:640px){.why-section{grid-template-columns:repeat(3,1fr)}}
+.why-card{background:var(--white);border-radius:var(--radius);padding:20px 18px;box-shadow:var(--shadow);border-left:4px solid var(--blue);display:flex;gap:14px;align-items:flex-start}
+@media(min-width:640px){.why-card{flex-direction:column;gap:10px}}
+.why-card:nth-child(2){border-left-color:var(--red)}
+.why-card:nth-child(3){border-left-color:var(--navy)}
+.why-icon{font-size:28px;flex-shrink:0}
+.why-card h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.why-card p{font-size:12.5px;color:var(--grey);line-height:1.6}
+.skeleton{flex:0 0 140px;height:165px;background:linear-gradient(90deg,#e5e7eb 25%,#f3f4f6 50%,#e5e7eb 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:var(--radius)}
+.skeleton.act{flex:0 0 175px;height:220px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
+.footer-stripe{height:4px;background:linear-gradient(90deg,var(--red),var(--blue))}
+.footer-inner{max-width:1200px;margin:0 auto;padding:36px 16px 24px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(min-width:768px){.footer-inner{grid-template-columns:2fr 1fr 1fr 1fr;padding:48px 24px 32px}}
+.footer-brand{grid-column:1/-1}
+@media(min-width:768px){.footer-brand{grid-column:auto}}
+.footer-brand p{font-size:13px;margin-top:12px;line-height:1.7;max-width:280px}
+.footer-col h4{font-size:11px;font-weight:700;color:#fff;margin-bottom:12px;text-transform:uppercase;letter-spacing:.8px}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{font-size:12.5px;transition:color .2s}
+.footer-col ul li a:hover{color:var(--blue)}
+.footer-bottom{background:rgba(0,0,0,0.25);padding:14px 16px}
+.footer-bottom-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
+@media(min-width:640px){.footer-bottom-inner{flex-direction:row;align-items:center;justify-content:space-between}}
+.footer-bottom-copy{font-size:11px;color:rgba(255,255,255,0.3)}
+.social-links{display:flex;gap:12px}
+.social-links a{font-size:12px;color:rgba(255,255,255,0.4);transition:color .2s}
+.social-links a:hover{color:var(--blue)}
+.mobile-bottom-bar{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid #e5e7eb;display:flex;z-index:999;box-shadow:0 -4px 16px rgba(4,30,66,0.10)}
+@media(min-width:768px){.mobile-bottom-bar{display:none}}
+.mobile-bottom-bar a{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;font-size:10px;font-weight:600;color:var(--grey);gap:3px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.mobile-bottom-bar a .icon{font-size:20px}
+.mobile-bottom-bar a.active,.mobile-bottom-bar a:hover{color:var(--blue)}
+.mobile-bottom-bar a.cta{background:var(--red);color:#fff}
+.mobile-spacer{height:80px;display:block}
+@media(min-width:768px){.mobile-spacer{display:none}}
+#back-top{position:fixed;bottom:80px;right:16px;background:var(--navy);color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:16px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(4,30,66,0.3);z-index:998}
+#back-top.visible{display:flex}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="top-header">
   <div class="top-header-inner">
     <a href="/"><svg class="logo-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg"><g transform="translate(100,50)"><rect x="8" y="0" width="44" height="72" rx="22" fill="#041E42"/><rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/><rect x="8" y="12" width="44" height="12" fill="#00A3E0"/><path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><line x1="30" y1="100" x2="30" y2="125" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/></g><g transform="translate(200,62)"><text font-family="Inter,Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#041E42" x="0" y="78">stagely</text><circle cx="364" cy="22" r="10" fill="#E40046"/><rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/><text font-family="Inter,Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text></g></svg></a>
-    <div class="search-wrap" style="display:none" id="desktopSearch">
-      <input type="text" placeholder="Search singers, DJs, bands..." autocomplete="off" />
+    <div class="search-wrap" id="desktopSearch" style="display:none">
+      <input type="text" placeholder="Search singers, DJs, bands..." autocomplete="off"/>
       <button>🔍</button>
     </div>
     <style>@media(min-width:768px){#desktopSearch{display:block!important}}</style>
-    <div class="header-actions">
-      <a href="#" class="btn-login">👤 Login</a>
-      <a href="/register.html" class="btn-list">★ List Your Act</a>
-    </div>
+    <a href="#" class="btn-login">👤 Login</a>
+    <a href="/register.html" class="btn-list">★ List Your Act</a>
   </div>
 </header>
 
-<!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-bar-inner">
     <span class="trust-item"><span class="check">✔</span> Direct contact with artist</span>
@@ -259,30 +176,27 @@
   </div>
 </div>
 
-<!-- MOBILE NAV -->
 <nav class="mobile-nav">
   <div class="mobile-nav-inner">
     <a href="#" class="active">All</a>
-    <a href="#">Singers</a>
+    <a href="/singers.html">Singers</a>
     <a href="#">DJs</a>
     <a href="#">Bands</a>
     <a href="#">Dancers</a>
-    <a href="#">Speakers</a>
     <a href="#" class="red">Famous</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-content">
     <h1>Book <span class="accent">Amazing Artists</span> in the <span class="accent-red">UAE</span></h1>
     <p>Connect directly with verified performers — no agency, no markup.</p>
     <div class="hero-search">
-      <input type="text" placeholder="Search singers, DJs, speakers..." />
+      <input type="text" placeholder="Search singers, DJs, speakers..."/>
       <button>🔍</button>
     </div>
-    <div class="hero-tags" id="heroTags">
-      <span class="hero-tag">🎤 Singers</span>
+    <div class="hero-tags">
+      <a href="/singers.html" class="hero-tag">🎤 Singers</a>
       <span class="hero-tag">🎧 DJs</span>
       <span class="hero-tag">🎸 Bands</span>
       <span class="hero-tag">💃 Dancers</span>
@@ -292,45 +206,35 @@
 </div>
 
 <main>
-
-  <!-- CATEGORIES -->
   <div class="section-header">
-    <div>
-      <div class="section-title">Categories</div>
-      <div class="section-sub" id="catSub">Loading...</div>
-    </div>
+    <div><div class="section-title">Categories</div><div class="section-sub" id="catSub">Loading...</div></div>
     <a href="#" class="see-all">All →</a>
   </div>
   <div class="carousel-wrapper">
     <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
     <div class="carousel" id="categoriesCarousel">
-      <div class="skeleton"></div><div class="skeleton"></div>
-      <div class="skeleton"></div><div class="skeleton"></div>
+      <a href="/singers.html" class="cat-card">
+        <div class="cat-card-img" style="background:#eaf6fd">🎤</div>
+        <div class="cat-card-label">Singers<div class="cat-card-count">Browse artists</div></div>
+      </a>
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
     </div>
     <button class="carousel-btn next" onclick="scrollC(this,1)">›</button>
   </div>
 
-  <!-- TOP ARTISTS -->
   <div class="section-header">
-    <div>
-      <div class="section-title">Top Artists</div>
-      <div class="section-sub">Highly rated, instantly available</div>
-    </div>
-    <a href="#" class="see-all">All →</a>
+    <div><div class="section-title">Top Artists</div><div class="section-sub">Highly rated, instantly available</div></div>
+    <a href="/singers.html" class="see-all">All →</a>
   </div>
   <div class="carousel-wrapper">
     <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
     <div class="carousel" id="artistsCarousel">
-      <div class="skeleton act"></div><div class="skeleton act"></div>
-      <div class="skeleton act"></div><div class="skeleton act"></div>
+      <div class="skeleton act"></div><div class="skeleton act"></div><div class="skeleton act"></div>
     </div>
     <button class="carousel-btn next" onclick="scrollC(this,1)">›</button>
   </div>
 
-  <!-- FOR EVERY EVENT -->
-  <div class="section-header">
-    <div><div class="section-title">For Every Event</div></div>
-  </div>
+  <div class="section-header"><div><div class="section-title">For Every Event</div></div></div>
   <div class="carousel-wrapper">
     <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
     <div class="carousel">
@@ -345,14 +249,12 @@
     <button class="carousel-btn next" onclick="scrollC(this,1)">›</button>
   </div>
 
-  <!-- PROMO -->
   <div class="promo-row">
     <div class="promo-tile navy"><div class="promo-icon">🎙️</div><div class="promo-text"><div class="promo-label">Featured</div><div class="promo-title">Book a Speaker</div><div class="promo-sub">World-class for corporate events</div></div></div>
     <div class="promo-tile blue-t"><div class="promo-icon">⭐</div><div class="promo-text"><div class="promo-label">Best Value</div><div class="promo-title">From AED 500</div><div class="promo-sub">Quality for every budget</div></div></div>
-    <div class="promo-tile red-t"><div class="promo-icon">🎤</div><div class="promo-text"><div class="promo-label">Join Free</div><div class="promo-title">Are You an Artist?</div><div class="promo-sub">List free, get booked, earn more</div></div></div>
+    <a href="/register.html" style="text-decoration:none"><div class="promo-tile red-t"><div class="promo-icon">🎤</div><div class="promo-text"><div class="promo-label">Join Free</div><div class="promo-title">Are You an Artist?</div><div class="promo-sub">List free, get booked, earn more</div></div></div></a>
   </div>
 
-  <!-- HOW IT WORKS -->
   <div class="hiw-section">
     <h2>How Stagely Works</h2>
     <div class="hiw-steps">
@@ -363,39 +265,25 @@
     </div>
   </div>
 
-  <!-- WHY -->
   <div class="section-header"><div><div class="section-title">Why Stagely?</div></div></div>
   <div class="why-section">
-    <div class="why-card"><div class="why-icon">💰</div><div><h3>No Agency Fees</h3><p>Book directly. No 25–30% markup. The price you see is what you pay.</p></div></div>
-    <div class="why-card"><div class="why-icon">✅</div><div><h3>Verified Artists</h3><p>Real reviews from real clients. What you see is what you get.</p></div></div>
+    <div class="why-card"><div class="why-icon">💰</div><div><h3>No Agency Fees</h3><p>Book directly. No 25–30% markup.</p></div></div>
+    <div class="why-card"><div class="why-icon">✅</div><div><h3>Verified Artists</h3><p>Real reviews from real clients.</p></div></div>
     <div class="why-card"><div class="why-icon">🔒</div><div><h3>Secure Payments</h3><p>Money held in escrow until after your event.</p></div></div>
   </div>
-
   <div class="mobile-spacer"></div>
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-stripe"></div>
   <div class="footer-inner">
     <div class="footer-brand">
-      <svg style="height:28px;width:auto" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg"><g transform="translate(100,50)"><rect x="8" y="0" width="44" height="72" rx="22" fill="#fff"/><rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/><rect x="8" y="12" width="44" height="12" fill="#00A3E0"/><path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><line x1="30" y1="100" x2="30" y2="125" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/></g><g transform="translate(200,62)"><text font-family="Inter,Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#ffffff" x="0" y="78">stagely</text><circle cx="364" cy="22" r="10" fill="#E40046"/><rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/><text font-family="Inter,Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text></g></svg>
+      <svg style="height:28px;width:auto" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg"><g transform="translate(100,50)"><rect x="8" y="0" width="44" height="72" rx="22" fill="#fff"/><rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/><rect x="8" y="12" width="44" height="12" fill="#00A3E0"/><path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><line x1="30" y1="100" x2="30" y2="125" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/></g><g transform="translate(200,62)"><text font-family="Inter,Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#fff" x="0" y="78">stagely</text><circle cx="364" cy="22" r="10" fill="#E40046"/><rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/><text font-family="Inter,Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text></g></svg>
       <p>The UAE's premier direct booking platform. Dubai, Abu Dhabi and beyond.</p>
-      <div class="footer-score"><div class="score-circle">9.4</div><div><div class="score-stars">★★★★★</div><div class="score-reviews">Verified reviews</div></div></div>
-      <div class="pay-logos"><span class="pay-logo">Visa</span><span class="pay-logo">Mastercard</span><span class="pay-logo">Apple Pay</span><span class="pay-logo">Tabby</span></div>
     </div>
-    <div class="footer-col">
-      <h4>For Clients</h4>
-      <ul><li><a href="#">How it Works</a></li><li><a href="#">Browse Acts</a></li><li><a href="#">By Event</a></li><li><a href="#">By Location</a></li><li><a href="#">Safe Booking</a></li></ul>
-    </div>
-    <div class="footer-col">
-      <h4>For Artists</h4>
-      <ul><li><a href="/admin.html">List Your Act</a></li><li><a href="/admin.html">Artist Portal</a></li><li><a href="#">Support</a></li></ul>
-    </div>
-    <div class="footer-col">
-      <h4>Stagely</h4>
-      <ul><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li><li><a href="#">Blog</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul>
-    </div>
+    <div class="footer-col"><h4>For Clients</h4><ul><li><a href="#">How it Works</a></li><li><a href="/singers.html">Browse Singers</a></li><li><a href="#">By Event</a></li><li><a href="#">Safe Booking</a></li></ul></div>
+    <div class="footer-col"><h4>For Artists</h4><ul><li><a href="/register.html">List Your Act</a></li><li><a href="/admin.html">Artist Portal</a></li><li><a href="#">Support</a></li></ul></div>
+    <div class="footer-col"><h4>Stagely</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
@@ -405,67 +293,68 @@
   </div>
 </footer>
 
-<!-- MOBILE BOTTOM BAR -->
 <nav class="mobile-bottom-bar">
   <a href="/"><div class="icon">🏠</div>Home</a>
+  <a href="/singers.html"><div class="icon">🎤</div>Singers</a>
+  <a href="/register.html" class="cta"><div class="icon">⭐</div>List Act</a>
   <a href="#"><div class="icon">🔍</div>Browse</a>
-  <a href="/admin.html" class="cta"><div class="icon">⭐</div>List Act</a>
-  <a href="#"><div class="icon">♡</div>Saved</a>
   <a href="#"><div class="icon">👤</div>Login</a>
 </nav>
 
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-const SUPABASE_URL = 'https://darbunnlilqwbeobcelp.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
-const CAT_COLORS = { singers:{bg:'#eaf6fd',emoji:'🎤'}, djs:{bg:'#fff0f3',emoji:'🎧'}, bands:{bg:'#eaf0fa',emoji:'🎸'}, dancers:{bg:'#fff0f3',emoji:'💃'}, magicians:{bg:'#f3eafd',emoji:'🎩'}, comedians:{bg:'#fdf5ea',emoji:'🎭'}, speakers:{bg:'#eaf6fd',emoji:'🎙️'} };
+const SUPABASE_URL='https://darbunnlilqwbeobcelp.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
+const CAT_COLORS={singers:{bg:'#eaf6fd',emoji:'🎤'},djs:{bg:'#fff0f3',emoji:'🎧'},bands:{bg:'#eaf0fa',emoji:'🎸'},dancers:{bg:'#fff0f3',emoji:'💃'},magicians:{bg:'#f3eafd',emoji:'🎩'},comedians:{bg:'#fdf5ea',emoji:'🎭'},speakers:{bg:'#eaf6fd',emoji:'🎙️'}};
+const CAT_URLS={singers:'/singers.html',djs:'#',bands:'#',dancers:'#',magicians:'#',comedians:'#',speakers:'#'};
 
-async function fetchDB(path) {
-  const r = await fetch(SUPABASE_URL+'/rest/v1/'+path, { headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY} });
+async function fetchDB(path){
+  const r=await fetch(SUPABASE_URL+'/rest/v1/'+path,{headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}});
   return r.json();
 }
 
-function stars(n) { const f=Math.round(n||5); return '★'.repeat(f)+'☆'.repeat(5-f); }
+function stars(n){var f=Math.round(n||5);return '★'.repeat(f)+'☆'.repeat(5-f)}
 
-async function loadCategories() {
-  try {
-    const cats = await fetchDB('categories?is_live=eq.true&order=sort_order');
-    const el = document.getElementById('categoriesCarousel');
-    const sub = document.getElementById('catSub');
-    if (!cats||!cats.length) { el.innerHTML='<div style="padding:16px;color:#999;font-size:13px">Coming soon</div>'; return; }
-    sub.textContent = cats.length+' categories available';
-    el.innerHTML = cats.map(c => {
-      const s = CAT_COLORS[c.slug]||{bg:'#f0f0f0',emoji:'🎭'};
-      const url = c.slug === 'singers' ? '/singers.html' : '#';
-      return `<div class="cat-card" onclick="window.location.href='/singers.html'"><div class="cat-card-img" style="background:${s.bg}">${c.emoji||s.emoji}</div><div class="cat-card-label">${c.name}<div class="cat-card-count">Browse artists</div></div></div>`;
-    }).join('');
-    document.getElementById('heroTags').innerHTML = cats.map(c=>{ const s=CAT_COLORS[c.slug]||{emoji:'🎭'}; return `<span class="hero-tag">${c.emoji||s.emoji} ${c.name}</span>`; }).join('');
-    // update mobile nav
-    document.querySelector('.mobile-nav-inner').innerHTML = '<a href="#" class="active">All</a>' + cats.map(c=>`<a href="#">${c.name}</a>`).join('') + '<a href="#" class="red">Famous</a>';
-  } catch(e) { console.error(e); }
+async function loadCategories(){
+  try{
+    var cats=await fetchDB('categories?is_live=eq.true&order=sort_order');
+    var el=document.getElementById('categoriesCarousel');
+    var sub=document.getElementById('catSub');
+    if(!cats||!cats.length){sub.textContent='Coming soon';return}
+    sub.textContent=cats.length+' categories available';
+    var html='';
+    for(var i=0;i<cats.length;i++){
+      var c=cats[i];
+      var s=CAT_COLORS[c.slug]||{bg:'#f0f0f0',emoji:'🎭'};
+      var url=CAT_URLS[c.slug]||'#';
+      html+='<a href="'+url+'" class="cat-card"><div class="cat-card-img" style="background:'+s.bg+'">'+(c.emoji||s.emoji)+'</div><div class="cat-card-label">'+c.name+'<div class="cat-card-count">Browse artists</div></div></a>';
+    }
+    el.innerHTML=html;
+  }catch(e){console.error(e)}
 }
 
-async function loadArtists() {
-  try {
-    const artists = await fetchDB('artists?active=eq.true&visible=neq.false&order=rating.desc&limit=8');
-    const el = document.getElementById('artistsCarousel');
-    if (!artists||!artists.length) { el.innerHTML='<div style="padding:16px;color:#999;font-size:13px">Artists coming soon!</div>'; return; }
-    el.innerHTML = artists.map((a,i)=>{
-      const s = CAT_COLORS[a.category]||{bg:'#f0f0f0',emoji:'🎭'};
-      const badge = i===0?'<span class="act-badge">Top Rated</span>':i===1?'<span class="act-badge">Popular</span>':'';
-      const img = a.photo_url ? `<img src="${a.photo_url}" alt="${a.name}"/>` : `<span style="font-size:50px">${s.emoji}</span>`;
-      return `<div class="act-card"><div class="act-card-img" style="background:${s.bg}">${img}${badge}</div><div class="act-card-body"><div class="act-name">${a.name}</div><div class="act-type">${(a.category||'Artist')} · ${a.city||'UAE'}</div><div class="act-footer"><span class="stars">${stars(a.rating)}</span><div class="act-price">AED ${(a.price_from||0).toLocaleString()} <span>/ show</span></div></div></div></div>`;
-    }).join('');
-  } catch(e) { console.error(e); }
+async function loadArtists(){
+  try{
+    var artists=await fetchDB('artists?active=eq.true&visible=neq.false&order=rating.desc&limit=8');
+    var el=document.getElementById('artistsCarousel');
+    if(!artists||!artists.length){el.innerHTML='<div style="padding:16px;color:#999;font-size:14px">Artists coming soon!</div>';return}
+    var html='';
+    for(var i=0;i<artists.length;i++){
+      var a=artists[i];
+      var s=CAT_COLORS[a.category]||{bg:'#f0f0f0',emoji:'🎭'};
+      var badge=i===0?'<span class="act-badge">Top Rated</span>':i===1?'<span class="act-badge">Popular</span>':'';
+      var img=a.photo_url?'<img src="'+a.photo_url+'" alt="'+a.name+'" onerror="this.style.display=\'none\'"/>':'';
+      html+='<a href="/singers.html" class="act-card" style="text-decoration:none"><div class="act-card-img" style="background:'+s.bg+'">'+img+'<span style="font-size:50px">'+(a.photo_url?'':s.emoji)+'</span>'+badge+'</div><div class="act-card-body"><div class="act-name">'+a.name+'</div><div class="act-type">'+(a.category||'Artist')+' · '+(a.city||'UAE')+'</div><div class="act-footer"><span class="stars">'+stars(a.rating)+'</span><div class="act-price">AED '+(a.price_from||0).toLocaleString()+' <span>/ show</span></div></div></div></a>';
+    }
+    el.innerHTML=html;
+  }catch(e){console.error(e)}
 }
 
-function scrollC(btn,dir) { btn.parentElement.querySelector('.carousel').scrollBy({left:dir*260,behavior:'smooth'}); }
-window.addEventListener('scroll',()=>{ document.getElementById('back-top').classList.toggle('visible',window.scrollY>300); });
-
+function scrollC(btn,dir){btn.parentElement.querySelector('.carousel').scrollBy({left:dir*260,behavior:'smooth'})}
+window.addEventListener('scroll',function(){document.getElementById('back-top').classList.toggle('visible',window.scrollY>300)});
 loadCategories();
 loadArtists();
 </script>
 </body>
 </html>
-
