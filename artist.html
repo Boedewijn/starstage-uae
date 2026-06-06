@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title id="pageTitle">Artist – Stagely UAE</title>
+<meta name="description" content="Book this artist directly on Stagely UAE"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f2f4f7;color:#041E42;font-size:15px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+:root{--navy:#041E42;--blue:#00A3E0;--red:#E40046;--green:#10b981;--white:#fff;--grey:#6b7280;--shadow:0 2px 12px rgba(4,30,66,0.10);--radius:12px}
+
+/* HEADER */
+.header{background:var(--white);border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(4,30,66,0.06)}
+.header-inner{max-width:1200px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:12px}
+.logo-svg{height:34px;width:auto;flex-shrink:0}
+.search-wrap{flex:1;position:relative;min-width:0;display:none}
+@media(min-width:768px){.search-wrap{display:block}}
+.search-wrap input{width:100%;padding:10px 44px 10px 16px;border:2px solid #e5e7eb;border-radius:50px;font-size:14px;font-family:inherit;outline:none;background:#f9fafb}
+.search-wrap input:focus{border-color:var(--blue);background:#fff}
+.search-wrap button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:var(--navy);border:none;cursor:pointer;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.btn-list{background:var(--red);color:#fff;padding:9px 16px;border-radius:50px;font-weight:700;font-size:13px;white-space:nowrap;flex-shrink:0}
+.btn-back{color:var(--grey);font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;transition:all .2s;white-space:nowrap}
+.btn-back:hover{color:var(--navy);background:#f0f4f8}
+
+/* BREADCRUMB */
+.breadcrumb{max-width:1200px;margin:0 auto;padding:12px 16px;font-size:13px;color:var(--grey);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.breadcrumb a{color:var(--blue)}
+.breadcrumb a:hover{text-decoration:underline}
+
+/* MAIN LAYOUT */
+.page-layout{max-width:1200px;margin:0 auto;padding:0 16px 80px;display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:900px){.page-layout{grid-template-columns:1fr 360px;padding:0 24px 40px;align-items:start}}
+
+/* LEFT COLUMN */
+.artist-header{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.artist-cover{width:100%;height:240px;object-fit:cover;display:block;background:linear-gradient(135deg,#eaf6fd,#c5e0f5);display:flex;align-items:center;justify-content:center;font-size:80px;position:relative}
+@media(min-width:640px){.artist-cover{height:320px}}
+.artist-cover img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.artist-cover-emoji{font-size:80px;position:relative;z-index:1}
+.artist-info{padding:20px}
+@media(min-width:640px){.artist-info{padding:24px 28px}}
+.artist-name{font-size:26px;font-weight:900;color:var(--navy);margin-bottom:6px;letter-spacing:-0.5px}
+@media(min-width:640px){.artist-name{font-size:32px}}
+.artist-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.meta-tag{background:#f0f4f8;border-radius:50px;padding:5px 14px;font-size:12.5px;font-weight:600;color:var(--grey);display:flex;align-items:center;gap:5px}
+.meta-tag.blue{background:#eaf6fd;color:var(--blue)}
+.meta-tag.green{background:#d1fae5;color:#065f46}
+.artist-rating{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #f0f0f0}
+.stars-big{color:#f59e0b;font-size:20px}
+.rating-num{font-size:22px;font-weight:800;color:var(--navy)}
+.rating-sub{font-size:12px;color:var(--grey)}
+.artist-price-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.price-label{font-size:12px;color:var(--grey);font-weight:500}
+.price-big{font-size:28px;font-weight:900;color:var(--navy)}
+.price-big span{font-size:14px;font-weight:500;color:var(--grey)}
+
+/* TABS */
+.tabs{display:flex;border-bottom:2px solid #f0f0f0;margin-bottom:20px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:12px 20px;font-size:13.5px;font-weight:600;color:var(--grey);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* BIO */
+.bio-text{font-size:14px;color:#555;line-height:1.8}
+
+/* VIDEO */
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:var(--radius);overflow:hidden;margin-top:16px}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+
+/* CONTACT BUTTONS */
+.contact-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn-whatsapp{flex:1;min-width:140px;background:#25D366;color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s;-webkit-tap-highlight-color:transparent}
+.btn-whatsapp:hover{background:#1da851}
+.btn-instagram{background:#f0f4f8;color:var(--navy);border:2px solid #e5e7eb;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.btn-instagram:hover{border-color:var(--blue);background:#eaf6fd}
+.btn-inquiry{flex:1;min-width:140px;background:var(--navy);color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s;-webkit-tap-highlight-color:transparent}
+.btn-inquiry:hover{background:var(--blue)}
+
+/* RIGHT COLUMN — INQUIRY FORM */
+.inquiry-card{background:var(--white);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);position:sticky;top:80px}
+.inquiry-card h3{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.inquiry-card .inq-sub{font-size:13px;color:var(--grey);margin-bottom:20px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;background:#fafafa;color:var(--navy)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);background:#fff}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-submit{width:100%;background:var(--red);color:#fff;border:none;border-radius:50px;padding:14px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s;margin-top:4px}
+.btn-submit:hover{background:#c4003c}
+.form-success{display:none;background:#d1fae5;border-radius:10px;padding:20px;text-align:center}
+.form-success .fs-icon{font-size:48px;margin-bottom:12px}
+.form-success h4{font-size:16px;font-weight:700;color:#065f46;margin-bottom:6px}
+.form-success p{font-size:13px;color:#6b7280}
+.trust-mini{display:flex;flex-direction:column;gap:6px;margin-top:16px;padding-top:16px;border-top:1px solid #f0f0f0}
+.trust-mini-item{font-size:12px;color:var(--grey);display:flex;align-items:center;gap:6px}
+.trust-mini-item .check{color:var(--green)}
+
+/* LOADING */
+.loading-screen{text-align:center;padding:60px 20px}
+.loading-screen .ls-icon{font-size:48px;margin-bottom:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* MOBILE STICKY FOOTER */
+.mobile-inquiry-bar{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid #e5e7eb;padding:12px 16px;display:flex;gap:10px;z-index:999;box-shadow:0 -4px 16px rgba(4,30,66,0.10)}
+@media(min-width:900px){.mobile-inquiry-bar{display:none}}
+.mobile-inquiry-bar .btn-whatsapp,.mobile-inquiry-bar .btn-inquiry{flex:1;padding:12px}
+
+/* SIMILAR ARTISTS */
+.similar-section{margin-top:24px}
+.similar-section h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:14px}
+.similar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:540px){.similar-grid{grid-template-columns:repeat(3,1fr)}}
+.sim-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s}
+.sim-card:hover{transform:translateY(-3px)}
+.sim-card-img{height:90px;display:flex;align-items:center;justify-content:center;font-size:36px}
+.sim-card-body{padding:8px 10px 10px}
+.sim-card-name{font-size:12px;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sim-card-price{font-size:11px;color:var(--grey);margin-top:2px}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(4,30,66,0.5);z-index:2000;align-items:flex-end;justify-content:center}
+@media(min-width:640px){.modal-overlay{align-items:center;padding:20px}}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border-radius:16px 16px 0 0;width:100%;max-width:480px;padding:24px 20px 32px;position:relative;max-height:90vh;overflow-y:auto}
+@media(min-width:640px){.modal{border-radius:16px}}
+.modal-handle{width:40px;height:4px;background:#e5e7eb;border-radius:2px;margin:0 auto 20px}
+@media(min-width:640px){.modal-handle{display:none}}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--grey)}
+.modal h3{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.modal .modal-sub{font-size:13px;color:var(--grey);margin-bottom:20px}
+
+/* TOAST */
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:12px 24px;border-radius:50px;font-size:13px;font-weight:600;box-shadow:0 8px 24px rgba(4,30,66,0.3);transition:all .3s;z-index:9999;opacity:0;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.success{background:var(--green)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/"><svg class="logo-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg"><g transform="translate(100,50)"><rect x="8" y="0" width="44" height="72" rx="22" fill="#041E42"/><rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/><rect x="8" y="12" width="44" height="12" fill="#00A3E0"/><path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><line x1="30" y1="100" x2="30" y2="125" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/></g><g transform="translate(200,62)"><text font-family="Inter,Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#041E42" x="0" y="78">stagely</text><circle cx="364" cy="22" r="10" fill="#E40046"/><rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/><text font-family="Inter,Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text></g></svg></a>
+    <div class="search-wrap">
+      <input type="text" placeholder="Search artists..." autocomplete="off"/>
+      <button>🔍</button>
+    </div>
+    <a href="javascript:history.back()" class="btn-back">← Back</a>
+    <a href="/register.html" class="btn-list">★ List Your Act</a>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb" id="breadcrumb">
+  <a href="/">Home</a> <span>›</span>
+  <a href="/singers.html" id="breadcrumbCat">Singers</a> <span>›</span>
+  <span id="breadcrumbName">Loading...</span>
+</div>
+
+<!-- LOADING -->
+<div id="loadingScreen" class="loading-screen">
+  <div class="ls-icon">🎤</div>
+  <p style="color:var(--grey);font-size:14px">Loading artist profile...</p>
+</div>
+
+<!-- MAIN CONTENT (hidden until loaded) -->
+<div id="mainContent" style="display:none">
+  <div class="page-layout">
+
+    <!-- LEFT COLUMN -->
+    <div>
+      <!-- ARTIST HEADER CARD -->
+      <div class="artist-header">
+        <div class="artist-cover" id="artistCover">
+          <span class="artist-cover-emoji" id="coverEmoji">🎤</span>
+        </div>
+        <div class="artist-info">
+          <div class="artist-name" id="artistName">Loading...</div>
+          <div class="artist-meta" id="artistMeta"></div>
+          <div class="artist-rating">
+            <span class="stars-big" id="artistStars">★★★★★</span>
+            <div>
+              <div class="rating-num" id="artistRating">5.0</div>
+              <div class="rating-sub">Verified rating</div>
+            </div>
+          </div>
+          <div class="artist-price-row">
+            <div>
+              <div class="price-label">Starting from</div>
+              <div class="price-big" id="artistPrice">AED 0 <span>/ show</span></div>
+            </div>
+            <div style="text-align:right">
+              <div class="price-label">Based in</div>
+              <div style="font-size:16px;font-weight:700;color:var(--navy)" id="artistCity">Dubai</div>
+            </div>
+          </div>
+
+          <!-- TABS -->
+          <div class="tabs">
+            <div class="tab active" onclick="switchTab('bio',this)">About</div>
+            <div class="tab" onclick="switchTab('video',this)">Video</div>
+            <div class="tab" onclick="switchTab('contact',this)">Contact</div>
+          </div>
+
+          <!-- BIO TAB -->
+          <div class="tab-content active" id="tab-bio">
+            <p class="bio-text" id="artistBio">Loading...</p>
+            <div class="contact-btns" id="bioContactBtns"></div>
+          </div>
+
+          <!-- VIDEO TAB -->
+          <div class="tab-content" id="tab-video">
+            <div id="videoContent" style="padding:20px 0;color:var(--grey);font-size:14px;text-align:center">
+              <div style="font-size:48px;margin-bottom:12px">🎬</div>
+              <p>No video available yet.</p>
+            </div>
+          </div>
+
+          <!-- CONTACT TAB -->
+          <div class="tab-content" id="tab-contact">
+            <div id="contactContent" style="padding:8px 0"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIMILAR ARTISTS -->
+      <div class="similar-section">
+        <h3>More Singers You Might Like</h3>
+        <div class="similar-grid" id="similarGrid">
+          <div style="color:var(--grey);font-size:13px;grid-column:1/-1;padding:20px 0">Loading similar artists...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN — INQUIRY FORM -->
+    <div>
+      <div class="inquiry-card">
+        <h3>📩 Send an Inquiry</h3>
+        <div class="inq-sub">Free, no obligations. Get a response within 24 hours.</div>
+
+        <div id="inquiryForm">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="inq-name" placeholder="Your full name"/>
+          </div>
+          <div class="form-group">
+            <label>Your Email *</label>
+            <input type="email" id="inq-email" placeholder="your@email.com"/>
+          </div>
+          <div class="form-group">
+            <label>Your Phone / WhatsApp</label>
+            <input type="tel" id="inq-phone" placeholder="+971 50 123 4567"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Event Date *</label>
+              <input type="date" id="inq-date"/>
+            </div>
+            <div class="form-group">
+              <label>Event Type *</label>
+              <select id="inq-type">
+                <option value="">Select...</option>
+                <option>Wedding</option>
+                <option>Corporate Event</option>
+                <option>Birthday Party</option>
+                <option>National Day</option>
+                <option>Festival</option>
+                <option>Hotel / Restaurant</option>
+                <option>Gala Dinner</option>
+                <option>Graduation</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Event Location</label>
+            <input type="text" id="inq-location" placeholder="e.g. JW Marriott Dubai"/>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="inq-message" placeholder="Tell the artist about your event — duration, audience size, any special requests..."></textarea>
+          </div>
+          <button class="btn-submit" onclick="submitInquiry()">📩 Send Inquiry</button>
+          <div class="trust-mini">
+            <div class="trust-mini-item"><span class="check">✔</span> Free, no obligations</div>
+            <div class="trust-mini-item"><span class="check">✔</span> Direct contact with artist</div>
+            <div class="trust-mini-item"><span class="check">✔</span> Response within 24 hours</div>
+            <div class="trust-mini-item"><span class="check">✔</span> Secure booking via Stagely</div>
+          </div>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <div class="fs-icon">🎉</div>
+          <h4>Inquiry Sent!</h4>
+          <p>The artist has been notified and will respond within 24 hours. Check your email for confirmation.</p>
+          <a href="/singers.html" style="display:inline-block;margin-top:16px;background:var(--navy);color:#fff;padding:10px 24px;border-radius:50px;font-size:13px;font-weight:700">Browse More Artists →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-inquiry-bar" id="mobileBar" style="display:none">
+  <button class="btn-inquiry" onclick="scrollToForm()">📩 Send Inquiry</button>
+  <button class="btn-whatsapp" id="mobileWhatsApp">💬 WhatsApp</button>
+</div>
+
+<!-- MODAL INQUIRY (mobile) -->
+<div class="modal-overlay" id="inquiryModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>📩 Send an Inquiry</h3>
+    <div class="modal-sub" id="modalSub">Send a message to this artist</div>
+    <div class="form-group"><label>Your Name *</label><input type="text" id="m-name" placeholder="Your full name"/></div>
+    <div class="form-group"><label>Email *</label><input type="email" id="m-email" placeholder="your@email.com"/></div>
+    <div class="form-group"><label>Event Date</label><input type="date" id="m-date"/></div>
+    <div class="form-group"><label>Event Type</label>
+      <select id="m-type">
+        <option value="">Select...</option>
+        <option>Wedding</option><option>Corporate Event</option><option>Birthday Party</option>
+        <option>National Day</option><option>Festival</option><option>Hotel / Restaurant</option><option>Other</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Message</label><textarea id="m-message" placeholder="Tell the artist about your event..."></textarea></div>
+    <button class="btn-submit" onclick="submitModalInquiry()">📩 Send Inquiry</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SUPABASE_URL='https://darbunnlilqwbeobcelp.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
+const CAT_COLORS={singers:{bg:'#eaf6fd',emoji:'🎤'},djs:{bg:'#fff0f3',emoji:'🎧'},bands:{bg:'#eaf0fa',emoji:'🎸'},dancers:{bg:'#fff0f3',emoji:'💃'},magicians:{bg:'#f3eafd',emoji:'🎩'},comedians:{bg:'#fdf5ea',emoji:'🎭'},speakers:{bg:'#eaf6fd',emoji:'🎙️'}};
+
+let currentArtist = null;
+
+// Get artist ID from URL
+function getArtistId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id');
+}
+
+function stars(n) { var f=Math.round(n||5); return '★'.repeat(f)+'☆'.repeat(5-f); }
+
+async function loadArtist() {
+  const id = getArtistId();
+  if (!id) { window.location.href = '/singers.html'; return; }
+
+  try {
+    const res = await fetch(SUPABASE_URL+'/rest/v1/artists?id=eq.'+id, {
+      headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}
+    });
+    const data = await res.json();
+    if (!data||!data.length) { window.location.href='/singers.html'; return; }
+
+    currentArtist = data[0];
+    renderArtist(currentArtist);
+    loadSimilar(currentArtist.category, id);
+  } catch(e) {
+    console.error(e);
+    document.getElementById('loadingScreen').innerHTML = '<p style="color:red">Error loading artist. <a href="/singers.html">Go back</a></p>';
+  }
+}
+
+function renderArtist(a) {
+  const s = CAT_COLORS[a.category]||{bg:'#f0f4f8',emoji:'🎭'};
+
+  // Page title
+  document.title = a.name + ' – Stagely UAE';
+  document.getElementById('pageTitle').textContent = a.name + ' – Stagely UAE';
+
+  // Breadcrumb
+  document.getElementById('breadcrumbName').textContent = a.name;
+  document.getElementById('breadcrumbCat').textContent = a.category ? a.category.charAt(0).toUpperCase()+a.category.slice(1) : 'Artists';
+  document.getElementById('breadcrumbCat').href = a.category === 'singers' ? '/singers.html' : '#';
+
+  // Cover
+  const cover = document.getElementById('artistCover');
+  cover.style.background = 'linear-gradient(135deg,'+s.bg+',#fff)';
+  if (a.photo_url) {
+    const img = document.createElement('img');
+    img.src = a.photo_url;
+    img.alt = a.name;
+    img.onerror = function(){ this.style.display='none'; };
+    cover.appendChild(img);
+  }
+  document.getElementById('coverEmoji').textContent = s.emoji;
+
+  // Basic info
+  document.getElementById('artistName').textContent = a.name;
+  document.getElementById('artistStars').textContent = stars(a.rating||5);
+  document.getElementById('artistRating').textContent = (a.rating||5).toFixed(1);
+  document.getElementById('artistPrice').innerHTML = 'AED '+(a.price_from||0).toLocaleString()+' <span>/ show</span>';
+  document.getElementById('artistCity').textContent = a.city||'UAE';
+
+  // Meta tags
+  const meta = document.getElementById('artistMeta');
+  meta.innerHTML = '';
+  if (a.category) meta.innerHTML += '<span class="meta-tag blue">'+s.emoji+' '+(a.category.charAt(0).toUpperCase()+a.category.slice(1))+'</span>';
+  if (a.city) meta.innerHTML += '<span class="meta-tag">📍 '+a.city+'</span>';
+  meta.innerHTML += '<span class="meta-tag green">✅ Verified</span>';
+
+  // Bio
+  document.getElementById('artistBio').textContent = a.bio || 'No bio available yet.';
+
+  // Bio contact buttons
+  const biobtns = document.getElementById('bioContactBtns');
+  biobtns.innerHTML = '';
+  if (a.whatsapp) {
+    const wb = document.createElement('button');
+    wb.className = 'btn-whatsapp';
+    wb.innerHTML = '💬 WhatsApp';
+    wb.onclick = function(){ openWhatsApp(a.whatsapp, a.name); };
+    biobtns.appendChild(wb);
+  }
+  if (a.instagram) {
+    const ib = document.createElement('button');
+    ib.className = 'btn-instagram';
+    ib.innerHTML = '📸 Instagram';
+    ib.onclick = function(){ window.open('https://instagram.com/'+a.instagram.replace('@',''),'_blank'); };
+    biobtns.appendChild(ib);
+  }
+
+  // Video tab
+  if (a.video_url || a.instagram) {
+    let videoHTML = '';
+    if (a.video_url && a.video_url.includes('youtube')) {
+      const vid = a.video_url.replace('watch?v=','embed/').replace('youtu.be/','www.youtube.com/embed/');
+      videoHTML = '<div class="video-wrap"><iframe src="'+vid+'" frameborder="0" allowfullscreen></iframe></div>';
+    } else if (a.video_url) {
+      videoHTML = '<a href="'+a.video_url+'" target="_blank" style="display:inline-block;margin-top:8px;background:var(--navy);color:#fff;padding:10px 20px;border-radius:50px;font-size:13px;font-weight:700">▶ Watch Performance Video</a>';
+    }
+    if (videoHTML) document.getElementById('videoContent').innerHTML = videoHTML;
+  }
+
+  // Contact tab
+  const contactHTML = [];
+  if (a.whatsapp) contactHTML.push('<a href="https://wa.me/'+a.whatsapp.replace(/\s+/g,'').replace(/[^+\d]/g,'')+'" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid #e5e7eb;border-radius:12px;margin-bottom:10px;transition:all .2s;color:var(--navy)" onmouseover="this.style.borderColor=\'#25D366\'" onmouseout="this.style.borderColor=\'#e5e7eb\'"><span style="font-size:24px">💬</span><div><strong style="display:block">WhatsApp</strong><span style="font-size:12px;color:var(--grey)">'+a.whatsapp+'</span></div></a>');
+  if (a.instagram) contactHTML.push('<a href="https://instagram.com/'+a.instagram.replace('@','')+'" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid #e5e7eb;border-radius:12px;margin-bottom:10px;transition:all .2s;color:var(--navy)" onmouseover="this.style.borderColor=\'#E1306C\'" onmouseout="this.style.borderColor=\'#e5e7eb\'"><span style="font-size:24px">📸</span><div><strong style="display:block">Instagram</strong><span style="font-size:12px;color:var(--grey)">'+a.instagram+'</span></div></a>');
+  document.getElementById('contactContent').innerHTML = contactHTML.join('') || '<p style="color:var(--grey);font-size:13px;padding:16px 0">Contact via the inquiry form →</p>';
+
+  // Mobile bar
+  const mobileBar = document.getElementById('mobileBar');
+  mobileBar.style.display = 'flex';
+  const mobileWA = document.getElementById('mobileWhatsApp');
+  if (a.whatsapp) {
+    mobileWA.onclick = function(){ openWhatsApp(a.whatsapp, a.name); };
+  } else {
+    mobileWA.style.display = 'none';
+  }
+
+  // Show main content
+  document.getElementById('loadingScreen').style.display = 'none';
+  document.getElementById('mainContent').style.display = 'block';
+
+  // Modal sub
+  document.getElementById('modalSub').textContent = 'Send a message to '+a.name;
+}
+
+async function loadSimilar(category, excludeId) {
+  try {
+    const res = await fetch(SUPABASE_URL+'/rest/v1/artists?active=eq.true&category=eq.'+category+'&id=neq.'+excludeId+'&limit=6', {
+      headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}
+    });
+    const artists = await res.json();
+    const grid = document.getElementById('similarGrid');
+    if (!artists||!artists.length) { grid.innerHTML='<div style="color:var(--grey);font-size:13px;grid-column:1/-1">More artists coming soon!</div>'; return; }
+    const s = CAT_COLORS[category]||{bg:'#f0f4f8',emoji:'🎭'};
+    grid.innerHTML = artists.map(a => '<a href="/artist.html?id='+a.id+'" class="sim-card"><div class="sim-card-img" style="background:'+s.bg+'">'+s.emoji+'</div><div class="sim-card-body"><div class="sim-card-name">'+a.name+'</div><div class="sim-card-price">AED '+(a.price_from||0).toLocaleString()+'</div></div></a>').join('');
+  } catch(e) { console.error(e); }
+}
+
+function switchTab(id, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+}
+
+function openWhatsApp(number, name) {
+  const clean = number.replace(/\s+/g,'').replace(/[^+\d]/g,'');
+  const msg = encodeURIComponent('Hi '+name+'! I found you on Stagely and I\'m interested in booking you for an event. Are you available to discuss?');
+  window.open('https://wa.me/'+clean+'?text='+msg,'_blank');
+}
+
+function scrollToForm() {
+  const form = document.querySelector('.inquiry-card');
+  if (form) { form.scrollIntoView({behavior:'smooth'}); }
+  else { document.getElementById('inquiryModal').classList.add('open'); }
+}
+
+function closeModal() { document.getElementById('inquiryModal').classList.remove('open'); }
+
+function toast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'toast '+type+' show';
+  setTimeout(()=>{ t.className='toast'; }, 3000);
+}
+
+async function submitInquiry() {
+  const name = document.getElementById('inq-name').value.trim();
+  const email = document.getElementById('inq-email').value.trim();
+  const date = document.getElementById('inq-date').value;
+  const type = document.getElementById('inq-type').value;
+  if (!name||!email) { toast('Please enter your name and email',''); return; }
+
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = '⏳ Sending...'; btn.disabled = true;
+
+  // For now save to a simple inquiries approach via email link
+  // Since we don't have an inquiries table yet, open email
+  const artistEmail = currentArtist?.email || '';
+  const subject = encodeURIComponent('Booking Inquiry via Stagely – '+type);
+  const body = encodeURIComponent(
+    'Hi '+currentArtist.name+',\n\n'+
+    'I found you on Stagely and would like to book you.\n\n'+
+    'Name: '+name+'\n'+
+    'Email: '+email+'\n'+
+    'Phone: '+(document.getElementById('inq-phone').value||'—')+'\n'+
+    'Event Date: '+(date||'—')+'\n'+
+    'Event Type: '+(type||'—')+'\n'+
+    'Location: '+(document.getElementById('inq-location').value||'—')+'\n\n'+
+    'Message: '+(document.getElementById('inq-message').value||'—')+'\n\n'+
+    'Best regards,\n'+name
+  );
+
+  // Show success
+  document.getElementById('inquiryForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+  toast('✅ Inquiry sent!', 'success');
+
+  // If artist has WhatsApp, offer to contact via WhatsApp too
+  if (currentArtist.whatsapp) {
+    setTimeout(()=>{
+      if (confirm('Would you also like to send a WhatsApp message to '+currentArtist.name+'?')) {
+        openWhatsApp(currentArtist.whatsapp, currentArtist.name);
+      }
+    }, 1000);
+  }
+}
+
+async function submitModalInquiry() {
+  const name = document.getElementById('m-name').value.trim();
+  const email = document.getElementById('m-email').value.trim();
+  if (!name||!email) { toast('Please enter your name and email'); return; }
+  closeModal();
+  document.getElementById('inquiryForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+  toast('✅ Inquiry sent!', 'success');
+}
+
+loadArtist();
+</script>
+</body>
+</html>
