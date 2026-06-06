@@ -208,8 +208,8 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
   </style>
   <div class="mnav">
     <div class="mnav-item">
-      <a href="#">By Category <span class="arr">▾</span></a>
-      <div class="mnav-drop wide">
+      <a href="#" onclick="toggleDrop(event,'drop-cat')">By Category <span class="arr">▾</span></a>
+      <div class="mnav-drop wide" id="drop-cat">
         <div class="mnav-drop-col">
           <h4>Music</h4>
           <a href="/singers.html">Singers</a>
@@ -244,8 +244,8 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
       </div>
     </div>
     <div class="mnav-item">
-      <a href="#">By Event <span class="arr">▾</span></a>
-      <div class="mnav-drop">
+      <a href="#" onclick="toggleDrop(event,'drop-event')">By Event <span class="arr">▾</span></a>
+      <div class="mnav-drop" id="drop-event">
         <a href="#">Wedding</a>
         <a href="#">Corporate Event</a>
         <a href="#">Birthday Party</a>
@@ -258,8 +258,8 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
       </div>
     </div>
     <div class="mnav-item">
-      <a href="#">By Location <span class="arr">▾</span></a>
-      <div class="mnav-drop">
+      <a href="#" onclick="toggleDrop(event,'drop-loc')">By Location <span class="arr">▾</span></a>
+      <div class="mnav-drop" id="drop-loc">
         <a href="#">Dubai</a>
         <a href="#">Abu Dhabi</a>
         <a href="#">Sharjah</a>
@@ -270,8 +270,8 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
       </div>
     </div>
     <div class="mnav-item">
-      <a href="#">By Theme <span class="arr">▾</span></a>
-      <div class="mnav-drop">
+      <a href="#" onclick="toggleDrop(event,'drop-theme')">By Theme <span class="arr">▾</span></a>
+      <div class="mnav-drop" id="drop-theme">
         <a href="#">Arabian Night</a>
         <a href="#">Bollywood</a>
         <a href="#">Jazz & Lounge</a>
@@ -291,25 +291,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
       <a href="#">💬 Customer Service</a>
     </div>
   </div>
-  <script>
-    // Toggle dropdowns on click for mobile
-    document.querySelectorAll('.mnav-item>a').forEach(function(a){
-      a.addEventListener('click', function(e){
-        var drop = this.parentElement.querySelector('.mnav-drop');
-        if(!drop) return;
-        e.preventDefault();
-        var isOpen = drop.classList.contains('open');
-        document.querySelectorAll('.mnav-drop').forEach(function(d){d.classList.remove('open')});
-        if(!isOpen) drop.classList.add('open');
-      });
-    });
-    // Close on outside click
-    document.addEventListener('click', function(e){
-      if(!e.target.closest('.mnav-item')){
-        document.querySelectorAll('.mnav-drop').forEach(function(d){d.classList.remove('open')});
-      }
-    });
-  </script>
+
 </nav>
 
 <div class="hero">
@@ -586,6 +568,31 @@ async function quickSignup(){
 
 function scrollC(btn,dir){btn.parentElement.querySelector('.carousel').scrollBy({left:dir*260,behavior:'smooth'})}
 window.addEventListener('scroll',function(){document.getElementById('back-top').classList.toggle('visible',window.scrollY>300)});
+function toggleDrop(e, id) {
+  e.preventDefault();
+  e.stopPropagation();
+  var drop = document.getElementById(id);
+  if (!drop) return;
+  var isOpen = drop.style.display === 'block' || drop.style.display === 'flex';
+  // Close all
+  ['drop-cat','drop-event','drop-loc','drop-theme'].forEach(function(d){
+    var el = document.getElementById(d);
+    if (el) el.style.display = 'none';
+  });
+  // Open clicked one
+  if (!isOpen) {
+    drop.style.display = drop.classList.contains('wide') ? 'flex' : 'block';
+  }
+}
+document.addEventListener('click', function(e){
+  if (!e.target.closest('.mnav-item')) {
+    ['drop-cat','drop-event','drop-loc','drop-theme'].forEach(function(d){
+      var el = document.getElementById(d);
+      if (el) el.style.display = 'none';
+    });
+  }
+});
+
 loadCategories();
 loadArtists();
 </script>
