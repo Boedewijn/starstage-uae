@@ -437,7 +437,8 @@ async function loadCategories() {
     sub.textContent = cats.length+' categories available';
     el.innerHTML = cats.map(c => {
       const s = CAT_COLORS[c.slug]||{bg:'#f0f0f0',emoji:'🎭'};
-      return `<div class="cat-card"><div class="cat-card-img" style="background:${s.bg}">${c.emoji||s.emoji}</div><div class="cat-card-label">${c.name}<div class="cat-card-count">Browse artists</div></div></div>`;
+      const url = cat.slug === 'singers' ? '/singers.html' : '#';
+      return `<div class="cat-card" onclick="window.location='${url}'"><div class="cat-card-img" style="background:${s.bg}">${c.emoji||s.emoji}</div><div class="cat-card-label">${c.name}<div class="cat-card-count">Browse artists</div></div></div>`;
     }).join('');
     document.getElementById('heroTags').innerHTML = cats.map(c=>{ const s=CAT_COLORS[c.slug]||{emoji:'🎭'}; return `<span class="hero-tag">${c.emoji||s.emoji} ${c.name}</span>`; }).join('');
     // update mobile nav
