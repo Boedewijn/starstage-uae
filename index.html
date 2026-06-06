@@ -186,6 +186,115 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
   </div>
 </nav>
 
+
+<!-- MEGA NAV -->
+<nav style="background:#fff;border-bottom:2px solid #00A3E0;position:sticky;top:62px;z-index:999;overflow-x:auto;scrollbar-width:none">
+  <style>
+    .mnav{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;white-space:nowrap}
+    .mnav-item{position:relative}
+    .mnav-item>a{display:flex;align-items:center;gap:5px;padding:13px 16px;font-size:13px;font-weight:700;color:#041E42;white-space:nowrap;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s;text-decoration:none;text-transform:uppercase;letter-spacing:.3px}
+    .mnav-item>a:hover{color:#00A3E0;border-bottom-color:#00A3E0}
+    .mnav-item>a .arr{font-size:10px;opacity:.5}
+    .mnav-drop{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(4,30,66,0.14);min-width:200px;padding:8px;z-index:2000}
+    .mnav-drop.wide{min-width:600px;padding:20px;display:none;flex-wrap:wrap;gap:8px}
+    .mnav-item:hover .mnav-drop{display:block}
+    .mnav-item:hover .mnav-drop.wide{display:flex}
+    .mnav-drop a{padding:8px 12px;font-size:13px;color:#041E42;display:block;border-radius:8px;font-weight:500;text-decoration:none;text-transform:none;letter-spacing:0}
+    .mnav-drop a:hover{background:#eaf6fd;color:#00A3E0}
+    .mnav-drop-col{flex:1;min-width:130px}
+    .mnav-drop-col h4{font-size:11px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;letter-spacing:.8px;font-weight:700;padding:0 12px}
+    .mnav-blue{color:#00A3E0!important}
+    .mnav-red{color:#E40046!important}
+    .mnav-right{margin-left:auto}
+    .mnav-right>a{color:#6b7280;font-size:13px}
+  </style>
+  <div class="mnav">
+    <div class="mnav-item">
+      <a href="#">By Category <span class="arr">▾</span></a>
+      <div class="mnav-drop wide">
+        <div class="mnav-drop-col">
+          <h4>Music</h4>
+          <a href="/singers.html">Singers</a>
+          <a href="#">DJs</a>
+          <a href="#">Live Bands</a>
+          <a href="#">Classical Music</a>
+          <a href="#">Oud Players</a>
+        </div>
+        <div class="mnav-drop-col">
+          <h4>Performance</h4>
+          <a href="#">Dancers</a>
+          <a href="#">Acrobats</a>
+          <a href="#">Magicians</a>
+          <a href="#">Fire Shows</a>
+          <a href="#">Stunt Shows</a>
+        </div>
+        <div class="mnav-drop-col">
+          <h4>Special</h4>
+          <a href="#">Comedians</a>
+          <a href="#">Hosts / MCs</a>
+          <a href="#">Children's Shows</a>
+          <a href="#">Caricaturists</a>
+          <a href="#">Unique Acts</a>
+        </div>
+        <div class="mnav-drop-col">
+          <h4>Corporate</h4>
+          <a href="#">Keynote Speakers</a>
+          <a href="#">Motivational Speakers</a>
+          <a href="#">Corporate Hosts</a>
+          <a href="#">Team Building</a>
+        </div>
+      </div>
+    </div>
+    <div class="mnav-item">
+      <a href="#">By Event <span class="arr">▾</span></a>
+      <div class="mnav-drop">
+        <a href="#">Wedding</a>
+        <a href="#">Corporate Event</a>
+        <a href="#">Birthday Party</a>
+        <a href="#">National Day</a>
+        <a href="#">Festival</a>
+        <a href="#">Hotel / Restaurant</a>
+        <a href="#">Gala Dinner</a>
+        <a href="#">Graduation</a>
+        <a href="#">Product Launch</a>
+      </div>
+    </div>
+    <div class="mnav-item">
+      <a href="#">By Location <span class="arr">▾</span></a>
+      <div class="mnav-drop">
+        <a href="#">Dubai</a>
+        <a href="#">Abu Dhabi</a>
+        <a href="#">Sharjah</a>
+        <a href="#">Ajman</a>
+        <a href="#">Ras Al Khaimah</a>
+        <a href="#">Fujairah</a>
+        <a href="#">Umm Al Quwain</a>
+      </div>
+    </div>
+    <div class="mnav-item">
+      <a href="#">By Theme <span class="arr">▾</span></a>
+      <div class="mnav-drop">
+        <a href="#">Arabian Night</a>
+        <a href="#">Bollywood</a>
+        <a href="#">Jazz & Lounge</a>
+        <a href="#">Luxury & VIP</a>
+        <a href="#">Family-Friendly</a>
+        <a href="#">Cultural Heritage</a>
+        <a href="#">International</a>
+      </div>
+    </div>
+    <div class="mnav-item">
+      <a href="/singers.html" class="mnav-blue">🎙️ Speakers</a>
+    </div>
+    <div class="mnav-item">
+      <a href="#" class="mnav-red">⭐ Famous Artists</a>
+    </div>
+    <div class="mnav-item mnav-right">
+      <a href="#">💬 Customer Service</a>
+    </div>
+  </div>
+</nav>
+
 <div class="hero">
   <div class="hero-content">
     <h1>Book <span class="accent">Amazing Artists</span> in the <span class="accent-red">UAE</span></h1>
