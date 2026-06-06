@@ -184,7 +184,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 <!-- MEGA NAV -->
 <div id="megaNav" style="background:#fff;border-bottom:2px solid #00A3E0;position:sticky;top:62px;z-index:999;overflow-x:auto;scrollbar-width:none">
 <style>
-.mn{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;white-space:nowrap;position:relative}
+.mn{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;white-space:nowrap;position:static}
 .mn-a{display:flex;align-items:center;gap:4px;padding:13px 16px;font-size:12.5px;font-weight:700;color:#041E42;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;text-decoration:none;text-transform:uppercase;letter-spacing:.3px;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit;transition:color .2s}
 .mn-a:hover{color:#00A3E0;border-bottom-color:#00A3E0}
 .mn-a.active-nav{color:#00A3E0;border-bottom-color:#00A3E0}
@@ -201,32 +201,32 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 .mn-right{margin-left:auto}
 </style>
 <div class="mn">
-  <button class="mn-a" onclick="mnToggle(event,'mn1')">By Category <span>▾</span></button>
+  <div style="position:relative;display:inline-block"><button class="mn-a" onclick="mnToggle(event,'mn1')">By Category <span>▾</span></button>
   <div class="mn-drop wide" id="mn1">
     <div class="mn-col"><h4>Music</h4><a href="/singers.html">Singers</a><a href="#">DJs</a><a href="#">Live Bands</a><a href="#">Classical Music</a><a href="#">Oud Players</a></div>
     <div class="mn-col"><h4>Performance</h4><a href="#">Dancers</a><a href="#">Acrobats</a><a href="#">Magicians</a><a href="#">Fire Shows</a><a href="#">Stunt Shows</a></div>
     <div class="mn-col"><h4>Special</h4><a href="#">Comedians</a><a href="#">Hosts / MCs</a><a href="#">Children's Shows</a><a href="#">Caricaturists</a><a href="#">Unique Acts</a></div>
     <div class="mn-col"><h4>Corporate</h4><a href="#">Keynote Speakers</a><a href="#">Motivational Speakers</a><a href="#">Corporate Hosts</a><a href="#">Team Building</a></div>
-  </div>
+  </div></div>
 
-  <button class="mn-a" onclick="mnToggle(event,'mn2')">By Event <span>▾</span></button>
+  <div style="position:relative;display:inline-block"><button class="mn-a" onclick="mnToggle(event,'mn2')">By Event <span>▾</span></button>
   <div class="mn-drop" id="mn2">
     <a href="#">Wedding</a><a href="#">Corporate Event</a><a href="#">Birthday Party</a>
     <a href="#">National Day</a><a href="#">Festival</a><a href="#">Hotel / Restaurant</a>
     <a href="#">Gala Dinner</a><a href="#">Graduation</a><a href="#">Product Launch</a>
-  </div>
+  </div></div>
 
-  <button class="mn-a" onclick="mnToggle(event,'mn3')">By Location <span>▾</span></button>
+  <div style="position:relative;display:inline-block"><button class="mn-a" onclick="mnToggle(event,'mn3')">By Location <span>▾</span></button>
   <div class="mn-drop" id="mn3">
     <a href="#">Dubai</a><a href="#">Abu Dhabi</a><a href="#">Sharjah</a>
     <a href="#">Ajman</a><a href="#">Ras Al Khaimah</a><a href="#">Fujairah</a><a href="#">Umm Al Quwain</a>
-  </div>
+  </div></div>
 
-  <button class="mn-a" onclick="mnToggle(event,'mn4')">By Theme <span>▾</span></button>
+  <div style="position:relative;display:inline-block"><button class="mn-a" onclick="mnToggle(event,'mn4')">By Theme <span>▾</span></button>
   <div class="mn-drop" id="mn4">
     <a href="#">Arabian Night</a><a href="#">Bollywood</a><a href="#">Jazz & Lounge</a>
     <a href="#">Luxury & VIP</a><a href="#">Family-Friendly</a><a href="#">Cultural Heritage</a><a href="#">International</a>
-  </div>
+  </div></div>
 
   <a href="#" class="mn-a mn-blue">🎙️ Speakers</a>
   <a href="#" class="mn-a mn-red">⭐ Famous Artists</a>
