@@ -182,73 +182,80 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 
 
 <!-- MEGA NAV -->
-<nav id="megaNav" style="background:#fff;border-bottom:2px solid #00A3E0;position:sticky;top:62px;z-index:9999;overflow:visible">
+<nav id="megaNav" style="background:#fff;border-bottom:2px solid #00A3E0;position:sticky;top:62px;z-index:9999">
 <style>
-.mnwrap{position:relative;display:inline-block}
 .mna{padding:13px 16px;font-size:12.5px;font-weight:700;background:none;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.3px;color:#041E42;font-family:inherit;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:4px}
 .mna:hover{color:#00A3E0;border-bottom-color:#00A3E0}
-.mna.blue{color:#00A3E0}
-.mna.red{color:#E40046}
-.mna.grey{color:#6b7280;margin-left:auto}
-.mndrop{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(4,30,66,0.18);padding:8px;z-index:99999;min-width:200px}
-.mndrop.wide{flex-direction:row;flex-wrap:wrap;gap:0;min-width:560px;padding:16px}
-.mndrop.show{display:block}
-.mndrop.wide.show{display:flex}
+.mna.blue{color:#00A3E0}.mna.red{color:#E40046}.mna.grey{color:#6b7280;margin-left:auto}
+.mnbar{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;white-space:nowrap;overflow-x:auto;scrollbar-width:none}
+/* Dropdowns rendered in body */
+.mn-portal{display:none;position:fixed;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(4,30,66,0.18);padding:8px;z-index:99999;min-width:200px}
+.mn-portal.show{display:block}
 .mncol{min-width:130px;padding:0 8px}
 .mncol h4{font-size:10px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;letter-spacing:.8px;font-weight:700}
-.mndrop a{display:block;padding:7px 10px;font-size:13px;color:#041E42;text-decoration:none;border-radius:8px;font-weight:500;white-space:nowrap}
-.mndrop a:hover{background:#eaf6fd;color:#00A3E0}
-.mnbar{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;white-space:nowrap;overflow-x:auto;overflow-y:visible;scrollbar-width:none}
+.mn-portal a{display:block;padding:7px 10px;font-size:13px;color:#041E42;text-decoration:none;border-radius:8px;font-weight:500;white-space:nowrap}
+.mn-portal a:hover{background:#eaf6fd;color:#00A3E0}
+.mn-portal-wide{display:none;position:fixed;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(4,30,66,0.18);padding:16px;z-index:99999;flex-direction:row;flex-wrap:wrap;gap:0;min-width:560px}
+.mn-portal-wide.show{display:flex}
+.mn-portal-wide a{display:block;padding:7px 10px;font-size:13px;color:#041E42;text-decoration:none;border-radius:8px;font-weight:500;white-space:nowrap}
+.mn-portal-wide a:hover{background:#eaf6fd;color:#00A3E0}
 </style>
 <div class="mnbar">
-  <div class="mnwrap">
-    <button class="mna" onclick="mntog(event,'mnd1')">By Category ▾</button>
-    <div class="mndrop wide" id="mnd1">
-      <div class="mncol"><h4>Music</h4><a href="/singers.html">Singers</a><a href="#">DJs</a><a href="#">Live Bands</a><a href="#">Classical Music</a><a href="#">Oud Players</a></div>
-      <div class="mncol"><h4>Performance</h4><a href="#">Dancers</a><a href="#">Acrobats</a><a href="#">Magicians</a><a href="#">Fire Shows</a><a href="#">Stunt Shows</a></div>
-      <div class="mncol"><h4>Special</h4><a href="#">Comedians</a><a href="#">Hosts / MCs</a><a href="#">Children's Shows</a><a href="#">Caricaturists</a><a href="#">Unique Acts</a></div>
-      <div class="mncol"><h4>Corporate</h4><a href="#">Keynote Speakers</a><a href="#">Motivational Speakers</a><a href="#">Corporate Hosts</a><a href="#">Team Building</a></div>
-    </div>
-  </div>
-  <div class="mnwrap">
-    <button class="mna" onclick="mntog(event,'mnd2')">By Event ▾</button>
-    <div class="mndrop" id="mnd2">
-      <a href="#">Wedding</a><a href="#">Corporate Event</a><a href="#">Birthday Party</a>
-      <a href="#">National Day</a><a href="#">Festival</a><a href="#">Hotel / Restaurant</a>
-      <a href="#">Gala Dinner</a><a href="#">Graduation</a><a href="#">Product Launch</a>
-    </div>
-  </div>
-  <div class="mnwrap">
-    <button class="mna" onclick="mntog(event,'mnd3')">By Location ▾</button>
-    <div class="mndrop" id="mnd3">
-      <a href="#">Dubai</a><a href="#">Abu Dhabi</a><a href="#">Sharjah</a>
-      <a href="#">Ajman</a><a href="#">Ras Al Khaimah</a><a href="#">Fujairah</a><a href="#">Umm Al Quwain</a>
-    </div>
-  </div>
-  <div class="mnwrap">
-    <button class="mna" onclick="mntog(event,'mnd4')">By Theme ▾</button>
-    <div class="mndrop" id="mnd4">
-      <a href="#">Arabian Night</a><a href="#">Bollywood</a><a href="#">Jazz & Lounge</a>
-      <a href="#">Luxury & VIP</a><a href="#">Family-Friendly</a><a href="#">Cultural Heritage</a><a href="#">International</a>
-    </div>
-  </div>
+  <button class="mna" onclick="mntog(event,'pd1')">By Category ▾</button>
+  <button class="mna" onclick="mntog(event,'pd2')">By Event ▾</button>
+  <button class="mna" onclick="mntog(event,'pd3')">By Location ▾</button>
+  <button class="mna" onclick="mntog(event,'pd4')">By Theme ▾</button>
   <a href="#" class="mna blue">🎙️ Speakers</a>
   <a href="#" class="mna red">⭐ Famous Artists</a>
   <a href="#" class="mna grey">💬 Customer Service</a>
 </div>
+</nav>
+
+<!-- DROPDOWNS IN BODY (not clipped by nav) -->
+<div class="mn-portal-wide" id="pd1">
+  <div class="mncol"><h4>Music</h4><a href="/singers.html">Singers</a><a href="#">DJs</a><a href="#">Live Bands</a><a href="#">Classical Music</a><a href="#">Oud Players</a></div>
+  <div class="mncol"><h4>Performance</h4><a href="#">Dancers</a><a href="#">Acrobats</a><a href="#">Magicians</a><a href="#">Fire Shows</a><a href="#">Stunt Shows</a></div>
+  <div class="mncol"><h4>Special</h4><a href="#">Comedians</a><a href="#">Hosts / MCs</a><a href="#">Children's Shows</a><a href="#">Caricaturists</a><a href="#">Unique Acts</a></div>
+  <div class="mncol"><h4>Corporate</h4><a href="#">Keynote Speakers</a><a href="#">Motivational Speakers</a><a href="#">Corporate Hosts</a><a href="#">Team Building</a></div>
+</div>
+<div class="mn-portal" id="pd2">
+  <a href="#">Wedding</a><a href="#">Corporate Event</a><a href="#">Birthday Party</a>
+  <a href="#">National Day</a><a href="#">Festival</a><a href="#">Hotel / Restaurant</a>
+  <a href="#">Gala Dinner</a><a href="#">Graduation</a><a href="#">Product Launch</a>
+</div>
+<div class="mn-portal" id="pd3">
+  <a href="#">Dubai</a><a href="#">Abu Dhabi</a><a href="#">Sharjah</a>
+  <a href="#">Ajman</a><a href="#">Ras Al Khaimah</a><a href="#">Fujairah</a><a href="#">Umm Al Quwain</a>
+</div>
+<div class="mn-portal" id="pd4">
+  <a href="#">Arabian Night</a><a href="#">Bollywood</a><a href="#">Jazz & Lounge</a>
+  <a href="#">Luxury & VIP</a><a href="#">Family-Friendly</a><a href="#">Cultural Heritage</a><a href="#">International</a>
+</div>
+
 <script>
 function mntog(e, id) {
   e.stopPropagation();
+  var btn = e.currentTarget;
+  var rect = btn.getBoundingClientRect();
   var el = document.getElementById(id);
   var wasOpen = el.classList.contains('show');
-  document.querySelectorAll('.mndrop').forEach(function(d){ d.classList.remove('show'); });
-  if (!wasOpen) el.classList.add('show');
+  // Close all
+  document.querySelectorAll('.mn-portal,.mn-portal-wide').forEach(function(d){
+    d.classList.remove('show');
+  });
+  if (!wasOpen) {
+    // Position below the button
+    el.style.top = (rect.bottom + 2) + 'px';
+    el.style.left = rect.left + 'px';
+    el.classList.add('show');
+  }
 }
 document.addEventListener('click', function(){
-  document.querySelectorAll('.mndrop').forEach(function(d){ d.classList.remove('show'); });
+  document.querySelectorAll('.mn-portal,.mn-portal-wide').forEach(function(d){
+    d.classList.remove('show');
+  });
 });
 </script>
-</nav>
 
 
 <div class="hero">
