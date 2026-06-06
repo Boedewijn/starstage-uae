@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Singers in UAE – Book Live Singers | Stagely</title>
+<meta name="description" content="Book professional singers in Dubai, Abu Dhabi and across the UAE. Direct contact, best prices, verified artists."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:#f2f4f7;color:#041E42;font-size:15px;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  :root{--navy:#041E42;--blue:#00A3E0;--red:#E40046;--green:#10b981;--white:#fff;--grey:#6b7280;--radius:12px;--shadow:0 2px 12px rgba(4,30,66,0.10)}
+
+  /* HEADER */
+  .header{background:var(--white);border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(4,30,66,0.06)}
+  .header-inner{max-width:1200px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:12px}
+  .logo-svg{height:34px;width:auto;flex-shrink:0}
+  .search-wrap{flex:1;position:relative;min-width:0}
+  .search-wrap input{width:100%;padding:10px 44px 10px 16px;border:2px solid #e5e7eb;border-radius:50px;font-size:14px;font-family:inherit;outline:none;background:#f9fafb;transition:border-color .2s;font-size:16px}
+  .search-wrap input:focus{border-color:var(--blue);background:#fff}
+  .search-wrap button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:var(--navy);border:none;cursor:pointer;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .btn-list{background:var(--red);color:#fff;padding:9px 16px;border-radius:50px;font-weight:700;font-size:13px;white-space:nowrap;flex-shrink:0}
+
+  /* BREADCRUMB */
+  .breadcrumb{max-width:1200px;margin:0 auto;padding:12px 16px;font-size:13px;color:var(--grey);display:flex;align-items:center;gap:6px}
+  .breadcrumb a{color:var(--blue)}
+  .breadcrumb a:hover{text-decoration:underline}
+
+  /* PAGE HERO */
+  .page-hero{background:linear-gradient(135deg,var(--navy) 0%,#0a3060 100%);padding:32px 16px;position:relative;overflow:hidden}
+  .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--blue))}
+  .page-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+  .page-hero h1{font-size:28px;font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.5px}
+  @media(min-width:640px){.page-hero h1{font-size:36px}}
+  .page-hero p{font-size:14px;color:rgba(255,255,255,0.75);margin-bottom:16px}
+  .hero-stats{display:flex;gap:20px;flex-wrap:wrap}
+  .hero-stat{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;color:#fff}
+
+  /* FILTERS */
+  .filters-bar{background:var(--white);border-bottom:1px solid #e5e7eb;padding:12px 16px;overflow-x:auto;scrollbar-width:none}
+  .filters-bar::-webkit-scrollbar{display:none}
+  .filters-inner{max-width:1200px;margin:0 auto;display:flex;gap:8px;align-items:center;white-space:nowrap}
+  .filter-label{font-size:12px;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
+  .filter-btn{padding:7px 14px;border:2px solid #e5e7eb;border-radius:50px;font-size:12px;font-weight:600;color:var(--grey);background:#fff;cursor:pointer;transition:all .2s;font-family:inherit}
+  .filter-btn:hover{border-color:var(--blue);color:var(--blue)}
+  .filter-btn.active{border-color:var(--blue);background:var(--blue);color:#fff}
+
+  /* MAIN */
+  main{max-width:1200px;margin:0 auto;padding:24px 16px 80px}
+
+  /* RESULTS BAR */
+  .results-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+  .results-count{font-size:14px;color:var(--grey);font-weight:500}
+  .sort-select{padding:8px 12px;border:2px solid #e5e7eb;border-radius:8px;font-size:13px;font-family:inherit;outline:none;color:var(--navy);font-weight:500;cursor:pointer}
+  .sort-select:focus{border-color:var(--blue)}
+
+  /* ARTISTS GRID */
+  .artists-grid{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:540px){.artists-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:900px){.artists-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:1200px){.artists-grid{grid-template-columns:repeat(4,1fr)}}
+
+  /* ARTIST CARD */
+  .artist-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;border-top:3px solid transparent;display:flex;flex-direction:column}
+  .artist-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(4,30,66,0.14);border-top-color:var(--blue)}
+  .card-img{width:100%;height:200px;object-fit:cover;display:block;background:#eaf6fd;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative}
+  .card-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .card-badge{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:50px}
+  .card-city-badge{position:absolute;top:10px;right:10px;background:rgba(4,30,66,0.75);color:#fff;font-size:10px;font-weight:600;padding:3px 8px;border-radius:50px;backdrop-filter:blur(4px)}
+  .card-body{padding:14px 16px;flex:1;display:flex;flex-direction:column}
+  .card-name{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:3px}
+  .card-type{font-size:12px;color:var(--grey);margin-bottom:10px;font-weight:500}
+  .card-bio{font-size:12.5px;color:var(--grey);line-height:1.5;margin-bottom:12px;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .card-footer{border-top:1px solid #f0f0f0;padding-top:12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .card-stars{color:#f59e0b;font-size:12px}
+  .card-price{font-size:14px;font-weight:800;color:var(--navy)}
+  .card-price span{font-size:11px;font-weight:500;color:var(--grey)}
+  .card-actions{display:flex;gap:8px}
+  .btn-whatsapp{flex:1;background:#25D366;color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s;-webkit-tap-highlight-color:transparent}
+  .btn-whatsapp:hover{background:#1da851}
+  .btn-instagram{background:#f0f4f8;color:var(--navy);border:none;border-radius:8px;padding:10px 14px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s;-webkit-tap-highlight-color:transparent}
+  .btn-instagram:hover{background:#e5e7eb}
+  .btn-contact{flex:1;background:var(--navy);color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s;-webkit-tap-highlight-color:transparent}
+  .btn-contact:hover{background:var(--blue)}
+
+  /* LOADING */
+  .loading-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+  .skeleton-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .skeleton-img{height:200px;background:linear-gradient(90deg,#e5e7eb 25%,#f3f4f6 50%,#e5e7eb 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+  .skeleton-body{padding:14px 16px}
+  .skeleton-line{height:14px;border-radius:4px;background:linear-gradient(90deg,#e5e7eb 25%,#f3f4f6 50%,#e5e7eb 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;margin-bottom:10px}
+  .skeleton-line.short{width:60%}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+  /* EMPTY */
+  .empty-state{text-align:center;padding:60px 20px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .empty-state .es-icon{font-size:64px;margin-bottom:16px}
+  .empty-state h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .empty-state p{font-size:14px;color:var(--grey);margin-bottom:20px}
+
+  /* CONTACT MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(4,30,66,0.5);z-index:1000;align-items:flex-end;justify-content:center;padding:0}
+  @media(min-width:640px){.modal-overlay{align-items:center;padding:20px}}
+  .modal-overlay.open{display:flex}
+  .modal{background:var(--white);border-radius:16px 16px 0 0;width:100%;max-width:480px;padding:24px 20px 32px;position:relative}
+  @media(min-width:640px){.modal{border-radius:16px;padding:28px}}
+  .modal-handle{width:40px;height:4px;background:#e5e7eb;border-radius:2px;margin:0 auto 20px}
+  @media(min-width:640px){.modal-handle{display:none}}
+  .modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--grey)}
+  .modal h3{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:4px}
+  .modal .modal-sub{font-size:13px;color:var(--grey);margin-bottom:20px}
+  .contact-options{display:flex;flex-direction:column;gap:10px}
+  .contact-opt{display:flex;align-items:center;gap:14px;padding:14px 16px;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;transition:all .2s;text-decoration:none;color:var(--navy)}
+  .contact-opt:hover{border-color:var(--blue);background:#eaf6fd}
+  .contact-opt.whatsapp:hover{border-color:#25D366;background:#f0fdf4}
+  .contact-opt.instagram:hover{border-color:#E1306C;background:#fff0f5}
+  .contact-opt-icon{font-size:28px;flex-shrink:0}
+  .contact-opt-text strong{display:block;font-size:14px;font-weight:700}
+  .contact-opt-text span{font-size:12px;color:var(--grey)}
+
+  /* MOBILE BOTTOM BAR */
+  .mobile-bottom{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid #e5e7eb;display:flex;z-index:999;box-shadow:0 -4px 16px rgba(4,30,66,0.10)}
+  @media(min-width:768px){.mobile-bottom{display:none}}
+  .mobile-bottom a{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;font-size:10px;font-weight:600;color:var(--grey);gap:3px;-webkit-tap-highlight-color:transparent}
+  .mobile-bottom a .icon{font-size:20px}
+  .mobile-bottom a.active{color:var(--blue)}
+  .mobile-bottom a.cta{background:var(--red);color:#fff}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/"><svg class="logo-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg"><g transform="translate(100,50)"><rect x="8" y="0" width="44" height="72" rx="22" fill="#041E42"/><rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/><rect x="8" y="12" width="44" height="12" fill="#00A3E0"/><path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><line x1="30" y1="100" x2="30" y2="125" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/></g><g transform="translate(200,62)"><text font-family="Inter,Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#041E42" x="0" y="78">stagely</text><circle cx="364" cy="22" r="10" fill="#E40046"/><rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/><text font-family="Inter,Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text></g></svg></a>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Search singers..." oninput="filterArtists()" autocomplete="off"/>
+      <button>🔍</button>
+    </div>
+    <a href="/register.html" class="btn-list">★ List Your Act</a>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">Home</a> <span>›</span> <span>Singers</span>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <h1>🎤 Singers in the UAE</h1>
+    <p>Book professional singers directly — no agency, no markup, instant contact.</p>
+    <div class="hero-stats">
+      <span class="hero-stat" id="heroCount">Loading...</span>
+      <span class="hero-stat">✅ Verified artists</span>
+      <span class="hero-stat">💰 Best price guarantee</span>
+    </div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters-bar">
+  <div class="filters-inner">
+    <span class="filter-label">City:</span>
+    <button class="filter-btn active" onclick="setFilter('all',this)">All UAE</button>
+    <button class="filter-btn" onclick="setFilter('Dubai',this)">Dubai</button>
+    <button class="filter-btn" onclick="setFilter('Abu Dhabi',this)">Abu Dhabi</button>
+    <button class="filter-btn" onclick="setFilter('Sharjah',this)">Sharjah</button>
+    <button class="filter-btn" onclick="setFilter('Ras Al Khaimah',this)">RAK</button>
+  </div>
+</div>
+
+<main>
+  <div class="results-bar">
+    <div class="results-count" id="resultsCount">Loading singers...</div>
+    <select class="sort-select" onchange="sortArtists(this.value)">
+      <option value="rating">⭐ Top Rated</option>
+      <option value="price_asc">💰 Price: Low to High</option>
+      <option value="price_desc">💰 Price: High to Low</option>
+      <option value="name">🔤 Name A-Z</option>
+    </select>
+  </div>
+
+  <div id="artistsContainer">
+    <div class="loading-grid">
+      ${[1,2,3,4,5,6,7,8].map(()=>`<div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line"></div><div class="skeleton-line short"></div></div></div>`).join('')}
+    </div>
+  </div>
+</main>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 id="modalName">Contact Artist</h3>
+    <div class="modal-sub">Choose how you'd like to reach out:</div>
+    <div class="contact-options" id="contactOptions"></div>
+  </div>
+</div>
+
+<!-- MOBILE BOTTOM BAR -->
+<nav class="mobile-bottom">
+  <a href="/"><div class="icon">🏠</div>Home</a>
+  <a href="#" class="active"><div class="icon">🎤</div>Singers</a>
+  <a href="/register.html" class="cta"><div class="icon">⭐</div>List Act</a>
+  <a href="#"><div class="icon">🔍</div>Browse</a>
+  <a href="#"><div class="icon">👤</div>Login</a>
+</nav>
+
+<script>
+const SUPABASE_URL = 'https://darbunnlilqwbeobcelp.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
+
+let allArtists = [];
+let currentFilter = 'all';
+let currentSort = 'rating';
+let searchQuery = '';
+
+async function loadSingers() {
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/artists?category=eq.singers&active=eq.true&order=rating.desc', {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+    });
+    allArtists = await res.json();
+    document.getElementById('heroCount').textContent = allArtists.length + ' singers available';
+    renderArtists();
+  } catch(e) {
+    console.error(e);
+    document.getElementById('artistsContainer').innerHTML = '<div class="empty-state"><div class="es-icon">😕</div><h3>Could not load singers</h3><p>Please refresh the page.</p></div>';
+  }
+}
+
+function getFiltered() {
+  let list = [...allArtists];
+  if (currentFilter !== 'all') list = list.filter(a => a.city === currentFilter);
+  if (searchQuery) list = list.filter(a => a.name.toLowerCase().includes(searchQuery) || (a.bio||'').toLowerCase().includes(searchQuery));
+  if (currentSort === 'price_asc') list.sort((a,b) => (a.price_from||0)-(b.price_from||0));
+  else if (currentSort === 'price_desc') list.sort((a,b) => (b.price_from||0)-(a.price_from||0));
+  else if (currentSort === 'name') list.sort((a,b) => a.name.localeCompare(b.name));
+  else list.sort((a,b) => (b.rating||0)-(a.rating||0));
+  return list;
+}
+
+function stars(n) { const f=Math.round(n||5); return '★'.repeat(f)+'☆'.repeat(5-f); }
+
+function renderArtists() {
+  const list = getFiltered();
+  const container = document.getElementById('artistsContainer');
+  document.getElementById('resultsCount').textContent = list.length + ' singer' + (list.length !== 1 ? 's' : '') + ' found';
+
+  if (!list.length) {
+    container.innerHTML = `<div class="empty-state"><div class="es-icon">🎤</div><h3>No singers found</h3><p>Try adjusting your filters or search.</p><a href="/register.html"><button style="background:var(--navy);color:#fff;border:none;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer">Are you a singer? List your act →</button></a></div>`;
+    return;
+  }
+
+  container.innerHTML = `<div class="artists-grid">${list.map((a, i) => {
+    const imgContent = a.photo_url
+      ? `<img src="${a.photo_url}" alt="${a.name}" onerror="this.style.display='none'"/>`
+      : '';
+    const badge = i === 0 ? '<span class="card-badge">⭐ Top Rated</span>' : i < 3 ? '<span class="card-badge">🔥 Popular</span>' : '';
+    return `
+      <div class="artist-card">
+        <div class="card-img">
+          ${a.photo_url ? `<img src="${a.photo_url}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0" onerror="this.style.display='none'"/>` : '🎤'}
+          ${badge}
+          <span class="card-city-badge">📍 ${a.city||'UAE'}</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">${a.name}</div>
+          <div class="card-type">Singer · ${a.city||'UAE'}</div>
+          ${a.bio ? `<div class="card-bio">${a.bio}</div>` : ''}
+          <div class="card-footer">
+            <span class="card-stars">${stars(a.rating)}</span>
+            <div class="card-price">AED ${(a.price_from||0).toLocaleString()} <span>/ show</span></div>
+          </div>
+          <div class="card-actions">
+            ${a.whatsapp ? `<button class="btn-whatsapp" onclick="openWhatsApp('${a.whatsapp}','${a.name}')">💬 WhatsApp</button>` : `<button class="btn-contact" onclick="openContact(${a.id})">📩 Contact</button>`}
+            ${a.instagram ? `<button class="btn-instagram" onclick="openInstagram('${a.instagram}')">📸</button>` : ''}
+          </div>
+        </div>
+      </div>`;
+  }).join('')}</div>`;
+}
+
+function setFilter(val, btn) {
+  currentFilter = val;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderArtists();
+}
+
+function sortArtists(val) { currentSort = val; renderArtists(); }
+function filterArtists() { searchQuery = document.getElementById('searchInput').value.toLowerCase(); renderArtists(); }
+
+function openWhatsApp(number, name) {
+  const clean = number.replace(/\s+/g,'').replace(/[^+\d]/g,'');
+  const msg = encodeURIComponent(`Hi ${name}! I found you on Stagely and I'm interested in booking you for an event. Are you available to discuss?`);
+  window.open(`https://wa.me/${clean}?text=${msg}`, '_blank');
+}
+
+function openInstagram(handle) {
+  const clean = handle.replace('@','');
+  window.open(`https://instagram.com/${clean}`, '_blank');
+}
+
+function openContact(id) {
+  const a = allArtists.find(x => x.id === id);
+  if (!a) return;
+  document.getElementById('modalName').textContent = a.name;
+  const opts = [];
+  if (a.whatsapp) opts.push(`<a href="https://wa.me/${a.whatsapp.replace(/\s+/g,'').replace(/[^+\d]/g,'')}" target="_blank" class="contact-opt whatsapp"><span class="contact-opt-icon">💬</span><div class="contact-opt-text"><strong>WhatsApp</strong><span>Message directly on WhatsApp</span></div></a>`);
+  if (a.instagram) opts.push(`<a href="https://instagram.com/${a.instagram.replace('@','')}" target="_blank" class="contact-opt instagram"><span class="contact-opt-icon">📸</span><div class="contact-opt-text"><strong>Instagram</strong><span>${a.instagram}</span></div></a>`);
+  if (!opts.length) opts.push('<div style="text-align:center;padding:20px;color:#999;font-size:13px">No contact info available yet.</div>');
+  document.getElementById('contactOptions').innerHTML = opts.join('');
+  document.getElementById('contactModal').classList.add('open');
+}
+
+function closeModal() { document.getElementById('contactModal').classList.remove('open'); }
+document.getElementById('contactModal').addEventListener('click', function(e) { if(e.target===this) closeModal(); });
+
+loadSingers();
+</script>
+</body>
+</html>
