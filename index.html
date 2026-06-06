@@ -243,7 +243,7 @@
     <style>@media(min-width:768px){#desktopSearch{display:block!important}}</style>
     <div class="header-actions">
       <a href="#" class="btn-login">👤 Login</a>
-      <a href="/admin.html" class="btn-list">★ List Your Act</a>
+      <a href="/register.html" class="btn-list">★ List Your Act</a>
     </div>
   </div>
 </header>
@@ -447,7 +447,7 @@ async function loadCategories() {
 
 async function loadArtists() {
   try {
-    const artists = await fetchDB('artists?active=eq.true&order=rating.desc&limit=8');
+    const artists = await fetchDB('artists?active=eq.true&visible=neq.false&order=rating.desc&limit=8');
     const el = document.getElementById('artistsCarousel');
     if (!artists||!artists.length) { el.innerHTML='<div style="padding:16px;color:#999;font-size:13px">Artists coming soon!</div>'; return; }
     el.innerHTML = artists.map((a,i)=>{
