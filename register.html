@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>List Your Act – Stagely UAE</title>
+<meta name="description" content="Join Stagely UAE and get booked for events across Dubai, Abu Dhabi and the UAE. Free to list, no agency fees."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:#f2f4f7;color:#041E42;font-size:15px;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  :root{--navy:#041E42;--blue:#00A3E0;--red:#E40046;--green:#10b981;--white:#fff;--grey:#6b7280;--radius:12px;--shadow:0 2px 12px rgba(4,30,66,0.10)}
+
+  /* HEADER */
+  .header{background:var(--white);border-bottom:1px solid #e5e7eb;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(4,30,66,0.06)}
+  .logo-svg{height:34px;width:auto}
+  .header-nav{display:flex;align-items:center;gap:12px}
+  .header-nav a{font-size:13px;color:var(--grey);font-weight:500;padding:8px 12px;border-radius:8px;transition:all .2s}
+  .header-nav a:hover{color:var(--navy);background:#f0f4f8}
+  .btn-back{background:var(--navy);color:#fff;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,#0a3060 60%,#0d4080 100%);padding:52px 20px 44px;text-align:center;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--blue))}
+  .hero h1{font-size:32px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:12px;letter-spacing:-1px}
+  @media(min-width:640px){.hero h1{font-size:42px}}
+  .hero h1 span{color:var(--blue)}
+  .hero p{font-size:16px;color:rgba(255,255,255,0.78);max-width:540px;margin:0 auto 24px}
+  .hero-perks{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .perk{background:rgba(255,255,255,0.12);color:#fff;padding:7px 16px;border-radius:50px;font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;gap:6px}
+
+  /* MAIN */
+  main{max-width:720px;margin:0 auto;padding:32px 16px 60px}
+  @media(min-width:640px){main{padding:40px 24px 80px}}
+
+  /* PROGRESS */
+  .progress-bar{display:flex;align-items:center;gap:0;margin-bottom:32px}
+  .progress-step{flex:1;text-align:center;position:relative}
+  .progress-step:not(:last-child)::after{content:'';position:absolute;top:18px;left:50%;right:-50%;height:2px;background:#e5e7eb;z-index:0}
+  .progress-step.done:not(:last-child)::after{background:var(--blue)}
+  .step-circle{width:36px;height:36px;border-radius:50%;border:2px solid #e5e7eb;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-size:14px;font-weight:700;color:var(--grey);position:relative;z-index:1;transition:all .3s}
+  .progress-step.active .step-circle{border-color:var(--blue);background:var(--blue);color:#fff}
+  .progress-step.done .step-circle{border-color:var(--blue);background:var(--blue);color:#fff}
+  .step-label{font-size:11px;color:var(--grey);font-weight:500}
+  .progress-step.active .step-label{color:var(--blue);font-weight:700}
+
+  /* FORM CARD */
+  .form-card{background:var(--white);border-radius:var(--radius);padding:28px 20px;box-shadow:var(--shadow);margin-bottom:16px}
+  @media(min-width:640px){.form-card{padding:32px}}
+  .form-card h2{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px}
+  .form-card .card-sub{font-size:13px;color:var(--grey);margin-bottom:24px}
+  .form-group{margin-bottom:18px}
+  .form-group label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+  .form-group label .req{color:var(--red)}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s,box-shadow .2s;background:#fafafa;color:var(--navy)}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(0,163,224,0.10)}
+  .form-group input.error,.form-group select.error,.form-group textarea.error{border-color:var(--red)}
+  .form-group textarea{resize:vertical;min-height:100px}
+  .form-group .hint{font-size:11.5px;color:var(--grey);margin-top:5px}
+  .form-row{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:540px){.form-row{grid-template-columns:1fr 1fr;gap:14px}}
+
+  /* PHOTO UPLOAD AREA */
+  .photo-area{border:2px dashed #e5e7eb;border-radius:8px;padding:24px;text-align:center;cursor:pointer;transition:all .2s;background:#fafafa}
+  .photo-area:hover{border-color:var(--blue);background:#eaf6fd}
+  .photo-area .photo-icon{font-size:36px;margin-bottom:8px}
+  .photo-area p{font-size:13px;color:var(--grey)}
+  .photo-area small{font-size:11px;color:#aaa}
+  .photo-preview{width:100%;height:180px;object-fit:cover;border-radius:8px;display:none}
+
+  /* CATEGORY SELECTOR */
+  .cat-selector{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(min-width:480px){.cat-selector{grid-template-columns:repeat(3,1fr)}}
+  .cat-option{border:2px solid #e5e7eb;border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .2s;background:#fafafa}
+  .cat-option:hover{border-color:var(--blue);background:#eaf6fd}
+  .cat-option.selected{border-color:var(--blue);background:#eaf6fd}
+  .cat-option .cat-emoji{font-size:28px;margin-bottom:6px}
+  .cat-option .cat-name{font-size:12px;font-weight:700;color:var(--navy)}
+  input[name="category"]{display:none}
+
+  /* PRICE RANGE */
+  .price-hints{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .price-hint{background:#f0f4f8;border:1px solid #e5e7eb;border-radius:50px;padding:4px 12px;font-size:12px;font-weight:600;color:var(--grey);cursor:pointer;transition:all .2s}
+  .price-hint:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+  /* STEPS */
+  .step{display:none}
+  .step.active{display:block}
+
+  /* BUTTONS */
+  .btn-row{display:flex;gap:10px;margin-top:24px}
+  .btn{padding:13px 28px;border:none;border-radius:50px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s;flex:1}
+  .btn-primary{background:var(--navy);color:#fff}
+  .btn-primary:hover{background:var(--blue)}
+  .btn-secondary{background:#f0f4f8;color:var(--navy)}
+  .btn-secondary:hover{background:#e5e7eb}
+  .btn-submit{background:var(--green);color:#fff}
+  .btn-submit:hover{background:#0da271}
+
+  /* SUCCESS */
+  .success-screen{display:none;text-align:center;padding:48px 20px}
+  .success-icon{font-size:72px;margin-bottom:20px}
+  .success-screen h2{font-size:26px;font-weight:800;color:var(--navy);margin-bottom:12px}
+  .success-screen p{font-size:15px;color:var(--grey);max-width:420px;margin:0 auto 24px;line-height:1.7}
+  .success-screen .next-steps{background:var(--white);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);text-align:left;max-width:420px;margin:0 auto 24px}
+  .success-screen .next-steps h3{font-size:14px;font-weight:700;margin-bottom:12px;color:var(--navy)}
+  .next-step-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:var(--grey)}
+  .next-step-item:last-child{border:none}
+  .next-step-item .ns-icon{font-size:18px;flex-shrink:0}
+
+  /* TOAST */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;padding:12px 24px;border-radius:50px;font-size:13px;font-weight:600;box-shadow:0 8px 24px rgba(4,30,66,0.3);transition:all .3s;z-index:9999;opacity:0;white-space:nowrap}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  .toast.error{background:var(--red)}
+
+  /* WHY JOIN */
+  .why-join{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:32px}
+  @media(min-width:540px){.why-join{grid-template-columns:repeat(3,1fr)}}
+  .why-item{background:var(--white);border-radius:var(--radius);padding:20px 16px;box-shadow:var(--shadow);text-align:center}
+  .why-item .wi-icon{font-size:32px;margin-bottom:10px}
+  .why-item h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .why-item p{font-size:12px;color:var(--grey);line-height:1.5}
+
+  /* FOOTER */
+  .simple-footer{text-align:center;padding:24px;font-size:12px;color:var(--grey)}
+  .simple-footer a{color:var(--blue)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="/"><svg class="logo-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg"><g transform="translate(100,50)"><rect x="8" y="0" width="44" height="72" rx="22" fill="#041E42"/><rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/><rect x="8" y="12" width="44" height="12" fill="#00A3E0"/><path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><line x1="30" y1="100" x2="30" y2="125" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/></g><g transform="translate(200,62)"><text font-family="Inter,Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#041E42" x="0" y="78">stagely</text><circle cx="364" cy="22" r="10" fill="#E40046"/><rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/><text font-family="Inter,Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text></g></svg></a>
+  <div class="header-nav">
+    <a href="/">← Back to site</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>List Your Act on <span>Stagely</span></h1>
+  <p>Join hundreds of artists getting booked across Dubai, Abu Dhabi and the UAE — completely free.</p>
+  <div class="hero-perks">
+    <span class="perk">✅ Free to list</span>
+    <span class="perk">💰 Keep more of your fee</span>
+    <span class="perk">📲 Direct client contact</span>
+    <span class="perk">🚀 Live within 24hrs</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- WHY JOIN -->
+  <div style="margin:32px 0 24px;text-align:center">
+    <div style="font-size:20px;font-weight:800;color:var(--navy);margin-bottom:16px">Why artists love Stagely</div>
+  </div>
+  <div class="why-join">
+    <div class="why-item"><div class="wi-icon">💰</div><h3>Earn More</h3><p>We charge only 10% vs agencies taking 25-30%. More money in your pocket.</p></div>
+    <div class="why-item"><div class="wi-icon">📲</div><h3>Direct Contact</h3><p>Clients contact you directly. No middleman, no delays, no lost messages.</p></div>
+    <div class="why-item"><div class="wi-icon">🎯</div><h3>Quality Bookings</h3><p>Events across Dubai, Abu Dhabi, weddings, corporate events, hotels and more.</p></div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar" id="progressBar">
+    <div class="progress-step active" id="ps1"><div class="step-circle">1</div><div class="step-label">Your Act</div></div>
+    <div class="progress-step" id="ps2"><div class="step-circle">2</div><div class="step-label">Details</div></div>
+    <div class="progress-step" id="ps3"><div class="step-circle">3</div><div class="step-label">Contact</div></div>
+    <div class="progress-step" id="ps4"><div class="step-circle">4</div><div class="step-label">Submit</div></div>
+  </div>
+
+  <!-- STEP 1: Category & Name -->
+  <div class="step active" id="step1">
+    <div class="form-card">
+      <h2>What type of act are you? 🎭</h2>
+      <div class="card-sub">Select your category and tell us your name.</div>
+
+      <div class="form-group">
+        <label>Select Category <span class="req">*</span></label>
+        <div class="cat-selector" id="catSelector">
+          <div class="cat-option" onclick="selectCat('singers','🎤','Singers',this)"><div class="cat-emoji">🎤</div><div class="cat-name">Singer</div></div>
+          <div class="cat-option" onclick="selectCat('djs','🎧','DJs',this)"><div class="cat-emoji">🎧</div><div class="cat-name">DJ</div></div>
+          <div class="cat-option" onclick="selectCat('bands','🎸','Live Bands',this)"><div class="cat-emoji">🎸</div><div class="cat-name">Live Band</div></div>
+          <div class="cat-option" onclick="selectCat('dancers','💃','Dancers',this)"><div class="cat-emoji">💃</div><div class="cat-name">Dancer</div></div>
+          <div class="cat-option" onclick="selectCat('magicians','🎩','Magicians',this)"><div class="cat-emoji">🎩</div><div class="cat-name">Magician</div></div>
+          <div class="cat-option" onclick="selectCat('comedians','🎭','Comedians',this)"><div class="cat-emoji">🎭</div><div class="cat-name">Comedian</div></div>
+          <div class="cat-option" onclick="selectCat('speakers','🎙️','Speakers',this)"><div class="cat-emoji">🎙️</div><div class="cat-name">Speaker</div></div>
+          <div class="cat-option" onclick="selectCat('other','🌟','Other',this)"><div class="cat-emoji">🌟</div><div class="cat-name">Other</div></div>
+        </div>
+        <input type="hidden" id="f-category"/>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name / Act Name <span class="req">*</span></label>
+          <input type="text" id="f-name" placeholder="e.g. Layla Al Mansoori"/>
+        </div>
+        <div class="form-group">
+          <label>Based In <span class="req">*</span></label>
+          <select id="f-city">
+            <option value="">Select city...</option>
+            <option>Dubai</option>
+            <option>Abu Dhabi</option>
+            <option>Sharjah</option>
+            <option>Ajman</option>
+            <option>Ras Al Khaimah</option>
+            <option>Fujairah</option>
+            <option>Other UAE</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="goStep(2)">Next: Your Details →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Bio & Price -->
+  <div class="step" id="step2">
+    <div class="form-card">
+      <h2>Tell us about your act 🌟</h2>
+      <div class="card-sub">Help clients understand what makes you special.</div>
+
+      <div class="form-group">
+        <label>Bio / Description <span class="req">*</span></label>
+        <textarea id="f-bio" placeholder="Describe your act — your style, experience, what events you perform at, what makes you unique..."></textarea>
+        <div class="hint">💡 Tip: Mention the types of events you do (weddings, corporate, hotels) and your music style or speciality.</div>
+      </div>
+
+      <div class="form-group">
+        <label>Starting Price (AED) <span class="req">*</span></label>
+        <input type="number" id="f-price" placeholder="e.g. 2500" min="0"/>
+        <div class="price-hints">
+          <span class="price-hint" onclick="setPrice(500)">AED 500</span>
+          <span class="price-hint" onclick="setPrice(1000)">AED 1,000</span>
+          <span class="price-hint" onclick="setPrice(2500)">AED 2,500</span>
+          <span class="price-hint" onclick="setPrice(5000)">AED 5,000</span>
+          <span class="price-hint" onclick="setPrice(10000)">AED 10,000+</span>
+        </div>
+        <div class="hint">This is your starting price. You can negotiate with clients directly.</div>
+      </div>
+
+      <div class="form-group">
+        <label>Photo URL</label>
+        <input type="text" id="f-photo" placeholder="https://link-to-your-photo.com/photo.jpg"/>
+        <div class="hint">Paste a link to your best performance photo. Use Instagram, Google Drive or Dropbox public link.</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goStep(1)">← Back</button>
+        <button class="btn btn-primary" onclick="goStep(3)">Next: Contact Info →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: Contact -->
+  <div class="step" id="step3">
+    <div class="form-card">
+      <h2>How can clients reach you? 📲</h2>
+      <div class="card-sub">Clients will contact you directly — no middleman.</div>
+
+      <div class="form-group">
+        <label>Instagram Handle <span class="req">*</span></label>
+        <input type="text" id="f-instagram" placeholder="@yourusername"/>
+        <div class="hint">Your Instagram profile will be shown on your listing.</div>
+      </div>
+
+      <div class="form-group">
+        <label>WhatsApp Number</label>
+        <input type="tel" id="f-whatsapp" placeholder="+971 50 123 4567"/>
+        <div class="hint">Clients can message you directly on WhatsApp.</div>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="f-email" placeholder="your@email.com"/>
+        <div class="hint">We'll send your approval confirmation here.</div>
+      </div>
+
+      <div class="form-group">
+        <label>YouTube / Video Link</label>
+        <input type="text" id="f-video" placeholder="https://youtube.com/..."/>
+        <div class="hint">Share a performance video — it greatly increases bookings.</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goStep(2)">← Back</button>
+        <button class="btn btn-primary" onclick="goStep(4)">Next: Review & Submit →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: Review -->
+  <div class="step" id="step4">
+    <div class="form-card">
+      <h2>Review your listing ✅</h2>
+      <div class="card-sub">Everything look good? Submit and we'll review within 24 hours.</div>
+
+      <div id="reviewContent" style="background:#f8f9fa;border-radius:10px;padding:20px;margin-bottom:20px">
+        <!-- filled by JS -->
+      </div>
+
+      <div class="form-group" style="margin-bottom:8px">
+        <label style="display:flex;align-items:flex-start;gap:10px;text-transform:none;letter-spacing:0;font-weight:400;font-size:13px;cursor:pointer">
+          <input type="checkbox" id="f-terms" style="width:18px;height:18px;margin-top:2px;flex-shrink:0"/>
+          I agree to the <a href="#" style="color:var(--blue)">Terms & Conditions</a> and confirm that all information provided is accurate.
+        </label>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goStep(3)">← Back</button>
+        <button class="btn btn-submit" onclick="submitForm()">🚀 Submit My Act</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">🎉</div>
+    <h2>You're on the list!</h2>
+    <p>Your act has been submitted successfully. We'll review it and get you live on Stagely within <strong>24 hours</strong>.</p>
+    <div class="next-steps">
+      <h3>What happens next?</h3>
+      <div class="next-step-item"><span class="ns-icon">📋</span>We review your profile</div>
+      <div class="next-step-item"><span class="ns-icon">✅</span>You get approved & go live</div>
+      <div class="next-step-item"><span class="ns-icon">📲</span>Clients start finding you</div>
+      <div class="next-step-item"><span class="ns-icon">💰</span>You get booked & earn more</div>
+    </div>
+    <a href="/" style="display:inline-block;background:var(--navy);color:#fff;padding:13px 28px;border-radius:50px;font-weight:700;font-size:14px">← Back to Stagely</a>
+  </div>
+
+</main>
+
+<div class="simple-footer">
+  © 2025 Stagely UAE · <a href="/">Home</a> · <a href="#">Terms</a> · <a href="#">Privacy</a>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SUPABASE_URL = 'https://darbunnlilqwbeobcelp.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
+
+let currentStep = 1;
+let selectedCategory = '';
+
+function selectCat(slug, emoji, name, el) {
+  document.querySelectorAll('.cat-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedCategory = slug;
+  document.getElementById('f-category').value = slug;
+}
+
+function setPrice(val) {
+  document.getElementById('f-price').value = val;
+}
+
+function toast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'toast ' + type + ' show';
+  setTimeout(() => t.className = 'toast', 3000);
+}
+
+function goStep(n) {
+  // Validate current step
+  if (n > currentStep) {
+    if (currentStep === 1) {
+      if (!selectedCategory) { toast('Please select a category ☝️', 'error'); return; }
+      if (!document.getElementById('f-name').value.trim()) { toast('Please enter your name ☝️', 'error'); return; }
+      if (!document.getElementById('f-city').value) { toast('Please select your city ☝️', 'error'); return; }
+    }
+    if (currentStep === 2) {
+      if (!document.getElementById('f-bio').value.trim()) { toast('Please write a short bio ☝️', 'error'); return; }
+      if (!document.getElementById('f-price').value) { toast('Please enter your starting price ☝️', 'error'); return; }
+    }
+    if (currentStep === 3) {
+      if (!document.getElementById('f-instagram').value.trim()) { toast('Please enter your Instagram handle ☝️', 'error'); return; }
+    }
+  }
+
+  // Update progress
+  document.querySelectorAll('.progress-step').forEach((s, i) => {
+    s.classList.remove('active', 'done');
+    if (i + 1 < n) s.classList.add('done');
+    if (i + 1 === n) s.classList.add('active');
+  });
+  // Update step circles for done steps
+  document.querySelectorAll('.progress-step.done .step-circle').forEach(c => c.textContent = '✓');
+
+  // Show/hide steps
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + n).classList.add('active');
+  currentStep = n;
+
+  // Fill review
+  if (n === 4) fillReview();
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function fillReview() {
+  const r = document.getElementById('reviewContent');
+  const row = (label, val) => val ? `<div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #e5e7eb;font-size:13px"><span style="font-weight:700;color:#041E42;min-width:110px">${label}</span><span style="color:#555">${val}</span></div>` : '';
+  r.innerHTML = `
+    ${row('Category', document.getElementById('f-category').value)}
+    ${row('Name', document.getElementById('f-name').value)}
+    ${row('City', document.getElementById('f-city').value)}
+    ${row('Price from', 'AED ' + parseInt(document.getElementById('f-price').value||0).toLocaleString())}
+    ${row('Instagram', document.getElementById('f-instagram').value)}
+    ${row('WhatsApp', document.getElementById('f-whatsapp').value)}
+    ${row('Email', document.getElementById('f-email').value)}
+    ${row('Bio', document.getElementById('f-bio').value.substring(0,120) + (document.getElementById('f-bio').value.length > 120 ? '...' : ''))}
+  `;
+}
+
+async function submitForm() {
+  if (!document.getElementById('f-terms').checked) {
+    toast('Please agree to the terms ☝️', 'error'); return;
+  }
+
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = '⏳ Submitting...';
+  btn.disabled = true;
+
+  const data = {
+    name: document.getElementById('f-name').value.trim(),
+    category: selectedCategory,
+    city: document.getElementById('f-city').value,
+    bio: document.getElementById('f-bio').value.trim(),
+    price_from: parseInt(document.getElementById('f-price').value) || 0,
+    instagram: document.getElementById('f-instagram').value.trim(),
+    whatsapp: document.getElementById('f-whatsapp').value.trim(),
+    photo_url: document.getElementById('f-photo').value.trim(),
+    rating: 5,
+    active: false  // pending approval
+  };
+
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/artists', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+      // Hide form, show success
+      document.getElementById('progressBar').style.display = 'none';
+      document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
+      document.querySelector('.why-join').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const err = await res.text();
+      console.error(err);
+      toast('Something went wrong. Please try again.', 'error');
+      btn.textContent = '🚀 Submit My Act';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    toast('Connection error. Please try again.', 'error');
+    btn.textContent = '🚀 Submit My Act';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
