@@ -149,6 +149,8 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 @media(min-width:768px){.mobile-spacer{display:none}}
 #back-top{position:fixed;bottom:80px;right:16px;background:var(--navy);color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:16px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(4,30,66,0.3);z-index:998}
 #back-top.visible{display:flex}
+.artist-section-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.artist-section-grid{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
@@ -255,6 +257,94 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
     <a href="/register.html" style="text-decoration:none"><div class="promo-tile red-t"><div class="promo-icon">🎤</div><div class="promo-text"><div class="promo-label">Join Free</div><div class="promo-title">Are You an Artist?</div><div class="promo-sub">List free, get booked, earn more</div></div></div></a>
   </div>
 
+
+  <!-- FOR ARTISTS SECTION -->
+  <div style="margin:40px 0">
+    <div style="text-align:center;margin-bottom:28px">
+      <div style="font-size:22px;font-weight:800;color:var(--navy)">Present Your Act on Stagely</div>
+      <div style="font-size:14px;color:var(--grey);margin-top:6px">The platform that brings artists and clients together</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:16px" class="artist-section-grid">
+
+      <!-- BLUE INFO BOX -->
+      <div style="background:var(--navy);border-radius:var(--radius);padding:28px 24px;color:#fff">
+        <div style="font-size:18px;font-weight:800;margin-bottom:16px">🎭 For Every Act</div>
+        <p style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,0.82);margin-bottom:14px">Do you have an act and want to get booked? Present your act on Stagely — the platform that brings artists and clients together, like Airbnb for entertainment.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:16px">Singers · DJs · Dancers · Magicians · Comedians · Speakers · MCs · Bands · Face painters · Food trucks · and more</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="color:#00A3E0;font-size:18px">✦</span> More functionality — complete act management suite</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="color:#00A3E0;font-size:18px">✦</span> More convenience — no need to send invoices</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="color:#00A3E0;font-size:18px">✦</span> More bookings — and that's what we're here for!</div>
+        </div>
+      </div>
+
+      <!-- GREEN HOW IT WORKS BOX -->
+      <div style="background:#f0fdf4;border:2px solid #10b981;border-radius:var(--radius);padding:28px 24px">
+        <div style="font-size:18px;font-weight:800;color:#065f46;margin-bottom:20px">⚡ How It Works</div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">1</div>
+            <div><div style="font-size:13.5px;font-weight:700;color:#065f46">Register for free</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">No obligations. Registration is completely free.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">2</div>
+            <div><div style="font-size:13.5px;font-weight:700;color:#065f46">Create your profile</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">Add photos, bio, pricing and availability.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
+            <div><div style="font-size:13.5px;font-weight:700;color:#065f46">Get discovered</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">Clients find you and send booking requests directly.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">4</div>
+            <div><div style="font-size:13.5px;font-weight:700;color:#065f46">Accept & get paid</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">Stagely handles the invoice and payment for you.</div></div>
+          </div>
+        </div>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid #a7f3d0">
+          <div style="font-size:12px;color:#065f46;font-weight:700;margin-bottom:8px">ARE YOU AN AGENT?</div>
+          <p style="font-size:12.5px;color:#6b7280;line-height:1.6">Manage multiple artists from one account. Switch between artists with one click, handle their requests, quotes and planning on their behalf.</p>
+        </div>
+      </div>
+
+      <!-- REGISTRATION FORM -->
+      <div style="background:#fff;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow);border-top:4px solid var(--red)">
+        <div style="font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px">🚀 Join Stagely Free</div>
+        <div style="font-size:13px;color:var(--grey);margin-bottom:20px">Start getting booked across the UAE today.</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Your Name / Act Name</label>
+            <input id="qs-name" type="text" placeholder="e.g. Layla Al Mansoori" style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none"/>
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Type of Act</label>
+            <select id="qs-cat" style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;background:#fff">
+              <option value="">Select category...</option>
+              <option>Singer</option><option>DJ</option><option>Live Band</option>
+              <option>Dancer</option><option>Magician</option><option>Comedian</option>
+              <option>Speaker</option><option>MC / Host</option><option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Your City</label>
+            <select id="qs-city" style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;background:#fff">
+              <option value="">Select city...</option>
+              <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+              <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Instagram or WhatsApp</label>
+            <input id="qs-contact" type="text" placeholder="@handle or +971..." style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none"/>
+          </div>
+          <button onclick="quickSignup()" style="width:100%;background:var(--red);color:#fff;border:none;border-radius:50px;padding:13px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:4px;transition:background .2s">🎤 Start Getting Booked →</button>
+          <div style="text-align:center;font-size:11.5px;color:var(--grey)">Free to join · No obligations · Live within 24hrs</div>
+          <div id="qs-success" style="display:none;background:#d1fae5;border-radius:8px;padding:12px;text-align:center;font-size:13px;font-weight:600;color:#065f46">✅ Thanks! We'll be in touch within 24 hours.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- END FOR ARTISTS SECTION -->
+
   <div class="hiw-section">
     <h2>How Stagely Works</h2>
     <div class="hiw-steps">
@@ -349,6 +439,30 @@ async function loadArtists(){
     }
     el.innerHTML=html;
   }catch(e){console.error(e)}
+}
+
+async function quickSignup(){
+  var name=document.getElementById('qs-name').value.trim();
+  var cat=document.getElementById('qs-cat').value;
+  var city=document.getElementById('qs-city').value;
+  var contact=document.getElementById('qs-contact').value.trim();
+  if(!name||!cat||!city){alert('Please fill in your name, act type and city.');return}
+  var btn=document.querySelector('[onclick="quickSignup()"]');
+  btn.textContent='⏳ Submitting...';btn.disabled=true;
+  try{
+    var instagram=contact.indexOf('@')>-1?contact:'';
+    var whatsapp=contact.indexOf('@')===-1?contact:'';
+    await fetch(SUPABASE_URL+'/rest/v1/artists',{
+      method:'POST',
+      headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=representation'},
+      body:JSON.stringify({name:name,category:cat.toLowerCase(),city:city,instagram:instagram,whatsapp:whatsapp,bio:'Registered via homepage quick form.',price_from:0,rating:5,active:false})
+    });
+    document.getElementById('qs-success').style.display='block';
+    btn.style.display='none';
+  }catch(e){
+    btn.textContent='🎤 Start Getting Booked →';btn.disabled=false;
+    alert('Something went wrong. Please try again.');
+  }
 }
 
 function scrollC(btn,dir){btn.parentElement.querySelector('.carousel').scrollBy({left:dir*260,behavior:'smooth'})}
