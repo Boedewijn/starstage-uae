@@ -471,11 +471,14 @@ async function loadArtists() {
         <td>${a.city||'—'}</td>
         <td>AED ${(a.price_from||0).toLocaleString()}</td>
         <td>⭐ ${a.rating||5}</td>
-        <td><span class="badge badge-live">🟢 Live</span></td>
+        <td>${a.visible === false ? '<span class="badge badge-hidden">👁️ Hidden</span>' : '<span class="badge badge-live">🟢 Live</span>'}</td>
         <td>
           <div class="action-btns">
             <button class="btn-sm" onclick="editArtist(${a.id})">✏️ Edit</button>
-            <button class="btn-sm grey" onclick="hideArtist(${a.id})">👁️ Hide</button>
+            ${a.visible === false
+              ? `<button class="btn-sm green" onclick="showArtist(${a.id})">👁️ Show</button>`
+              : `<button class="btn-sm grey" onclick="hideArtist(${a.id})">🙈 Hide</button>`
+            }
             <button class="btn-sm red" onclick="deleteArtist(${a.id})">🗑️</button>
           </div>
         </td>
@@ -485,11 +488,19 @@ async function loadArtists() {
 }
 
 async function hideArtist(id) {
-  if (!confirm('Hide this artist from the site? You can re-approve them later.')) return;
+  if (!confirm('Hide this artist from the site? They stay approved but become invisible.')) return;
   try {
-    await api('artists?id=eq.' + id, 'PATCH', { active: false });
+    await api('artists?id=eq.' + id, 'PATCH', { visible: false });
     toast('Artist hidden from site');
-    loadArtists(); loadDashboard(); loadApprovals();
+    loadArtists(); loadDashboard();
+  } catch(e) { toast('Error', 'error'); }
+}
+
+async function showArtist(id) {
+  try {
+    await api('artists?id=eq.' + id, 'PATCH', { visible: true });
+    toast('✅ Artist is visible again!');
+    loadArtists();
   } catch(e) { toast('Error', 'error'); }
 }
 
