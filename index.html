@@ -191,12 +191,8 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
     .mnav-item>a .arr{font-size:10px;opacity:.5}
     .mnav-drop{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(4,30,66,0.14);min-width:200px;padding:8px;z-index:2000}
     .mnav-drop.wide{min-width:600px;padding:20px;flex-wrap:wrap;gap:8px}
-    .mnav-drop.open{display:block}
-    .mnav-drop.wide.open{display:flex}
-    @media(min-width:900px){
-      .mnav-item:hover .mnav-drop{display:block}
-      .mnav-item:hover .mnav-drop.wide{display:flex}
-    }
+    .mnav-drop.open{display:block!important}
+    .mnav-drop.wide.open{display:flex!important}
     .mnav-drop a{padding:8px 12px;font-size:13px;color:#041E42;display:block;border-radius:8px;font-weight:500;text-decoration:none;text-transform:none;letter-spacing:0}
     .mnav-drop a:hover{background:#eaf6fd;color:#00A3E0}
     .mnav-drop-col{flex:1;min-width:130px}
@@ -282,7 +278,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
       </div>
     </div>
     <div class="mnav-item">
-      <a href="/singers.html" class="mnav-blue">🎙️ Speakers</a>
+      <a href="#" class="mnav-blue">🎙️ Speakers</a>
     </div>
     <div class="mnav-item">
       <a href="#" class="mnav-red">⭐ Famous Artists</a>
@@ -573,23 +569,13 @@ function toggleDrop(e, id) {
   e.stopPropagation();
   var drop = document.getElementById(id);
   if (!drop) return;
-  var isOpen = drop.style.display === 'block' || drop.style.display === 'flex';
-  // Close all
-  ['drop-cat','drop-event','drop-loc','drop-theme'].forEach(function(d){
-    var el = document.getElementById(d);
-    if (el) el.style.display = 'none';
-  });
-  // Open clicked one
-  if (!isOpen) {
-    drop.style.display = drop.classList.contains('wide') ? 'flex' : 'block';
-  }
+  var isOpen = drop.classList.contains('open');
+  document.querySelectorAll('.mnav-drop').forEach(function(d){ d.classList.remove('open'); });
+  if (!isOpen) drop.classList.add('open');
 }
 document.addEventListener('click', function(e){
   if (!e.target.closest('.mnav-item')) {
-    ['drop-cat','drop-event','drop-loc','drop-theme'].forEach(function(d){
-      var el = document.getElementById(d);
-      if (el) el.style.display = 'none';
-    });
+    document.querySelectorAll('.mnav-drop').forEach(function(d){ d.classList.remove('open'); });
   }
 });
 
