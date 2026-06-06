@@ -33,22 +33,52 @@ a{color:inherit;text-decoration:none}
 .page-layout{max-width:1200px;margin:0 auto;padding:0 16px 100px;display:grid;grid-template-columns:1fr;gap:20px}
 @media(min-width:900px){.page-layout{grid-template-columns:1fr 360px;padding:0 24px 40px;align-items:start}}
 
-/* LEFT */
+/* MAIN CARD */
 .main-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
 
-/* VIDEO / PHOTO COVER */
-.media-section{width:100%;background:#041E42;position:relative}
-.video-wrap{position:relative;padding-bottom:52%;height:0;overflow:hidden}
-.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-.photo-cover{width:100%;height:280px;object-fit:cover;display:block}
-.photo-cover-emoji{width:100%;height:240px;background:linear-gradient(135deg,#eaf6fd,#c5e0f5);display:flex;align-items:center;justify-content:center;font-size:90px}
-@media(min-width:640px){.photo-cover{height:360px}.photo-cover-emoji{height:320px}}
+/* ===================== CAROUSEL ===================== */
+.carousel{position:relative;background:#000;width:100%}
 
-/* PHOTO GALLERY */
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:3px}
-.gallery img{width:100%;height:100px;object-fit:cover;cursor:pointer;transition:opacity .2s}
-.gallery img:hover{opacity:.85}
-@media(min-width:640px){.gallery img{height:130px}}
+/* Main stage */
+.carousel-stage{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;background:#111}
+.carousel-stage .slide{position:absolute;inset:0;display:none;align-items:center;justify-content:center}
+.carousel-stage .slide.active{display:flex}
+.carousel-stage .slide img{width:100%;height:100%;object-fit:cover}
+.carousel-stage .slide iframe{width:100%;height:100%;border:0}
+.carousel-stage .slide .emoji-placeholder{font-size:90px;background:linear-gradient(135deg,#eaf6fd,#c5e0f5);width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+/* Arrow buttons */
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(4,30,66,0.55);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:background .2s;-webkit-tap-highlight-color:transparent}
+.carousel-arrow:hover{background:rgba(4,30,66,0.85)}
+.carousel-arrow.prev{left:10px}
+.carousel-arrow.next{right:10px}
+.carousel-arrow.hidden{display:none}
+
+/* Counter badge */
+.carousel-counter{position:absolute;bottom:10px;right:12px;background:rgba(4,30,66,0.6);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:50px;z-index:10;pointer-events:none}
+
+/* Thumbnail strip */
+.carousel-thumbs{display:flex;gap:6px;padding:8px 10px;background:#000;overflow-x:auto;scrollbar-width:none}
+.carousel-thumbs::-webkit-scrollbar{display:none}
+.carousel-thumb{flex-shrink:0;width:52px;height:52px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s;position:relative;background:#222}
+.carousel-thumb.active{border-color:var(--blue)}
+.carousel-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.carousel-thumb .play-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);font-size:18px}
+.carousel-thumb .thumb-emoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px;background:linear-gradient(135deg,#eaf6fd,#c5e0f5)}
+
+/* Fullscreen button */
+.carousel-fs{position:absolute;bottom:10px;left:12px;background:rgba(4,30,66,0.55);border:none;color:#fff;width:32px;height:32px;border-radius:8px;font-size:14px;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.carousel-fs:hover{background:rgba(4,30,66,0.85)}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:3000;align-items:center;justify-content:center;flex-direction:column}
+.lightbox.open{display:flex}
+.lightbox-img{max-width:95vw;max-height:85vh;object-fit:contain;border-radius:8px}
+.lightbox-close{position:absolute;top:16px;right:20px;color:#fff;font-size:28px;cursor:pointer;background:none;border:none;line-height:1}
+.lightbox-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lightbox-arrow.prev{left:12px}
+.lightbox-arrow.next{right:12px}
+/* ===================================================== */
 
 /* ARTIST INFO */
 .artist-info{padding:20px}
@@ -86,18 +116,41 @@ a{color:inherit;text-decoration:none}
 .spec-val{font-size:13px;font-weight:700;color:var(--navy);margin-top:2px}
 
 /* BIO */
-.bio-section{margin-bottom:24px}
+.bio-section{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid #f0f0f0}
 .bio-section h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px}
 .bio-text{font-size:14px;color:#555;line-height:1.8}
 .bio-more{display:none}
 .bio-toggle{color:var(--blue);font-size:13px;font-weight:600;cursor:pointer;margin-top:8px;display:inline-block}
 
-/* CONTACT BTNS */
-.contact-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.btn-wa{flex:1;min-width:140px;background:#25D366;color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;-webkit-tap-highlight-color:transparent}
-.btn-wa:hover{background:#1da851}
-.btn-ig{background:#f0f4f8;color:var(--navy);border:2px solid #e5e7eb;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:8px;-webkit-tap-highlight-color:transparent}
-.btn-ig:hover{border-color:var(--blue);background:#eaf6fd}
+/* REPERTOIRE */
+.repertoire-section{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid #f0f0f0}
+.repertoire-section h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px}
+.repertoire-table{width:100%;border-collapse:collapse}
+.repertoire-table tr{border-bottom:1px solid #f0f0f0}
+.repertoire-table tr:last-child{border-bottom:none}
+.repertoire-table td{padding:10px 8px;font-size:13px;color:#444}
+.repertoire-table td:first-child{width:36px;color:var(--blue);font-size:16px}
+.repertoire-table td:nth-child(2){font-weight:600;color:var(--navy)}
+.repertoire-table td:last-child{color:var(--grey)}
+.repertoire-note{font-size:13px;color:var(--grey);margin-top:12px;font-style:italic}
+
+/* REVIEWS */
+.reviews-section{margin-bottom:0}
+.reviews-section h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px}
+.reviews-summary{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding:16px;background:#f8f9fa;border-radius:10px}
+.reviews-summary .rstars{color:#f59e0b;font-size:20px}
+.reviews-summary .score{font-size:22px;font-weight:800;color:var(--navy)}
+.reviews-summary .count{font-size:13px;color:var(--grey)}
+.review-item{padding:16px 0;border-bottom:1px solid #f0f0f0}
+.review-item:last-child{border-bottom:none}
+.review-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:8px;flex-wrap:wrap}
+.review-author{font-weight:700;font-size:13px;color:var(--navy)}
+.review-date{font-size:12px;color:var(--grey)}
+.review-stars{color:#f59e0b;font-size:14px;margin-bottom:6px}
+.review-title{font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px}
+.review-text{font-size:13px;color:#555;line-height:1.7}
+.review-badge{display:inline-flex;align-items:center;gap:4px;background:#f0f4f8;border-radius:50px;padding:3px 10px;font-size:11px;font-weight:600;color:var(--grey);margin-top:8px}
+.no-reviews{text-align:center;padding:32px 16px;color:var(--grey);font-size:14px}
 
 /* SIMILAR */
 .similar-section{margin-top:24px}
@@ -122,13 +175,6 @@ a{color:inherit;text-decoration:none}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);background:#fff}
 .form-group textarea{resize:vertical;min-height:80px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-
-/* DURATION SELECTOR */
-.duration-select{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
-.duration-opt{border:2px solid #e5e7eb;border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;color:var(--navy)}
-.duration-opt:hover,.duration-opt.active{border-color:var(--blue);background:#eaf6fd}
-.duration-price{font-weight:800;color:var(--navy)}
-
 .btn-submit{width:100%;background:var(--red);color:#fff;border:none;border-radius:50px;padding:16px;font-size:16px;font-weight:800;font-family:inherit;cursor:pointer;transition:background .2s;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px}
 .btn-submit:hover{background:#c4003c}
 .respond-badge{text-align:center;font-size:12px;color:var(--grey);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px}
@@ -145,9 +191,7 @@ a{color:inherit;text-decoration:none}
 /* MOBILE BAR */
 .mobile-bar{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid #e5e7eb;padding:12px 16px;display:none;gap:10px;z-index:999;box-shadow:0 -4px 16px rgba(4,30,66,0.10)}
 @media(max-width:899px){.mobile-bar{display:flex}}
-.mobile-bar .btn-wa,.mobile-bar .btn-inq{flex:1;padding:13px;border:none;border-radius:50px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
-.mobile-bar .btn-wa{background:#25D366;color:#fff}
-.mobile-bar .btn-inq{background:var(--navy);color:#fff}
+.mobile-bar .btn-inq{flex:1;padding:13px;border:none;border-radius:50px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;background:var(--navy);color:#fff}
 
 /* MODAL */
 .modal-ov{display:none;position:fixed;inset:0;background:rgba(4,30,66,0.5);z-index:2000;align-items:flex-end;justify-content:center}
@@ -181,7 +225,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </header>
 
-<div class="breadcrumb" id="breadcrumb">
+<div class="breadcrumb">
   <a href="/">Home</a> › <a href="/singers.html" id="bcCat">Singers</a> › <span id="bcName">Loading...</span>
 </div>
 
@@ -197,15 +241,22 @@ a{color:inherit;text-decoration:none}
     <div>
       <div class="main-card">
 
-        <!-- MEDIA -->
-        <div class="media-section" id="mediaSection">
-          <div class="photo-cover-emoji" id="coverEmoji">🎤</div>
+        <!-- ===== CAROUSEL ===== -->
+        <div class="carousel" id="carousel">
+          <div class="carousel-stage" id="carouselStage">
+            <!-- slides injected by JS -->
+          </div>
+          <button class="carousel-arrow prev hidden" id="carouselPrev" onclick="carouselMove(-1)">&#8249;</button>
+          <button class="carousel-arrow next hidden" id="carouselNext" onclick="carouselMove(1)">&#8250;</button>
+          <div class="carousel-counter" id="carouselCounter" style="display:none"></div>
+          <button class="carousel-fs" id="carouselFs" onclick="openLightbox()" title="Fullscreen" style="display:none">⛶</button>
         </div>
-
-        <!-- GALLERY -->
-        <div class="gallery" id="photoGallery" style="display:none"></div>
+        <!-- Thumbnail strip (shown only when >1 item) -->
+        <div class="carousel-thumbs" id="carouselThumbs" style="display:none"></div>
+        <!-- ==================== -->
 
         <div class="artist-info">
+
           <!-- NAME + TAGS -->
           <div class="artist-name" id="artistName">Loading...</div>
           <div class="artist-tags" id="artistTags"></div>
@@ -233,11 +284,11 @@ a{color:inherit;text-decoration:none}
           </div>
 
           <!-- SPECS -->
-          <div class="specs-grid" id="specsGrid">
-            <div class="spec-item"><div class="spec-icon">👤</div><div class="spec-label">Performers</div><div class="spec-val" id="spec-performers">1 person</div></div>
-            <div class="spec-item"><div class="spec-icon">⏱️</div><div class="spec-label">Duration</div><div class="spec-val" id="spec-duration">From 30 min</div></div>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="spec-icon">👤</div><div class="spec-label">Performers</div><div class="spec-val" id="spec-performers">—</div></div>
+            <div class="spec-item"><div class="spec-icon">⏱️</div><div class="spec-label">Duration</div><div class="spec-val" id="spec-duration">—</div></div>
             <div class="spec-item"><div class="spec-icon">🏠</div><div class="spec-label">Location</div><div class="spec-val">Indoor & Outdoor</div></div>
-            <div class="spec-item"><div class="spec-icon">🌍</div><div class="spec-label">Languages</div><div class="spec-val" id="spec-lang">EN, AR</div></div>
+            <div class="spec-item"><div class="spec-icon">🌍</div><div class="spec-label">Languages</div><div class="spec-val" id="spec-lang">—</div></div>
             <div class="spec-item"><div class="spec-icon">📍</div><div class="spec-label">City</div><div class="spec-val" id="spec-city">Dubai</div></div>
             <div class="spec-item"><div class="spec-icon">💰</div><div class="spec-label">Price from</div><div class="spec-val" id="spec-price">AED 0</div></div>
           </div>
@@ -250,8 +301,20 @@ a{color:inherit;text-decoration:none}
             <span class="bio-toggle" id="bioToggle" onclick="toggleBio()" style="display:none">Read more ▾</span>
           </div>
 
-          <!-- CONTACT -->
-          <div class="contact-btns" id="contactBtns"></div>
+          <!-- REPERTOIRE -->
+          <div class="repertoire-section" id="repertoireSection" style="display:none">
+            <h3>🎵 Repertoire</h3>
+            <table class="repertoire-table" id="repertoireTable"></table>
+            <p class="repertoire-note">Artist is open to song requests. Mention your preferences in your inquiry.</p>
+          </div>
+
+          <!-- REVIEWS -->
+          <div class="reviews-section" id="reviewsSection">
+            <h3>Reviews</h3>
+            <div class="reviews-summary" id="reviewsSummary" style="display:none"></div>
+            <div id="reviewsList"></div>
+          </div>
+
         </div>
       </div>
 
@@ -269,49 +332,23 @@ a{color:inherit;text-decoration:none}
       <div class="inquiry-card">
         <div class="inq-title">📩 Send a free inquiry</div>
         <div class="inq-sub" id="inqSub">No obligations — response within 24 hours</div>
-
         <div id="inquiryForm">
-          <div class="form-group">
-            <label>Your Name *</label>
-            <input type="text" id="inq-name" placeholder="Your full name"/>
-          </div>
-          <div class="form-group">
-            <label>Your Email *</label>
-            <input type="email" id="inq-email" placeholder="your@email.com"/>
-          </div>
-          <div class="form-group">
-            <label>Phone / WhatsApp</label>
-            <input type="tel" id="inq-phone" placeholder="+971 50 123 4567"/>
-          </div>
+          <div class="form-group"><label>Your Name *</label><input type="text" id="inq-name" placeholder="Your full name"/></div>
+          <div class="form-group"><label>Your Email *</label><input type="email" id="inq-email" placeholder="your@email.com"/></div>
+          <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" id="inq-phone" placeholder="+971 50 123 4567"/></div>
           <div class="form-row">
-            <div class="form-group">
-              <label>Event Date *</label>
-              <input type="date" id="inq-date"/>
-            </div>
-            <div class="form-group">
-              <label>Event Type *</label>
+            <div class="form-group"><label>Event Date *</label><input type="date" id="inq-date"/></div>
+            <div class="form-group"><label>Event Type *</label>
               <select id="inq-type">
                 <option value="">Select...</option>
-                <option>Wedding</option>
-                <option>Corporate Event</option>
-                <option>Birthday Party</option>
-                <option>National Day</option>
-                <option>Festival</option>
-                <option>Hotel / Restaurant</option>
-                <option>Gala Dinner</option>
-                <option>Graduation</option>
-                <option>Other</option>
+                <option>Wedding</option><option>Corporate Event</option><option>Birthday Party</option>
+                <option>National Day</option><option>Festival</option><option>Hotel / Restaurant</option>
+                <option>Gala Dinner</option><option>Graduation</option><option>Other</option>
               </select>
             </div>
           </div>
-          <div class="form-group">
-            <label>Event Location</label>
-            <input type="text" id="inq-location" placeholder="e.g. JW Marriott Dubai"/>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea id="inq-message" placeholder="Tell the artist about your event — duration, audience size, special requests..."></textarea>
-          </div>
+          <div class="form-group"><label>Event Location</label><input type="text" id="inq-location" placeholder="e.g. JW Marriott Dubai"/></div>
+          <div class="form-group"><label>Message</label><textarea id="inq-message" placeholder="Tell the artist about your event — duration, audience size, special requests..."></textarea></div>
           <button class="btn-submit" onclick="submitInquiry()">📩 Request this act</button>
           <div class="respond-badge">⚡ Artist responds within 24 hours</div>
           <div class="trust-list">
@@ -321,7 +358,6 @@ a{color:inherit;text-decoration:none}
             <div class="trust-item"><span class="ck">✔</span> Best price guarantee</div>
           </div>
         </div>
-
         <div class="form-success" id="formSuccess">
           <div class="fs-icon">🎉</div>
           <h4>Inquiry sent!</h4>
@@ -337,7 +373,6 @@ a{color:inherit;text-decoration:none}
 <!-- MOBILE BAR -->
 <div class="mobile-bar" id="mobileBar" style="display:none">
   <button class="btn-inq" onclick="document.getElementById('inquiryModal').classList.add('open')">📩 Send Inquiry</button>
-  <button class="btn-wa" id="mobileWA">💬 WhatsApp</button>
 </div>
 
 <!-- MOBILE INQUIRY MODAL -->
@@ -361,6 +396,14 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-arrow prev" onclick="lightboxMove(-1)">&#8249;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
+  <button class="lightbox-arrow next" onclick="lightboxMove(1)">&#8250;</button>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -369,22 +412,211 @@ var SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6I
 var CAT={singers:{bg:'#eaf6fd',emoji:'🎤'},djs:{bg:'#fff0f3',emoji:'🎧'},bands:{bg:'#eaf0fa',emoji:'🎸'},dancers:{bg:'#fff0f3',emoji:'💃'},magicians:{bg:'#f3eafd',emoji:'🎩'},comedians:{bg:'#fdf5ea',emoji:'🎭'},speakers:{bg:'#eaf6fd',emoji:'🎙️'}};
 var artist=null;
 
+/* ========== CAROUSEL STATE ========== */
+var carouselItems=[]; // [{type:'image'|'video', src:string, thumb:string}]
+var carouselIdx=0;
+var lightboxPhotos=[]; // only image URLs for lightbox
+var lightboxIdx=0;
+
+function buildCarousel(a){
+  var s=CAT[a.category]||{bg:'#f0f4f8',emoji:'🎭'};
+  var items=[];
+
+  // 1. Videos first (video_url + extra_videos JSON)
+  function addVideo(url){
+    if(!url) return;
+    var embed=url.replace('watch?v=','embed/').replace('youtu.be/','www.youtube.com/embed/');
+    // thumbnail from YouTube
+    var vidId=null;
+    var m=url.match(/(?:v=|embed\/|youtu\.be\/)([^&?/]+)/);
+    if(m) vidId=m[1];
+    var thumb=vidId?'https://img.youtube.com/vi/'+vidId+'/mqdefault.jpg':'';
+    items.push({type:'video',src:embed+'?rel=0&modestbranding=1',thumb:thumb,vidId:vidId});
+  }
+  if(a.video_url) addVideo(a.video_url);
+  // extra_videos: stored as JSON array of YouTube URLs
+  if(a.extra_videos){
+    try{
+      var ev=JSON.parse(a.extra_videos);
+      ev.forEach(function(u){addVideo(u);});
+    }catch(e){}
+  }
+
+  // 2. Photos (photo_url + extra_photos JSON array)
+  function addPhoto(url){
+    if(!url) return;
+    items.push({type:'image',src:url,thumb:url});
+    lightboxPhotos.push(url);
+  }
+  if(a.photo_url) addPhoto(a.photo_url);
+  if(a.extra_photos){
+    try{
+      var ep=JSON.parse(a.extra_photos);
+      ep.forEach(function(u){addPhoto(u);});
+    }catch(e){}
+  }
+
+  // 3. Fallback emoji
+  if(!items.length){
+    items.push({type:'emoji',emoji:s.emoji,bg:s.bg});
+  }
+
+  carouselItems=items;
+  carouselIdx=0;
+
+  var stage=document.getElementById('carouselStage');
+  var thumbsEl=document.getElementById('carouselThumbs');
+  var counter=document.getElementById('carouselCounter');
+  var fsBtn=document.getElementById('carouselFs');
+
+  // Build slides
+  var slidesHTML='';
+  for(var i=0;i<items.length;i++){
+    var it=items[i];
+    var activeClass=i===0?' active':'';
+    if(it.type==='video'){
+      // Use lazy src — only set on active to avoid all iframes loading at once
+      slidesHTML+='<div class="slide'+activeClass+'" data-idx="'+i+'"><iframe src="'+(i===0?it.src:'')+'" data-src="'+it.src+'" allowfullscreen></iframe></div>';
+    } else if(it.type==='image'){
+      slidesHTML+='<div class="slide'+activeClass+'" data-idx="'+i+'"><img src="'+it.src+'" alt="Photo '+(i+1)+'" onclick="openLightboxAt('+lightboxPhotos.indexOf(it.src)+')"/></div>';
+    } else {
+      slidesHTML+='<div class="slide'+activeClass+'" data-idx="'+i+'"><div class="emoji-placeholder" style="background:linear-gradient(135deg,'+it.bg+',#fff)">'+it.emoji+'</div></div>';
+    }
+  }
+  stage.innerHTML=slidesHTML;
+
+  // Build thumbnails (only if >1)
+  if(items.length>1){
+    var thumbsHTML='';
+    for(var j=0;j<items.length;j++){
+      var it2=items[j];
+      var activeT=j===0?' active':'';
+      if(it2.type==='video'){
+        var tImg=it2.thumb?'<img src="'+it2.thumb+'" alt="video"/>':'<div class="thumb-emoji">🎬</div>';
+        thumbsHTML+='<div class="carousel-thumb'+activeT+'" onclick="carouselGoTo('+j+')" title="Video '+(j+1)+'">'+tImg+'<div class="play-icon">▶</div></div>';
+      } else if(it2.type==='image'){
+        thumbsHTML+='<div class="carousel-thumb'+activeT+'" onclick="carouselGoTo('+j+')" title="Photo"><img src="'+it2.thumb+'" alt="thumb"/></div>';
+      } else {
+        thumbsHTML+='<div class="carousel-thumb'+activeT+'" onclick="carouselGoTo('+j+')" title="Photo"><div class="thumb-emoji">'+it2.emoji+'</div></div>';
+      }
+    }
+    thumbsEl.innerHTML=thumbsHTML;
+    thumbsEl.style.display='flex';
+
+    // Arrows + counter
+    document.getElementById('carouselPrev').classList.remove('hidden');
+    document.getElementById('carouselNext').classList.remove('hidden');
+    counter.style.display='block';
+    counter.textContent='1 / '+items.length;
+  }
+
+  // Fullscreen button (only for photos)
+  if(lightboxPhotos.length>0) fsBtn.style.display='flex';
+
+  updateCarouselArrows();
+}
+
+function carouselGoTo(idx){
+  if(idx<0||idx>=carouselItems.length) return;
+
+  // Hide current
+  var slides=document.querySelectorAll('#carouselStage .slide');
+  var thumbs=document.querySelectorAll('#carouselThumbs .carousel-thumb');
+  slides[carouselIdx].classList.remove('active');
+  if(thumbs[carouselIdx]) thumbs[carouselIdx].classList.remove('active');
+
+  // Pause current iframe if video
+  var curSlide=slides[carouselIdx];
+  var curIframe=curSlide.querySelector('iframe');
+  if(curIframe){
+    var curSrc=curIframe.src;
+    curIframe.src=''; // stops playback
+    curIframe.dataset.src=curSrc;
+  }
+
+  carouselIdx=idx;
+  slides[carouselIdx].classList.add('active');
+  if(thumbs[carouselIdx]){
+    thumbs[carouselIdx].classList.add('active');
+    // scroll thumb into view
+    thumbs[carouselIdx].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  }
+
+  // Lazy-load iframe src
+  var newSlide=slides[carouselIdx];
+  var newIframe=newSlide.querySelector('iframe');
+  if(newIframe&&!newIframe.src&&newIframe.dataset.src){
+    newIframe.src=newIframe.dataset.src;
+  }
+
+  var counter=document.getElementById('carouselCounter');
+  if(counter.style.display!=='none') counter.textContent=(idx+1)+' / '+carouselItems.length;
+  updateCarouselArrows();
+}
+
+function carouselMove(dir){
+  var next=carouselIdx+dir;
+  if(next<0) next=carouselItems.length-1;
+  if(next>=carouselItems.length) next=0;
+  carouselGoTo(next);
+}
+
+function updateCarouselArrows(){
+  // wrap-around — always show arrows if >1
+  var show=carouselItems.length>1;
+  document.getElementById('carouselPrev').classList.toggle('hidden',!show);
+  document.getElementById('carouselNext').classList.toggle('hidden',!show);
+}
+
+// Keyboard navigation
+document.addEventListener('keydown',function(e){
+  if(document.getElementById('lightbox').classList.contains('open')){
+    if(e.key==='ArrowLeft') lightboxMove(-1);
+    if(e.key==='ArrowRight') lightboxMove(1);
+    if(e.key==='Escape') closeLightbox();
+  } else {
+    if(e.key==='ArrowLeft') carouselMove(-1);
+    if(e.key==='ArrowRight') carouselMove(1);
+  }
+});
+
+// Touch/swipe on carousel
+(function(){
+  var el=document.getElementById('carouselStage');
+  var startX=0;
+  el.addEventListener('touchstart',function(e){startX=e.touches[0].clientX;},{passive:true});
+  el.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-startX;
+    if(Math.abs(dx)>40) carouselMove(dx<0?1:-1);
+  },{passive:true});
+})();
+
+/* ========== LIGHTBOX ========== */
+function openLightbox(){
+  // open lightbox at first photo
+  var idx=lightboxPhotos.indexOf(carouselItems[carouselIdx]&&carouselItems[carouselIdx].src);
+  openLightboxAt(Math.max(0,idx));
+}
+function openLightboxAt(idx){
+  if(!lightboxPhotos.length) return;
+  lightboxIdx=idx;
+  document.getElementById('lightboxImg').src=lightboxPhotos[lightboxIdx];
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+function lightboxMove(dir){
+  lightboxIdx=(lightboxIdx+dir+lightboxPhotos.length)%lightboxPhotos.length;
+  document.getElementById('lightboxImg').src=lightboxPhotos[lightboxIdx];
+}
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this) closeLightbox();});
+
+/* ========== HELPERS ========== */
 function getParam(k){return new URLSearchParams(window.location.search).get(k)}
 function stars(n){var f=Math.round(n||5);return '★'.repeat(f)+'☆'.repeat(5-f)}
+function toastMsg(msg,type){var t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(type||'')+' show';setTimeout(function(){t.className='toast'},3000);}
+function toggleBio(){var more=document.getElementById('bioMore');var toggle=document.getElementById('bioToggle');if(more.style.display==='block'){more.style.display='none';toggle.textContent='Read more ▾';}else{more.style.display='block';toggle.textContent='Read less ▴';}}
 
-function toastMsg(msg,type){
-  var t=document.getElementById('toast');
-  t.textContent=msg;t.className='toast '+(type||'')+' show';
-  setTimeout(function(){t.className='toast'},3000);
-}
-
-function toggleBio(){
-  var more=document.getElementById('bioMore');
-  var toggle=document.getElementById('bioToggle');
-  if(more.style.display==='block'){more.style.display='none';toggle.textContent='Read more ▾';}
-  else{more.style.display='block';toggle.textContent='Read less ▴';}
-}
-
+/* ========== LOAD ARTIST ========== */
 function loadArtist(){
   var id=getParam('id');
   if(!id){window.location.href='/singers.html';return}
@@ -395,8 +627,9 @@ function loadArtist(){
     artist=data[0];
     render(artist);
     loadSimilar(artist.category,id);
+    loadReviews(id);
   })
-  .catch(function(e){
+  .catch(function(){
     document.getElementById('loadingScreen').innerHTML='<p style="color:red;padding:40px">Error loading. <a href="/singers.html">Go back</a></p>';
   });
 }
@@ -408,16 +641,8 @@ function render(a){
   document.getElementById('bcCat').textContent=a.category?(a.category.charAt(0).toUpperCase()+a.category.slice(1)):'Artists';
   document.getElementById('bcCat').href=a.category==='singers'?'/singers.html':'#';
 
-  // MEDIA — video first, then photo, then emoji
-  var media=document.getElementById('mediaSection');
-  if(a.video_url&&a.video_url.indexOf('youtube')>-1){
-    var vid=a.video_url.replace('watch?v=','embed/').replace('youtu.be/','www.youtube.com/embed/');
-    media.innerHTML='<div class="video-wrap"><iframe src="'+vid+'?rel=0&modestbranding=1" allowfullscreen></iframe></div>';
-  } else if(a.photo_url){
-    media.innerHTML='<img class="photo-cover" src="'+a.photo_url+'" alt="'+a.name+'" onerror="this.parentElement.innerHTML=\'<div class=photo-cover-emoji>'+s.emoji+'</div>\'"/>';
-  } else {
-    media.innerHTML='<div class="photo-cover-emoji" style="background:linear-gradient(135deg,'+s.bg+',#fff)">'+s.emoji+'</div>';
-  }
+  // CAROUSEL
+  buildCarousel(a);
 
   // NAME + TAGS
   document.getElementById('artistName').textContent=a.name;
@@ -431,14 +656,16 @@ function render(a){
   document.getElementById('artistStars').textContent=stars(a.rating||5);
   document.getElementById('artistRating').textContent=(a.rating||5).toFixed(1);
 
-  // PRICE
+  // PRICE + CITY
   document.getElementById('artistPrice').innerHTML='AED '+(a.price_from||0).toLocaleString()+' <span>/ show</span>';
   document.getElementById('artistCity').textContent=a.city||'UAE';
 
   // SPECS
+  document.getElementById('spec-performers').textContent=a.performers||'—';
+  document.getElementById('spec-duration').textContent=a.duration||'—';
+  document.getElementById('spec-lang').textContent=a.languages||'—';
   document.getElementById('spec-city').textContent=a.city||'UAE';
   document.getElementById('spec-price').textContent='AED '+(a.price_from||0).toLocaleString();
-  document.getElementById('spec-lang').textContent=a.languages||'EN, AR';
 
   // BIO
   if(a.bio){
@@ -455,28 +682,66 @@ function render(a){
     document.getElementById('bioShort').textContent='Professional artist based in '+(a.city||'UAE')+'. Available for events across the UAE.';
   }
 
-  // CONTACT BTNS
-  var btns='';
-  if(a.whatsapp) btns+='<button class="btn-wa" onclick="openWA(\''+a.whatsapp+'\',\''+a.name+'\')">💬 WhatsApp</button>';
-  if(a.instagram) btns+='<button class="btn-ig" onclick="openIG(\''+a.instagram+'\')">📸 Instagram</button>';
-  document.getElementById('contactBtns').innerHTML=btns;
-
-  // MOBILE BAR
-  var bar=document.getElementById('mobileBar');
-  bar.style.display='flex';
-  var mwa=document.getElementById('mobileWA');
-  if(a.whatsapp){
-    mwa.onclick=function(){openWA(a.whatsapp,a.name)};
-  } else {
-    mwa.style.display='none';
+  // REPERTOIRE
+  if(a.repertoire){
+    var items=[];
+    try{items=JSON.parse(a.repertoire);}
+    catch(e){
+      items=a.repertoire.split('\n').filter(Boolean).map(function(line){
+        var parts=line.split(' - ');
+        return parts.length>=2?{artist:parts[0].trim(),song:parts.slice(1).join(' - ').trim()}:{artist:'',song:line.trim()};
+      });
+    }
+    if(items.length){
+      var rows='';
+      for(var i=0;i<items.length;i++) rows+='<tr><td>▶</td><td>'+(items[i].artist||'')+'</td><td>'+(items[i].song||'')+'</td></tr>';
+      document.getElementById('repertoireTable').innerHTML=rows;
+      document.getElementById('repertoireSection').style.display='block';
+    }
   }
 
-  // MODAL sub
+  // MOBILE BAR
+  document.getElementById('mobileBar').style.display='flex';
+
+  // FORM subs
   document.getElementById('modalSub').textContent='Send inquiry to '+a.name;
   document.getElementById('inqSub').textContent='Send a free inquiry to '+a.name;
 
   document.getElementById('loadingScreen').style.display='none';
   document.getElementById('mainContent').style.display='block';
+}
+
+function loadReviews(artistId){
+  fetch(SURL+'/rest/v1/reviews?artist_id=eq.'+artistId+'&order=created_at.desc',{
+    headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+  })
+  .then(function(r){return r.json()})
+  .then(function(data){
+    if(!data||!Array.isArray(data)||!data.length){
+      document.getElementById('reviewsList').innerHTML='<div class="no-reviews">No reviews yet — be the first to book and leave a review!</div>';
+      return;
+    }
+    var total=data.reduce(function(s,r){return s+(r.rating||5)},0);
+    var avg=(total/data.length).toFixed(1);
+    var sum=document.getElementById('reviewsSummary');
+    sum.style.display='flex';
+    sum.innerHTML='<span class="rstars">'+stars(avg)+'</span><span class="score">'+avg+'</span><span class="count">Rated by '+data.length+' client'+(data.length!==1?'s':'')+' — average '+avg+'</span>';
+    var html='';
+    for(var i=0;i<data.length;i++){
+      var rv=data[i];
+      var d=rv.created_at?new Date(rv.created_at).toLocaleDateString('en-GB',{month:'long',year:'numeric'}):'';
+      html+='<div class="review-item"><div class="review-header"><span class="review-author">'+(rv.author_name||'Anonymous')+'</span><span class="review-date">'+d+'</span></div>';
+      html+='<div class="review-stars">'+'★'.repeat(Math.round(rv.rating||5))+'</div>';
+      if(rv.title) html+='<div class="review-title">'+rv.title+'</div>';
+      if(rv.text) html+='<div class="review-text">'+rv.text+'</div>';
+      if(rv.source) html+='<span class="review-badge">📋 '+rv.source+'</span>';
+      html+='</div>';
+    }
+    document.getElementById('reviewsList').innerHTML=html;
+  })
+  .catch(function(){
+    document.getElementById('reviewsList').innerHTML='<div class="no-reviews">No reviews yet.</div>';
+  });
 }
 
 function loadSimilar(cat,excludeId){
@@ -498,33 +763,17 @@ function loadSimilar(cat,excludeId){
   });
 }
 
-function openWA(number,name){
-  var clean=number.replace(/\s+/g,'').replace(/[^+\d]/g,'');
-  var msg=encodeURIComponent('Hi '+name+'! I found you on Stagely and I\'m interested in booking you for an event. Are you available to discuss?');
-  window.open('https://wa.me/'+clean+'?text='+msg,'_blank');
-}
-function openIG(handle){window.open('https://instagram.com/'+handle.replace('@',''),'_blank')}
-
 function submitInquiry(){
   var name=document.getElementById('inq-name').value.trim();
   var email=document.getElementById('inq-email').value.trim();
   if(!name||!email){toastMsg('Please enter your name and email');return}
-  var btn=document.querySelector('.btn-submit');
-  btn.textContent='⏳ Sending...';btn.disabled=true;
+  var btn=document.querySelector('.btn-submit');btn.textContent='⏳ Sending...';btn.disabled=true;
   setTimeout(function(){
     document.getElementById('inquiryForm').style.display='none';
     document.getElementById('formSuccess').style.display='block';
     toastMsg('✅ Inquiry sent!','ok');
-    if(artist&&artist.whatsapp){
-      setTimeout(function(){
-        if(confirm('Also send a WhatsApp message to '+artist.name+'?')){
-          openWA(artist.whatsapp,artist.name);
-        }
-      },800);
-    }
   },1000);
 }
-
 function submitModal(){
   var name=document.getElementById('m-name').value.trim();
   var email=document.getElementById('m-email').value.trim();
