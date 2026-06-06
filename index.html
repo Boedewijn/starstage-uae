@@ -182,7 +182,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 
 
 <!-- MEGA NAV -->
-<nav id="megaNav" style="background:#fff;border-bottom:2px solid #00A3E0;position:sticky;top:62px;z-index:9999;overflow-x:auto;scrollbar-width:none">
+<nav id="megaNav" style="background:#fff;border-bottom:2px solid #00A3E0;position:sticky;top:62px;z-index:9999;overflow:visible">
 <style>
 .mnwrap{position:relative;display:inline-block}
 .mna{padding:13px 16px;font-size:12.5px;font-weight:700;background:none;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.3px;color:#041E42;font-family:inherit;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:4px}
@@ -198,7 +198,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 .mncol h4{font-size:10px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;letter-spacing:.8px;font-weight:700}
 .mndrop a{display:block;padding:7px 10px;font-size:13px;color:#041E42;text-decoration:none;border-radius:8px;font-weight:500;white-space:nowrap}
 .mndrop a:hover{background:#eaf6fd;color:#00A3E0}
-.mnbar{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;white-space:nowrap}
+.mnbar{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;white-space:nowrap;overflow-x:auto;overflow-y:visible;scrollbar-width:none}
 </style>
 <div class="mnbar">
   <div class="mnwrap">
@@ -251,7 +251,7 @@ document.addEventListener('click', function(){
 </nav>
 
 
-<div class="hero" style="position:relative;z-index:1">
+<div class="hero">
   <div class="hero-content">
     <h1>Book <span class="accent">Amazing Artists</span> in the <span class="accent-red">UAE</span></h1>
     <p>Connect directly with verified performers — no agency, no markup.</p>
