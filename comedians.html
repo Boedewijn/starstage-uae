@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Comedians & MCs – Stagely UAE</title>
+<meta name="description" content="Book professional singers in Dubai, Abu Dhabi and across the UAE. Browse verified singers for weddings, corporate events, hotels and more."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f2f4f7;color:#041E42;font-size:15px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+:root{--navy:#041E42;--blue:#00A3E0;--red:#E40046;--green:#10b981;--white:#fff;--grey:#6b7280;--shadow:0 2px 12px rgba(4,30,66,0.10);--radius:12px}
+
+/* HEADER */
+.header{background:var(--white);border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(4,30,66,0.06)}
+.header-inner{max-width:1200px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:12px}
+.logo-svg{height:34px;width:auto;flex-shrink:0}
+.search-wrap{flex:1;position:relative;min-width:0}
+.search-wrap input{width:100%;padding:10px 44px 10px 16px;border:2px solid #e5e7eb;border-radius:50px;font-size:14px;font-family:inherit;outline:none;background:#f9fafb;transition:border-color .2s}
+.search-wrap input:focus{border-color:var(--blue);background:#fff}
+.search-wrap button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:var(--navy);border:none;cursor:pointer;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.btn-list{background:var(--red);color:#fff;padding:9px 16px;border-radius:50px;font-weight:700;font-size:13px;white-space:nowrap;flex-shrink:0;border:none;cursor:pointer;font-family:inherit}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0a3060 60%,#0d4080 100%);padding:36px 16px 32px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--blue))}
+.hero-inner{max-width:1200px;margin:0 auto}
+.hero h1{font-size:28px;font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:-.5px}
+@media(min-width:640px){.hero h1{font-size:36px}}
+.hero p{font-size:15px;color:rgba(255,255,255,.75);margin-bottom:16px}
+.hero-stats{display:flex;gap:20px;flex-wrap:wrap}
+.hero-stat{color:rgba(255,255,255,.85);font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+
+/* FILTERS */
+.filters-bar{background:var(--white);border-bottom:1px solid #e5e7eb;padding:12px 16px;position:sticky;top:57px;z-index:90}
+.filters-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.filter-btn{background:#f0f4f8;border:2px solid transparent;border-radius:50px;padding:7px 16px;font-size:13px;font-weight:600;color:var(--grey);cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap}
+.filter-btn:hover{border-color:var(--blue);color:var(--blue)}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.sort-select{padding:8px 14px;border:2px solid #e5e7eb;border-radius:50px;font-size:13px;font-family:inherit;outline:none;color:var(--navy);background:#fff;cursor:pointer;margin-left:auto}
+.results-count{font-size:13px;color:var(--grey);font-weight:500;white-space:nowrap}
+
+/* MAIN */
+.main{max-width:1200px;margin:0 auto;padding:24px 16px 60px}
+
+/* GRID */
+.artists-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:480px){.artists-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.artists-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1200px){.artists-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* CARD */
+.artist-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.artist-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(4,30,66,0.14)}
+.card-img{height:200px;background:linear-gradient(135deg,#eaf6fd,#c5e0f5);display:flex;align-items:center;justify-content:center;font-size:60px;position:relative;overflow:hidden}
+.card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-badge{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;border-radius:50px;padding:4px 10px;font-size:11px;font-weight:700}
+.card-city-badge{position:absolute;bottom:10px;right:10px;background:rgba(4,30,66,0.75);color:#fff;border-radius:50px;padding:4px 10px;font-size:11px;font-weight:600;backdrop-filter:blur(4px)}
+.card-body{padding:16px}
+.card-name{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-type{font-size:12px;color:var(--grey);margin-bottom:8px;font-weight:500}
+.card-bio{font-size:12px;color:#555;line-height:1.5;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-footer{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.card-stars{color:#f59e0b;font-size:13px}
+.card-price{font-size:14px;font-weight:800;color:var(--navy)}
+.card-price span{font-size:11px;font-weight:400;color:var(--grey)}
+.card-actions{display:flex;gap:8px}
+.btn-profile{flex:1;background:var(--navy);color:#fff;border:none;border-radius:50px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s}
+.btn-profile:hover{background:var(--blue)}
+
+/* EMPTY */
+.empty-state{text-align:center;padding:64px 20px;grid-column:1/-1}
+.es-icon{font-size:64px;margin-bottom:16px}
+.empty-state h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.empty-state p{font-size:14px;color:var(--grey);margin-bottom:20px}
+
+/* LOADING SKELETON */
+.skeleton-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.skel-img{height:200px;background:linear-gradient(90deg,#f0f4f8 25%,#e5e7eb 50%,#f0f4f8 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+.skel-body{padding:16px}
+.skel-line{height:12px;border-radius:6px;background:linear-gradient(90deg,#f0f4f8 25%,#e5e7eb 50%,#f0f4f8 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;margin-bottom:8px}
+.skel-line.wide{width:70%}.skel-line.mid{width:50%}.skel-line.narrow{width:35%}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* MOBILE BOTTOM NAV */
+.mobile-bottom{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid #e5e7eb;padding:10px 16px;display:flex;gap:8px;z-index:999}
+@media(min-width:768px){.mobile-bottom{display:none}}
+.mob-btn{flex:1;padding:11px;border:none;border-radius:50px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer}
+.mob-btn.primary{background:var(--red);color:#fff}
+.mob-btn.secondary{background:#f0f4f8;color:var(--navy)}
+
+/* TOAST */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:11px 22px;border-radius:50px;font-size:13px;font-weight:600;box-shadow:0 8px 24px rgba(4,30,66,0.3);transition:all .3s;z-index:9999;opacity:0;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="/"><svg class="logo-svg" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg"><g transform="translate(100,50)"><rect x="8" y="0" width="44" height="72" rx="22" fill="#041E42"/><rect x="8" y="0" width="44" height="24" rx="22" fill="#00A3E0"/><rect x="8" y="12" width="44" height="12" fill="#00A3E0"/><path d="M0,58 Q0,100 30,100 Q60,100 60,58" fill="none" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><line x1="30" y1="100" x2="30" y2="125" stroke="#041E42" stroke-width="4.5" stroke-linecap="round"/><rect x="4" y="124" width="52" height="8" rx="4" fill="#E40046"/></g><g transform="translate(200,62)"><text font-family="Inter,Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-4" fill="#041E42" x="0" y="78">stagely</text><circle cx="364" cy="22" r="10" fill="#E40046"/><rect x="1" y="88" width="362" height="5" rx="2.5" fill="#00A3E0"/><text font-family="Inter,Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="5" fill="#00A3E0" x="2" y="112">BOOK LIVE ARTISTS</text></g></svg></a>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Search comedians..." oninput="filterArtists()" autocomplete="off"/>
+      <button onclick="filterArtists()">🔍</button>
+    </div>
+    <button class="btn-list" onclick="window.location.href='/register.html'">★ List Your Act</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>🎭 Comedians & MCs in the UAE</h1>
+    <p>Browse verified comedians and hosts for corporate events, galas and private parties.</p>
+    <div class="hero-stats">
+      <span class="hero-stat">🎭 Comedians & MCs</span>
+      <span class="hero-stat">✅ Verified artists</span>
+      <span class="hero-stat">📍 Dubai, Abu Dhabi & more</span>
+      <span class="hero-stat">💰 Best price guarantee</span>
+    </div>
+  </div>
+</div>
+
+<div class="filters-bar">
+  <div class="filters-inner">
+    <button class="filter-btn active" onclick="setFilter('all',this)">All cities</button>
+    <button class="filter-btn" onclick="setFilter('Dubai',this)">Dubai</button>
+    <button class="filter-btn" onclick="setFilter('Abu Dhabi',this)">Abu Dhabi</button>
+    <button class="filter-btn" onclick="setFilter('Sharjah',this)">Sharjah</button>
+    <span class="results-count" id="resultsCount"></span>
+    <select class="sort-select" onchange="sortArtists(this.value)">
+      <option value="rating">Top Rated</option>
+      <option value="price_asc">Price: Low → High</option>
+      <option value="price_desc">Price: High → Low</option>
+      <option value="name">Name A–Z</option>
+    </select>
+  </div>
+</div>
+
+<div class="main">
+  <div id="artistsContainer">
+    <div class="artists-grid" id="skeletonGrid">
+      <div class="skeleton-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line wide"></div><div class="skel-line mid"></div><div class="skel-line narrow"></div></div></div>
+      <div class="skeleton-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line wide"></div><div class="skel-line mid"></div><div class="skel-line narrow"></div></div></div>
+      <div class="skeleton-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line wide"></div><div class="skel-line mid"></div><div class="skel-line narrow"></div></div></div>
+      <div class="skeleton-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line wide"></div><div class="skel-line mid"></div><div class="skel-line narrow"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-bottom">
+  <button class="mob-btn secondary" onclick="window.location.href='/'">🏠 Home</button>
+  <button class="mob-btn primary" onclick="window.location.href='/register.html'">🎤 List Your Act</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var SUPABASE_URL='https://darbunnlilqwbeobcelp.supabase.co';
+var SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
+
+var allArtists=[];
+var currentFilter='all';
+var currentSort='rating';
+var searchQuery='';
+
+function loadSingers(){
+  fetch(SUPABASE_URL+'/rest/v1/acts_public?published=eq.true&category=eq.comedians&order=rating.desc',{
+    headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}
+  })
+  .then(function(r){return r.json()})
+  .then(function(data){
+    allArtists=Array.isArray(data)?data:[];
+    renderArtists();
+  })
+  .catch(function(){
+    document.getElementById('artistsContainer').innerHTML='<div class="empty-state"><div class="es-icon">🎤</div><h3>No comedians yet</h3><p>Check back soon — we are adding artists daily!</p><a href="/register.html"><button style="background:var(--navy);color:#fff;border:none;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">Are you a comedian or MC? List your act</button></a></div>';
+  });
+}
+
+function getFiltered(){
+  var list=allArtists.slice();
+  if(currentFilter!=='all') list=list.filter(function(a){return a.city===currentFilter});
+  if(searchQuery) list=list.filter(function(a){
+    var n=(a.name||a.title||'').toLowerCase();
+    var b=(a.bio||a.intro||'').toLowerCase();
+    return n.indexOf(searchQuery)>-1||b.indexOf(searchQuery)>-1;
+  });
+  if(currentSort==='price_asc') list.sort(function(a,b){return (a.price_from||0)-(b.price_from||0)});
+  else if(currentSort==='price_desc') list.sort(function(a,b){return (b.price_from||0)-(a.price_from||0)});
+  else if(currentSort==='name') list.sort(function(a,b){return (a.name||a.title||'').localeCompare(b.name||b.title||'')});
+  else list.sort(function(a,b){return (b.rating||0)-(a.rating||0)});
+  return list;
+}
+
+function stars(n){var f=Math.round(n||5);return '★'.repeat(f)+'☆'.repeat(5-f)}
+
+function renderArtists(){
+  var list=getFiltered();
+  var container=document.getElementById('artistsContainer');
+  document.getElementById('resultsCount').textContent=list.length+' comedian'+(list.length!==1?'s':'')+' found';
+  if(!list.length){
+    container.innerHTML='<div class="empty-state"><div class="es-icon">🎤</div><h3>No comedians found</h3><p>Try adjusting your filters or search.</p></div>';
+    return;
+  }
+  var html='<div class="artists-grid">';
+  for(var i=0;i<list.length;i++){
+    var a=list[i];
+    var name=a.title||a.name||'Unknown';
+    var url='/artist.html?id='+a.id;
+    var badge=i===0?'<span class="card-badge">⭐ Top Rated</span>':i<3?'<span class="card-badge">🔥 Popular</span>':'';
+    var imgHTML=a.photo_url?'<img src="'+a.photo_url+'" alt="'+name+'" onerror="this.style.display=\'none\'"/>':'🎤';
+    var bioHTML=(a.intro||a.bio)?'<div class="card-bio">'+(a.intro||a.bio)+'</div>':'';
+    html+='<div class="artist-card" onclick="window.location.href=\''+url+'\'">';
+    html+='<div class="card-img">'+imgHTML+badge+'<span class="card-city-badge">📍'+(a.city||'UAE')+'</span></div>';
+    html+='<div class="card-body">';
+    html+='<div class="card-name">'+name+'</div>';
+    html+='<div class="card-type">Singer · '+(a.city||'UAE')+'</div>';
+    html+=bioHTML;
+    html+='<div class="card-footer"><span class="card-stars">'+stars(a.rating||5)+'</span><div class="card-price">AED '+(a.price_from||0).toLocaleString()+' <span>/ show</span></div></div>';
+    html+='<div class="card-actions"><button class="btn-profile" onclick="event.stopPropagation();window.location.href=\''+url+'\'">View Profile →</button></div>';
+    html+='</div></div>';
+  }
+  html+='</div>';
+  container.innerHTML=html;
+}
+
+function setFilter(val,btn){
+  currentFilter=val;
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  renderArtists();
+}
+function sortArtists(val){currentSort=val;renderArtists();}
+function filterArtists(){searchQuery=document.getElementById('searchInput').value.toLowerCase().trim();renderArtists();}
+
+loadSingers();
+</script>
+</body>
+</html>

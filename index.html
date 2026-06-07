@@ -194,7 +194,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
     <button class="mna" onclick="mntog(event,'pd2')">By Event ▾</button>
     <button class="mna" onclick="mntog(event,'pd3')">By Location ▾</button>
     <button class="mna" onclick="mntog(event,'pd4')">By Theme ▾</button>
-    <a href="#" class="mna blue">🎙️ Speakers</a>
+    <a href="/speakers.html" class="mna blue">🎙️ Speakers</a>
     <a href="#" class="mna red">⭐ Famous Artists</a>
     <a href="#" class="mna grey">💬 Customer Service</a>
   </div>
@@ -202,10 +202,10 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 
 <!-- DROPDOWNS -->
 <div class="mn-portal-wide" id="pd1">
-  <div class="mncol"><h4>Music</h4><a href="/singers.html">Singers</a><a href="#">DJs</a><a href="#">Live Bands</a><a href="#">Classical Music</a><a href="#">Oud Players</a></div>
-  <div class="mncol"><h4>Performance</h4><a href="#">Dancers</a><a href="#">Acrobats</a><a href="#">Magicians</a><a href="#">Fire Shows</a><a href="#">Stunt Shows</a></div>
-  <div class="mncol"><h4>Special</h4><a href="#">Comedians</a><a href="#">Hosts / MCs</a><a href="#">Children's Shows</a><a href="#">Caricaturists</a><a href="#">Unique Acts</a></div>
-  <div class="mncol"><h4>Corporate</h4><a href="#">Keynote Speakers</a><a href="#">Motivational Speakers</a><a href="#">Corporate Hosts</a><a href="#">Team Building</a></div>
+  <div class="mncol"><h4>Music</h4><a href="/singers.html">Singers</a><a href="/djs.html">DJs</a><a href="/bands.html">Live Bands</a><a href="#">Classical Music</a><a href="#">Oud Players</a></div>
+  <div class="mncol"><h4>Performance</h4><a href="/dancers.html">Dancers</a><a href="#">Acrobats</a><a href="/magicians.html">Magicians</a><a href="#">Fire Shows</a><a href="#">Stunt Shows</a></div>
+  <div class="mncol"><h4>Special</h4><a href="/comedians.html">Comedians & MCs</a><a href="/comedians.html">Hosts / MCs</a><a href="#">Children's Shows</a><a href="#">Caricaturists</a><a href="#">Unique Acts</a></div>
+  <div class="mncol"><h4>Corporate</h4><a href="/speakers.html">Keynote Speakers</a><a href="/speakers.html">Motivational Speakers</a><a href="#">Corporate Hosts</a><a href="#">Team Building</a></div>
 </div>
 <div class="mn-portal" id="pd2">
   <a href="#">Wedding</a><a href="#">Corporate Event</a><a href="#">Birthday Party</a>
@@ -375,7 +375,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 const SUPABASE_URL='https://darbunnlilqwbeobcelp.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
 const CAT_COLORS={singers:{bg:'#eaf6fd',emoji:'🎤'},djs:{bg:'#fff0f3',emoji:'🎧'},bands:{bg:'#eaf0fa',emoji:'🎸'},dancers:{bg:'#fff0f3',emoji:'💃'},magicians:{bg:'#f3eafd',emoji:'🎩'},comedians:{bg:'#fdf5ea',emoji:'🎭'},speakers:{bg:'#eaf6fd',emoji:'🎙️'}};
-const CAT_URLS={singers:'/singers.html',djs:'#',bands:'#',dancers:'#',magicians:'#',comedians:'#',speakers:'#'};
+const CAT_URLS={singers:'/singers.html',djs:'/djs.html',bands:'/bands.html',dancers:'/dancers.html',magicians:'/magicians.html',comedians:'/comedians.html',speakers:'/speakers.html'};
 
 async function fetchDB(path){
   const r=await fetch(SUPABASE_URL+'/rest/v1/'+path,{headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}});
