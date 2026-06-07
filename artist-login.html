@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Artist Portal – Stagely UAE</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f2f4f7;color:#041E42;font-size:15px;min-height:100vh}
+a{color:inherit;text-decoration:none}
+:root{--navy:#041E42;--blue:#00A3E0;--red:#E40046;--green:#10b981;--white:#fff;--grey:#6b7280;--radius:12px;--shadow:0 2px 12px rgba(4,30,66,0.10)}
+
+.screen{display:none}.screen.active{display:block}
+
+/* LOGIN */
+.login-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:linear-gradient(135deg,var(--navy) 0%,#0a3060 100%)}
+.login-card{background:#fff;border-radius:20px;padding:40px 32px;width:100%;max-width:420px;box-shadow:0 24px 48px rgba(0,0,0,0.3)}
+.login-logo{text-align:center;margin-bottom:28px}
+.login-logo .logo-icon{font-size:48px;display:block;margin-bottom:8px}
+.login-logo h1{font-size:22px;font-weight:800;color:var(--navy)}
+.login-logo p{font-size:13px;color:var(--grey);margin-top:4px}
+.login-error{background:#fff0f3;border:1px solid #fecdd3;color:var(--red);border-radius:8px;padding:10px 14px;font-size:13px;font-weight:600;margin-top:12px;display:none}
+.login-footer{text-align:center;margin-top:20px;font-size:13px;color:var(--grey)}
+.login-footer a{color:var(--blue);font-weight:600}
+
+/* HEADER */
+.dash-header{background:var(--navy);position:sticky;top:0;z-index:200}
+.dash-header-inner{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dash-logo{font-size:20px;font-weight:800;color:#fff;flex-shrink:0}
+.dash-logo span{color:var(--blue)}
+.dash-nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:center}
+.dash-nav::-webkit-scrollbar{display:none}
+.dash-nav-btn{background:transparent;border:none;color:rgba(255,255,255,0.6);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.dash-nav-btn:hover{background:rgba(255,255,255,0.1);color:#fff}
+.dash-nav-btn.active{background:rgba(255,255,255,0.15);color:#fff}
+.nav-badge{background:var(--red);color:#fff;border-radius:50px;padding:1px 7px;font-size:10px;font-weight:700}
+.btn-logout{background:rgba(255,255,255,0.1);color:#fff;border:none;border-radius:50px;padding:7px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn-logout:hover{background:rgba(255,255,255,0.2)}
+
+/* BODY */
+.dash-body{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+
+/* PANELS */
+.panel{display:none}.panel.active{display:block}
+
+/* PROFILE HERO */
+.profile-hero{background:var(--white);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);display:flex;align-items:center;gap:20px;margin-bottom:24px;flex-wrap:wrap}
+.profile-photo{width:72px;height:72px;border-radius:50%;background:#eaf6fd;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;overflow:hidden}
+.profile-photo img{width:100%;height:100%;object-fit:cover}
+.profile-meta h2{font-size:20px;font-weight:800;color:var(--navy)}
+.profile-meta p{font-size:13px;color:var(--grey);margin-top:2px}
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:50px;font-size:11px;font-weight:700;margin-top:6px}
+.status-live{background:#d1fae5;color:#065f46}
+.status-pending{background:#fef3c7;color:#92400e}
+.status-hidden{background:#f3f4f6;color:#6b7280}
+.hero-actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.btn-outline{background:#f0f4f8;color:var(--navy);border:none;border-radius:50px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;display:flex;align-items:center;gap:5px}
+.btn-outline:hover{background:#e5e7eb}
+
+/* FORMS */
+.card{background:var(--white);border-radius:var(--radius);padding:24px 20px;box-shadow:var(--shadow);margin-bottom:20px}
+@media(min-width:600px){.card{padding:28px 28px}}
+.card-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:8px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.form-group label .req{color:var(--red)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;background:#fafafa;color:var(--navy)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);background:#fff}
+.form-group textarea{resize:vertical;min-height:90px;line-height:1.6}
+.form-group .hint{font-size:11px;color:var(--grey);margin-top:4px;line-height:1.5}
+.form-row{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:540px){.form-row{grid-template-columns:1fr 1fr;gap:14px}}
+.form-row-3{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:540px){.form-row-3{grid-template-columns:1fr 1fr 1fr;gap:12px}}
+.section-label{font-size:11px;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:.8px;margin:20px 0 14px;padding-bottom:6px;border-bottom:2px solid #f0f4f8;display:flex;align-items:center;gap:6px}
+
+/* BUTTONS */
+.btn-primary{background:var(--navy);color:#fff;border:none;border-radius:50px;padding:12px 28px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s}
+.btn-primary:hover{background:var(--blue)}
+.btn-primary:disabled{background:#aaa;cursor:not-allowed}
+.btn-green{background:var(--green);color:#fff;border:none;border-radius:50px;padding:12px 28px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s}
+.btn-green:hover{background:#0da271}
+.btn-red{background:var(--red);color:#fff;border:none;border-radius:50px;padding:10px 20px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s}
+.btn-red:hover{background:#c4003c}
+.btn-sm{background:#f0f4f8;color:var(--navy);border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:all .2s}
+.btn-sm:hover{background:#e5e7eb}
+.btn-sm.danger{background:#fff0f3;color:var(--red)}
+.btn-sm.danger:hover{background:#fecdd3}
+.btn-sm.success{background:#d1fae5;color:#065f46}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;align-items:center}
+
+/* LANG CHIPS */
+.lang-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.lang-chip{display:flex;align-items:center;gap:5px;background:#f0f4f8;border:2px solid #e5e7eb;border-radius:50px;padding:5px 13px;cursor:pointer;transition:all .2s;font-size:12px;font-weight:600;color:var(--grey);user-select:none}
+.lang-chip:hover{border-color:var(--blue)}
+.lang-chip.selected{background:#eaf6fd;border-color:var(--blue);color:var(--blue)}
+.lang-chip input{display:none}
+
+/* REPERTOIRE */
+.rep-rows{display:flex;flex-direction:column;gap:7px;margin-bottom:8px}
+.rep-row{display:grid;grid-template-columns:1fr 1fr 32px;gap:8px;align-items:center}
+.rep-row input{padding:8px 11px;border:2px solid #e5e7eb;border-radius:8px;font-size:13px;font-family:inherit;outline:none;background:#fafafa;color:var(--navy);width:100%}
+.rep-row input:focus{border-color:var(--blue);background:#fff}
+.rep-remove{background:none;border:none;font-size:17px;cursor:pointer;color:#aaa;padding:0;line-height:1;transition:color .2s}
+.rep-remove:hover{color:var(--red)}
+.btn-add-row{background:#f0f4f8;border:2px dashed #e5e7eb;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--grey);cursor:pointer;width:100%;transition:all .2s;font-family:inherit}
+.btn-add-row:hover{border-color:var(--blue);color:var(--blue);background:#eaf6fd}
+
+/* PHOTO GRID */
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.photo-slot{aspect-ratio:4/3;background:#f0f4f8;border:2px dashed #e5e7eb;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.photo-slot:hover{border-color:var(--blue);background:#eaf6fd}
+.photo-slot.filled{border-style:solid;border-color:#e5e7eb}
+.photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-slot .slot-label{font-size:11px;color:var(--grey);font-weight:600;margin-top:6px;position:relative;z-index:1}
+.photo-slot .slot-icon{font-size:22px;position:relative;z-index:1}
+.photo-slot .slot-remove{position:absolute;top:5px;right:5px;background:rgba(228,0,70,0.85);color:#fff;border:none;border-radius:50%;width:22px;height:22px;font-size:12px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:2}
+.photo-slot.filled .slot-remove{display:flex}
+.photo-slot .slot-overlay{position:absolute;inset:0;background:rgba(4,30,66,0.35);display:none;align-items:center;justify-content:center;font-size:20px;color:#fff}
+.photo-slot.filled:hover .slot-overlay{display:flex}
+.photo-url-input{display:none}
+
+/* ACTS LIST */
+.acts-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:20px}
+@media(min-width:600px){.acts-grid{grid-template-columns:1fr 1fr}}
+.act-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.act-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(4,30,66,0.14)}
+.act-card-img{height:160px;background:#eaf6fd;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden}
+.act-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.act-card-body{padding:16px}
+.act-card-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.act-card-meta{font-size:12px;color:var(--grey);display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.act-card-status{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700}
+.act-card-actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.add-act-btn{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:2px dashed #e5e7eb;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;cursor:pointer;transition:all .2s;color:var(--grey);font-family:inherit;font-size:13px;font-weight:600;gap:10px}
+.add-act-btn:hover{border-color:var(--blue);color:var(--blue);background:#eaf6fd}
+.add-act-btn .ai{font-size:36px}
+
+/* ACT FORM */
+.act-form-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.act-form-header h2{font-size:20px;font-weight:800;color:var(--navy)}
+.act-form-header p{font-size:13px;color:var(--grey);margin-top:2px}
+.btn-back-acts{background:#f0f4f8;border:none;border-radius:50px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--grey);cursor:pointer;font-family:inherit;transition:all .2s;display:flex;align-items:center;gap:6px}
+.btn-back-acts:hover{background:#e5e7eb;color:var(--navy)}
+
+/* RADIO GROUP */
+.radio-group{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.radio-opt{display:flex;align-items:center;gap:7px;background:#f0f4f8;border:2px solid #e5e7eb;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--grey);transition:all .2s;user-select:none}
+.radio-opt:hover{border-color:var(--blue)}
+.radio-opt.selected{background:#eaf6fd;border-color:var(--blue);color:var(--blue)}
+.radio-opt input{display:none}
+
+/* PRICE BOX */
+.price-box{background:#f8f9fa;border-radius:10px;padding:16px;border:1px solid #e5e7eb;margin-top:8px}
+.price-box .price-total{font-size:20px;font-weight:800;color:var(--navy);margin-top:8px}
+.price-box .price-label{font-size:11px;color:var(--grey);font-weight:600}
+
+/* INQUIRIES */
+.inq-list{display:flex;flex-direction:column;gap:14px}
+.inq-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;border-left:4px solid #e5e7eb;transition:border-color .2s}
+.inq-card.new{border-left-color:var(--blue)}
+.inq-card.accepted{border-left-color:var(--green)}
+.inq-card.rejected{border-left-color:#aaa;opacity:.7}
+.inq-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.inq-name{font-weight:700;font-size:15px;color:var(--navy)}
+.inq-date{font-size:11px;color:var(--grey)}
+.inq-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.inq-tag{background:#f0f4f8;border-radius:50px;padding:3px 10px;font-size:11px;font-weight:600;color:var(--grey)}
+.inq-tag.blue{background:#eaf6fd;color:var(--blue)}
+.inq-msg{font-size:13px;color:#555;line-height:1.7;margin-bottom:12px}
+.inq-actions{display:flex;gap:8px;flex-wrap:wrap}
+.status-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700}
+.sb-new{background:#dbeafe;color:#1d4ed8}
+.sb-accepted{background:#d1fae5;color:#065f46}
+.sb-rejected{background:#f3f4f6;color:#6b7280}
+.empty-state{text-align:center;padding:48px 20px;color:var(--grey)}
+.empty-state .ei{font-size:52px;margin-bottom:14px}
+.empty-state h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
+
+/* PIN */
+.pin-info{background:#eaf6fd;border-radius:10px;padding:14px;font-size:13px;color:#0369a1;margin-bottom:18px;line-height:1.6}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;padding:11px 22px;border-radius:50px;font-size:13px;font-weight:600;box-shadow:0 8px 24px rgba(4,30,66,0.3);transition:all .3s;z-index:9999;opacity:0;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.ok{background:var(--green)}
+.toast.err{background:var(--red)}
+
+/* LOADING */
+.spin{display:inline-block;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- ===== LOGIN ===== -->
+<div class="screen active" id="screenLogin">
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo">
+        <span class="logo-icon">🎤</span>
+        <h1>Artist Portal</h1>
+        <p>Manage your Stagely profile & acts</p>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp Number</label>
+        <input type="tel" id="loginPhone" placeholder="+971 50 123 4567" autocomplete="tel"/>
+        <div class="hint">The number you registered with</div>
+      </div>
+      <div class="form-group">
+        <label>PIN Code</label>
+        <input type="password" id="loginPin" placeholder="4-digit PIN" maxlength="6" inputmode="numeric" onkeydown="if(event.key==='Enter')doLogin()"/>
+        <div class="hint">Sent to you by Stagely when approved</div>
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:4px;border-radius:50px;padding:14px;font-size:15px" onclick="doLogin()" id="loginBtn">Sign In →</button>
+      <div class="login-error" id="loginError">❌ Incorrect phone or PIN. Contact Stagely if you need help.</div>
+      <div class="login-footer">
+        No profile yet? <a href="/register.html">Register here →</a><br><br>
+        <a href="/">← Back to Stagely</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DASHBOARD ===== -->
+<div class="screen" id="screenDash">
+
+  <div class="dash-header">
+    <div class="dash-header-inner">
+      <div class="dash-logo">Stage<span>ly</span></div>
+      <div class="dash-nav">
+        <button class="dash-nav-btn active" onclick="showPanel('panelActs')" id="navActs">🎭 My Acts</button>
+        <button class="dash-nav-btn" onclick="showPanel('panelInquiries')" id="navInquiries">📩 Inquiries <span class="nav-badge" id="inqBadge" style="display:none">0</span></button>
+        <button class="dash-nav-btn" onclick="showPanel('panelProfile')" id="navProfile">👤 Profile</button>
+        <button class="dash-nav-btn" onclick="showPanel('panelPin')" id="navPin">🔑 PIN</button>
+      </div>
+      <button class="btn-logout" onclick="doLogout()">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="dash-body">
+
+    <!-- PROFILE HERO (always visible) -->
+    <div class="profile-hero">
+      <div class="profile-photo" id="profilePhotoWrap">🎤</div>
+      <div class="profile-meta">
+        <h2 id="profileName">—</h2>
+        <p id="profileCat">—</p>
+        <div class="status-pill" id="profileStatus"></div>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-outline" onclick="viewProfile()">🌐 View profile</button>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: MY ACTS ===== -->
+    <div class="panel active" id="panelActs">
+
+      <!-- Acts list view -->
+      <div id="actsListView">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+          <div>
+            <div style="font-size:18px;font-weight:800;color:var(--navy)">My Acts</div>
+            <div style="font-size:13px;color:var(--grey);margin-top:2px">Each act gets its own profile page on Stagely</div>
+          </div>
+          <button class="btn-green" onclick="showActForm(null)">+ Add New Act</button>
+        </div>
+        <div class="acts-grid" id="actsGrid">
+          <div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--grey)">Loading your acts...</div>
+        </div>
+      </div>
+
+      <!-- Act form view -->
+      <div id="actsFormView" style="display:none">
+        <div class="act-form-header">
+          <button class="btn-back-acts" onclick="showActsList()">← Back to acts</button>
+          <div>
+            <h2 id="actFormTitle">Add New Act</h2>
+            <p id="actFormSub">Fill in your act details. More info = more bookings.</p>
+          </div>
+        </div>
+
+        <input type="hidden" id="actEditId"/>
+
+        <!-- Basic info -->
+        <div class="card">
+          <div class="card-title">🎭 Act Info</div>
+          <div class="form-group">
+            <label>Act Title / Name <span class="req">*</span></label>
+            <input type="text" id="act-title" placeholder="e.g. The ShowBirds – Piano Party Band"/>
+          </div>
+          <div class="form-group">
+            <label>Intro <span class="req">*</span></label>
+            <textarea id="act-intro" rows="3" placeholder="A short 2-3 line summary that sells your act. This is the first thing clients read."></textarea>
+            <div class="hint">Keep it punchy — what makes you unique?</div>
+          </div>
+          <div class="form-group">
+            <label>Full Description <span class="req">*</span></label>
+            <textarea id="act-bio" rows="6" placeholder="Extended description — background, experience, what events you do, style, special features..."></textarea>
+            <div class="hint">Include keywords clients might search for (wedding, corporate, Dubai, live band, etc.)</div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category / Type <span class="req">*</span></label>
+              <select id="act-category">
+                <option value="">Select...</option>
+                <option value="singers">🎤 Singer</option>
+                <option value="djs">🎧 DJ</option>
+                <option value="bands">🎸 Live Band</option>
+                <option value="dancers">💃 Dancer / Dance Group</option>
+                <option value="magicians">🎩 Magician</option>
+                <option value="comedians">🎭 Comedian / MC</option>
+                <option value="speakers">🎙️ Speaker</option>
+                <option value="other">🌟 Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Style / Genre</label>
+              <input type="text" id="act-style" placeholder="e.g. Pop, Jazz, Latin, Top 40, Arabic..."/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Languages you perform in</label>
+            <div class="lang-grid" id="actLangGrid">
+              <label class="lang-chip" onclick="toggleActLang(this,'EN')"><input type="checkbox" value="EN"/> English</label>
+              <label class="lang-chip" onclick="toggleActLang(this,'AR')"><input type="checkbox" value="AR"/> Arabic</label>
+              <label class="lang-chip" onclick="toggleActLang(this,'FR')"><input type="checkbox" value="FR"/> French</label>
+              <label class="lang-chip" onclick="toggleActLang(this,'HI')"><input type="checkbox" value="HI"/> Hindi</label>
+              <label class="lang-chip" onclick="toggleActLang(this,'UR')"><input type="checkbox" value="UR"/> Urdu</label>
+              <label class="lang-chip" onclick="toggleActLang(this,'RU')"><input type="checkbox" value="RU"/> Russian</label>
+              <label class="lang-chip" onclick="toggleActLang(this,'ES')"><input type="checkbox" value="ES"/> Spanish</label>
+              <label class="lang-chip" onclick="toggleActLang(this,'PT')"><input type="checkbox" value="PT"/> Portuguese</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photos & Video -->
+        <div class="card">
+          <div class="card-title">📸 Photos & Video</div>
+          <div class="form-group">
+            <label>Performance Photos (up to 6)</label>
+            <div class="hint" style="margin-bottom:10px">Paste direct photo URLs (Google Drive, Dropbox, your website). First photo = main profile photo.</div>
+            <div class="photo-grid" id="photoGrid">
+              <!-- 6 slots injected by JS -->
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Main YouTube Video</label>
+            <input type="text" id="act-video" placeholder="https://youtube.com/watch?v=..."/>
+            <div class="hint">Your best performance video — artists with video get 3× more bookings.</div>
+          </div>
+          <div class="form-group">
+            <label>Extra YouTube Videos</label>
+            <input type="text" id="act-extra-videos" placeholder="https://youtu.be/abc, https://youtu.be/xyz"/>
+            <div class="hint">Separate multiple links with a comma.</div>
+          </div>
+        </div>
+
+        <!-- Performance specs -->
+        <div class="card">
+          <div class="card-title">⚙️ Performance Specs</div>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label>Number of Performers</label>
+              <select id="act-performers">
+                <option value="">—</option>
+                <option>1 person</option><option>2 people</option><option>3 people</option>
+                <option>4 people</option><option>5 people</option><option>6 band members</option><option>7+ band members</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Composition / Setup</label>
+              <input type="text" id="act-composition" placeholder="e.g. male vocalist, pianist, bassist"/>
+              <div class="hint">Who is in the act?</div>
+            </div>
+            <div class="form-group">
+              <label>Setting</label>
+              <div class="radio-group" id="settingGroup">
+                <label class="radio-opt selected" onclick="selectRadio('settingGroup',this)"><input type="radio" name="setting" value="Indoor & Outdoor" checked/> Indoor & Outdoor</label>
+                <label class="radio-opt" onclick="selectRadio('settingGroup',this)"><input type="radio" name="setting" value="Indoor only"/> Indoor only</label>
+                <label class="radio-opt" onclick="selectRadio('settingGroup',this)"><input type="radio" name="setting" value="Outdoor only"/> Outdoor only</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Show Duration</label>
+              <select id="act-duration">
+                <option value="">—</option>
+                <option>From 30 min</option><option>From 45 min</option><option>From 1 hour</option>
+                <option>From 1.5 hours</option><option>From 2 hours</option><option>From 3 hours</option><option>Full evening</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Max Travel Distance</label>
+              <select id="act-travel">
+                <option value="Unlimited">Unlimited (all UAE)</option>
+                <option value="Dubai only">Dubai only</option>
+                <option value="Dubai + Abu Dhabi">Dubai + Abu Dhabi</option>
+                <option value="50 km">Within 50 km</option>
+                <option value="100 km">Within 100 km</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Space / Stage Requirements</label>
+            <textarea id="act-space" rows="2" placeholder="e.g. 3×4 meter free space, minimum ceiling height 3 meters, access to 230V power..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Technical Requirements / Rider</label>
+            <textarea id="act-rider" rows="3" placeholder="Sound system, microphones, lighting, backstage requirements, catering rider..."></textarea>
+            <div class="hint">Clients will see this so they can prepare. Be specific.</div>
+          </div>
+        </div>
+
+        <!-- Repertoire -->
+        <div class="card">
+          <div class="card-title">🎵 Repertoire</div>
+          <div class="hint" style="margin-bottom:12px">Add songs you perform. Clients love seeing this — it increases bookings significantly.</div>
+          <div class="rep-rows" id="actRepRows">
+            <div class="rep-row">
+              <input type="text" placeholder="Artist name" class="rep-artist"/>
+              <input type="text" placeholder="Song title" class="rep-song"/>
+              <button class="rep-remove" onclick="removeRepRow(this,'actRepRows')">✕</button>
+            </div>
+          </div>
+          <button class="btn-add-row" onclick="addRepRow('actRepRows')">+ Add song</button>
+        </div>
+
+        <!-- Pricing -->
+        <div class="card">
+          <div class="card-title">💰 Pricing</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Starting Price (AED) ex VAT <span class="req">*</span></label>
+              <input type="number" id="act-price" placeholder="e.g. 2500" min="0" oninput="calcPrice()"/>
+            </div>
+            <div class="form-group">
+              <label>VAT</label>
+              <div class="radio-group" id="vatGroup" style="margin-top:4px">
+                <label class="radio-opt selected" onclick="selectRadio('vatGroup',this);calcPrice()"><input type="radio" name="vat" value="0" checked/> 0% (Exempt)</label>
+                <label class="radio-opt" onclick="selectRadio('vatGroup',this);calcPrice()"><input type="radio" name="vat" value="5"/> 5% VAT</label>
+                <label class="radio-opt" onclick="selectRadio('vatGroup',this);calcPrice()"><input type="radio" name="vat" value="9"/> 9% VAT</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Travel costs (AED per km)</label>
+              <input type="number" id="act-travel-cost" placeholder="0" min="0" value="0"/>
+              <div class="hint">0 = included in price</div>
+            </div>
+            <div class="form-group">
+              <label>Cancellation Policy</label>
+              <select id="act-cancellation">
+                <option value="Normal">Normal (50% deposit, refundable 14+ days)</option>
+                <option value="Strict">Strict (50% deposit, non-refundable)</option>
+                <option value="Flexible">Flexible (full refund up to 7 days)</option>
+              </select>
+            </div>
+          </div>
+          <div class="price-box" id="priceBox" style="display:none">
+            <div class="price-label">Price incl. VAT</div>
+            <div class="price-total" id="priceTotal">AED 0</div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="btn-row">
+          <button class="btn-green" id="btnSaveAct" onclick="saveAct()">💾 Save Act</button>
+          <button class="btn-outline" onclick="showActsList()">Cancel</button>
+          <span id="actSaveStatus" style="font-size:13px;color:var(--grey)"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: INQUIRIES ===== -->
+    <div class="panel" id="panelInquiries">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+        <div>
+          <div style="font-size:18px;font-weight:800;color:var(--navy)">Booking Inquiries</div>
+          <div style="font-size:13px;color:var(--grey);margin-top:2px">Clients who want to book you</div>
+        </div>
+        <button class="btn-sm" onclick="loadInquiries()">↻ Refresh</button>
+      </div>
+      <div id="inquiriesContent">
+        <div class="empty-state"><div class="ei">⏳</div><p>Loading...</p></div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: PROFILE ===== -->
+    <div class="panel" id="panelProfile">
+      <div class="card">
+        <div class="card-title">👤 Personal Info</div>
+        <div class="form-row">
+          <div class="form-group"><label>Act Name *</label><input type="text" id="e-name"/></div>
+          <div class="form-group"><label>City *</label>
+            <select id="e-city">
+              <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
+              <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Other UAE</option>
+            </select>
+          </div>
+          <div class="form-group"><label>WhatsApp</label><input type="tel" id="e-whatsapp"/></div>
+          <div class="form-group"><label>Instagram</label><input type="text" id="e-instagram" placeholder="@yourusername"/></div>
+        </div>
+        <div class="form-group"><label>Profile Photo URL</label><input type="text" id="e-photo" placeholder="https://..."/><div class="hint">Main profile photo shown in artist listings</div></div>
+        <div class="btn-row"><button class="btn-primary" onclick="saveProfile()">💾 Save Profile</button></div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: PIN ===== -->
+    <div class="panel" id="panelPin">
+      <div class="card">
+        <div class="card-title">🔑 Change PIN</div>
+        <div class="pin-info">Your PIN is used to log in to this portal. Choose a 4–6 digit number. If you forget it, contact Stagely via WhatsApp.</div>
+        <div class="form-group"><label>Current PIN</label><input type="password" id="pin-current" maxlength="6" inputmode="numeric"/></div>
+        <div class="form-group"><label>New PIN</label><input type="password" id="pin-new" maxlength="6" inputmode="numeric" placeholder="4–6 digits"/></div>
+        <div class="form-group"><label>Confirm New PIN</label><input type="password" id="pin-confirm" maxlength="6" inputmode="numeric"/></div>
+        <div class="btn-row"><button class="btn-primary" onclick="changePin()">🔑 Update PIN</button></div>
+      </div>
+    </div>
+
+  </div><!-- /dash-body -->
+</div><!-- /screenDash -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+var SURL='https://darbunnlilqwbeobcelp.supabase.co';
+var SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
+
+var artist=null;
+var actLangs=[];
+var photoSlots=['','','','','',''];
+
+/* ===== HELPERS ===== */
+function $(id){return document.getElementById(id)}
+function toast(msg,type){var t=$('toast');t.textContent=msg;t.className='toast '+(type||'')+' show';setTimeout(function(){t.className='toast'},3000);}
+function showScreen(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});$(id).classList.add('active');}
+function api(path,method,body){
+  var opts={method:method||'GET',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=representation'}};
+  if(body) opts.body=JSON.stringify(body);
+  return fetch(SURL+'/rest/v1/'+path,opts).then(function(r){return r.json()});
+}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+
+/* ===== LOGIN ===== */
+async function doLogin(){
+  var phone=$('loginPhone').value.trim().replace(/\s+/g,'');
+  var pin=$('loginPin').value.trim();
+  if(!phone||!pin){toast('Enter your phone and PIN','err');return;}
+  $('loginError').style.display='none';
+  var btn=$('loginBtn');btn.textContent='Signing in...';btn.disabled=true;
+  try{
+    var res=await api('artists?select=*&active=eq.true');
+    var match=null;
+    if(Array.isArray(res)){
+      match=res.find(function(a){
+        if(!a.whatsapp||!a.pin) return false;
+        var ap=a.whatsapp.replace(/[\s\-]/g,'');
+        var lp=phone.replace(/-/g,'');
+        return ap===lp&&String(a.pin)===String(pin);
+      });
+    }
+    if(match){
+      artist=match;
+      sessionStorage.setItem('stagely_artist_id',match.id);
+      renderDashboard(match);
+      showScreen('screenDash');
+    } else {
+      $('loginError').style.display='block';
+    }
+  }catch(e){toast('Connection error','err');}
+  btn.textContent='Sign In →';btn.disabled=false;
+}
+
+function doLogout(){
+  artist=null;
+  sessionStorage.removeItem('stagely_artist_id');
+  $('loginPhone').value='';$('loginPin').value='';
+  $('loginError').style.display='none';
+  showScreen('screenLogin');
+}
+
+/* ===== DASHBOARD ===== */
+function renderDashboard(a){
+  $('profileName').textContent=a.name;
+  $('profileCat').textContent=(a.category?a.category.charAt(0).toUpperCase()+a.category.slice(1):'Artist')+' · '+(a.city||'UAE');
+  var pw=$('profilePhotoWrap');
+  if(a.photo_url) pw.innerHTML='<img src="'+esc(a.photo_url)+'" onerror="this.parentElement.innerHTML=\'🎤\'"/>';
+  var st=$('profileStatus');
+  if(!a.active){st.textContent='⏳ Pending approval';st.className='status-pill status-pending';}
+  else if(a.visible===false){st.textContent='👁️ Hidden';st.className='status-pill status-hidden';}
+  else{st.textContent='🟢 Live on Stagely';st.className='status-pill status-live';}
+  // fill profile tab
+  $('e-name').value=a.name||'';
+  $('e-city').value=a.city||'Dubai';
+  $('e-whatsapp').value=a.whatsapp||'';
+  $('e-instagram').value=a.instagram||'';
+  $('e-photo').value=a.photo_url||'';
+  // load acts + inquiries
+  loadActs();
+  loadInquiries();
+}
+
+/* ===== PANELS ===== */
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.dash-nav-btn').forEach(function(b){b.classList.remove('active')});
+  $(id).classList.add('active');
+  var navMap={'panelActs':'navActs','panelInquiries':'navInquiries','panelProfile':'navProfile','panelPin':'navPin'};
+  if(navMap[id]) $(navMap[id]).classList.add('active');
+}
+
+function viewProfile(){if(artist) window.open('/artist.html?id='+artist.id,'_blank');}
+
+/* ===== ACTS LIST ===== */
+async function loadActs(){
+  if(!artist) return;
+  var grid=$('actsGrid');
+  grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--grey)">Loading...</div>';
+  try{
+    var acts=await api('acts?artist_id=eq.'+artist.id+'&order=created_at.desc');
+    if(!Array.isArray(acts)||!acts.length){
+      grid.innerHTML='<button class="add-act-btn" onclick="showActForm(null)"><span class="ai">🎭</span><strong>Add your first act</strong><span>Describe what you do and start getting booked</span></button>';
+      return;
+    }
+    var html='';
+    acts.forEach(function(act){
+      var statusClass=act.published?'status-live':'status-pending';
+      var statusTxt=act.published?'🟢 Live':'⏳ Draft';
+      var imgHtml='';
+      if(act.photo_url) imgHtml='<img src="'+esc(act.photo_url)+'" onerror="this.style.display=\'none\'"/>';
+      html+='<div class="act-card">';
+      html+='<div class="act-card-img" style="background:#eaf6fd">'+imgHtml+'<span style="position:relative;z-index:1;font-size:40px">'+(act.photo_url?'':'🎭')+'</span></div>';
+      html+='<div class="act-card-body">';
+      html+='<div class="act-card-name">'+esc(act.title||act.name||'Untitled act')+'</div>';
+      html+='<div class="act-card-meta"><span>'+esc(act.category||'')+'</span>'+(act.price_from?'<span>AED '+Number(act.price_from).toLocaleString()+'</span>':'')+'</div>';
+      html+='<span class="act-card-status '+statusClass+'">'+statusTxt+'</span>';
+      html+='<div class="act-card-actions">';
+      html+='<button class="btn-sm" onclick="showActForm('+act.id+')">✏️ Edit</button>';
+      if(act.published){
+        html+='<button class="btn-sm" onclick="toggleActPublish('+act.id+',false)">🙈 Unpublish</button>';
+      } else {
+        html+='<button class="btn-sm success" onclick="toggleActPublish('+act.id+',true)">🟢 Publish</button>';
+      }
+      html+='<button class="btn-sm danger" onclick="deleteAct('+act.id+')">🗑️ Delete</button>';
+      html+='</div></div></div>';
+    });
+    // add button at end
+    html+='<button class="add-act-btn" onclick="showActForm(null)"><span class="ai">➕</span><strong>Add another act</strong></button>';
+    grid.innerHTML=html;
+  }catch(e){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--red)">Could not load acts. Check your connection.</div>';
+  }
+}
+
+function showActsList(){
+  $('actsListView').style.display='block';
+  $('actsFormView').style.display='none';
+  loadActs();
+}
+
+async function showActForm(actId){
+  $('actsListView').style.display='none';
+  $('actsFormView').style.display='block';
+  // reset
+  actLangs=[];
+  photoSlots=['','','','','',''];
+  document.querySelectorAll('#actLangGrid .lang-chip').forEach(function(c){c.classList.remove('selected')});
+  $('actRepRows').innerHTML='<div class="rep-row"><input type="text" placeholder="Artist name" class="rep-artist"/><input type="text" placeholder="Song title" class="rep-song"/><button class="rep-remove" onclick="removeRepRow(this,\'actRepRows\')">✕</button></div>';
+  // clear fields
+  ['act-title','act-intro','act-bio','act-style','act-video','act-extra-videos','act-composition','act-space','act-rider','act-price','act-travel-cost'].forEach(function(id){$(id).value='';});
+  $('act-category').value='';$('act-performers').value='';$('act-duration').value='';
+  $('act-cancellation').value='Normal';$('act-travel').value='Unlimited';
+  $('actEditId').value='';
+  document.querySelectorAll('#settingGroup .radio-opt').forEach(function(r,i){r.classList.toggle('selected',i===0)});
+  document.querySelectorAll('#vatGroup .radio-opt').forEach(function(r,i){r.classList.toggle('selected',i===0)});
+  $('priceBox').style.display='none';
+  buildPhotoGrid();
+
+  if(actId){
+    $('actFormTitle').textContent='Edit Act';
+    $('actFormSub').textContent='Update your act details.';
+    try{
+      var acts=await api('acts?id=eq.'+actId);
+      var act=acts[0];if(!act) return;
+      $('actEditId').value=act.id;
+      $('act-title').value=act.title||'';
+      $('act-intro').value=act.intro||'';
+      $('act-bio').value=act.bio||act.description||'';
+      $('act-category').value=act.category||'';
+      $('act-style').value=act.style||'';
+      $('act-video').value=act.video_url||'';
+      $('act-composition').value=act.composition||'';
+      $('act-space').value=act.space_requirements||'';
+      $('act-rider').value=act.rider||'';
+      $('act-price').value=act.price_from||'';
+      $('act-travel-cost').value=act.travel_cost||0;
+      if(act.performers) $('act-performers').value=act.performers;
+      if(act.duration) $('act-duration').value=act.duration;
+      if(act.travel_distance) $('act-travel').value=act.travel_distance;
+      if(act.cancellation_policy) $('act-cancellation').value=act.cancellation_policy;
+      // setting radio
+      if(act.setting){
+        document.querySelectorAll('#settingGroup .radio-opt').forEach(function(r){
+          var v=r.querySelector('input').value;
+          r.classList.toggle('selected',v===act.setting);
+        });
+      }
+      // vat radio
+      if(act.vat_pct!==undefined&&act.vat_pct!==null){
+        document.querySelectorAll('#vatGroup .radio-opt').forEach(function(r){
+          var v=r.querySelector('input').value;
+          r.classList.toggle('selected',String(v)===String(act.vat_pct));
+        });
+      }
+      // languages
+      if(act.languages){
+        act.languages.split(',').map(function(l){return l.trim()}).forEach(function(code){
+          document.querySelectorAll('#actLangGrid .lang-chip').forEach(function(chip){
+            if(chip.querySelector('input').value===code){chip.classList.add('selected');actLangs.push(code);}
+          });
+        });
+      }
+      // photos
+      if(act.photos){
+        try{
+          var ph=JSON.parse(act.photos);
+          for(var i=0;i<6&&i<ph.length;i++) photoSlots[i]=ph[i]||'';
+        }catch(e){}
+      } else if(act.photo_url){photoSlots[0]=act.photo_url;}
+      // extra videos
+      if(act.extra_videos){
+        try{$('act-extra-videos').value=JSON.parse(act.extra_videos).join(', ');}
+        catch(e){$('act-extra-videos').value=act.extra_videos;}
+      }
+      // repertoire
+      if(act.repertoire){
+        var items=[];
+        try{items=JSON.parse(act.repertoire);}catch(e){}
+        if(items.length){
+          $('actRepRows').innerHTML='';
+          items.forEach(function(item){
+            addRepRowData('actRepRows',item.artist||'',item.song||'');
+          });
+        }
+      }
+      buildPhotoGrid();
+      calcPrice();
+    }catch(e){toast('Could not load act','err');}
+  } else {
+    $('actFormTitle').textContent='Add New Act';
+    $('actFormSub').textContent='Fill in your act details. More info = more bookings.';
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ===== PHOTO GRID ===== */
+function buildPhotoGrid(){
+  var grid=$('photoGrid');
+  grid.innerHTML='';
+  for(var i=0;i<6;i++){
+    var idx=i;
+    var url=photoSlots[i];
+    var div=document.createElement('div');
+    div.className='photo-slot'+(url?' filled':'');
+    div.id='slot-'+i;
+    if(url){
+      div.innerHTML='<img src="'+esc(url)+'" onerror="this.parentElement.classList.remove(\'filled\');this.remove()"/><div class="slot-overlay">✏️ Change</div><button class="slot-remove" onclick="event.stopPropagation();clearSlot('+idx+')">✕</button>';
+    } else {
+      div.innerHTML='<span class="slot-icon">📸</span><span class="slot-label">'+(i===0?'Main photo':'Photo '+(i+1))+'</span>';
+    }
+    div.onclick=function(idx2){return function(){openSlotInput(idx2)}}(i);
+    grid.appendChild(div);
+    // hidden input
+    var inp=document.createElement('input');
+    inp.type='text';inp.className='photo-url-input';inp.id='photo-inp-'+i;
+    inp.placeholder='Paste photo URL...';
+    inp.onchange=function(idx2){return function(){setSlot(idx2,this.value.trim())}}(i);
+    grid.appendChild(inp);
+  }
+}
+
+function openSlotInput(idx){
+  var url=prompt('Paste photo URL for photo '+(idx+1)+':\n\n(Google Drive, Dropbox, direct image link)','');
+  if(url!==null&&url.trim()) setSlot(idx,url.trim());
+}
+
+function setSlot(idx,url){
+  photoSlots[idx]=url;
+  buildPhotoGrid();
+}
+function clearSlot(idx){
+  photoSlots[idx]='';
+  buildPhotoGrid();
+}
+
+/* ===== RADIO GROUPS ===== */
+function selectRadio(groupId,el){
+  document.querySelectorAll('#'+groupId+' .radio-opt').forEach(function(r){r.classList.remove('selected')});
+  el.classList.add('selected');
+}
+function getRadioVal(groupId){
+  var sel=document.querySelector('#'+groupId+' .radio-opt.selected input');
+  return sel?sel.value:'';
+}
+
+/* ===== LANG CHIPS ===== */
+function toggleActLang(el,code){
+  el.classList.toggle('selected');
+  if(actLangs.includes(code)) actLangs=actLangs.filter(function(l){return l!==code});
+  else actLangs.push(code);
+}
+
+/* ===== REPERTOIRE ===== */
+function addRepRow(containerId){
+  var rows=$(containerId);
+  var div=document.createElement('div');div.className='rep-row';
+  div.innerHTML='<input type="text" placeholder="Artist name" class="rep-artist"/><input type="text" placeholder="Song title" class="rep-song"/><button class="rep-remove" onclick="removeRepRow(this,\''+containerId+'\')">✕</button>';
+  rows.appendChild(div);
+}
+function addRepRowData(containerId,artist,song){
+  var rows=$(containerId);
+  var div=document.createElement('div');div.className='rep-row';
+  div.innerHTML='<input type="text" placeholder="Artist name" class="rep-artist" value="'+esc(artist)+'"/><input type="text" placeholder="Song title" class="rep-song" value="'+esc(song)+'"/><button class="rep-remove" onclick="removeRepRow(this,\''+containerId+'\')">✕</button>';
+  rows.appendChild(div);
+}
+function removeRepRow(btn,containerId){
+  var rows=$(containerId);
+  if(rows.children.length>1) btn.parentElement.remove();
+}
+function getRepertoire(containerId){
+  var rows=document.querySelectorAll('#'+containerId+' .rep-row');
+  var items=[];
+  rows.forEach(function(row){
+    var a=row.querySelector('.rep-artist').value.trim();
+    var s=row.querySelector('.rep-song').value.trim();
+    if(a||s) items.push({artist:a,song:s});
+  });
+  return items.length?JSON.stringify(items):null;
+}
+
+/* ===== PRICE CALC ===== */
+function calcPrice(){
+  var price=parseFloat($('act-price').value)||0;
+  var vat=parseFloat(getRadioVal('vatGroup'))||0;
+  if(price>0){
+    var total=price*(1+vat/100);
+    $('priceTotal').textContent='AED '+total.toLocaleString('en',{maximumFractionDigits:0})+(vat>0?' (incl. '+vat+'% VAT)':'');
+    $('priceBox').style.display='block';
+  } else {
+    $('priceBox').style.display='none';
+  }
+}
+
+/* ===== SAVE ACT ===== */
+async function saveAct(){
+  var title=$('act-title').value.trim();
+  var intro=$('act-intro').value.trim();
+  var bio=$('act-bio').value.trim();
+  var cat=$('act-category').value;
+  var price=parseInt($('act-price').value)||0;
+  if(!title||!intro||!bio||!cat||!price){toast('Fill in title, intro, description, category and price','err');return;}
+
+  var btn=$('btnSaveAct');btn.textContent='Saving...';btn.disabled=true;
+  $('actSaveStatus').textContent='';
+
+  // parse extra videos
+  var evRaw=$('act-extra-videos').value.trim();
+  var evJson=null;
+  if(evRaw){try{JSON.parse(evRaw);evJson=evRaw;}catch(e){var urls=evRaw.split(',').map(function(u){return u.trim()}).filter(Boolean);evJson=urls.length?JSON.stringify(urls):null;}}
+
+  var photos=photoSlots.filter(Boolean);
+
+  var data={
+    artist_id:artist.id,
+    title:title,
+    intro:intro,
+    bio:bio,
+    description:bio,
+    category:cat,
+    style:$('act-style').value.trim()||null,
+    languages:actLangs.length?actLangs.join(', '):null,
+    performers:$('act-performers').value||null,
+    composition:$('act-composition').value.trim()||null,
+    duration:$('act-duration').value||null,
+    setting:getRadioVal('settingGroup')||'Indoor & Outdoor',
+    travel_distance:$('act-travel').value||'Unlimited',
+    space_requirements:$('act-space').value.trim()||null,
+    rider:$('act-rider').value.trim()||null,
+    repertoire:getRepertoire('actRepRows'),
+    price_from:price,
+    vat_pct:parseFloat(getRadioVal('vatGroup'))||0,
+    travel_cost:parseFloat($('act-travel-cost').value)||0,
+    cancellation_policy:$('act-cancellation').value||'Normal',
+    photo_url:photos[0]||null,
+    photos:photos.length?JSON.stringify(photos):null,
+    video_url:$('act-video').value.trim()||null,
+    extra_videos:evJson,
+    published:false
+  };
+
+  try{
+    var editId=$('actEditId').value;
+    if(editId){
+      await api('acts?id=eq.'+editId,'PATCH',data);
+      toast('✅ Act updated!','ok');
+      $('actSaveStatus').textContent='Saved ✓';
+    } else {
+      await api('acts','POST',data);
+      toast('✅ Act saved! You can now publish it.','ok');
+      $('actSaveStatus').textContent='Saved ✓';
+    }
+    setTimeout(function(){showActsList();},1200);
+  }catch(e){toast('Error saving act','err');$('actSaveStatus').textContent='Error — try again';}
+  btn.textContent='💾 Save Act';btn.disabled=false;
+}
+
+async function toggleActPublish(id,published){
+  try{
+    await api('acts?id=eq.'+id,'PATCH',{published:published});
+    toast(published?'🟢 Act is now LIVE!':'Act unpublished');
+    loadActs();
+  }catch(e){toast('Error','err');}
+}
+
+async function deleteAct(id){
+  if(!confirm('Permanently delete this act?')) return;
+  try{
+    await api('acts?id=eq.'+id,'DELETE');
+    toast('Act deleted');
+    loadActs();
+  }catch(e){toast('Error','err');}
+}
+
+/* ===== INQUIRIES ===== */
+async function loadInquiries(){
+  if(!artist) return;
+  var c=$('inquiriesContent');
+  c.innerHTML='<div class="empty-state"><div class="ei">⏳</div><p>Loading...</p></div>';
+  try{
+    var data=await api('inquiries?artist_id=eq.'+artist.id+'&order=created_at.desc');
+    if(!data||!Array.isArray(data)||!data.length){
+      c.innerHTML='<div class="empty-state"><div class="ei">📩</div><h3>No inquiries yet</h3><p>When clients fill in the inquiry form on your profile, they appear here.</p></div>';
+      $('inqBadge').style.display='none';
+      return;
+    }
+    var newCount=data.filter(function(i){return i.status==='new'||!i.status}).length;
+    if(newCount>0){$('inqBadge').style.display='inline';$('inqBadge').textContent=newCount;}
+    else $('inqBadge').style.display='none';
+
+    var html='<div class="inq-list">';
+    data.forEach(function(inq){
+      var status=inq.status||'new';
+      var d=inq.created_at?new Date(inq.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'';
+      var cardClass='inq-card '+(status==='new'?'new':status==='accepted'?'accepted':'');
+      var sbClass='status-badge '+(status==='new'?'sb-new':status==='accepted'?'sb-accepted':'sb-rejected');
+      var sbTxt=status==='new'?'🔵 New':status==='accepted'?'✅ Accepted':'❌ Declined';
+      html+='<div class="'+cardClass+'" id="inq-'+inq.id+'">';
+      html+='<div class="inq-top"><div><div class="inq-name">'+(inq.name||'Anonymous')+'</div><span class="'+sbClass+'">'+sbTxt+'</span></div><div class="inq-date">'+d+'</div></div>';
+      html+='<div class="inq-meta">';
+      if(inq.email) html+='<span class="inq-tag">✉️ '+esc(inq.email)+'</span>';
+      if(inq.phone) html+='<span class="inq-tag">📱 '+esc(inq.phone)+'</span>';
+      if(inq.event_type) html+='<span class="inq-tag blue">'+esc(inq.event_type)+'</span>';
+      if(inq.event_date) html+='<span class="inq-tag">📅 '+esc(inq.event_date)+'</span>';
+      if(inq.event_location) html+='<span class="inq-tag">📍 '+esc(inq.event_location)+'</span>';
+      html+='</div>';
+      if(inq.message) html+='<div class="inq-msg">'+esc(inq.message)+'</div>';
+      if(status==='new'){
+        html+='<div class="inq-actions">';
+        html+='<button class="btn-sm success" onclick="updateInquiry('+inq.id+',\'accepted\')">✅ Accept</button>';
+        html+='<button class="btn-sm danger" onclick="updateInquiry('+inq.id+',\'rejected\')">❌ Decline</button>';
+        if(inq.phone) html+='<a href="https://wa.me/'+inq.phone.replace(/[^0-9]/g,'')+'" target="_blank"><button class="btn-sm">💬 WhatsApp client</button></a>';
+        if(inq.email) html+='<a href="mailto:'+inq.email+'" target="_blank"><button class="btn-sm">✉️ Email client</button></a>';
+        html+='</div>';
+      }
+      html+='</div>';
+    });
+    html+='</div>';
+    c.innerHTML=html;
+  }catch(e){
+    c.innerHTML='<div class="empty-state"><div class="ei">⚠️</div><p>Could not load inquiries.</p></div>';
+  }
+}
+
+async function updateInquiry(id,status){
+  try{
+    await api('inquiries?id=eq.'+id,'PATCH',{status:status});
+    toast(status==='accepted'?'✅ Inquiry accepted!':'Inquiry declined');
+    loadInquiries();
+  }catch(e){toast('Error','err');}
+}
+
+/* ===== SAVE PROFILE ===== */
+async function saveProfile(){
+  if(!artist) return;
+  var data={name:$('e-name').value.trim(),city:$('e-city').value,whatsapp:$('e-whatsapp').value.trim(),instagram:$('e-instagram').value.trim()||null,photo_url:$('e-photo').value.trim()||null};
+  try{
+    await api('artists?id=eq.'+artist.id,'PATCH',data);
+    Object.assign(artist,data);
+    $('profileName').textContent=data.name;
+    if(data.photo_url) $('profilePhotoWrap').innerHTML='<img src="'+esc(data.photo_url)+'" onerror="this.parentElement.innerHTML=\'🎤\'"/>';
+    toast('✅ Profile saved!','ok');
+  }catch(e){toast('Error saving','err');}
+}
+
+/* ===== PIN ===== */
+async function changePin(){
+  var cur=$('pin-current').value.trim();
+  var nw=$('pin-new').value.trim();
+  var conf=$('pin-confirm').value.trim();
+  if(!cur||!nw||!conf){toast('Fill in all PIN fields','err');return;}
+  if(String(artist.pin)!==String(cur)){toast('Current PIN incorrect','err');return;}
+  if(nw!==conf){toast('New PINs do not match','err');return;}
+  if(nw.length<4){toast('PIN must be at least 4 digits','err');return;}
+  try{
+    await api('artists?id=eq.'+artist.id,'PATCH',{pin:nw});
+    artist.pin=nw;
+    $('pin-current').value='';$('pin-new').value='';$('pin-confirm').value='';
+    toast('✅ PIN updated!','ok');
+  }catch(e){toast('Error updating PIN','err');}
+}
+
+/* ===== AUTO LOGIN ===== */
+window.addEventListener('load',function(){
+  var savedId=sessionStorage.getItem('stagely_artist_id');
+  if(savedId){
+    api('artists?id=eq.'+savedId+'&active=eq.true').then(function(data){
+      if(data&&data.length&&data[0].pin){
+        artist=data[0];
+        renderDashboard(data[0]);
+        showScreen('screenDash');
+      }
+    }).catch(function(){});
+  }
+});
+</script>
+</body>
+</html>
