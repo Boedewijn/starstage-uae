@@ -578,7 +578,8 @@ function fillReview(){
     row('Price from','AED '+parseInt(document.getElementById('f-price').value||0).toLocaleString())+
     row('Languages',selectedLangs.join(', ')||'—')+
     row('WhatsApp',document.getElementById('f-whatsapp').value)+
-    row('Bio',document.getElementById('f-bio').value.substring(0,100)+'...');
+    row('Photo',document.getElementById('f-photo').value?'✅ Uploaded':'❌ Missing')+
+    row('Bio',document.getElementById('f-bio').value.substring(0,100)+(document.getElementById('f-bio').value.length>100?'...':''));
 }
 
 async function uploadRegPhoto(input){
