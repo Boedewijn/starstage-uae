@@ -418,6 +418,26 @@ a{color:inherit;text-decoration:none}
           </div>
         </div>
 
+        <!-- Event Types -->
+        <div class="card">
+          <div class="card-title">🎪 Suitable for which events?</div>
+          <div style="font-size:12px;color:var(--grey);margin-bottom:14px">Select the event types this act is suitable for. Clients can filter by event type.</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="actEventTypesGrid">
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Wedding" style="width:16px;height:16px;flex-shrink:0"/> 💍 Wedding</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Corporate Event" style="width:16px;height:16px;flex-shrink:0"/> 🏢 Corporate Event</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Birthday" style="width:16px;height:16px;flex-shrink:0"/> 🎂 Birthday</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="National Day" style="width:16px;height:16px;flex-shrink:0"/> 🇦🇪 National Day</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Festival" style="width:16px;height:16px;flex-shrink:0"/> 🎪 Festival</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Hotel / Restaurant" style="width:16px;height:16px;flex-shrink:0"/> 🏨 Hotel / Restaurant</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Gala Dinner" style="width:16px;height:16px;flex-shrink:0"/> 🍽️ Gala Dinner</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Graduation" style="width:16px;height:16px;flex-shrink:0"/> 🎓 Graduation</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Opening" style="width:16px;height:16px;flex-shrink:0"/> 🎊 Opening</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Private Party" style="width:16px;height:16px;flex-shrink:0"/> 🎉 Private Party</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Horeca" style="width:16px;height:16px;flex-shrink:0"/> 🍸 Horeca line-up</label>
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;user-select:none"><input type="checkbox" value="Sports Event" style="width:16px;height:16px;flex-shrink:0"/> 🏆 Sports Event</label>
+          </div>
+        </div>
+
         <!-- Repertoire -->
         <div class="card">
           <div class="card-title">🎵 Repertoire</div>
@@ -959,6 +979,7 @@ async function showActForm(actId){
   $('act-category').value='';$('act-performers').value='';$('act-duration').value='';
   $('act-cancellation').value='Normal';$('act-travel').value='Unlimited';
   $('actEditId').value='';
+  setActEventTypes(null);
   document.querySelectorAll('#settingGroup .radio-opt').forEach(function(r,i){r.classList.toggle('selected',i===0)});
   document.querySelectorAll('#vatGroup .radio-opt').forEach(function(r,i){r.classList.toggle('selected',i===0)});
   $('priceBox').style.display='none';
@@ -1015,6 +1036,8 @@ async function showActForm(actId){
           for(var i=0;i<6&&i<ph.length;i++) photoSlots[i]=ph[i]||'';
         }catch(e){}
       } else if(act.photo_url){photoSlots[0]=act.photo_url;}
+      // event types
+      if(act.event_types) setActEventTypes(act.event_types);
       // extra videos
       if(act.extra_videos){
         try{$('act-extra-videos').value=JSON.parse(act.extra_videos).join(', ');}
@@ -1042,6 +1065,14 @@ async function showActForm(actId){
 }
 
 /* ===== PHOTO GRID ===== */
+// Style event type checkboxes on click
+document.addEventListener('change', function(e){
+  if(e.target.type==='checkbox' && e.target.closest('#actEventTypesGrid')){
+    e.target.parentElement.style.background=e.target.checked?'#eaf6fd':'#f8f9fa';
+    e.target.parentElement.style.color=e.target.checked?'var(--blue)':'';
+  }
+});
+
 function buildPhotoGrid(){
   var grid=$('photoGrid');
   grid.innerHTML='';
@@ -1068,6 +1099,14 @@ function buildPhotoGrid(){
 }
 
 /* ===== PHOTO UPLOAD ===== */
+// Style event type checkboxes on click
+document.addEventListener('change', function(e){
+  if(e.target.type==='checkbox' && e.target.closest('#actEventTypesGrid')){
+    e.target.parentElement.style.background=e.target.checked?'#eaf6fd':'#f8f9fa';
+    e.target.parentElement.style.color=e.target.checked?'var(--blue)':'';
+  }
+});
+
 function buildPhotoGrid(){
   var grid=document.getElementById('photoGrid');
   grid.innerHTML='';
@@ -1184,6 +1223,34 @@ function removeRepRow(btn,containerId){
   var rows=$(containerId);
   if(rows.children.length>1) btn.parentElement.remove();
 }
+function getActEventTypes(){
+  var types=[];
+  document.querySelectorAll('#actEventTypesGrid input[type=checkbox]:checked').forEach(function(cb){
+    types.push(cb.value);
+  });
+  return types.length?JSON.stringify(types):null;
+}
+
+function setActEventTypes(jsonStr){
+  // reset all
+  document.querySelectorAll('#actEventTypesGrid input[type=checkbox]').forEach(function(cb){
+    cb.checked=false;
+    cb.parentElement.style.background='#f8f9fa';
+    cb.parentElement.style.color='';
+  });
+  if(!jsonStr) return;
+  try{
+    var types=JSON.parse(jsonStr);
+    document.querySelectorAll('#actEventTypesGrid input[type=checkbox]').forEach(function(cb){
+      if(types.includes(cb.value)){
+        cb.checked=true;
+        cb.parentElement.style.background='#eaf6fd';
+        cb.parentElement.style.color='var(--blue)';
+      }
+    });
+  }catch(e){}
+}
+
 function getRepertoire(containerId){
   var rows=document.querySelectorAll('#'+containerId+' .rep-row');
   var items=[];
@@ -1244,6 +1311,7 @@ async function saveAct(){
     space_requirements:$('act-space').value.trim()||null,
     rider:$('act-rider').value.trim()||null,
     repertoire:getRepertoire('actRepRows'),
+    event_types:getActEventTypes(),
     price_from:price,
     vat_pct:parseFloat(getRadioVal('vatGroup'))||0,
     travel_cost:parseFloat($('act-travel-cost').value)||0,
