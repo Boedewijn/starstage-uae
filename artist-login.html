@@ -233,8 +233,11 @@ a{color:inherit;text-decoration:none}
       <div class="dash-nav">
         <button class="dash-nav-btn active" onclick="showPanel('panelActs')" id="navActs">🎭 My Acts</button>
         <button class="dash-nav-btn" onclick="showPanel('panelInquiries')" id="navInquiries">📩 Inquiries <span class="nav-badge" id="inqBadge" style="display:none">0</span></button>
+        <button class="dash-nav-btn" onclick="showPanel('panelAgenda')" id="navAgenda">📅 Agenda</button>
+        <button class="dash-nav-btn" onclick="showPanel('panelGigs')" id="navGigs">🎤 My Gigs</button>
         <button class="dash-nav-btn" onclick="showPanel('panelProfile')" id="navProfile">👤 Profile</button>
         <button class="dash-nav-btn" onclick="showPanel('panelPin')" id="navPin">🔑 PIN</button>
+        <button class="dash-nav-btn" onclick="showPanel('panelInfo')" id="navInfo">ℹ️ Info</button>
       </div>
       <button class="btn-logout" onclick="doLogout()">Sign Out</button>
     </div>
@@ -561,7 +564,192 @@ a{color:inherit;text-decoration:none}
         </div>
         <div class="btn-row"><button class="btn-primary" onclick="saveProfile()">💾 Save Profile</button></div>
       </div>
+      <!-- Event types -->
+      <div class="card">
+        <div class="card-title">🎪 Events I perform at</div>
+        <div style="font-size:12px;color:var(--grey);margin-bottom:14px">Select the types of events you want to be booked for. Clients can filter by event type.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="eventTypesGrid">
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Wedding" style="width:16px;height:16px"/> 💍 Wedding</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Corporate Event" style="width:16px;height:16px"/> 🏢 Corporate Event</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Birthday" style="width:16px;height:16px"/> 🎂 Birthday</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="National Day" style="width:16px;height:16px"/> 🇦🇪 National Day</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Festival" style="width:16px;height:16px"/> 🎪 Festival</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Hotel / Restaurant" style="width:16px;height:16px"/> 🏨 Hotel / Restaurant</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Gala Dinner" style="width:16px;height:16px"/> 🍽️ Gala Dinner</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Graduation" style="width:16px;height:16px"/> 🎓 Graduation</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Opening" style="width:16px;height:16px"/> 🎊 Opening</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Private Party" style="width:16px;height:16px"/> 🎉 Private Party</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Horeca" style="width:16px;height:16px"/> 🍸 Horeca line-up</label>
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8f9fa;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600"><input type="checkbox" value="Sports Event" style="width:16px;height:16px"/> 🏆 Sports Event</label>
+        </div>
+        <div class="btn-row" style="margin-top:16px"><button class="btn-primary" onclick="saveEventTypes()">💾 Save Event Types</button></div>
+      </div>
     </div>
+    <!-- ===== PANEL: AGENDA ===== -->
+    <div class="panel" id="panelAgenda">
+      <div class="card">
+        <div class="card-title">📅 Koppel je agenda</div>
+        <p style="font-size:13px;color:var(--grey);margin-bottom:16px;line-height:1.7">Koppel je Google, Outlook of Apple agenda aan Stagely. Afspraken worden automatisch als 'bezet' verwerkt. Klanten kunnen je dan niet boeken op bezette tijden.</p>
+        <div style="background:#eaf6fd;border-radius:10px;padding:14px;margin-bottom:20px;font-size:13px;color:#0369a1;line-height:1.6">
+          💡 Artiesten met een up-to-date agenda krijgen een betere positie in de zoekresultaten!
+        </div>
+        <div class="form-group">
+          <label>iCal URL (Google / Outlook / Apple)</label>
+          <input type="text" id="e-calendar-url" placeholder="webcal://... of https://calendar.google.com/calendar/ical/..."/>
+          <div class="hint">Plak hier de iCal/webcal link van je agenda. Zie de instructies hieronder.</div>
+        </div>
+        <div class="btn-row"><button class="btn-primary" onclick="saveCalendar()">💾 Opslaan</button></div>
+      </div>
+
+      <div class="card" style="margin-top:0">
+        <div class="card-title">📅 Agenda</div>
+        <div style="display:flex;gap:8px;margin-bottom:16px">
+          <button class="btn-sm" id="agView-dag" onclick="setAgendaView('dag',this)">DAG</button>
+          <button class="btn-sm active" id="agView-week" onclick="setAgendaView('week',this)" style="background:var(--navy);color:#fff">WEEK</button>
+          <button class="btn-sm" id="agView-maand" onclick="setAgendaView('maand',this)">MAAND</button>
+          <button class="btn-sm" onclick="agendaNav(-1)" style="margin-left:auto">‹</button>
+          <span id="agendaTitle" style="font-size:13px;font-weight:700;color:var(--navy);align-self:center">Week</span>
+          <button class="btn-sm" onclick="agendaNav(1)">›</button>
+        </div>
+        <div id="agendaGrid" style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;font-size:12px"></div>
+        <div style="margin-top:16px">
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">⛔ Blokkeer tijdslot handmatig</div>
+          <div class="form-row">
+            <div class="form-group"><label>Datum</label><input type="date" id="block-date"/></div>
+            <div class="form-group"><label>Notitie (optioneel)</label><input type="text" id="block-note" placeholder="bijv. Andere boeking"/></div>
+          </div>
+          <button class="btn-sm" onclick="addBlock()" style="background:#fff0f3;color:var(--red);border:2px solid #fecdd3">⛔ Dag blokkeren</button>
+        </div>
+        <div id="blocksList" style="margin-top:14px"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📋 Hoe koppel ik mijn agenda?</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:#f8f9fa;border-radius:10px;padding:16px">
+            <div style="font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span style="font-size:20px">📅</span> Google Agenda</div>
+            <ol style="font-size:13px;color:#555;line-height:2;padding-left:18px">
+              <li>Ga naar calendar.google.com (op je computer)</li>
+              <li>Klik de drie stipjes naast je agenda</li>
+              <li>Kies 'Instellingen en delen'</li>
+              <li>Scroll naar 'Geheim adres in iCal-indeling'</li>
+              <li>Kopieer de link en plak hem hierboven</li>
+            </ol>
+          </div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:16px">
+            <div style="font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span style="font-size:20px">📧</span> Outlook Agenda</div>
+            <ol style="font-size:13px;color:#555;line-height:2;padding-left:18px">
+              <li>Ga naar outlook.live.com/calendar</li>
+              <li>Klik rechtsboven op het tandwiel</li>
+              <li>Ga naar Agenda → Gedeelde agenda's</li>
+              <li>Kies 'Kan zien wanneer ik bezet ben'</li>
+              <li>Kopieer de ICS link en plak hem hierboven</li>
+            </ol>
+          </div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:16px">
+            <div style="font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span style="font-size:20px">🍎</span> Apple Calendar</div>
+            <ol style="font-size:13px;color:#555;line-height:2;padding-left:18px">
+              <li>Open iCalendar op je iPhone</li>
+              <li>Tik onderin op 'Agenda's'</li>
+              <li>Tik op het ℹ️ naast de agenda</li>
+              <li>Zet 'Openbare agenda' aan</li>
+              <li>Tik 'Deel link...' → Kopieer → plak hierboven</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: GIGS ===== -->
+    <div class="panel" id="panelGigs">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+        <div>
+          <div style="font-size:18px;font-weight:800;color:var(--navy)">🎤 Mijn Gigs</div>
+          <div style="font-size:13px;color:var(--grey);margin-top:2px">Overzicht van al je aanvragen en boekingen</div>
+        </div>
+        <button class="btn-sm" onclick="loadGigs()">↻ Vernieuwen</button>
+      </div>
+
+      <!-- Status tabs -->
+      <div style="display:flex;gap:4px;background:#fff;border-radius:10px;padding:5px;box-shadow:var(--shadow);margin-bottom:18px;overflow-x:auto">
+        <button class="btn-sm" id="gig-tab-all" onclick="filterGigs('all',this)" style="background:var(--navy);color:#fff;flex:1">Alle</button>
+        <button class="btn-sm" id="gig-tab-new" onclick="filterGigs('new',this)" style="flex:1">🔵 Nieuw</button>
+        <button class="btn-sm" id="gig-tab-accepted" onclick="filterGigs('accepted',this)" style="flex:1">✅ Geaccepteerd</button>
+        <button class="btn-sm" id="gig-tab-rejected" onclick="filterGigs('rejected',this)" style="flex:1">❌ Afgewezen</button>
+      </div>
+
+      <div id="gigsContent">
+        <div class="empty-state"><div class="ei">⏳</div><p>Laden...</p></div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: INFO ===== -->
+    <div class="panel" id="panelInfo">
+      <div style="font-size:18px;font-weight:800;color:var(--navy);margin-bottom:20px">ℹ️ Hoe werkt het?</div>
+
+      <div class="card">
+        <div class="card-title">📨 Stap 1: Aanvraag</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Een klant heeft jouw act gevonden en stuurt een aanvraag. Je ontvangt hiervan een melding in de Inquiries tab.</p>
+        <div style="background:#eaf6fd;border-radius:8px;padding:12px;font-size:13px;color:#0369a1">
+          💡 Reageer zo snel mogelijk op aanvragen. Hoe sneller je reageert, hoe groter de kans op een boeking!
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">💬 Stap 2: Contact met de klant</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Nadat je de aanvraag hebt ontvangen neem je direct contact op met de klant via WhatsApp of email. Bespreek de details:</p>
+        <ul style="font-size:13px;color:#555;line-height:2;padding-left:18px;margin-bottom:12px">
+          <li>Datum, tijd en locatie van het event</li>
+          <li>Gewenste setduur en pauzes</li>
+          <li>Technische vereisten (geluid, licht, podium)</li>
+          <li>Speciale wensen (repertoire, dresscode)</li>
+          <li>Prijs en betalingsafspraken</li>
+        </ul>
+        <div style="background:#fef3c7;border-radius:8px;padding:12px;font-size:13px;color:#92400e">
+          ⚠️ Zorg dat je alle details helder hebt voordat je een voorstel doet!
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">✅ Stap 3: Accepteren of afwijzen</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Bekijk de aanvraag in je Inquiries tab en kies:</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:12px;align-items:flex-start;background:#d1fae5;border-radius:8px;padding:12px">
+            <span style="font-size:20px">✅</span>
+            <div><div style="font-weight:700;color:#065f46;font-size:13px">Accepteren</div><div style="font-size:12px;color:#065f46">Je bevestigt de boeking. De klant krijgt een bevestiging.</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;background:#fff0f3;border-radius:8px;padding:12px">
+            <span style="font-size:20px">❌</span>
+            <div><div style="font-weight:700;color:var(--red);font-size:13px">Afwijzen</div><div style="font-size:12px;color:var(--red)">Je bent niet beschikbaar of het past niet. De klant krijgt bericht.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🎤 Stap 4: Optreden</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Je gaat optreden! Enkele tips:</p>
+        <ul style="font-size:13px;color:#555;line-height:2;padding-left:18px">
+          <li>Neem vooraf contact op met de klant om praktische zaken te bespreken</li>
+          <li>Kom op tijd en wees professioneel</li>
+          <li>Stem de locatie en opbouwtijd vooraf goed af</li>
+          <li>Na het optreden kan de klant een review achterlaten</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📞 Contact & Support</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Heb je vragen of problemen? We helpen je graag!</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="https://wa.me/971000000000" target="_blank" style="display:flex;align-items:center;gap:10px;background:#d1fae5;border-radius:8px;padding:12px;color:#065f46;font-weight:700;font-size:13px;text-decoration:none">
+            <span style="font-size:20px">💬</span> WhatsApp Stagely Support
+          </a>
+          <a href="mailto:support@stagely.ae" style="display:flex;align-items:center;gap:10px;background:#eaf6fd;border-radius:8px;padding:12px;color:#0369a1;font-weight:700;font-size:13px;text-decoration:none">
+            <span style="font-size:20px">✉️</span> support@stagely.ae
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- ===== PANEL: PIN ===== -->
     <div class="panel" id="panelPin">
       <div class="card">
@@ -671,9 +859,10 @@ function renderDashboard(a){
     });
     $('e-artist-type').value=a.artist_type;
   }
-  // load acts + inquiries
+  // load acts + inquiries + event types
   loadActs();
   loadInquiries();
+  loadEventTypes(a);
 }
 
 /* ===== PANELS ===== */
@@ -681,8 +870,14 @@ function showPanel(id){
   document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
   document.querySelectorAll('.dash-nav-btn').forEach(function(b){b.classList.remove('active')});
   $(id).classList.add('active');
-  var navMap={'panelActs':'navActs','panelInquiries':'navInquiries','panelProfile':'navProfile','panelPin':'navPin'};
+  var navMap={
+    'panelActs':'navActs','panelInquiries':'navInquiries',
+    'panelAgenda':'navAgenda','panelGigs':'navGigs',
+    'panelProfile':'navProfile','panelPin':'navPin','panelInfo':'navInfo'
+  };
   if(navMap[id]) $(navMap[id]).classList.add('active');
+  if(id==='panelAgenda') initAgenda();
+  if(id==='panelGigs') loadGigs();
 }
 
 function viewProfile(){if(artist) window.open('/artist.html?id='+artist.id,'_blank');}
@@ -1225,6 +1420,243 @@ async function changePin(){
     $('pin-current').value='';$('pin-new').value='';$('pin-confirm').value='';
     toast('✅ PIN updated!','ok');
   }catch(e){toast('Error updating PIN','err');}
+}
+
+/* ===== EVENT TYPES ===== */
+function loadEventTypes(a){
+  if(!a.event_types) return;
+  try{
+    var types=JSON.parse(a.event_types);
+    document.querySelectorAll('#eventTypesGrid input[type=checkbox]').forEach(function(cb){
+      cb.checked=types.includes(cb.value);
+      cb.parentElement.style.background=cb.checked?'#eaf6fd':'#f8f9fa';
+      cb.parentElement.style.color=cb.checked?'var(--blue)':'';
+    });
+    document.querySelectorAll('#eventTypesGrid input[type=checkbox]').forEach(function(cb){
+      cb.addEventListener('change',function(){
+        cb.parentElement.style.background=cb.checked?'#eaf6fd':'#f8f9fa';
+        cb.parentElement.style.color=cb.checked?'var(--blue)':'';
+      });
+    });
+  }catch(e){}
+}
+
+// add change listeners on load
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('#eventTypesGrid input[type=checkbox]').forEach(function(cb){
+    cb.addEventListener('change',function(){
+      cb.parentElement.style.background=cb.checked?'#eaf6fd':'#f8f9fa';
+      cb.parentElement.style.color=cb.checked?'var(--blue)':'';
+    });
+  });
+});
+
+async function saveEventTypes(){
+  if(!artist) return;
+  var types=[];
+  document.querySelectorAll('#eventTypesGrid input[type=checkbox]:checked').forEach(function(cb){
+    types.push(cb.value);
+  });
+  try{
+    await api('artists?id=eq.'+artist.id,'PATCH',{event_types:JSON.stringify(types)});
+    artist.event_types=JSON.stringify(types);
+    toast('✅ Event types saved!','ok');
+  }catch(e){toast('Error saving','err');}
+}
+
+/* ===== CALENDAR / AGENDA ===== */
+var agendaView='week';
+var agendaDate=new Date();
+var calendarBlocks=[];
+
+async function saveCalendar(){
+  if(!artist) return;
+  var url=$('e-calendar-url').value.trim();
+  try{
+    await api('artists?id=eq.'+artist.id,'PATCH',{calendar_url:url||null});
+    artist.calendar_url=url;
+    toast('✅ Agenda opgeslagen!','ok');
+  }catch(e){toast('Error','err');}
+}
+
+function setAgendaView(view,btn){
+  agendaView=view;
+  document.querySelectorAll('[id^="agView-"]').forEach(function(b){
+    b.style.background='';b.style.color='';
+  });
+  btn.style.background='var(--navy)';btn.style.color='#fff';
+  renderAgenda();
+}
+
+function agendaNav(dir){
+  if(agendaView==='dag') agendaDate.setDate(agendaDate.getDate()+dir);
+  else if(agendaView==='week') agendaDate.setDate(agendaDate.getDate()+(dir*7));
+  else agendaDate.setMonth(agendaDate.getMonth()+dir);
+  renderAgenda();
+}
+
+async function initAgenda(){
+  if(!artist) return;
+  // load blocks
+  try{
+    var blocks=await api('calendar_blocks?artist_id=eq.'+artist.id+'&order=date.asc');
+    calendarBlocks=Array.isArray(blocks)?blocks:[];
+  }catch(e){calendarBlocks=[];}
+  if($('e-calendar-url')) $('e-calendar-url').value=artist.calendar_url||'';
+  renderAgenda();
+  renderBlocks();
+}
+
+function renderAgenda(){
+  var grid=$('agendaGrid');
+  if(!grid) return;
+  var days=[];
+  var d=new Date(agendaDate);
+
+  if(agendaView==='dag'){
+    days=[new Date(d)];
+    $('agendaTitle').textContent=d.toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long'});
+  } else if(agendaView==='week'){
+    // start of week (Monday)
+    var day=d.getDay();var diff=d.getDate()-day+(day===0?-6:1);
+    d.setDate(diff);
+    for(var i=0;i<7;i++){var dd=new Date(d);dd.setDate(d.getDate()+i);days.push(dd);}
+    $('agendaTitle').textContent='Week '+getWeekNum(days[0]);
+  } else {
+    // month
+    var year=d.getFullYear(),month=d.getMonth();
+    var first=new Date(year,month,1),last=new Date(year,month+1,0);
+    for(var i=1;i<=last.getDate();i++) days.push(new Date(year,month,i));
+    $('agendaTitle').textContent=d.toLocaleDateString('nl-NL',{month:'long',year:'numeric'});
+  }
+
+  var today=new Date();today.setHours(0,0,0,0);
+  var html='<div style="display:grid;grid-template-columns:repeat('+days.length+',1fr)">';
+  // headers
+  days.forEach(function(day){
+    var isToday=day.toDateString()===today.toDateString();
+    var blocked=isBlocked(day);
+    html+='<div style="padding:8px 6px;text-align:center;font-size:11px;font-weight:700;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb;background:'+(isToday?'var(--blue)':blocked?'#fff0f3':'#f9fafb')+';color:'+(isToday?'#fff':blocked?'var(--red)':'var(--grey)')+'">';
+    html+=day.toLocaleDateString('nl-NL',{weekday:'short'}).toUpperCase()+'<br>';
+    html+='<span style="font-size:14px;font-weight:800;color:'+(isToday?'#fff':blocked?'var(--red)':'var(--navy)')+'">'+day.getDate()+'</span>';
+    if(blocked) html+='<br><span style="font-size:9px">⛔</span>';
+    html+='</div>';
+  });
+  // simple body row
+  html+='</div>';
+  grid.innerHTML=html;
+}
+
+function getWeekNum(d){
+  var date=new Date(d);date.setHours(0,0,0,0);
+  date.setDate(date.getDate()+3-(date.getDay()+6)%7);
+  var week1=new Date(date.getFullYear(),0,4);
+  return 1+Math.round(((date.getTime()-week1.getTime())/86400000-(3-(week1.getDay()+6)%7))/7);
+}
+
+function isBlocked(date){
+  var ds=date.toISOString().split('T')[0];
+  return calendarBlocks.some(function(b){return b.date===ds;});
+}
+
+async function addBlock(){
+  if(!artist) return;
+  var date=$('block-date').value;
+  var note=$('block-note').value.trim();
+  if(!date){toast('Kies een datum','err');return;}
+  try{
+    var res=await api('calendar_blocks','POST',{artist_id:artist.id,date:date,all_day:true,note:note||null});
+    if(Array.isArray(res)&&res[0]) calendarBlocks.push(res[0]);
+    $('block-date').value='';$('block-note').value='';
+    renderAgenda();renderBlocks();
+    toast('✅ Dag geblokkeerd!','ok');
+  }catch(e){toast('Error','err');}
+}
+
+async function removeBlock(id){
+  try{
+    await api('calendar_blocks?id=eq.'+id,'DELETE');
+    calendarBlocks=calendarBlocks.filter(function(b){return b.id!==id;});
+    renderAgenda();renderBlocks();
+    toast('Blokkade verwijderd');
+  }catch(e){toast('Error','err');}
+}
+
+function renderBlocks(){
+  var el=$('blocksList');if(!el) return;
+  if(!calendarBlocks.length){el.innerHTML='<div style="font-size:12px;color:var(--grey)">Geen handmatige blokkades.</div>';return;}
+  var html='<div style="font-size:12px;font-weight:700;color:var(--grey);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Geblokkeerde dagen</div>';
+  calendarBlocks.forEach(function(b){
+    html+='<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fff0f3;border-radius:8px;margin-bottom:6px">';
+    html+='<span style="font-size:13px;font-weight:600;color:var(--red)">⛔ '+b.date+(b.note?' — '+b.note:'')+'</span>';
+    html+='<button class="btn-sm danger" onclick="removeBlock('+b.id+')" style="padding:4px 10px;font-size:11px">✕</button>';
+    html+='</div>';
+  });
+  el.innerHTML=html;
+}
+
+/* ===== GIGS ===== */
+var allGigs=[];
+var gigsFilter='all';
+
+async function loadGigs(){
+  if(!artist) return;
+  var c=$('gigsContent');
+  c.innerHTML='<div class="empty-state"><div class="ei">⏳</div><p>Laden...</p></div>';
+  try{
+    var data=await api('inquiries?artist_id=eq.'+artist.id+'&order=id.desc');
+    allGigs=Array.isArray(data)?data:[];
+    renderGigs();
+  }catch(e){
+    c.innerHTML='<div class="empty-state"><div class="ei">⚠️</div><p>Kon gigs niet laden.</p></div>';
+  }
+}
+
+function filterGigs(filter,btn){
+  gigsFilter=filter;
+  document.querySelectorAll('[id^="gig-tab-"]').forEach(function(b){
+    b.style.background='';b.style.color='';
+  });
+  btn.style.background='var(--navy)';btn.style.color='#fff';
+  renderGigs();
+}
+
+function renderGigs(){
+  var list=allGigs;
+  if(gigsFilter!=='all') list=allGigs.filter(function(g){return (g.status||'new')===gigsFilter;});
+  var c=$('gigsContent');
+  if(!list.length){
+    c.innerHTML='<div class="empty-state"><div class="ei">📩</div><h3>Geen gigs gevonden</h3><p>Aanvragen van klanten verschijnen hier.</p></div>';
+    return;
+  }
+  var html='<div class="inq-list">';
+  list.forEach(function(inq){
+    var status=inq.status||'new';
+    var statusColor=status==='new'?'var(--blue)':status==='accepted'?'var(--green)':'#aaa';
+    var statusTxt=status==='new'?'🔵 Nieuw':status==='accepted'?'✅ Geaccepteerd':'❌ Afgewezen';
+    var d=inq.created_at?new Date(inq.created_at).toLocaleDateString('nl-NL',{day:'numeric',month:'short',year:'numeric'}):'';
+    html+='<div class="inq-card '+(status==='new'?'new':status==='accepted'?'accepted':'')+'">';
+    html+='<div class="inq-top"><div><div class="inq-name">'+(inq.name||'Anoniem')+'</div><span class="status-badge" style="background:'+(status==='new'?'#dbeafe':status==='accepted'?'#d1fae5':'#f3f4f6')+';color:'+(status==='new'?'#1d4ed8':status==='accepted'?'#065f46':'#6b7280')+'">'+statusTxt+'</span></div><div class="inq-date">'+d+'</div></div>';
+    html+='<div class="inq-meta">';
+    if(inq.email) html+='<span class="inq-tag">✉️ '+inq.email+'</span>';
+    if(inq.phone) html+='<span class="inq-tag">📱 '+inq.phone+'</span>';
+    if(inq.event_type) html+='<span class="inq-tag blue">'+inq.event_type+'</span>';
+    if(inq.event_date) html+='<span class="inq-tag">📅 '+inq.event_date+'</span>';
+    if(inq.event_location) html+='<span class="inq-tag">📍 '+inq.event_location+'</span>';
+    html+='</div>';
+    if(inq.message) html+='<div class="inq-msg">'+inq.message+'</div>';
+    if(status==='new'){
+      html+='<div class="inq-actions">';
+      html+='<button class="btn-sm success" onclick="updateInquiry('+inq.id+',&quot;accepted&quot;)">✅ Accepteren</button>';
+      html+='<button class="btn-sm danger" onclick="updateInquiry('+inq.id+',&quot;rejected&quot;)">❌ Afwijzen</button>';
+      if(inq.phone) html+='<a href="https://wa.me/'+inq.phone.replace(/[^0-9]/g,'')+'" target="_blank"><button class="btn-sm">💬 WhatsApp</button></a>';
+      if(inq.email) html+='<a href="mailto:'+inq.email+'"><button class="btn-sm">✉️ Email</button></a>';
+      html+='</div>';
+    }
+    html+='</div>';
+  });
+  html+='</div>';
+  c.innerHTML=html;
 }
 
 /* ===== AUTO LOGIN ===== */
