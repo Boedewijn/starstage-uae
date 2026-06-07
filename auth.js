@@ -243,7 +243,7 @@ async function submitAuth() {
       if (role === 'artist') {
         window.location.href = '/artist-login.html';
       } else {
-        window.location.href = '/client-portal.html';
+        window.location.href = '/';
       }
     }, 1200);
 
@@ -280,7 +280,7 @@ async function updateNavAuth() {
     loginBtn.textContent = '👤 ' + name;
     loginBtn.onclick = () => {
       if (role === 'artist') window.location.href = '/artist-login.html';
-      else window.location.href = '/client-portal.html';
+      else window.location.href = '/';
     };
   } else {
     loginBtn.textContent = '👤 Login';
