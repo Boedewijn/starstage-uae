@@ -390,15 +390,28 @@ main{max-width:720px;margin:0 auto;padding:32px 16px 60px}
 
       <div class="form-group">
         <label>Instagram Handle</label>
-        <input type="text" id="f-instagram" placeholder="@yourusername"/>
+        <input type="text" id="f-instagram" placeholder="@yourusername or full URL"/>
       </div>
 
       <div class="section-divider">Media</div>
 
       <div class="form-group">
-        <label>Profile Photo URL <span class="req">*</span></label>
-        <input type="text" id="f-photo" placeholder="https://link-to-your-photo.jpg"/>
-        <div class="hint">Upload to Google Drive / Dropbox and paste the public link. JPG or PNG preferred.</div>
+        <label>Profile Photo <span class="req">*</span></label>
+        <div style="background:#f8f9fa;border:2px dashed #e5e7eb;border-radius:10px;padding:16px;margin-bottom:8px">
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
+            <div id="reg-photo-preview" style="width:72px;height:72px;border-radius:10px;background:#eaf6fd;border:2px solid #e5e7eb;display:flex;align-items:center;justify-content:center;font-size:28px;overflow:hidden;flex-shrink:0">🎤</div>
+            <div>
+              <label style="display:inline-block;background:var(--navy);color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:6px">
+                📸 Upload Photo
+                <input type="file" id="reg-photo-file" accept="image/*" style="display:none" onchange="uploadRegPhoto(this)"/>
+              </label>
+              <div id="reg-upload-status" style="font-size:12px;color:var(--grey)">JPG or PNG, max 5MB</div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--grey);margin-bottom:6px">Or paste a direct photo URL:</div>
+          <input type="text" id="f-photo" placeholder="https://link-to-your-photo.jpg" style="margin-bottom:0"/>
+        </div>
+        <div class="hint">Your main profile photo shown in all listings. Upload directly or paste a Google Drive / Dropbox link.</div>
       </div>
 
       <div class="form-group">
@@ -530,7 +543,7 @@ function goStep(n){
     }
     if(currentStep===4){
       if(!document.getElementById('f-whatsapp').value.trim()){toast('Please enter your WhatsApp number','error');return;}
-      if(!document.getElementById('f-photo').value.trim()){toast('Please add a profile photo URL','error');return;}
+      if(!document.getElementById('f-photo').value.trim()){toast('Please upload a photo or paste a photo URL','error');return;}
     }
   }
   // update progress
@@ -566,6 +579,37 @@ function fillReview(){
     row('Languages',selectedLangs.join(', ')||'—')+
     row('WhatsApp',document.getElementById('f-whatsapp').value)+
     row('Bio',document.getElementById('f-bio').value.substring(0,100)+'...');
+}
+
+async function uploadRegPhoto(input){
+  if(!input.files||!input.files[0]) return;
+  var file=input.files[0];
+  var status=document.getElementById('reg-upload-status');
+  var preview=document.getElementById('reg-photo-preview');
+  status.textContent='⏳ Uploading...';
+  status.style.color='var(--grey)';
+  try{
+    var ext=file.name.split('.').pop().toLowerCase()||'jpg';
+    var fileName='reg-'+Date.now()+'.'+ext;
+    var res=await fetch('https://darbunnlilqwbeobcelp.supabase.co/storage/v1/object/artist-photos/'+fileName,{
+      method:'POST',
+      headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':file.type,'x-upsert':'true'},
+      body:file
+    });
+    if(res.ok){
+      var url='https://darbunnlilqwbeobcelp.supabase.co/storage/v1/object/public/artist-photos/'+fileName;
+      document.getElementById('f-photo').value=url;
+      preview.innerHTML='<img src="'+url+'" style="width:100%;height:100%;object-fit:cover;border-radius:8px"/>';
+      status.textContent='✅ Photo uploaded!';
+      status.style.color='#10b981';
+    } else {
+      status.textContent='Upload failed — paste a URL instead.';
+      status.style.color='var(--red)';
+    }
+  }catch(e){
+    status.textContent='Upload failed — paste a URL instead.';
+    status.style.color='var(--red)';
+  }
 }
 
 async function submitForm(){
