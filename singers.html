@@ -162,6 +162,7 @@ var SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsI
 
 var allArtists=[];
 var currentFilter='all';
+var currentEventFilter='';
 var currentSort='rating';
 var searchQuery='';
 
@@ -182,6 +183,10 @@ function loadSingers(){
 function getFiltered(){
   var list=allArtists.slice();
   if(currentFilter!=='all') list=list.filter(function(a){return a.city===currentFilter});
+  if(currentEventFilter) list=list.filter(function(a){
+    if(!a.event_types) return false;
+    try{return JSON.parse(a.event_types).includes(currentEventFilter);}catch(e){return false;}
+  });
   if(searchQuery) list=list.filter(function(a){
     var n=(a.name||a.title||'').toLowerCase();
     var b=(a.bio||a.intro||'').toLowerCase();
@@ -234,6 +239,25 @@ function setFilter(val,btn){
 }
 function sortArtists(val){currentSort=val;renderArtists();}
 function filterArtists(){searchQuery=document.getElementById('searchInput').value.toLowerCase().trim();renderArtists();}
+
+// Check for event filter in URL
+var urlEvent=new URLSearchParams(window.location.search).get('event');
+if(urlEvent){
+  currentEventFilter=urlEvent;
+  // Show active event badge
+  var badge=document.createElement('div');
+  badge.style.cssText='background:#eaf6fd;color:var(--blue);border-radius:50px;padding:5px 14px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-left:8px';
+  badge.innerHTML='🎪 '+urlEvent+' <span onclick="clearEventFilter()" style="cursor:pointer;font-size:14px;margin-left:4px">✕</span>';
+  document.querySelector('.filters-inner').appendChild(badge);
+}
+
+function clearEventFilter(){
+  currentEventFilter='';
+  window.history.replaceState({},'',window.location.pathname);
+  renderArtists();
+  var badge=document.querySelector('.filters-inner div[style*="eaf6fd"]');
+  if(badge) badge.remove();
+}
 
 loadSingers();
 </script>
