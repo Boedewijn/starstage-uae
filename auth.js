@@ -4,8 +4,6 @@
 // Vereist: Supabase JS v2 via CDN
 // ==============================================
 
-const SUPABASE_URL = 'https://darbunnlilqwbeobcelp.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
 
 // Init Supabase client (vereist @supabase/supabase-js v2 geladen vóór dit script)
 const _sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
