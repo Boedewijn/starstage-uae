@@ -27,12 +27,6 @@ ul{list-style:none}
 .trust-bar-inner{display:flex;align-items:center;gap:20px;white-space:nowrap;max-width:1200px;margin:0 auto}
 .trust-item{font-size:11.5px;color:rgba(255,255,255,0.80);font-weight:500;display:flex;align-items:center;gap:5px}
 .trust-item .check{color:var(--blue)}
-.mobile-nav{background:var(--white);border-bottom:1px solid #e5e7eb;overflow-x:auto;scrollbar-width:none}
-.mobile-nav::-webkit-scrollbar{display:none}
-.mobile-nav-inner{display:flex;padding:0 16px;white-space:nowrap;max-width:1200px;margin:0 auto}
-.mobile-nav-inner a{padding:12px 14px;font-size:13px;font-weight:600;color:var(--grey);border-bottom:3px solid transparent;display:block}
-.mobile-nav-inner a:hover,.mobile-nav-inner a.active{color:var(--blue);border-bottom-color:var(--blue)}
-.mobile-nav-inner a.red{color:var(--red)}
 .hero{background:linear-gradient(135deg,var(--navy) 0%,#0a3060 60%,#0d4080 100%);padding:40px 16px 36px;text-align:center;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--blue))}
 .hero-content{max-width:600px;margin:0 auto;position:relative;z-index:1}
@@ -68,7 +62,7 @@ main{max-width:1200px;margin:0 auto;padding:0 16px}
 @media(min-width:640px){.cat-card-img{height:115px;font-size:46px}}
 .cat-card-label{padding:8px 10px 11px;font-size:13px;font-weight:700;color:var(--navy);text-align:center}
 .cat-card-count{font-size:11px;color:var(--grey);font-weight:500;margin-top:1px}
-.act-card{flex:0 0 175px;scroll-snap-align:start;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s;border-top:3px solid transparent}
+.act-card{flex:0 0 175px;scroll-snap-align:start;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s;border-top:3px solid transparent;text-decoration:none;display:block}
 @media(min-width:640px){.act-card{flex:0 0 220px}}
 .act-card:hover{transform:translateY(-3px);border-top-color:var(--blue)}
 .act-card-img{width:100%;height:130px;display:flex;align-items:center;justify-content:center;font-size:50px;position:relative;overflow:hidden}
@@ -141,7 +135,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 .social-links a:hover{color:var(--blue)}
 .mobile-bottom-bar{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid #e5e7eb;display:flex;z-index:999;box-shadow:0 -4px 16px rgba(4,30,66,0.10)}
 @media(min-width:768px){.mobile-bottom-bar{display:none}}
-.mobile-bottom-bar a{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;font-size:10px;font-weight:600;color:var(--grey);gap:3px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.mobile-bottom-bar a{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;font-size:10px;font-weight:600;color:var(--grey);gap:3px;-webkit-tap-highlight-color:transparent}
 .mobile-bottom-bar a .icon{font-size:20px}
 .mobile-bottom-bar a.active,.mobile-bottom-bar a:hover{color:var(--blue)}
 .mobile-bottom-bar a.cta{background:var(--red);color:#fff}
@@ -151,6 +145,21 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
 #back-top.visible{display:flex}
 .artist-section-grid{display:grid;grid-template-columns:1fr;gap:16px}
 @media(min-width:900px){.artist-section-grid{grid-template-columns:1fr 1fr 1fr}}
+/* MEGA NAV */
+.mna{padding:13px 16px;font-size:12.5px;font-weight:700;background:none;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.3px;color:#041E42;font-family:inherit;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:4px}
+.mna:hover{color:#00A3E0;border-bottom-color:#00A3E0}
+.mna.blue{color:#00A3E0}.mna.red{color:#E40046}.mna.grey{color:#6b7280;margin-left:auto}
+.mnbar{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;white-space:nowrap;overflow-x:auto;scrollbar-width:none}
+.mn-portal{display:none;position:fixed;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(4,30,66,0.18);padding:8px;z-index:99999;min-width:200px}
+.mn-portal.show{display:block}
+.mncol{min-width:130px;padding:0 8px}
+.mncol h4{font-size:10px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;letter-spacing:.8px;font-weight:700}
+.mn-portal a{display:block;padding:7px 10px;font-size:13px;color:#041E42;text-decoration:none;border-radius:8px;font-weight:500;white-space:nowrap}
+.mn-portal a:hover{background:#eaf6fd;color:#00A3E0}
+.mn-portal-wide{display:none;position:fixed;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(4,30,66,0.18);padding:16px;z-index:99999;flex-direction:row;flex-wrap:wrap;gap:0;min-width:560px}
+.mn-portal-wide.show{display:flex}
+.mn-portal-wide a{display:block;padding:7px 10px;font-size:13px;color:#041E42;text-decoration:none;border-radius:8px;font-weight:500;white-space:nowrap}
+.mn-portal-wide a:hover{background:#eaf6fd;color:#00A3E0}
 </style>
 </head>
 <body>
@@ -163,7 +172,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
       <button>🔍</button>
     </div>
     <style>@media(min-width:768px){#desktopSearch{display:block!important}}</style>
-    <a href="#" class="btn-login">👤 Login</a>
+    <a href="/artist-login.html" class="btn-login">👤 Artist Login</a>
     <a href="/register.html" class="btn-list">★ List Your Act</a>
   </div>
 </header>
@@ -178,40 +187,20 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
   </div>
 </div>
 
-
-
-
 <!-- MEGA NAV -->
-<nav id="megaNav" style="background:#fff;border-bottom:2px solid #00A3E0;position:sticky;top:62px;z-index:9999">
-<style>
-.mna{padding:13px 16px;font-size:12.5px;font-weight:700;background:none;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.3px;color:#041E42;font-family:inherit;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:4px}
-.mna:hover{color:#00A3E0;border-bottom-color:#00A3E0}
-.mna.blue{color:#00A3E0}.mna.red{color:#E40046}.mna.grey{color:#6b7280;margin-left:auto}
-.mnbar{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;white-space:nowrap;overflow-x:auto;scrollbar-width:none}
-/* Dropdowns rendered in body */
-.mn-portal{display:none;position:fixed;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(4,30,66,0.18);padding:8px;z-index:99999;min-width:200px}
-.mn-portal.show{display:block}
-.mncol{min-width:130px;padding:0 8px}
-.mncol h4{font-size:10px;text-transform:uppercase;color:#6b7280;margin-bottom:8px;letter-spacing:.8px;font-weight:700}
-.mn-portal a{display:block;padding:7px 10px;font-size:13px;color:#041E42;text-decoration:none;border-radius:8px;font-weight:500;white-space:nowrap}
-.mn-portal a:hover{background:#eaf6fd;color:#00A3E0}
-.mn-portal-wide{display:none;position:fixed;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 32px rgba(4,30,66,0.18);padding:16px;z-index:99999;flex-direction:row;flex-wrap:wrap;gap:0;min-width:560px}
-.mn-portal-wide.show{display:flex}
-.mn-portal-wide a{display:block;padding:7px 10px;font-size:13px;color:#041E42;text-decoration:none;border-radius:8px;font-weight:500;white-space:nowrap}
-.mn-portal-wide a:hover{background:#eaf6fd;color:#00A3E0}
-</style>
-<div class="mnbar">
-  <button class="mna" onclick="mntog(event,'pd1')">By Category ▾</button>
-  <button class="mna" onclick="mntog(event,'pd2')">By Event ▾</button>
-  <button class="mna" onclick="mntog(event,'pd3')">By Location ▾</button>
-  <button class="mna" onclick="mntog(event,'pd4')">By Theme ▾</button>
-  <a href="#" class="mna blue">🎙️ Speakers</a>
-  <a href="#" class="mna red">⭐ Famous Artists</a>
-  <a href="#" class="mna grey">💬 Customer Service</a>
-</div>
+<nav style="background:#fff;border-bottom:2px solid #00A3E0;position:sticky;top:62px;z-index:9999">
+  <div class="mnbar">
+    <button class="mna" onclick="mntog(event,'pd1')">By Category ▾</button>
+    <button class="mna" onclick="mntog(event,'pd2')">By Event ▾</button>
+    <button class="mna" onclick="mntog(event,'pd3')">By Location ▾</button>
+    <button class="mna" onclick="mntog(event,'pd4')">By Theme ▾</button>
+    <a href="#" class="mna blue">🎙️ Speakers</a>
+    <a href="#" class="mna red">⭐ Famous Artists</a>
+    <a href="#" class="mna grey">💬 Customer Service</a>
+  </div>
 </nav>
 
-<!-- DROPDOWNS IN BODY (not clipped by nav) -->
+<!-- DROPDOWNS -->
 <div class="mn-portal-wide" id="pd1">
   <div class="mncol"><h4>Music</h4><a href="/singers.html">Singers</a><a href="#">DJs</a><a href="#">Live Bands</a><a href="#">Classical Music</a><a href="#">Oud Players</a></div>
   <div class="mncol"><h4>Performance</h4><a href="#">Dancers</a><a href="#">Acrobats</a><a href="#">Magicians</a><a href="#">Fire Shows</a><a href="#">Stunt Shows</a></div>
@@ -231,32 +220,6 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);margin-top:48px}
   <a href="#">Arabian Night</a><a href="#">Bollywood</a><a href="#">Jazz & Lounge</a>
   <a href="#">Luxury & VIP</a><a href="#">Family-Friendly</a><a href="#">Cultural Heritage</a><a href="#">International</a>
 </div>
-
-<script>
-function mntog(e, id) {
-  e.stopPropagation();
-  var btn = e.currentTarget;
-  var rect = btn.getBoundingClientRect();
-  var el = document.getElementById(id);
-  var wasOpen = el.classList.contains('show');
-  // Close all
-  document.querySelectorAll('.mn-portal,.mn-portal-wide').forEach(function(d){
-    d.classList.remove('show');
-  });
-  if (!wasOpen) {
-    // Position below the button
-    el.style.top = (rect.bottom + 2) + 'px';
-    el.style.left = rect.left + 'px';
-    el.classList.add('show');
-  }
-}
-document.addEventListener('click', function(){
-  document.querySelectorAll('.mn-portal,.mn-portal-wide').forEach(function(d){
-    d.classList.remove('show');
-  });
-});
-</script>
-
 
 <div class="hero">
   <div class="hero-content">
@@ -280,11 +243,7 @@ document.addEventListener('click', function(){
   <div class="carousel-wrapper">
     <button class="carousel-btn prev" onclick="scrollC(this,-1)">‹</button>
     <div class="carousel" id="categoriesCarousel">
-      <a href="/singers.html" class="cat-card">
-        <div class="cat-card-img" style="background:#eaf6fd">🎤</div>
-        <div class="cat-card-label">Singers<div class="cat-card-count">Browse artists</div></div>
-      </a>
-      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
     </div>
     <button class="carousel-btn next" onclick="scrollC(this,1)">›</button>
   </div>
@@ -322,93 +281,47 @@ document.addEventListener('click', function(){
     <a href="/register.html" style="text-decoration:none"><div class="promo-tile red-t"><div class="promo-icon">🎤</div><div class="promo-text"><div class="promo-label">Join Free</div><div class="promo-title">Are You an Artist?</div><div class="promo-sub">List free, get booked, earn more</div></div></div></a>
   </div>
 
-
   <!-- FOR ARTISTS SECTION -->
   <div style="margin:40px 0">
     <div style="text-align:center;margin-bottom:28px">
       <div style="font-size:22px;font-weight:800;color:var(--navy)">Present Your Act on Stagely</div>
       <div style="font-size:14px;color:var(--grey);margin-top:6px">The platform that brings artists and clients together</div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr;gap:16px" class="artist-section-grid">
-
-      <!-- BLUE INFO BOX -->
+    <div class="artist-section-grid">
       <div style="background:var(--navy);border-radius:var(--radius);padding:28px 24px;color:#fff">
         <div style="font-size:18px;font-weight:800;margin-bottom:16px">🎭 For Every Act</div>
         <p style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,0.82);margin-bottom:14px">Do you have an act and want to get booked? Present your act on Stagely — the platform that brings artists and clients together, like Airbnb for entertainment.</p>
-        <p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:16px">Singers · DJs · Dancers · Magicians · Comedians · Speakers · MCs · Bands · Face painters · Food trucks · and more</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:16px">Singers · DJs · Dancers · Magicians · Comedians · Speakers · MCs · Bands · and more</p>
         <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
           <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="color:#00A3E0;font-size:18px">✦</span> More functionality — complete act management suite</div>
           <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="color:#00A3E0;font-size:18px">✦</span> More convenience — no need to send invoices</div>
           <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="color:#00A3E0;font-size:18px">✦</span> More bookings — and that's what we're here for!</div>
         </div>
       </div>
-
-      <!-- GREEN HOW IT WORKS BOX -->
       <div style="background:#f0fdf4;border:2px solid #10b981;border-radius:var(--radius);padding:28px 24px">
         <div style="font-size:18px;font-weight:800;color:#065f46;margin-bottom:20px">⚡ How It Works</div>
         <div style="display:flex;flex-direction:column;gap:16px">
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">1</div>
-            <div><div style="font-size:13.5px;font-weight:700;color:#065f46">Register for free</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">No obligations. Registration is completely free.</div></div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">2</div>
-            <div><div style="font-size:13.5px;font-weight:700;color:#065f46">Create your profile</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">Add photos, bio, pricing and availability.</div></div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
-            <div><div style="font-size:13.5px;font-weight:700;color:#065f46">Get discovered</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">Clients find you and send booking requests directly.</div></div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:flex-start">
-            <div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">4</div>
-            <div><div style="font-size:13.5px;font-weight:700;color:#065f46">Accept & get paid</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">Stagely handles the invoice and payment for you.</div></div>
-          </div>
-        </div>
-        <div style="margin-top:20px;padding-top:16px;border-top:1px solid #a7f3d0">
-          <div style="font-size:12px;color:#065f46;font-weight:700;margin-bottom:8px">ARE YOU AN AGENT?</div>
-          <p style="font-size:12.5px;color:#6b7280;line-height:1.6">Manage multiple artists from one account. Switch between artists with one click, handle their requests, quotes and planning on their behalf.</p>
+          <div style="display:flex;gap:14px;align-items:flex-start"><div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">1</div><div><div style="font-size:13.5px;font-weight:700;color:#065f46">Register for free</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">No obligations. Registration is completely free.</div></div></div>
+          <div style="display:flex;gap:14px;align-items:flex-start"><div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">2</div><div><div style="font-size:13.5px;font-weight:700;color:#065f46">Create your profile</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">Add photos, bio, pricing and availability.</div></div></div>
+          <div style="display:flex;gap:14px;align-items:flex-start"><div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div><div><div style="font-size:13.5px;font-weight:700;color:#065f46">Get discovered</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">Clients find you and send booking requests directly.</div></div></div>
+          <div style="display:flex;gap:14px;align-items:flex-start"><div style="background:#10b981;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">4</div><div><div style="font-size:13.5px;font-weight:700;color:#065f46">Accept & get paid</div><div style="font-size:12.5px;color:#6b7280;margin-top:2px">Stagely handles the invoice and payment for you.</div></div></div>
         </div>
       </div>
-
-      <!-- REGISTRATION FORM -->
       <div style="background:#fff;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow);border-top:4px solid var(--red)">
         <div style="font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px">🚀 Join Stagely Free</div>
         <div style="font-size:13px;color:var(--grey);margin-bottom:20px">Start getting booked across the UAE today.</div>
         <div style="display:flex;flex-direction:column;gap:12px">
-          <div>
-            <label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Your Name / Act Name</label>
-            <input id="qs-name" type="text" placeholder="e.g. Layla Al Mansoori" style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none"/>
-          </div>
-          <div>
-            <label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Type of Act</label>
-            <select id="qs-cat" style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;background:#fff">
-              <option value="">Select category...</option>
-              <option>Singer</option><option>DJ</option><option>Live Band</option>
-              <option>Dancer</option><option>Magician</option><option>Comedian</option>
-              <option>Speaker</option><option>MC / Host</option><option>Other</option>
-            </select>
-          </div>
-          <div>
-            <label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Your City</label>
-            <select id="qs-city" style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;background:#fff">
-              <option value="">Select city...</option>
-              <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
-              <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option>
-            </select>
-          </div>
-          <div>
-            <label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Instagram or WhatsApp</label>
-            <input id="qs-contact" type="text" placeholder="@handle or +971..." style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none"/>
-          </div>
-          <button onclick="quickSignup()" style="width:100%;background:var(--red);color:#fff;border:none;border-radius:50px;padding:13px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:4px;transition:background .2s">🎤 Start Getting Booked →</button>
+          <div><label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Your Name / Act Name</label><input id="qs-name" type="text" placeholder="e.g. Layla Al Mansoori" style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none"/></div>
+          <div><label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Type of Act</label><select id="qs-cat" style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;background:#fff"><option value="">Select category...</option><option>Singer</option><option>DJ</option><option>Live Band</option><option>Dancer</option><option>Magician</option><option>Comedian</option><option>Speaker</option><option>MC / Host</option><option>Other</option></select></div>
+          <div><label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Your City</label><select id="qs-city" style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;background:#fff"><option value="">Select city...</option><option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option></select></div>
+          <div><label style="display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px">Instagram or WhatsApp</label><input id="qs-contact" type="text" placeholder="@handle or +971..." style="width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none"/></div>
+          <button onclick="quickSignup()" style="width:100%;background:var(--red);color:#fff;border:none;border-radius:50px;padding:13px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:4px">🎤 Start Getting Booked →</button>
           <div style="text-align:center;font-size:11.5px;color:var(--grey)">Free to join · No obligations · Live within 24hrs</div>
           <div id="qs-success" style="display:none;background:#d1fae5;border-radius:8px;padding:12px;text-align:center;font-size:13px;font-weight:600;color:#065f46">✅ Thanks! We'll be in touch within 24 hours.</div>
         </div>
       </div>
-
     </div>
   </div>
-  <!-- END FOR ARTISTS SECTION -->
 
   <div class="hiw-section">
     <h2>How Stagely Works</h2>
@@ -437,7 +350,7 @@ document.addEventListener('click', function(){
       <p>The UAE's premier direct booking platform. Dubai, Abu Dhabi and beyond.</p>
     </div>
     <div class="footer-col"><h4>For Clients</h4><ul><li><a href="#">How it Works</a></li><li><a href="/singers.html">Browse Singers</a></li><li><a href="#">By Event</a></li><li><a href="#">Safe Booking</a></li></ul></div>
-    <div class="footer-col"><h4>For Artists</h4><ul><li><a href="/register.html">List Your Act</a></li><li><a href="/admin.html">Artist Portal</a></li><li><a href="#">Support</a></li></ul></div>
+    <div class="footer-col"><h4>For Artists</h4><ul><li><a href="/register.html">List Your Act</a></li><li><a href="/artist-login.html">Artist Portal</a></li><li><a href="#">Support</a></li></ul></div>
     <div class="footer-col"><h4>Stagely</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Contact</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
   </div>
   <div class="footer-bottom">
@@ -453,7 +366,7 @@ document.addEventListener('click', function(){
   <a href="/singers.html"><div class="icon">🎤</div>Singers</a>
   <a href="/register.html" class="cta"><div class="icon">⭐</div>List Act</a>
   <a href="#"><div class="icon">🔍</div>Browse</a>
-  <a href="#"><div class="icon">👤</div>Login</a>
+  <a href="/artist-login.html"><div class="icon">👤</div>Login</a>
 </nav>
 
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
@@ -491,16 +404,21 @@ async function loadCategories(){
 
 async function loadArtists(){
   try{
-    var artists=await fetchDB('artists?active=eq.true&visible=neq.false&order=rating.desc&limit=8');
+    // Read from acts_public — only published acts
+    var acts=await fetchDB('acts_public?published=eq.true&order=rating.desc&limit=8');
     var el=document.getElementById('artistsCarousel');
-    if(!artists||!artists.length){el.innerHTML='<div style="padding:16px;color:#999;font-size:14px">Artists coming soon!</div>';return}
+    if(!acts||!acts.length){
+      el.innerHTML='<div style="padding:16px;color:#999;font-size:14px">Artists coming soon!</div>';
+      return;
+    }
     var html='';
-    for(var i=0;i<artists.length;i++){
-      var a=artists[i];
+    for(var i=0;i<acts.length;i++){
+      var a=acts[i];
       var s=CAT_COLORS[a.category]||{bg:'#f0f0f0',emoji:'🎭'};
       var badge=i===0?'<span class="act-badge">Top Rated</span>':i===1?'<span class="act-badge">Popular</span>':'';
-      var img=a.photo_url?'<img src="'+a.photo_url+'" alt="'+a.name+'" onerror="this.style.display=\'none\'"/>':'';
-      html+='<a href="/singers.html" class="act-card" style="text-decoration:none"><div class="act-card-img" style="background:'+s.bg+'">'+img+'<span style="font-size:50px">'+(a.photo_url?'':s.emoji)+'</span>'+badge+'</div><div class="act-card-body"><div class="act-name">'+a.name+'</div><div class="act-type">'+(a.category||'Artist')+' · '+(a.city||'UAE')+'</div><div class="act-footer"><span class="stars">'+stars(a.rating)+'</span><div class="act-price">AED '+(a.price_from||0).toLocaleString()+' <span>/ show</span></div></div></div></a>';
+      var img=a.photo_url?'<img src="'+a.photo_url+'" alt="'+(a.title||a.name)+'" onerror="this.style.display=\'none\'"/>':'';
+      var url='/artist.html?id='+a.id;
+      html+='<a href="'+url+'" class="act-card"><div class="act-card-img" style="background:'+s.bg+'">'+img+'<span style="font-size:50px;position:relative;z-index:1">'+(a.photo_url?'':s.emoji)+'</span>'+badge+'</div><div class="act-card-body"><div class="act-name">'+(a.title||a.name)+'</div><div class="act-type">'+(a.category||'Artist')+' · '+(a.city||'UAE')+'</div><div class="act-footer"><span class="stars">'+stars(a.rating)+'</span><div class="act-price">AED '+(a.price_from||0).toLocaleString()+' <span>/ show</span></div></div></div></a>';
     }
     el.innerHTML=html;
   }catch(e){console.error(e)}
@@ -531,20 +449,26 @@ async function quickSignup(){
 }
 
 function scrollC(btn,dir){btn.parentElement.querySelector('.carousel').scrollBy({left:dir*260,behavior:'smooth'})}
-window.addEventListener('scroll',function(){document.getElementById('back-top').classList.toggle('visible',window.scrollY>300)});
-function toggleDrop(e, id) {
-  e.preventDefault();
+
+function mntog(e,id){
   e.stopPropagation();
-  var drop = document.getElementById(id);
-  if (!drop) return;
-  var isOpen = drop.classList.contains('open');
-  document.querySelectorAll('.mnav-drop').forEach(function(d){ d.classList.remove('open'); });
-  if (!isOpen) drop.classList.add('open');
-}
-document.addEventListener('click', function(e){
-  if (!e.target.closest('.mnav-item')) {
-    document.querySelectorAll('.mnav-drop').forEach(function(d){ d.classList.remove('open'); });
+  var btn=e.currentTarget;
+  var rect=btn.getBoundingClientRect();
+  var el=document.getElementById(id);
+  var wasOpen=el.classList.contains('show');
+  document.querySelectorAll('.mn-portal,.mn-portal-wide').forEach(function(d){d.classList.remove('show');});
+  if(!wasOpen){
+    el.style.top=(rect.bottom+2)+'px';
+    el.style.left=rect.left+'px';
+    el.classList.add('show');
   }
+}
+document.addEventListener('click',function(){
+  document.querySelectorAll('.mn-portal,.mn-portal-wide').forEach(function(d){d.classList.remove('show');});
+});
+
+window.addEventListener('scroll',function(){
+  document.getElementById('back-top').classList.toggle('visible',window.scrollY>300);
 });
 
 loadCategories();
