@@ -3,201 +3,211 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Stagely Admin Panel</title>
+<title>Stagely Admin</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',sans-serif;background:#f2f4f7;color:#041E42}
-  :root{--navy:#041E42;--blue:#00A3E0;--red:#E40046;--green:#10b981;--white:#fff;--grey:#6b7280}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#f2f4f7;color:#041E42;font-size:14px}
+:root{--navy:#041E42;--blue:#00A3E0;--red:#E40046;--green:#10b981;--white:#fff;--grey:#6b7280;--shadow:0 2px 8px rgba(4,30,66,0.10)}
 
-  /* LOGIN */
-  .login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--navy)}
-  .login-box{background:#fff;border-radius:16px;padding:40px;width:100%;max-width:380px;box-shadow:0 24px 48px rgba(0,0,0,0.3)}
-  .login-box h1{font-size:24px;font-weight:800;color:var(--navy);margin-bottom:6px}
-  .login-box p{font-size:13px;color:var(--grey);margin-bottom:28px}
-  .form-group{margin-bottom:16px}
-  .form-group label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
-  .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
-  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue)}
-  .form-group textarea{resize:vertical;min-height:80px}
-  .btn{width:100%;padding:12px;border:none;border-radius:8px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s}
-  .btn-primary{background:var(--navy);color:#fff}
-  .btn-primary:hover{background:var(--blue)}
-  .error-msg{color:var(--red);font-size:13px;margin-top:8px;display:none}
-.upload-area{border:2px dashed #e5e7eb;border-radius:8px;padding:16px;text-align:center;cursor:pointer;transition:all .2s;background:#fafafa;margin-bottom:8px}
-.upload-area:hover{border-color:var(--blue);background:#eaf6fd}
-.upload-area p{font-size:13px;color:var(--grey);margin-top:6px}
-.upload-preview{width:100%;height:120px;object-fit:cover;border-radius:8px;display:none;margin-bottom:8px}
-.upload-btn{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
-.upload-progress{font-size:12px;color:var(--blue);margin-top:6px;display:none}
+/* LOGIN */
+.login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,var(--navy),#0a3060)}
+.login-card{background:#fff;border-radius:16px;padding:40px 32px;width:100%;max-width:380px;box-shadow:0 24px 48px rgba(0,0,0,0.3)}
+.login-card h1{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.login-card p{font-size:13px;color:var(--grey);margin-bottom:24px}
+.login-card input{width:100%;padding:12px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:15px;font-family:inherit;outline:none;margin-bottom:12px}
+.login-card input:focus{border-color:var(--blue)}
+.login-card button{width:100%;background:var(--navy);color:#fff;border:none;border-radius:50px;padding:13px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer}
+.login-card button:hover{background:var(--blue)}
+.login-error{color:var(--red);font-size:13px;font-weight:600;margin-top:8px;display:none}
 
-  /* LAYOUT */
-  .admin-layout{display:none;min-height:100vh}
-  .sidebar{position:fixed;top:0;left:0;bottom:0;width:220px;background:var(--navy);padding:24px 0;display:flex;flex-direction:column;z-index:100}
-  .sidebar-logo{padding:0 20px 24px;border-bottom:1px solid rgba(255,255,255,0.1);font-size:20px;font-weight:800;color:#fff}
-  .sidebar-logo span{color:var(--blue)}
-  .sidebar-nav{padding:16px 0;flex:1}
-  .nav-link{display:flex;align-items:center;gap:10px;padding:11px 20px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.6);cursor:pointer;transition:all .2s;border-left:3px solid transparent}
-  .nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,0.08);border-left-color:var(--blue)}
-  .nav-badge{background:var(--red);color:#fff;border-radius:50px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:auto}
-  .sidebar-logout{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.1);font-size:13px;color:rgba(255,255,255,0.4);cursor:pointer}
-  .sidebar-logout:hover{color:#fff}
-  .main-content{margin-left:220px;padding:32px;min-height:100vh}
+/* LAYOUT */
+.admin-layout{display:none;min-height:100vh}
+.sidebar{width:220px;background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;z-index:100;display:flex;flex-direction:column}
+.sidebar-logo{padding:20px 16px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:18px;font-weight:800;color:#fff}
+.sidebar-logo span{color:var(--blue)}
+.nav-link{padding:12px 16px;color:rgba(255,255,255,0.6);cursor:pointer;font-size:13px;font-weight:600;border-left:3px solid transparent;display:flex;align-items:center;gap:8px;transition:all .2s}
+.nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,0.08);border-left-color:var(--blue)}
+.nav-badge{background:var(--red);color:#fff;border-radius:50px;padding:1px 7px;font-size:10px;font-weight:700;margin-left:auto}
+.sidebar-bottom{margin-top:auto;padding:16px}
+.btn-logout{width:100%;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn-logout:hover{background:rgba(255,255,255,0.15);color:#fff}
 
-  /* PAGE */
-  .page-header{margin-bottom:28px}
-  .page-header h1{font-size:26px;font-weight:800;color:var(--navy)}
-  .page-header p{font-size:14px;color:var(--grey);margin-top:4px}
+.main-content{margin-left:220px;padding:24px;min-height:100vh}
 
-  /* STATS */
-  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
-  .stat-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(4,30,66,0.08);border-top:3px solid var(--blue)}
-  .stat-card:nth-child(2){border-top-color:var(--green)}
-  .stat-card:nth-child(3){border-top-color:var(--red)}
-  .stat-card:nth-child(4){border-top-color:#f59e0b}
-  .stat-num{font-size:32px;font-weight:800;color:var(--navy)}
-  .stat-label{font-size:12px;color:var(--grey);margin-top:4px;font-weight:500}
+/* SECTIONS */
+.section{display:none}
+.section.active{display:block}
+.page-header{margin-bottom:24px}
+.page-header h1{font-size:22px;font-weight:800;color:var(--navy)}
+.page-header p{font-size:13px;color:var(--grey);margin-top:4px}
 
-  /* SECTIONS */
-  .section{display:none}
-  .section.active{display:block}
-  .card{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(4,30,66,0.08);margin-bottom:20px}
-  .card h2{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #f0f0f0}
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:28px}
+.stat-card{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow);border-left:4px solid var(--blue)}
+.stat-card:nth-child(2){border-left-color:var(--green)}
+.stat-card:nth-child(3){border-left-color:var(--red)}
+.stat-card:nth-child(4){border-left-color:#8b5cf6}
+.stat-num{font-size:32px;font-weight:900;color:var(--navy)}
+.stat-label{font-size:12px;color:var(--grey);font-weight:500;margin-top:4px}
 
-  /* CATEGORIES */
-  .categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-  .cat-admin-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(4,30,66,0.08);display:flex;align-items:center;justify-content:space-between;border-left:4px solid #e5e7eb;transition:border-color .2s}
-  .cat-admin-card.live{border-left-color:var(--green)}
-  .cat-left{display:flex;align-items:center;gap:12px}
-  .cat-emoji{font-size:28px}
-  .cat-info h3{font-size:14px;font-weight:700;color:var(--navy)}
-  .cat-info p{font-size:12px;color:var(--grey);margin-top:2px}
-  .toggle{position:relative;width:44px;height:24px;flex-shrink:0}
-  .toggle input{opacity:0;width:0;height:0}
-  .toggle-slider{position:absolute;inset:0;background:#ccc;border-radius:24px;cursor:pointer;transition:.3s}
-  .toggle-slider::before{content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
-  .toggle input:checked + .toggle-slider{background:var(--green)}
-  .toggle input:checked + .toggle-slider::before{transform:translateX(20px)}
+/* REG LINK */
+.reg-link-card{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow);margin-bottom:20px}
+.reg-link-card h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.reg-link-row{display:flex;gap:8px}
+.reg-link-row input{flex:1;padding:10px 12px;border:2px solid #e5e7eb;border-radius:8px;font-size:13px;font-family:inherit;outline:none;background:#f9fafb}
+.btn-copy{background:var(--navy);color:#fff;border:none;border-radius:8px;padding:10px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
 
-  /* TABLES */
-  .table-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-  .btn-sm{padding:8px 16px;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;background:var(--navy);color:#fff;transition:background .2s;white-space:nowrap}
-  .btn-sm:hover{background:var(--blue)}
-  .btn-sm.red{background:var(--red)}
-  .btn-sm.red:hover{background:#c4003c}
-  .btn-sm.green{background:var(--green)}
-  .btn-sm.green:hover{background:#0da271}
-  .btn-sm.grey{background:#6b7280}
-  table{width:100%;border-collapse:collapse}
-  th{text-align:left;padding:10px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--grey);border-bottom:2px solid #f0f0f0}
-  td{padding:12px;font-size:13px;color:var(--navy);border-bottom:1px solid #f5f5f5;vertical-align:middle}
-  tr:hover td{background:#fafafa}
+/* APPROVAL CARD */
+.approval-card{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow);margin-bottom:14px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.approval-info{flex:1;min-width:200px}
+.approval-info h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.approval-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.approval-tag{background:#f0f4f8;border-radius:50px;padding:3px 10px;font-size:12px;font-weight:600;color:var(--grey)}
+.approval-bio{font-size:13px;color:var(--grey);line-height:1.5;margin-bottom:8px}
+.approval-contact{font-size:12px;color:var(--grey)}
+.approval-actions{display:flex;flex-direction:column;gap:8px;min-width:110px}
 
-  /* BADGES */
-  .badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:50px;font-size:12px;font-weight:700}
-  .badge-live{background:#d1fae5;color:#065f46}
-  .badge-pending{background:#fef3c7;color:#92400e}
-  .badge-hidden{background:#f3f4f6;color:#6b7280}
+/* SET PIN */
+.pin-section{margin-top:10px;display:flex;gap:6px;align-items:center}
+.pin-section input{padding:7px 10px;border:2px solid #e5e7eb;border-radius:8px;font-size:13px;width:100px;font-family:inherit;outline:none}
+.pin-section input:focus{border-color:var(--blue)}
 
-  .action-btns{display:flex;gap:6px;flex-wrap:wrap}
+/* BUTTONS */
+.btn-sm{background:#f0f4f8;color:var(--navy);border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
+.btn-sm:hover{background:#e5e7eb}
+.btn-sm.green{background:#d1fae5;color:#065f46}
+.btn-sm.green:hover{background:#a7f3d0}
+.btn-sm.red{background:#fff0f3;color:var(--red)}
+.btn-sm.red:hover{background:#fecdd3}
+.btn-sm.grey{background:#f3f4f6;color:#6b7280}
+.btn{width:100%;background:var(--navy);color:#fff;border:none;border-radius:8px;padding:11px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:8px}
+.btn:hover{background:var(--blue)}
+.btn-primary{background:var(--blue)}
+.btn-primary:hover{background:#0090c8}
 
-  /* APPROVAL CARD */
-  .approval-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(4,30,66,0.08);margin-bottom:14px;border-left:4px solid #f59e0b;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start}
-  .approval-info h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
-  .approval-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
-  .approval-tag{background:#f0f4f8;border-radius:50px;padding:3px 10px;font-size:12px;font-weight:600;color:var(--grey)}
-  .approval-bio{font-size:13px;color:var(--grey);line-height:1.5;margin-bottom:8px}
-  .approval-contact{font-size:12px;color:var(--grey)}
-  .approval-actions{display:flex;flex-direction:column;gap:8px;min-width:110px}
+/* TABLE */
+.table-wrap{background:#fff;border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+.table-header{padding:16px 20px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;justify-content:space-between}
+.table-header h3{font-size:15px;font-weight:700;color:var(--navy)}
+table{width:100%;border-collapse:collapse}
+th{padding:10px 16px;text-align:left;font-size:11px;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:.5px;background:#f9fafb;border-bottom:1px solid #f0f0f0}
+td{padding:12px 16px;border-bottom:1px solid #f8f8f8;font-size:13px;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f9fafb}
+.action-btns{display:flex;gap:6px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700}
+.badge-live{background:#d1fae5;color:#065f46}
+.badge-hidden{background:#f3f4f6;color:#6b7280}
+.badge-pending{background:#fef3c7;color:#92400e}
 
-  /* MODAL */
-  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(4,30,66,0.5);z-index:1000;align-items:center;justify-content:center;padding:20px}
-  .modal-overlay.open{display:flex}
-  .modal{background:#fff;border-radius:16px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:28px;position:relative}
-  .modal h2{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:20px}
-  .modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--grey)}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .form-actions{display:flex;gap:10px;margin-top:20px}
-  .form-actions .btn{width:auto;padding:11px 24px}
+/* ADD ARTIST FORM */
+.add-form{background:#fff;border-radius:12px;padding:24px;box-shadow:var(--shadow)}
+.add-form h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:20px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:11px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 12px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;outline:none;background:#fafafa}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);background:#fff}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 
-  /* TOAST */
-  .toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 8px 24px rgba(4,30,66,0.3);transform:translateY(80px);opacity:0;transition:all .3s;z-index:9999}
-  .toast.show{transform:translateY(0);opacity:1}
-  .toast.success{background:var(--green)}
-  .toast.error{background:var(--red)}
+/* UPLOAD */
+.upload-area{border:2px dashed #e5e7eb;border-radius:10px;padding:20px;text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;min-height:90px;display:flex;align-items:center;justify-content:center}
+.upload-area:hover{border-color:var(--blue);background:#f0f9ff}
+.upload-preview{width:100%;height:120px;object-fit:cover;border-radius:8px;display:none}
+.upload-progress{display:none;font-size:12px;color:var(--grey);margin-top:6px;padding:6px 10px;background:#f0f4f8;border-radius:6px}
 
-  .loading{text-align:center;padding:40px;color:var(--grey);font-size:14px}
-  .empty{text-align:center;padding:40px;color:var(--grey)}
-  .empty-icon{font-size:48px;margin-bottom:12px}
+/* CATEGORIES */
+.cat-admin-card{background:#fff;border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;border-left:4px solid #e5e7eb;transition:border-color .2s}
+.cat-admin-card.live{border-left-color:var(--green)}
+.cat-left{display:flex;align-items:center;gap:14px}
+.cat-emoji{font-size:28px}
+.cat-info h3{font-size:14px;font-weight:700;color:var(--navy)}
+.cat-info p{font-size:12px;color:var(--grey);margin-top:2px}
+.toggle{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;cursor:pointer;inset:0;background:#e5e7eb;border-radius:50px;transition:.3s}
+.toggle-slider:before{content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
+input:checked+.toggle-slider{background:var(--green)}
+input:checked+.toggle-slider:before{transform:translateX(20px)}
 
-  /* EMPTY STATE */
-  .empty-state{text-align:center;padding:48px 20px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(4,30,66,0.08)}
-  .empty-state .es-icon{font-size:56px;margin-bottom:16px}
-  .empty-state h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
-  .empty-state p{font-size:13px;color:var(--grey);margin-bottom:20px}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(4,30,66,0.5);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:16px;padding:28px;width:100%;max-width:680px;max-height:90vh;overflow-y:auto;position:relative}
+.modal h2{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:20px}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--grey)}
+.form-actions{display:flex;gap:10px;margin-top:20px}
+
+/* EMPTY */
+.empty-state{text-align:center;padding:48px 20px}
+.es-icon{font-size:48px;margin-bottom:14px}
+.empty-state h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.empty-state p{font-size:13px;color:var(--grey);margin-bottom:16px}
+.loading{padding:32px;text-align:center;color:var(--grey)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:12px 20px;border-radius:50px;font-size:13px;font-weight:600;box-shadow:0 8px 24px rgba(4,30,66,0.3);transform:translateY(80px);opacity:0;transition:all .3s;z-index:9999}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.error{background:var(--red)}
+.toast.success{background:var(--green)}
 </style>
 </head>
 <body>
 
 <!-- LOGIN -->
 <div class="login-screen" id="loginScreen">
-  <div class="login-box">
+  <div class="login-card">
     <h1>🎤 Stagely Admin</h1>
     <p>Sign in to manage your platform</p>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="passwordInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')login()"/>
-    </div>
-    <button class="btn btn-primary" onclick="login()">Sign In</button>
-    <div class="error-msg" id="loginError">❌ Incorrect password</div>
+    <input type="password" id="passwordInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')login()"/>
+    <button onclick="login()">Sign In →</button>
+    <div class="login-error" id="loginError">❌ Incorrect password</div>
   </div>
 </div>
 
-<!-- ADMIN -->
+<!-- ADMIN LAYOUT -->
 <div class="admin-layout" id="adminLayout">
+
+  <!-- SIDEBAR -->
   <div class="sidebar">
-    <div class="sidebar-logo">Stage<span>ly</span></div>
-    <nav class="sidebar-nav">
-      <div class="nav-link active" onclick="showSection('dashboard')" id="nav-dashboard">📊 Dashboard</div>
-      <div class="nav-link" onclick="showSection('approvals')" id="nav-approvals">⏳ Approvals <span class="nav-badge" id="approval-badge" style="display:none">0</span></div>
-      <div class="nav-link" onclick="showSection('artists')" id="nav-artists">🎤 Live Artists</div>
-      <div class="nav-link" onclick="showSection('categories')" id="nav-categories">📂 Categories</div>
-      <div class="nav-link" onclick="showSection('add-artist')" id="nav-add-artist">➕ Add Artist</div>
-    </nav>
-    <div class="sidebar-logout" onclick="logout()">🚪 Sign Out</div>
+    <div class="sidebar-logo">Stage<span>ly</span> <span style="font-size:11px;opacity:.5;font-weight:400">Admin</span></div>
+    <div class="nav-link active" onclick="showSection('dashboard')" id="nav-dashboard">📊 Dashboard</div>
+    <div class="nav-link" onclick="showSection('approvals')" id="nav-approvals">⏳ Approvals <span class="nav-badge" id="approval-badge" style="display:none">0</span></div>
+    <div class="nav-link" onclick="showSection('artists')" id="nav-artists">🎤 Live Artists</div>
+    <div class="nav-link" onclick="showSection('categories')" id="nav-categories">📂 Categories</div>
+    <div class="nav-link" onclick="showSection('add')" id="nav-add">➕ Add Artist</div>
+    <div class="sidebar-bottom">
+      <button class="btn-logout" onclick="logout()">← Sign Out</button>
+    </div>
   </div>
 
+  <!-- MAIN -->
   <div class="main-content">
 
     <!-- DASHBOARD -->
     <div class="section active" id="section-dashboard">
       <div class="page-header">
-        <h1>Dashboard</h1>
-        <p>Welcome back! Here's your Stagely overview.</p>
+        <h1>📊 Dashboard</h1>
+        <p>Overview of your Stagely platform</p>
       </div>
-      <div class="stats-row">
+      <div class="stats-grid">
         <div class="stat-card"><div class="stat-num" id="stat-total">—</div><div class="stat-label">Total Artists</div></div>
         <div class="stat-card"><div class="stat-num" id="stat-live">—</div><div class="stat-label">Live on Site</div></div>
         <div class="stat-card"><div class="stat-num" id="stat-pending">—</div><div class="stat-label">Pending Approval</div></div>
         <div class="stat-card"><div class="stat-num" id="stat-cats">—</div><div class="stat-label">Live Categories</div></div>
       </div>
-      <div class="card">
-        <h2>Quick Actions</h2>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <button class="btn-sm green" onclick="showSection('approvals')">⏳ Review Approvals</button>
-          <button class="btn-sm" onclick="showSection('add-artist')">➕ Add Artist Manually</button>
-          <button class="btn-sm" onclick="showSection('categories')">📂 Manage Categories</button>
-          <a href="/register.html" target="_blank"><button class="btn-sm grey">🔗 Registration Page</button></a>
-          <a href="/" target="_blank"><button class="btn-sm grey">🌐 View Live Site</button></a>
+      <div class="reg-link-card">
+        <h3>📋 Registration Link — share with artists</h3>
+        <div class="reg-link-row">
+          <input type="text" id="regLink" value="https://starstage-uae.vercel.app/register.html" readonly/>
+          <button class="btn-copy" onclick="copyLink()">📋 Copy</button>
         </div>
       </div>
-      <div class="card">
-        <h2>Share Registration Link</h2>
-        <p style="font-size:13px;color:var(--grey);margin-bottom:12px">Send this link to artists so they can register themselves:</p>
-        <div style="display:flex;gap:10px;align-items:center">
-          <input id="regLink" value="https://starstage-uae.vercel.app/register.html" readonly style="flex:1;padding:10px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:13px;font-family:inherit;background:#f9fafb"/>
-          <button class="btn-sm green" onclick="copyLink()">📋 Copy</button>
-        </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-sm green" onclick="showSection('approvals')">⏳ Review Approvals</button>
+        <button class="btn-sm" onclick="showSection('artists')">🎤 Manage Artists</button>
+        <button class="btn-sm" onclick="showSection('add')">➕ Add Artist</button>
       </div>
     </div>
 
@@ -212,23 +222,17 @@
 
     <!-- LIVE ARTISTS -->
     <div class="section" id="section-artists">
-      <div class="page-header">
-        <h1>🎤 Live Artists</h1>
-        <p>All approved artists on Stagely.</p>
+      <div class="page-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+        <div>
+          <h1>🎤 Live Artists</h1>
+          <p id="artists-count">Loading...</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="table-header">
-          <span id="artists-count" style="font-size:13px;color:var(--grey)">Loading...</span>
-          <button class="btn-sm green" onclick="showSection('add-artist')">➕ Add Artist</button>
-        </div>
-        <div style="overflow-x:auto">
-          <table>
-            <thead>
-              <tr><th>Artist</th><th>Category</th><th>City</th><th>Price</th><th>Rating</th><th>Status</th><th>Actions</th></tr>
-            </thead>
-            <tbody id="artistsTableBody"><tr><td colspan="7" class="loading">Loading...</td></tr></tbody>
-          </table>
-        </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Category</th><th>City</th><th>Price</th><th>Rating</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="artistsTableBody"><tr><td colspan="7" style="text-align:center;padding:32px;color:#999">Loading...</td></tr></tbody>
+        </table>
       </div>
     </div>
 
@@ -236,15 +240,15 @@
     <div class="section" id="section-categories">
       <div class="page-header">
         <h1>📂 Categories</h1>
-        <p>Toggle categories on/off. Only live categories appear on the site.</p>
+        <p>Toggle categories on/off. Only live categories show on the site.</p>
       </div>
-      <div id="categoriesGrid" class="categories-grid"><div class="loading">Loading...</div></div>
-      <div class="card" style="margin-top:20px">
-        <h2>Add New Category</h2>
+      <div id="categoriesGrid"><div class="loading">Loading...</div></div>
+      <div class="add-form" style="margin-top:20px">
+        <h3>Add New Category</h3>
         <div class="form-row">
-          <div class="form-group"><label>Name</label><input type="text" id="newCatName" placeholder="e.g. Singers"/></div>
-          <div class="form-group"><label>Slug</label><input type="text" id="newCatSlug" placeholder="e.g. singers"/></div>
-          <div class="form-group"><label>Emoji</label><input type="text" id="newCatEmoji" placeholder="e.g. 🎤"/></div>
+          <div class="form-group"><label>Name</label><input type="text" id="newCatName" placeholder="e.g. Magicians"/></div>
+          <div class="form-group"><label>Slug</label><input type="text" id="newCatSlug" placeholder="e.g. magicians"/></div>
+          <div class="form-group"><label>Emoji</label><input type="text" id="newCatEmoji" placeholder="🎩"/></div>
           <div class="form-group"><label>Sort Order</label><input type="number" id="newCatOrder" value="1"/></div>
         </div>
         <button class="btn-sm green" onclick="addCategory()">+ Add Category</button>
@@ -252,32 +256,29 @@
     </div>
 
     <!-- ADD ARTIST -->
-    <div class="section" id="section-add-artist">
+    <div class="section" id="section-add">
       <div class="page-header">
         <h1>➕ Add Artist Manually</h1>
-        <p>Add an artist directly without waiting for them to register.</p>
+        <p>Add an artist directly — goes live immediately.</p>
       </div>
-      <div class="card">
+      <div class="add-form">
         <div class="form-row">
-          <div class="form-group"><label>Full Name *</label><input type="text" id="a-name" placeholder="e.g. Layla Al Mansoori"/></div>
-          <div class="form-group"><label>Category *</label>
+          <div class="form-group"><label>Name *</label><input type="text" id="a-name" placeholder="Artist or act name"/></div>
+          <div class="form-group"><label>Category</label>
             <select id="a-category">
-              <option value="singers">🎤 Singers</option>
-              <option value="djs">🎧 DJs</option>
-              <option value="bands">🎸 Live Bands</option>
-              <option value="dancers">💃 Dancers</option>
-              <option value="magicians">🎩 Magicians</option>
-              <option value="comedians">🎭 Comedians</option>
+              <option value="singers">🎤 Singers</option><option value="djs">🎧 DJs</option>
+              <option value="bands">🎸 Bands</option><option value="dancers">💃 Dancers</option>
+              <option value="magicians">🎩 Magicians</option><option value="comedians">🎭 Comedians</option>
               <option value="speakers">🎙️ Speakers</option>
             </select>
           </div>
-          <div class="form-group"><label>City *</label>
+          <div class="form-group"><label>City</label>
             <select id="a-city">
               <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
               <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option>
             </select>
           </div>
-          <div class="form-group"><label>Price From (AED) *</label><input type="number" id="a-price" placeholder="e.g. 2500"/></div>
+          <div class="form-group"><label>Price From (AED)</label><input type="number" id="a-price" placeholder="2500"/></div>
           <div class="form-group"><label>Instagram</label><input type="text" id="a-instagram" placeholder="@handle"/></div>
           <div class="form-group"><label>WhatsApp</label><input type="text" id="a-whatsapp" placeholder="+971..."/></div>
           <div class="form-group"><label>Rating</label><input type="number" id="a-rating" value="5" min="1" max="5" step="0.1"/></div>
@@ -285,19 +286,16 @@
             <label>Photo</label>
             <div class="upload-area" onclick="document.getElementById('a-photo-file').click()">
               <img id="a-photo-preview" class="upload-preview"/>
-              <div id="a-photo-placeholder">📸 <strong>Click to upload photo</strong><p>JPG, PNG — max 5MB</p></div>
+              <div id="a-photo-placeholder">📸 <strong>Click to upload</strong></div>
               <input type="file" id="a-photo-file" accept="image/*" style="display:none" onchange="uploadPhoto(this,'a-photo','a-photo-preview','a-photo-placeholder','a-photo-progress')"/>
             </div>
-            <div class="upload-progress" id="a-photo-progress">⏳ Uploading...</div>
-            <input type="text" id="a-photo" placeholder="Or paste photo URL directly" style="margin-top:6px"/>
+            <div class="upload-progress" id="a-photo-progress"></div>
+            <input type="text" id="a-photo" placeholder="Or paste photo URL" style="margin-top:6px"/>
           </div>
           <div class="form-group"><label>Video URL (YouTube)</label><input type="text" id="a-video" placeholder="https://youtube.com/watch?v=..."/></div>
         </div>
-        <div class="form-group"><label>Bio *</label><textarea id="a-bio" placeholder="Describe the artist..."></textarea></div>
-        <div class="form-actions">
-          <button class="btn btn-primary" onclick="addArtist()" style="width:auto;padding:12px 28px">✅ Add Artist (Live Immediately)</button>
-          <button class="btn" onclick="showSection('artists')" style="background:#e5e7eb;color:var(--navy);width:auto;padding:12px 20px">Cancel</button>
-        </div>
+        <div class="form-group"><label>Bio *</label><textarea id="a-bio" placeholder="Describe this artist..."></textarea></div>
+        <button class="btn btn-primary" onclick="addArtist()">✅ Add Artist (goes live immediately)</button>
       </div>
     </div>
 
@@ -308,7 +306,7 @@
 <div class="modal-overlay" id="editModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <h2>Edit Artist</h2>
+    <h2>✏️ Edit Artist</h2>
     <input type="hidden" id="edit-id"/>
     <div class="form-row">
       <div class="form-group"><label>Name</label><input type="text" id="edit-name"/></div>
@@ -325,6 +323,7 @@
       <div class="form-group"><label>Instagram</label><input type="text" id="edit-instagram"/></div>
       <div class="form-group"><label>WhatsApp</label><input type="text" id="edit-whatsapp"/></div>
       <div class="form-group"><label>Rating</label><input type="number" id="edit-rating" min="1" max="5" step="0.1"/></div>
+      <div class="form-group"><label>PIN (for artist login)</label><input type="text" id="edit-pin" placeholder="e.g. 1234" maxlength="6"/><div style="font-size:11px;color:var(--grey);margin-top:4px">Set a PIN then send it to the artist via WhatsApp so they can login.</div></div>
       <div class="form-group">
         <label>Photo</label>
         <div class="upload-area" onclick="document.getElementById('edit-photo-file').click()">
@@ -332,8 +331,8 @@
           <div id="edit-photo-placeholder">📸 <strong>Click to upload photo</strong><p>JPG, PNG — max 5MB</p></div>
           <input type="file" id="edit-photo-file" accept="image/*" style="display:none" onchange="uploadPhoto(this,'edit-photo','edit-photo-preview','edit-photo-placeholder','edit-photo-progress')"/>
         </div>
-        <div class="upload-progress" id="edit-photo-progress">⏳ Uploading...</div>
-        <input type="text" id="edit-photo" placeholder="Or paste photo URL directly" style="margin-top:6px"/>
+        <div class="upload-progress" id="edit-photo-progress"></div>
+        <input type="text" id="edit-photo" placeholder="Or paste photo URL" style="margin-top:6px"/>
       </div>
       <div class="form-group"><label>Video URL (YouTube)</label><input type="text" id="edit-video" placeholder="https://youtube.com/watch?v=..."/></div>
     </div>
@@ -348,103 +347,109 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const SUPABASE_URL = 'https://darbunnlilqwbeobcelp.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
-const ADMIN_PASSWORD = 'stagely2025';
+const SUPABASE_URL='https://darbunnlilqwbeobcelp.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcmJ1bm5saWxxd2Jlb2JjZWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2Njg2NzQsImV4cCI6MjA5NjI0NDY3NH0.O7X3glTGiI_mQ-r-D1iC20zdC_PNv9jRPrgBUGNX154';
+const ADMIN_PASSWORD='stagely2025';
 
-function login() {
-  const pw = document.getElementById('passwordInput').value;
-  if (pw === ADMIN_PASSWORD) {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('adminLayout').style.display = 'flex';
+function login(){
+  const pw=document.getElementById('passwordInput').value;
+  if(pw===ADMIN_PASSWORD){
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('adminLayout').style.display='flex';
     loadAll();
   } else {
-    document.getElementById('loginError').style.display = 'block';
+    document.getElementById('loginError').style.display='block';
   }
 }
-function logout() {
-  document.getElementById('loginScreen').style.display = 'flex';
-  document.getElementById('adminLayout').style.display = 'none';
-  document.getElementById('passwordInput').value = '';
+function logout(){
+  document.getElementById('loginScreen').style.display='flex';
+  document.getElementById('adminLayout').style.display='none';
+  document.getElementById('passwordInput').value='';
 }
 
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-  document.getElementById('section-' + id).classList.add('active');
-  document.getElementById('nav-' + id).classList.add('active');
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
 }
 
-async function api(path, method='GET', body=null) {
-  const opts = { method, headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=representation' } };
-  if (body) opts.body = JSON.stringify(body);
-  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, opts);
-  try { return await res.json(); } catch { return []; }
+async function api(path,method='GET',body=null){
+  const opts={method,headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=representation'}};
+  if(body) opts.body=JSON.stringify(body);
+  const res=await fetch(SUPABASE_URL+'/rest/v1/'+path,opts);
+  try{return await res.json();}catch{return [];}
 }
 
-function toast(msg, type='success') {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.className = 'toast ' + type + ' show';
-  setTimeout(() => t.className = 'toast', 3000);
+function toast(msg,type='success'){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+type+' show';
+  setTimeout(()=>t.className='toast',3000);
 }
 
-function copyLink() {
+function copyLink(){
   navigator.clipboard.writeText(document.getElementById('regLink').value);
   toast('📋 Link copied!');
 }
 
-async function loadAll() {
+async function loadAll(){
   loadDashboard();
   loadApprovals();
   loadArtists();
   loadCategories();
 }
 
-async function loadDashboard() {
-  try {
-    const all = await api('artists?select=id,active');
-    const cats = await api('categories?select=id,is_live');
-    const total = all.length;
-    const live = all.filter(a => a.active).length;
-    const pending = all.filter(a => !a.active).length;
-    const liveCats = cats.filter(c => c.is_live).length;
-    document.getElementById('stat-total').textContent = total;
-    document.getElementById('stat-live').textContent = live;
-    document.getElementById('stat-pending').textContent = pending;
-    document.getElementById('stat-cats').textContent = liveCats;
-    // Update badge
-    const badge = document.getElementById('approval-badge');
-    if (pending > 0) { badge.style.display = 'inline'; badge.textContent = pending; }
-    else { badge.style.display = 'none'; }
-  } catch(e) { console.error(e); }
+async function loadDashboard(){
+  try{
+    const all=await api('artists?select=id,active');
+    const cats=await api('categories?select=id,is_live');
+    const total=all.length;
+    const live=all.filter(a=>a.active).length;
+    const pending=all.filter(a=>!a.active).length;
+    const liveCats=cats.filter(c=>c.is_live).length;
+    document.getElementById('stat-total').textContent=total;
+    document.getElementById('stat-live').textContent=live;
+    document.getElementById('stat-pending').textContent=pending;
+    document.getElementById('stat-cats').textContent=liveCats;
+    const badge=document.getElementById('approval-badge');
+    if(pending>0){badge.style.display='inline';badge.textContent=pending;}
+    else{badge.style.display='none';}
+  }catch(e){console.error(e);}
 }
 
-async function loadApprovals() {
-  try {
-    const pending = await api('artists?active=eq.false&order=created_at.desc');
-    const badge = document.getElementById('approval-badge');
-    if (pending.length > 0) { badge.style.display = 'inline'; badge.textContent = pending.length; }
-    else { badge.style.display = 'none'; }
+async function loadApprovals(){
+  try{
+    // order by id desc since created_at column doesn't exist
+    const pending=await api('artists?active=eq.false&order=id.desc');
+    const badge=document.getElementById('approval-badge');
+    if(pending.length>0){badge.style.display='inline';badge.textContent=pending.length;}
+    else{badge.style.display='none';}
 
-    const container = document.getElementById('approvalsContent');
-    if (!pending.length) {
-      container.innerHTML = `<div class="empty-state"><div class="es-icon">✅</div><h3>No pending approvals</h3><p>All artists have been reviewed. Share the registration link to get more submissions.</p><a href="/register.html" target="_blank"><button class="btn-sm green">🔗 View Registration Page</button></a></div>`;
+    const container=document.getElementById('approvalsContent');
+    if(!pending||!Array.isArray(pending)||!pending.length){
+      container.innerHTML='<div class="empty-state"><div class="es-icon">✅</div><h3>No pending approvals</h3><p>All artists have been reviewed. Share the registration link to get more submissions.</p><a href="/register.html" target="_blank"><button class="btn-sm green">🔗 View Registration Page</button></a></div>';
       return;
     }
 
-    container.innerHTML = pending.map(a => `
+    container.innerHTML=pending.map(a=>`
       <div class="approval-card" id="acard-${a.id}">
         <div class="approval-info">
-          <h3>${a.name}</h3>
+          <h3>${a.name||'(no name)'}</h3>
+          <div style="font-size:12px;color:var(--grey);margin-bottom:6px">${a.first_name||''} ${a.last_name||''} ${a.email?'· '+a.email:''}</div>
           <div class="approval-meta">
-            <span class="approval-tag">${a.category || '—'}</span>
-            <span class="approval-tag">📍 ${a.city || '—'}</span>
+            <span class="approval-tag">${a.category||'—'}</span>
+            <span class="approval-tag">📍 ${a.city||'—'}</span>
             <span class="approval-tag">💰 AED ${(a.price_from||0).toLocaleString()}</span>
-            ${a.instagram ? `<span class="approval-tag">📸 ${a.instagram}</span>` : ''}
-            ${a.whatsapp ? `<span class="approval-tag">📱 ${a.whatsapp}</span>` : ''}
+            ${a.phone?`<span class="approval-tag">📱 ${a.phone}</span>`:''}
+            ${a.whatsapp?`<span class="approval-tag">💬 ${a.whatsapp}</span>`:''}
+            ${a.instagram?`<span class="approval-tag">📸 ${a.instagram}</span>`:''}
           </div>
-          ${a.bio ? `<div class="approval-bio">"${a.bio.substring(0,200)}${a.bio.length>200?'...':''}"</div>` : ''}
-          ${a.photo_url ? `<img src="${a.photo_url}" style="height:60px;border-radius:8px;margin-top:6px" onerror="this.style.display='none'"/>` : ''}
+          ${a.bio?`<div class="approval-bio">"${a.bio.substring(0,200)}${a.bio.length>200?'...':''}"</div>`:''}
+          ${a.photo_url?`<img src="${a.photo_url}" style="height:60px;border-radius:8px;margin-top:6px" onerror="this.style.display='none'"/>`:''}
+          <div class="pin-section">
+            <span style="font-size:12px;color:var(--grey);font-weight:600">Set PIN for artist login:</span>
+            <input type="text" id="pin-${a.id}" placeholder="e.g. 1234" maxlength="6" style="padding:7px 10px;border:2px solid #e5e7eb;border-radius:8px;font-size:13px;width:90px;font-family:inherit;outline:none"/>
+          </div>
         </div>
         <div class="approval-actions">
           <button class="btn-sm green" onclick="approveArtist(${a.id})">✅ Approve<br><small style="font-weight:400;font-size:10px">Goes LIVE</small></button>
@@ -453,231 +458,214 @@ async function loadApprovals() {
         </div>
       </div>
     `).join('');
-  } catch(e) { console.error(e); }
+  }catch(e){console.error(e);}
 }
 
-async function approveArtist(id) {
-  try {
-    await api('artists?id=eq.' + id, 'PATCH', { active: true });
-    toast('✅ Artist approved and now LIVE on site!');
-    document.getElementById('acard-' + id)?.remove();
+async function approveArtist(id){
+  try{
+    // Save PIN if entered
+    const pinInput=document.getElementById('pin-'+id);
+    const pin=pinInput?pinInput.value.trim():null;
+    const updateData={active:true};
+    if(pin) updateData.pin=pin;
+    await api('artists?id=eq.'+id,'PATCH',updateData);
+    toast('✅ Artist approved and now LIVE!'+(pin?' PIN: '+pin:''));
+    document.getElementById('acard-'+id)?.remove();
     loadDashboard();
     loadArtists();
-    // Check if no more pending
-    const remaining = document.querySelectorAll('[id^="acard-"]').length;
-    if (remaining === 0) loadApprovals();
-  } catch(e) { toast('Error', 'error'); }
+    const remaining=document.querySelectorAll('[id^="acard-"]').length;
+    if(remaining===0) loadApprovals();
+  }catch(e){toast('Error','error');}
 }
 
-async function rejectArtist(id) {
-  if (!confirm('Reject and delete this artist submission?')) return;
-  try {
-    await api('artists?id=eq.' + id, 'DELETE');
+async function rejectArtist(id){
+  if(!confirm('Reject and delete this artist submission?')) return;
+  try{
+    await api('artists?id=eq.'+id,'DELETE');
     toast('Artist rejected and removed');
-    document.getElementById('acard-' + id)?.remove();
+    document.getElementById('acard-'+id)?.remove();
     loadDashboard();
-    const remaining = document.querySelectorAll('[id^="acard-"]').length;
-    if (remaining === 0) loadApprovals();
-  } catch(e) { toast('Error', 'error'); }
+    const remaining=document.querySelectorAll('[id^="acard-"]').length;
+    if(remaining===0) loadApprovals();
+  }catch(e){toast('Error','error');}
 }
 
-async function loadArtists() {
-  try {
-    const artists = await api('artists?active=eq.true&order=name');
-    document.getElementById('artists-count').textContent = artists.length + ' live artists';
-    const tbody = document.getElementById('artistsTableBody');
-    if (!artists.length) {
-      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:32px;color:#999">No live artists yet. Approve some from the Approvals section!</td></tr>';
+async function loadArtists(){
+  try{
+    const artists=await api('artists?active=eq.true&order=name');
+    document.getElementById('artists-count').textContent=artists.length+' live artists';
+    const tbody=document.getElementById('artistsTableBody');
+    if(!artists||!Array.isArray(artists)||!artists.length){
+      tbody.innerHTML='<tr><td colspan="7" style="text-align:center;padding:32px;color:#999">No live artists yet. Approve some from the Approvals section!</td></tr>';
       return;
     }
-    tbody.innerHTML = artists.map(a => `
+    tbody.innerHTML=artists.map(a=>`
       <tr>
-        <td><strong>${a.name}</strong><br><span style="font-size:11px;color:#999">${a.instagram||''}</span></td>
+        <td>
+          ${a.photo_url?`<img src="${a.photo_url}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;margin-right:8px;vertical-align:middle" onerror="this.style.display='none'"/>`:''}
+          <strong>${a.name}</strong><br>
+          <span style="font-size:11px;color:#999">${a.email||a.instagram||''}</span>
+        </td>
         <td>${a.category||'—'}</td>
         <td>${a.city||'—'}</td>
         <td>AED ${(a.price_from||0).toLocaleString()}</td>
         <td>⭐ ${a.rating||5}</td>
-        <td>${a.visible === false ? '<span class="badge badge-hidden">👁️ Hidden</span>' : '<span class="badge badge-live">🟢 Live</span>'}</td>
+        <td>${a.visible===false?'<span class="badge badge-hidden">👁️ Hidden</span>':'<span class="badge badge-live">🟢 Live</span>'}</td>
         <td>
           <div class="action-btns">
             <button class="btn-sm" onclick="editArtist(${a.id})">✏️ Edit</button>
-            ${a.visible === false
-              ? `<button class="btn-sm green" onclick="showArtist(${a.id})">👁️ Show</button>`
-              : `<button class="btn-sm grey" onclick="hideArtist(${a.id})">🙈 Hide</button>`
+            ${a.visible===false
+              ?`<button class="btn-sm green" onclick="showArtist(${a.id})">👁️ Show</button>`
+              :`<button class="btn-sm grey" onclick="hideArtist(${a.id})">🙈 Hide</button>`
             }
             <button class="btn-sm red" onclick="deleteArtist(${a.id})">🗑️</button>
           </div>
         </td>
       </tr>
     `).join('');
-  } catch(e) { console.error(e); }
+  }catch(e){console.error(e);}
 }
 
-async function hideArtist(id) {
-  if (!confirm('Hide this artist from the site? They stay approved but become invisible.')) return;
-  try {
-    await api('artists?id=eq.' + id, 'PATCH', { visible: false });
+async function hideArtist(id){
+  if(!confirm('Hide this artist from the site?')) return;
+  try{
+    await api('artists?id=eq.'+id,'PATCH',{visible:false});
     toast('Artist hidden from site');
-    loadArtists(); loadDashboard();
-  } catch(e) { toast('Error', 'error'); }
+    loadArtists();loadDashboard();
+  }catch(e){toast('Error','error');}
 }
 
-async function showArtist(id) {
-  try {
-    await api('artists?id=eq.' + id, 'PATCH', { visible: true });
+async function showArtist(id){
+  try{
+    await api('artists?id=eq.'+id,'PATCH',{visible:true});
     toast('✅ Artist is visible again!');
     loadArtists();
-  } catch(e) { toast('Error', 'error'); }
+  }catch(e){toast('Error','error');}
 }
 
-async function deleteArtist(id) {
-  if (!confirm('Permanently delete this artist?')) return;
-  try {
-    await api('artists?id=eq.' + id, 'DELETE');
+async function deleteArtist(id){
+  if(!confirm('Permanently delete this artist?')) return;
+  try{
+    await api('artists?id=eq.'+id,'DELETE');
     toast('Artist deleted');
-    loadArtists(); loadDashboard();
-  } catch(e) { toast('Error', 'error'); }
+    loadArtists();loadDashboard();
+  }catch(e){toast('Error','error');}
 }
 
-async function addArtist() {
-  const name = document.getElementById('a-name').value.trim();
-  const bio = document.getElementById('a-bio').value.trim();
-  if (!name || !bio) return toast('Name and bio required', 'error');
-  const data = {
-    name, bio,
-    category: document.getElementById('a-category').value,
-    city: document.getElementById('a-city').value,
-    price_from: parseInt(document.getElementById('a-price').value) || 0,
-    instagram: document.getElementById('a-instagram').value.trim(),
-    whatsapp: document.getElementById('a-whatsapp').value.trim(),
-    rating: parseFloat(document.getElementById('a-rating').value) || 5,
-    photo_url: document.getElementById('a-photo').value.trim(),
-    video_url: document.getElementById('a-video').value.trim(),
-    active: true
+async function addArtist(){
+  const name=document.getElementById('a-name').value.trim();
+  const bio=document.getElementById('a-bio').value.trim();
+  if(!name||!bio) return toast('Name and bio required','error');
+  const data={
+    name,bio,
+    category:document.getElementById('a-category').value,
+    city:document.getElementById('a-city').value,
+    price_from:parseInt(document.getElementById('a-price').value)||0,
+    instagram:document.getElementById('a-instagram').value.trim(),
+    whatsapp:document.getElementById('a-whatsapp').value.trim(),
+    rating:parseFloat(document.getElementById('a-rating').value)||5,
+    photo_url:document.getElementById('a-photo').value.trim(),
+    video_url:document.getElementById('a-video').value.trim(),
+    active:true
   };
-  try {
-    await api('artists', 'POST', data);
+  try{
+    await api('artists','POST',data);
     toast('✅ Artist added and live!');
-    ['a-name','a-bio','a-instagram','a-whatsapp','a-photo'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('a-price').value = '';
-    loadArtists(); loadDashboard();
+    ['a-name','a-bio','a-instagram','a-whatsapp','a-photo','a-video'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('a-price').value='';
+    document.getElementById('a-photo-preview').style.display='none';
+    document.getElementById('a-photo-placeholder').style.display='block';
+    loadArtists();loadDashboard();
     showSection('artists');
-  } catch(e) { toast('Error: ' + e.message, 'error'); }
+  }catch(e){toast('Error: '+e.message,'error');}
 }
 
-async function editArtist(id) {
-  const data = await api('artists?id=eq.' + id);
-  const a = data[0]; if (!a) return;
-  document.getElementById('edit-id').value = a.id;
-  document.getElementById('edit-name').value = a.name || '';
-  document.getElementById('edit-category').value = a.category || 'singers';
-  document.getElementById('edit-city').value = a.city || '';
-  document.getElementById('edit-price').value = a.price_from || 0;
-  document.getElementById('edit-instagram').value = a.instagram || '';
-  document.getElementById('edit-whatsapp').value = a.whatsapp || '';
-  document.getElementById('edit-rating').value = a.rating || 5;
-  document.getElementById('edit-photo').value = a.photo_url || '';
-  if (a.photo_url) {
-    var prev = document.getElementById('edit-photo-preview');
-    prev.src = a.photo_url;
-    prev.style.display = 'block';
-    document.getElementById('edit-photo-placeholder').style.display = 'none';
-  } else {
-    document.getElementById('edit-photo-preview').style.display = 'none';
-    document.getElementById('edit-photo-placeholder').style.display = 'block';
-  }
-  document.getElementById('edit-video').value = a.video_url || '';
-  document.getElementById('edit-bio').value = a.bio || '';
+async function editArtist(id){
+  const data=await api('artists?id=eq.'+id);
+  const a=data[0];if(!a) return;
+  document.getElementById('edit-id').value=a.id;
+  document.getElementById('edit-name').value=a.name||'';
+  document.getElementById('edit-category').value=a.category||'singers';
+  document.getElementById('edit-city').value=a.city||'';
+  document.getElementById('edit-price').value=a.price_from||0;
+  document.getElementById('edit-instagram').value=a.instagram||'';
+  document.getElementById('edit-whatsapp').value=a.whatsapp||'';
+  document.getElementById('edit-rating').value=a.rating||5;
+  document.getElementById('edit-pin').value=a.pin||'';
+  document.getElementById('edit-photo').value=a.photo_url||'';
+  const prev=document.getElementById('edit-photo-preview');
+  if(a.photo_url){prev.src=a.photo_url;prev.style.display='block';document.getElementById('edit-photo-placeholder').style.display='none';}
+  else{prev.style.display='none';document.getElementById('edit-photo-placeholder').style.display='block';}
+  document.getElementById('edit-video').value=a.video_url||'';
+  document.getElementById('edit-bio').value=a.bio||'';
   document.getElementById('editModal').classList.add('open');
 }
 
-async function saveEdit() {
-  const id = document.getElementById('edit-id').value;
-  const data = {
-    name: document.getElementById('edit-name').value,
-    category: document.getElementById('edit-category').value,
-    city: document.getElementById('edit-city').value,
-    price_from: parseInt(document.getElementById('edit-price').value) || 0,
-    instagram: document.getElementById('edit-instagram').value,
-    whatsapp: document.getElementById('edit-whatsapp').value,
-    rating: parseFloat(document.getElementById('edit-rating').value) || 5,
-    photo_url: document.getElementById('edit-photo').value,
-    video_url: document.getElementById('edit-video').value,
-    bio: document.getElementById('edit-bio').value,
+async function saveEdit(){
+  const id=document.getElementById('edit-id').value;
+  const data={
+    name:document.getElementById('edit-name').value,
+    category:document.getElementById('edit-category').value,
+    city:document.getElementById('edit-city').value,
+    price_from:parseInt(document.getElementById('edit-price').value)||0,
+    instagram:document.getElementById('edit-instagram').value,
+    whatsapp:document.getElementById('edit-whatsapp').value,
+    rating:parseFloat(document.getElementById('edit-rating').value)||5,
+    pin:document.getElementById('edit-pin').value||null,
+    photo_url:document.getElementById('edit-photo').value,
+    video_url:document.getElementById('edit-video').value,
+    bio:document.getElementById('edit-bio').value,
   };
-  try {
-    await api('artists?id=eq.' + id, 'PATCH', data);
+  try{
+    await api('artists?id=eq.'+id,'PATCH',data);
     toast('✅ Artist updated!');
-    closeModal(); loadArtists(); loadApprovals();
-  } catch(e) { toast('Error', 'error'); }
+    closeModal();loadArtists();loadApprovals();
+  }catch(e){toast('Error','error');}
 }
 
-function closeModal() { document.getElementById('editModal').classList.remove('open'); }
+function closeModal(){document.getElementById('editModal').classList.remove('open');}
 
-async function uploadPhoto(input, urlFieldId, previewId, placeholderId, progressId) {
-  var file = input.files[0];
-  if (!file) return;
-  
-  // Show preview immediately
-  var preview = document.getElementById(previewId);
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    preview.src = e.target.result;
-    preview.style.display = 'block';
-    document.getElementById(placeholderId).style.display = 'none';
-  };
+async function uploadPhoto(input,urlFieldId,previewId,placeholderId,progressId){
+  var file=input.files[0];
+  if(!file) return;
+  var preview=document.getElementById(previewId);
+  var reader=new FileReader();
+  reader.onload=function(e){preview.src=e.target.result;preview.style.display='block';document.getElementById(placeholderId).style.display='none';};
   reader.readAsDataURL(file);
-  
-  // Show progress
-  var progress = document.getElementById(progressId);
-  progress.style.display = 'block';
-  progress.textContent = '⏳ Uploading...';
-  
-  try {
-    // Upload to Supabase Storage
-    var fileName = Date.now() + '-' + file.name.replace(/[^a-zA-Z0-9.]/g, '-');
-    var res = await fetch(SUPABASE_URL + '/storage/v1/object/artist-photos/' + fileName, {
-      method: 'POST',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_KEY,
-        'Content-Type': file.type,
-        'x-upsert': 'true'
-      },
-      body: file
+  var progress=document.getElementById(progressId);
+  progress.style.display='block';progress.textContent='⏳ Uploading...';
+  try{
+    var fileName=Date.now()+'-'+file.name.replace(/[^a-zA-Z0-9.]/g,'-');
+    var res=await fetch(SUPABASE_URL+'/storage/v1/object/artist-photos/'+fileName,{
+      method:'POST',
+      headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':file.type,'x-upsert':'true'},
+      body:file
     });
-    
-    if (res.ok) {
-      var publicUrl = SUPABASE_URL + '/storage/v1/object/public/artist-photos/' + fileName;
-      document.getElementById(urlFieldId).value = publicUrl;
-      progress.textContent = '✅ Photo uploaded!';
-      progress.style.color = 'var(--green)';
-      setTimeout(function() { progress.style.display = 'none'; }, 2000);
+    if(res.ok){
+      var publicUrl=SUPABASE_URL+'/storage/v1/object/public/artist-photos/'+fileName;
+      document.getElementById(urlFieldId).value=publicUrl;
+      progress.textContent='✅ Uploaded!';progress.style.color='var(--green)';
+      setTimeout(function(){progress.style.display='none';},2000);
     } else {
-      var err = await res.text();
-      console.error('Upload error:', err);
-      progress.textContent = '❌ Upload failed — paste URL manually';
-      progress.style.color = 'var(--red)';
+      progress.textContent='❌ Upload failed — paste URL manually';progress.style.color='var(--red)';
     }
-  } catch(e) {
-    console.error(e);
-    progress.textContent = '❌ Upload failed — paste URL manually';
-    progress.style.color = 'var(--red)';
+  }catch(e){
+    progress.textContent='❌ Upload failed — paste URL manually';progress.style.color='var(--red)';
   }
 }
 
-async function loadCategories() {
-  try {
-    const cats = await api('categories?order=sort_order');
-    const grid = document.getElementById('categoriesGrid');
-    if (!cats.length) { grid.innerHTML = '<div class="loading">No categories found.</div>'; return; }
-    grid.innerHTML = cats.map(c => `
-      <div class="cat-admin-card ${c.is_live ? 'live' : ''}" id="cat-card-${c.id}">
+async function loadCategories(){
+  try{
+    const cats=await api('categories?order=sort_order');
+    const grid=document.getElementById('categoriesGrid');
+    if(!cats||!cats.length){grid.innerHTML='<div class="loading">No categories found.</div>';return;}
+    grid.innerHTML=cats.map(c=>`
+      <div class="cat-admin-card ${c.is_live?'live':''}" id="cat-card-${c.id}">
         <div class="cat-left">
           <div class="cat-emoji">${c.emoji||'📂'}</div>
           <div class="cat-info">
             <h3>${c.name}</h3>
-            <p>${c.is_live ? '✅ Live on site' : '⬜ Hidden'}</p>
+            <p>${c.is_live?'✅ Live on site':'⬜ Hidden'}</p>
           </div>
         </div>
         <label class="toggle">
@@ -686,36 +674,34 @@ async function loadCategories() {
         </label>
       </div>
     `).join('');
-  } catch(e) { console.error(e); }
+  }catch(e){console.error(e);}
 }
 
-async function toggleCategory(id, isLive) {
-  try {
-    await api('categories?id=eq.' + id, 'PATCH', { is_live: isLive });
-    const card = document.getElementById('cat-card-' + id);
-    if (card) {
-      card.classList.toggle('live', isLive);
-      card.querySelector('.cat-info p').textContent = isLive ? '✅ Live on site' : '⬜ Hidden';
+async function toggleCategory(id,isLive){
+  try{
+    await api('categories?id=eq.'+id,'PATCH',{is_live:isLive});
+    const card=document.getElementById('cat-card-'+id);
+    if(card){
+      card.classList.toggle('live',isLive);
+      card.querySelector('.cat-info p').textContent=isLive?'✅ Live on site':'⬜ Hidden';
     }
-    toast(isLive ? '✅ Category is now LIVE!' : '⬜ Category hidden');
+    toast(isLive?'✅ Category is now LIVE!':'⬜ Category hidden');
     loadDashboard();
-  } catch(e) { toast('Error', 'error'); }
+  }catch(e){toast('Error','error');}
 }
 
-async function addCategory() {
-  const name = document.getElementById('newCatName').value.trim();
-  const slug = document.getElementById('newCatSlug').value.trim();
-  const emoji = document.getElementById('newCatEmoji').value.trim();
-  const sort_order = parseInt(document.getElementById('newCatOrder').value) || 1;
-  if (!name || !slug) return toast('Name and slug required', 'error');
-  try {
-    await api('categories', 'POST', { name, slug, emoji, is_live: false, sort_order });
+async function addCategory(){
+  const name=document.getElementById('newCatName').value.trim();
+  const slug=document.getElementById('newCatSlug').value.trim();
+  const emoji=document.getElementById('newCatEmoji').value.trim();
+  const sort_order=parseInt(document.getElementById('newCatOrder').value)||1;
+  if(!name||!slug) return toast('Name and slug required','error');
+  try{
+    await api('categories','POST',{name,slug,emoji,is_live:false,sort_order});
     toast('Category added!');
     loadCategories();
-    document.getElementById('newCatName').value = '';
-    document.getElementById('newCatSlug').value = '';
-    document.getElementById('newCatEmoji').value = '';
-  } catch(e) { toast('Error', 'error'); }
+    ['newCatName','newCatSlug','newCatEmoji'].forEach(id=>document.getElementById(id).value='');
+  }catch(e){toast('Error','error');}
 }
 </script>
 </body>
