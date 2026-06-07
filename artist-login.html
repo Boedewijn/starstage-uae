@@ -588,17 +588,17 @@ a{color:inherit;text-decoration:none}
     <!-- ===== PANEL: AGENDA ===== -->
     <div class="panel" id="panelAgenda">
       <div class="card">
-        <div class="card-title">📅 Koppel je agenda</div>
-        <p style="font-size:13px;color:var(--grey);margin-bottom:16px;line-height:1.7">Koppel je Google, Outlook of Apple agenda aan Stagely. Afspraken worden automatisch als 'bezet' verwerkt. Klanten kunnen je dan niet boeken op bezette tijden.</p>
+        <div class="card-title">📅 Connect your calendar</div>
+        <p style="font-size:13px;color:var(--grey);margin-bottom:16px;line-height:1.7">Connect your Google, Outlook or Apple calendar to Stagely. Appointments are automatically marked as 'busy'. Clients cannot book you during those times.</p>
         <div style="background:#eaf6fd;border-radius:10px;padding:14px;margin-bottom:20px;font-size:13px;color:#0369a1;line-height:1.6">
-          💡 Artiesten met een up-to-date agenda krijgen een betere positie in de zoekresultaten!
+          💡 Artists with an up-to-date calendar get better visibility in search results!
         </div>
         <div class="form-group">
           <label>iCal URL (Google / Outlook / Apple)</label>
           <input type="text" id="e-calendar-url" placeholder="webcal://... of https://calendar.google.com/calendar/ical/..."/>
-          <div class="hint">Plak hier de iCal/webcal link van je agenda. Zie de instructies hieronder.</div>
+          <div class="hint">Paste the iCal/webcal link from your calendar here. See instructions below.</div>
         </div>
-        <div class="btn-row"><button class="btn-primary" onclick="saveCalendar()">💾 Opslaan</button></div>
+        <div class="btn-row"><button class="btn-primary" onclick="saveCalendar()">💾 Save</button></div>
       </div>
 
       <div class="card" style="margin-top:0">
@@ -613,47 +613,47 @@ a{color:inherit;text-decoration:none}
         </div>
         <div id="agendaGrid" style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;font-size:12px"></div>
         <div style="margin-top:16px">
-          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">⛔ Blokkeer tijdslot handmatig</div>
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">⛔ Block a date manually</div>
           <div class="form-row">
             <div class="form-group"><label>Datum</label><input type="date" id="block-date"/></div>
-            <div class="form-group"><label>Notitie (optioneel)</label><input type="text" id="block-note" placeholder="bijv. Andere boeking"/></div>
+            <div class="form-group"><label>Note (optional)</label><input type="text" id="block-note" placeholder="e.g. Other booking"/></div>
           </div>
-          <button class="btn-sm" onclick="addBlock()" style="background:#fff0f3;color:var(--red);border:2px solid #fecdd3">⛔ Dag blokkeren</button>
+          <button class="btn-sm" onclick="addBlock()" style="background:#fff0f3;color:var(--red);border:2px solid #fecdd3">⛔ Block this day</button>
         </div>
         <div id="blocksList" style="margin-top:14px"></div>
       </div>
 
       <div class="card">
-        <div class="card-title">📋 Hoe koppel ik mijn agenda?</div>
+        <div class="card-title">📋 How to connect your calendar</div>
         <div style="display:flex;flex-direction:column;gap:14px">
           <div style="background:#f8f9fa;border-radius:10px;padding:16px">
             <div style="font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span style="font-size:20px">📅</span> Google Agenda</div>
             <ol style="font-size:13px;color:#555;line-height:2;padding-left:18px">
-              <li>Ga naar calendar.google.com (op je computer)</li>
-              <li>Klik de drie stipjes naast je agenda</li>
-              <li>Kies 'Instellingen en delen'</li>
-              <li>Scroll naar 'Geheim adres in iCal-indeling'</li>
-              <li>Kopieer de link en plak hem hierboven</li>
+              <li>Go to calendar.google.com (on your computer)</li>
+              <li>Hover over your calendar and click the three dots</li>
+              <li>Click 'Settings and sharing'</li>
+              <li>Scroll to 'Secret address in iCal format'</li>
+              <li>Copy the link and paste it above</li>
             </ol>
           </div>
           <div style="background:#f8f9fa;border-radius:10px;padding:16px">
             <div style="font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span style="font-size:20px">📧</span> Outlook Agenda</div>
             <ol style="font-size:13px;color:#555;line-height:2;padding-left:18px">
-              <li>Ga naar outlook.live.com/calendar</li>
-              <li>Klik rechtsboven op het tandwiel</li>
-              <li>Ga naar Agenda → Gedeelde agenda's</li>
-              <li>Kies 'Kan zien wanneer ik bezet ben'</li>
-              <li>Kopieer de ICS link en plak hem hierboven</li>
+              <li>Go to outlook.live.com/calendar</li>
+              <li>Click the gear icon in the top right</li>
+              <li>Go to Calendar → Shared calendars</li>
+              <li>Select 'Can view when I'm busy'</li>
+              <li>Copy the ICS link and paste it above</li>
             </ol>
           </div>
           <div style="background:#f8f9fa;border-radius:10px;padding:16px">
             <div style="font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span style="font-size:20px">🍎</span> Apple Calendar</div>
             <ol style="font-size:13px;color:#555;line-height:2;padding-left:18px">
-              <li>Open iCalendar op je iPhone</li>
-              <li>Tik onderin op 'Agenda's'</li>
-              <li>Tik op het ℹ️ naast de agenda</li>
-              <li>Zet 'Openbare agenda' aan</li>
-              <li>Tik 'Deel link...' → Kopieer → plak hierboven</li>
+              <li>Open iCalendar on your iPhone</li>
+              <li>Tap 'Calendars' at the bottom</li>
+              <li>Tap the ℹ️ next to the calendar you want to share</li>
+              <li>Enable 'Public Calendar'</li>
+              <li>Tap 'Share Link...' → Copy → paste above</li>
             </ol>
           </div>
         </div>
@@ -664,81 +664,81 @@ a{color:inherit;text-decoration:none}
     <div class="panel" id="panelGigs">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px">
         <div>
-          <div style="font-size:18px;font-weight:800;color:var(--navy)">🎤 Mijn Gigs</div>
-          <div style="font-size:13px;color:var(--grey);margin-top:2px">Overzicht van al je aanvragen en boekingen</div>
+          <div style="font-size:18px;font-weight:800;color:var(--navy)">🎤 My Gigs</div>
+          <div style="font-size:13px;color:var(--grey);margin-top:2px">Overview of all your inquiries and bookings</div>
         </div>
-        <button class="btn-sm" onclick="loadGigs()">↻ Vernieuwen</button>
+        <button class="btn-sm" onclick="loadGigs()">↻ Refresh</button>
       </div>
 
       <!-- Status tabs -->
       <div style="display:flex;gap:4px;background:#fff;border-radius:10px;padding:5px;box-shadow:var(--shadow);margin-bottom:18px;overflow-x:auto">
-        <button class="btn-sm" id="gig-tab-all" onclick="filterGigs('all',this)" style="background:var(--navy);color:#fff;flex:1">Alle</button>
-        <button class="btn-sm" id="gig-tab-new" onclick="filterGigs('new',this)" style="flex:1">🔵 Nieuw</button>
-        <button class="btn-sm" id="gig-tab-accepted" onclick="filterGigs('accepted',this)" style="flex:1">✅ Geaccepteerd</button>
-        <button class="btn-sm" id="gig-tab-rejected" onclick="filterGigs('rejected',this)" style="flex:1">❌ Afgewezen</button>
+        <button class="btn-sm" id="gig-tab-all" onclick="filterGigs('all',this)" style="background:var(--navy);color:#fff;flex:1">All</button>
+        <button class="btn-sm" id="gig-tab-new" onclick="filterGigs('new',this)" style="flex:1">🔵 New</button>
+        <button class="btn-sm" id="gig-tab-accepted" onclick="filterGigs('accepted',this)" style="flex:1">✅ Accepted</button>
+        <button class="btn-sm" id="gig-tab-rejected" onclick="filterGigs('rejected',this)" style="flex:1">❌ Declined</button>
       </div>
 
       <div id="gigsContent">
-        <div class="empty-state"><div class="ei">⏳</div><p>Laden...</p></div>
+        <div class="empty-state"><div class="ei">⏳</div><p>Loading...</p></div>
       </div>
     </div>
 
     <!-- ===== PANEL: INFO ===== -->
     <div class="panel" id="panelInfo">
-      <div style="font-size:18px;font-weight:800;color:var(--navy);margin-bottom:20px">ℹ️ Hoe werkt het?</div>
+      <div style="font-size:18px;font-weight:800;color:var(--navy);margin-bottom:20px">ℹ️ How does it work?</div>
 
       <div class="card">
-        <div class="card-title">📨 Stap 1: Aanvraag</div>
-        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Een klant heeft jouw act gevonden en stuurt een aanvraag. Je ontvangt hiervan een melding in de Inquiries tab.</p>
+        <div class="card-title">📨 Step 1: Inquiry</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">A client has found your act and sends an inquiry. You will receive a notification in the Inquiries tab.</p>
         <div style="background:#eaf6fd;border-radius:8px;padding:12px;font-size:13px;color:#0369a1">
-          💡 Reageer zo snel mogelijk op aanvragen. Hoe sneller je reageert, hoe groter de kans op een boeking!
+          💡 Respond to inquiries as quickly as possible. The faster you respond, the higher your chance of getting booked!
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">💬 Stap 2: Contact met de klant</div>
-        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Nadat je de aanvraag hebt ontvangen neem je direct contact op met de klant via WhatsApp of email. Bespreek de details:</p>
+        <div class="card-title">💬 Step 2: Contact the client</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">After receiving the inquiry, contact the client directly via WhatsApp or email. Discuss the details:</p>
         <ul style="font-size:13px;color:#555;line-height:2;padding-left:18px;margin-bottom:12px">
-          <li>Datum, tijd en locatie van het event</li>
-          <li>Gewenste setduur en pauzes</li>
-          <li>Technische vereisten (geluid, licht, podium)</li>
-          <li>Speciale wensen (repertoire, dresscode)</li>
-          <li>Prijs en betalingsafspraken</li>
+          <li>Date, time and location of the event</li>
+          <li>Desired set duration and breaks</li>
+          <li>Technical requirements (sound, lighting, stage)</li>
+          <li>Special requests (repertoire, dress code)</li>
+          <li>Price and payment agreements</li>
         </ul>
         <div style="background:#fef3c7;border-radius:8px;padding:12px;font-size:13px;color:#92400e">
-          ⚠️ Zorg dat je alle details helder hebt voordat je een voorstel doet!
+          ⚠️ Make sure all details are clear before confirming the booking!
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">✅ Stap 3: Accepteren of afwijzen</div>
-        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Bekijk de aanvraag in je Inquiries tab en kies:</p>
+        <div class="card-title">✅ Step 3: Accept or decline</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Review the inquiry in your Inquiries tab and choose:</p>
         <div style="display:flex;flex-direction:column;gap:10px">
           <div style="display:flex;gap:12px;align-items:flex-start;background:#d1fae5;border-radius:8px;padding:12px">
             <span style="font-size:20px">✅</span>
-            <div><div style="font-weight:700;color:#065f46;font-size:13px">Accepteren</div><div style="font-size:12px;color:#065f46">Je bevestigt de boeking. De klant krijgt een bevestiging.</div></div>
+            <div><div style="font-weight:700;color:#065f46;font-size:13px">Accepteren</div><div style="font-size:12px;color:#065f46">You confirm the booking. The client receives a confirmation.</div></div>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;background:#fff0f3;border-radius:8px;padding:12px">
             <span style="font-size:20px">❌</span>
-            <div><div style="font-weight:700;color:var(--red);font-size:13px">Afwijzen</div><div style="font-size:12px;color:var(--red)">Je bent niet beschikbaar of het past niet. De klant krijgt bericht.</div></div>
+            <div><div style="font-weight:700;color:var(--red);font-size:13px">Afwijzen</div><div style="font-size:12px;color:var(--red)">You are not available or it does not fit. The client will be notified.</div></div>
           </div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">🎤 Stap 4: Optreden</div>
-        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Je gaat optreden! Enkele tips:</p>
+        <div class="card-title">🎤 Step 4: Performance</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">You're performing! A few tips:</p>
         <ul style="font-size:13px;color:#555;line-height:2;padding-left:18px">
-          <li>Neem vooraf contact op met de klant om praktische zaken te bespreken</li>
-          <li>Kom op tijd en wees professioneel</li>
-          <li>Stem de locatie en opbouwtijd vooraf goed af</li>
-          <li>Na het optreden kan de klant een review achterlaten</li>
+          <li>Contact the client in advance to discuss practical matters</li>
+          <li>Arrive on time and be professional</li>
+          <li>Confirm the venue and setup time in advance</li>
+          <li>After the performance, the client can leave a review</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">📞 Contact & Support</div>
-        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Heb je vragen of problemen? We helpen je graag!</p>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px">Have questions or issues? We're happy to help!</p>
         <div style="display:flex;flex-direction:column;gap:10px">
           <a href="https://wa.me/971000000000" target="_blank" style="display:flex;align-items:center;gap:10px;background:#d1fae5;border-radius:8px;padding:12px;color:#065f46;font-weight:700;font-size:13px;text-decoration:none">
             <span style="font-size:20px">💬</span> WhatsApp Stagely Support
@@ -880,7 +880,24 @@ function showPanel(id){
   if(id==='panelGigs') loadGigs();
 }
 
-function viewProfile(){if(artist) window.open('/artist.html?id='+artist.id,'_blank');}
+async function viewProfile(){
+  if(!artist) return;
+  // Get the first published act for this artist
+  try{
+    var acts=await api('acts?artist_id=eq.'+artist.id+'&published=eq.true&limit=1');
+    if(acts&&acts.length){
+      window.open('/artist.html?id='+acts[0].id,'_blank');
+    } else {
+      // fallback: open first act even if not published
+      var allActs=await api('acts?artist_id=eq.'+artist.id+'&limit=1');
+      if(allActs&&allActs.length){
+        window.open('/artist.html?id='+allActs[0].id,'_blank');
+      } else {
+        toast('No act published yet — publish an act first','err');
+      }
+    }
+  }catch(e){toast('Error loading act','err');}
+}
 
 /* ===== ACTS LIST ===== */
 async function loadActs(){
@@ -1475,7 +1492,7 @@ async function saveCalendar(){
   try{
     await api('artists?id=eq.'+artist.id,'PATCH',{calendar_url:url||null});
     artist.calendar_url=url;
-    toast('✅ Agenda opgeslagen!','ok');
+    toast('✅ Calendar saved!','ok');
   }catch(e){toast('Error','err');}
 }
 
@@ -1563,13 +1580,13 @@ async function addBlock(){
   if(!artist) return;
   var date=$('block-date').value;
   var note=$('block-note').value.trim();
-  if(!date){toast('Kies een datum','err');return;}
+  if(!date){toast('Please select a date','err');return;}
   try{
     var res=await api('calendar_blocks','POST',{artist_id:artist.id,date:date,all_day:true,note:note||null});
     if(Array.isArray(res)&&res[0]) calendarBlocks.push(res[0]);
     $('block-date').value='';$('block-note').value='';
     renderAgenda();renderBlocks();
-    toast('✅ Dag geblokkeerd!','ok');
+    toast('✅ Day blocked!','ok');
   }catch(e){toast('Error','err');}
 }
 
@@ -1578,14 +1595,14 @@ async function removeBlock(id){
     await api('calendar_blocks?id=eq.'+id,'DELETE');
     calendarBlocks=calendarBlocks.filter(function(b){return b.id!==id;});
     renderAgenda();renderBlocks();
-    toast('Blokkade verwijderd');
+    toast('Block removed');
   }catch(e){toast('Error','err');}
 }
 
 function renderBlocks(){
   var el=$('blocksList');if(!el) return;
-  if(!calendarBlocks.length){el.innerHTML='<div style="font-size:12px;color:var(--grey)">Geen handmatige blokkades.</div>';return;}
-  var html='<div style="font-size:12px;font-weight:700;color:var(--grey);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Geblokkeerde dagen</div>';
+  if(!calendarBlocks.length){el.innerHTML='<div style="font-size:12px;color:var(--grey)">No manual blocks yet.</div>';return;}
+  var html='<div style="font-size:12px;font-weight:700;color:var(--grey);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Blocked days</div>';
   calendarBlocks.forEach(function(b){
     html+='<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fff0f3;border-radius:8px;margin-bottom:6px">';
     html+='<span style="font-size:13px;font-weight:600;color:var(--red)">⛔ '+b.date+(b.note?' — '+b.note:'')+'</span>';
@@ -1602,13 +1619,13 @@ var gigsFilter='all';
 async function loadGigs(){
   if(!artist) return;
   var c=$('gigsContent');
-  c.innerHTML='<div class="empty-state"><div class="ei">⏳</div><p>Laden...</p></div>';
+  c.innerHTML='<div class="empty-state"><div class="ei">⏳</div><p>Loading...</p></div>';
   try{
     var data=await api('inquiries?artist_id=eq.'+artist.id+'&order=id.desc');
     allGigs=Array.isArray(data)?data:[];
     renderGigs();
   }catch(e){
-    c.innerHTML='<div class="empty-state"><div class="ei">⚠️</div><p>Kon gigs niet laden.</p></div>';
+    c.innerHTML='<div class="empty-state"><div class="ei">⚠️</div><p>Could not load gigs.</p></div>';
   }
 }
 
@@ -1626,17 +1643,17 @@ function renderGigs(){
   if(gigsFilter!=='all') list=allGigs.filter(function(g){return (g.status||'new')===gigsFilter;});
   var c=$('gigsContent');
   if(!list.length){
-    c.innerHTML='<div class="empty-state"><div class="ei">📩</div><h3>Geen gigs gevonden</h3><p>Aanvragen van klanten verschijnen hier.</p></div>';
+    c.innerHTML='<div class="empty-state"><div class="ei">📩</div><h3>No gigs found</h3><p>Client inquiries will appear here.</p></div>';
     return;
   }
   var html='<div class="inq-list">';
   list.forEach(function(inq){
     var status=inq.status||'new';
     var statusColor=status==='new'?'var(--blue)':status==='accepted'?'var(--green)':'#aaa';
-    var statusTxt=status==='new'?'🔵 Nieuw':status==='accepted'?'✅ Geaccepteerd':'❌ Afgewezen';
+    var statusTxt=status==='new'?'🔵 New':status==='accepted'?'✅ Accepted':'❌ Declined';
     var d=inq.created_at?new Date(inq.created_at).toLocaleDateString('nl-NL',{day:'numeric',month:'short',year:'numeric'}):'';
     html+='<div class="inq-card '+(status==='new'?'new':status==='accepted'?'accepted':'')+'">';
-    html+='<div class="inq-top"><div><div class="inq-name">'+(inq.name||'Anoniem')+'</div><span class="status-badge" style="background:'+(status==='new'?'#dbeafe':status==='accepted'?'#d1fae5':'#f3f4f6')+';color:'+(status==='new'?'#1d4ed8':status==='accepted'?'#065f46':'#6b7280')+'">'+statusTxt+'</span></div><div class="inq-date">'+d+'</div></div>';
+    html+='<div class="inq-top"><div><div class="inq-name">'+(inq.name||'Anonymous')+'</div><span class="status-badge" style="background:'+(status==='new'?'#dbeafe':status==='accepted'?'#d1fae5':'#f3f4f6')+';color:'+(status==='new'?'#1d4ed8':status==='accepted'?'#065f46':'#6b7280')+'">'+statusTxt+'</span></div><div class="inq-date">'+d+'</div></div>';
     html+='<div class="inq-meta">';
     if(inq.email) html+='<span class="inq-tag">✉️ '+inq.email+'</span>';
     if(inq.phone) html+='<span class="inq-tag">📱 '+inq.phone+'</span>';
@@ -1647,8 +1664,8 @@ function renderGigs(){
     if(inq.message) html+='<div class="inq-msg">'+inq.message+'</div>';
     if(status==='new'){
       html+='<div class="inq-actions">';
-      html+='<button class="btn-sm success" onclick="updateInquiry('+inq.id+',&quot;accepted&quot;)">✅ Accepteren</button>';
-      html+='<button class="btn-sm danger" onclick="updateInquiry('+inq.id+',&quot;rejected&quot;)">❌ Afwijzen</button>';
+      html+='<button class="btn-sm success" onclick="updateInquiry('+inq.id+',&quot;accepted&quot;)">✅ Accept</button>';
+      html+='<button class="btn-sm danger" onclick="updateInquiry('+inq.id+',&quot;rejected&quot;)">❌ Decline</button>';
       if(inq.phone) html+='<a href="https://wa.me/'+inq.phone.replace(/[^0-9]/g,'')+'" target="_blank"><button class="btn-sm">💬 WhatsApp</button></a>';
       if(inq.email) html+='<a href="mailto:'+inq.email+'"><button class="btn-sm">✉️ Email</button></a>';
       html+='</div>';
