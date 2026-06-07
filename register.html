@@ -185,29 +185,41 @@ main{max-width:720px;margin:0 auto;padding:32px 16px 60px}
         <div class="hint">We'll send your approval confirmation here.</div>
       </div>
 
-      <div class="section-divider">Address</div>
+      <div class="section-divider">Address (UAE)</div>
       <div class="form-row">
         <div class="form-group">
-          <label>Street</label>
-          <input type="text" id="f-street" placeholder="Street name"/>
+          <label>Apartment / Suite Number</label>
+          <input type="text" id="f-house-number" placeholder="e.g. Apt 204"/>
         </div>
         <div class="form-group">
-          <label>House Number</label>
-          <input type="text" id="f-house-number" placeholder="No."/>
+          <label>Building Name</label>
+          <input type="text" id="f-street" placeholder="e.g. Marina Tower"/>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>City / Emirate <span class="req">*</span></label>
+          <label>Street Name</label>
+          <input type="text" id="f-street-name" placeholder="e.g. Sheikh Zayed Road"/>
+        </div>
+        <div class="form-group">
+          <label>Area / Zone</label>
+          <input type="text" id="f-area" placeholder="e.g. JBR, Downtown, Al Nahda"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>P.O. Box</label>
+          <input type="text" id="f-postal-code" placeholder="e.g. 12345"/>
+          <div class="hint">P.O. Box is the standard for mail in the UAE.</div>
+        </div>
+        <div class="form-group">
+          <label>Emirate <span class="req">*</span></label>
           <select id="f-city">
             <option value="">Select...</option>
             <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
-            <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Other UAE</option>
+            <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option>
+            <option>Umm Al Quwain</option>
           </select>
-        </div>
-        <div class="form-group">
-          <label>Postal Code</label>
-          <input type="text" id="f-postal-code" placeholder="e.g. 00000"/>
         </div>
       </div>
 

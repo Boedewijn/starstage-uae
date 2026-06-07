@@ -503,19 +503,23 @@ a{color:inherit;text-decoration:none}
           <div class="form-group"><label>Mobile Phone</label><input type="tel" id="e-phone" placeholder="+971 50 123 4567"/></div>
         </div>
         <div class="form-group"><label>Email Address</label><input type="email" id="e-email" placeholder="your@email.com"/></div>
-        <div class="section-label">Address</div>
+        <div class="section-label">Address (UAE)</div>
         <div class="form-row">
-          <div class="form-group"><label>Street</label><input type="text" id="e-street" placeholder="Street name"/></div>
-          <div class="form-group"><label>House Number</label><input type="text" id="e-house-number" placeholder="No."/></div>
+          <div class="form-group"><label>Apartment / Suite</label><input type="text" id="e-house-number" placeholder="e.g. Apt 204"/></div>
+          <div class="form-group"><label>Building Name</label><input type="text" id="e-street" placeholder="e.g. Marina Tower"/></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>City *</label>
+          <div class="form-group"><label>Street Name</label><input type="text" id="e-street-name" placeholder="e.g. Sheikh Zayed Road"/></div>
+          <div class="form-group"><label>Area / Zone</label><input type="text" id="e-area" placeholder="e.g. JBR, Downtown"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>P.O. Box</label><input type="text" id="e-postal-code" placeholder="e.g. 12345"/><div class="hint" style="font-size:10px">Standard for UAE mail</div></div>
+          <div class="form-group"><label>Emirate *</label>
             <select id="e-city">
               <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option>
-              <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Other UAE</option>
+              <option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Umm Al Quwain</option>
             </select>
           </div>
-          <div class="form-group"><label>Postal Code</label><input type="text" id="e-postal-code" placeholder="e.g. 00000"/></div>
         </div>
       </div>
       <div class="card">
@@ -651,6 +655,8 @@ function renderDashboard(a){
   $('e-email').value=a.email||'';
   $('e-street').value=a.street||'';
   $('e-house-number').value=a.house_number||'';
+  if($('e-street-name')) $('e-street-name').value=a.street_name||'';
+  if($('e-area')) $('e-area').value=a.area||'';
   $('e-city').value=a.city||'Dubai';
   $('e-postal-code').value=a.postal_code||'';
   $('e-iban').value=a.iban||'';
@@ -1189,6 +1195,8 @@ async function saveProfile(){
     artist_type:$('e-artist-type').value||'private',
     iban:$('e-iban').value.trim()||null,
     iban_name:$('e-iban-name').value.trim()||null,
+    street_name:$('e-street-name')?$('e-street-name').value.trim()||null:null,
+    area:$('e-area')?$('e-area').value.trim()||null:null,
     whatsapp:$('e-whatsapp').value.trim(),
     instagram:$('e-instagram').value.trim()||null,
     photo_url:$('e-photo').value.trim()||null
