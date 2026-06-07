@@ -620,7 +620,7 @@ function toggleBio(){var more=document.getElementById('bioMore');var toggle=docu
 function loadArtist(){
   var id=getParam('id');
   if(!id){window.location.href='/singers.html';return}
-  fetch(SURL+'/rest/v1/artists?id=eq.'+id,{headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}})
+  fetch(SURL+'/rest/v1/acts_public?id=eq.'+id,{headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}})
   .then(function(r){return r.json()})
   .then(function(data){
     if(!data||!data.length){window.location.href='/singers.html';return}
@@ -745,7 +745,7 @@ function loadReviews(artistId){
 }
 
 function loadSimilar(cat,excludeId){
-  fetch(SURL+'/rest/v1/artists?active=eq.true&category=eq.'+cat+'&id=neq.'+excludeId+'&limit=6',{
+  fetch(SURL+'/rest/v1/acts_public?published=eq.true&category=eq.'+cat+'&id=neq.'+excludeId+'&limit=6',{
     headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
   })
   .then(function(r){return r.json()})
