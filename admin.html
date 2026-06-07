@@ -173,7 +173,6 @@ input:checked+.toggle-slider:before{transform:translateX(20px)}
   <div class="sidebar">
     <div class="sidebar-logo">Stage<span>ly</span> <span style="font-size:11px;opacity:.5;font-weight:400">Admin</span></div>
     <div class="nav-link active" onclick="showSection('dashboard')" id="nav-dashboard">📊 Dashboard</div>
-    <div class="nav-link" onclick="showSection('approvals')" id="nav-approvals">⏳ Approvals <span class="nav-badge" id="approval-badge" style="display:none">0</span></div>
     <div class="nav-link" onclick="showSection('artists')" id="nav-artists">🎤 Live Artists</div>
     <div class="nav-link" onclick="showSection('categories')" id="nav-categories">📂 Categories</div>
     <div class="nav-link" onclick="showSection('add')" id="nav-add">➕ Add Artist</div>
@@ -194,7 +193,7 @@ input:checked+.toggle-slider:before{transform:translateX(20px)}
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-num" id="stat-total">—</div><div class="stat-label">Total Artists</div></div>
         <div class="stat-card"><div class="stat-num" id="stat-live">—</div><div class="stat-label">Live on Site</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat-pending">—</div><div class="stat-label">Pending Approval</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-pending">—</div><div class="stat-label">Registered (not published)</div></div>
         <div class="stat-card"><div class="stat-num" id="stat-cats">—</div><div class="stat-label">Live Categories</div></div>
       </div>
       <div class="reg-link-card">
@@ -205,19 +204,9 @@ input:checked+.toggle-slider:before{transform:translateX(20px)}
         </div>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn-sm green" onclick="showSection('approvals')">⏳ Review Approvals</button>
         <button class="btn-sm" onclick="showSection('artists')">🎤 Manage Artists</button>
         <button class="btn-sm" onclick="showSection('add')">➕ Add Artist</button>
       </div>
-    </div>
-
-    <!-- APPROVALS -->
-    <div class="section" id="section-approvals">
-      <div class="page-header">
-        <h1>⏳ Pending Approvals</h1>
-        <p>Artists who registered via the public form. Review and approve to make them live.</p>
-      </div>
-      <div id="approvalsContent"><div class="loading">Loading...</div></div>
     </div>
 
     <!-- LIVE ARTISTS -->
@@ -394,7 +383,6 @@ function copyLink(){
 
 async function loadAll(){
   loadDashboard();
-  loadApprovals();
   loadArtists();
   loadCategories();
 }
@@ -411,9 +399,7 @@ async function loadDashboard(){
     document.getElementById('stat-live').textContent=live;
     document.getElementById('stat-pending').textContent=pending;
     document.getElementById('stat-cats').textContent=liveCats;
-    const badge=document.getElementById('approval-badge');
-    if(pending>0){badge.style.display='inline';badge.textContent=pending;}
-    else{badge.style.display='none';}
+
   }catch(e){console.error(e);}
 }
 
@@ -492,7 +478,7 @@ async function rejectArtist(id){
 
 async function loadArtists(){
   try{
-    const artists=await api('artists?active=eq.true&order=name');
+    const artists=await api('artists?order=name');
     document.getElementById('artists-count').textContent=artists.length+' live artists';
     const tbody=document.getElementById('artistsTableBody');
     if(!artists||!Array.isArray(artists)||!artists.length){
@@ -510,7 +496,9 @@ async function loadArtists(){
         <td>${a.city||'—'}</td>
         <td>AED ${(a.price_from||0).toLocaleString()}</td>
         <td>⭐ ${a.rating||5}</td>
-        <td>${a.visible===false?'<span class="badge badge-hidden">👁️ Hidden</span>':'<span class="badge badge-live">🟢 Live</span>'}</td>
+        <td>
+          ${!a.active?'<span class="badge badge-pending">⏳ No acts yet</span>':a.visible===false?'<span class="badge badge-hidden">👁️ Hidden</span>':'<span class="badge badge-live">🟢 Live</span>'}
+        </td>
         <td>
           <div class="action-btns">
             <button class="btn-sm" onclick="editArtist(${a.id})">✏️ Edit</button>
