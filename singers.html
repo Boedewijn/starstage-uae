@@ -249,22 +249,19 @@ function sortArtists(val){currentSort=val;renderArtists();}
 function filterArtists(){searchQuery=document.getElementById('searchInput').value.toLowerCase().trim();renderArtists();}
 
 // Check for event filter in URL
+function setEventFilter(val,btn){
+  currentEventFilter=val;
+  document.querySelectorAll('.filter-btn.ef').forEach(function(b){b.classList.remove('active')});
+  if(btn) btn.classList.add('active');
+  renderArtists();
+}
+
 var urlEvent=new URLSearchParams(window.location.search).get('event');
 if(urlEvent){
   currentEventFilter=urlEvent;
-  // Show active event badge
-  var badge=document.createElement('div');
-  badge.style.cssText='background:#eaf6fd;color:var(--blue);border-radius:50px;padding:5px 14px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-left:8px';
-  badge.innerHTML='🎪 '+urlEvent+' <span onclick="clearEventFilter()" style="cursor:pointer;font-size:14px;margin-left:4px">✕</span>';
-  document.querySelector('.filters-inner').appendChild(badge);
-}
-
-function clearEventFilter(){
-  currentEventFilter='';
-  window.history.replaceState({},'',window.location.pathname);
-  renderArtists();
-  var badge=document.querySelector('.filters-inner div[style*="eaf6fd"]');
-  if(badge) badge.remove();
+  document.querySelectorAll('.filter-btn.ef').forEach(function(b){
+    if(b.getAttribute('onclick')&&b.getAttribute('onclick').indexOf(urlEvent)>-1) b.classList.add('active');
+  });
 }
 
 loadSingers();
