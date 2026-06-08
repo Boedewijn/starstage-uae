@@ -128,6 +128,14 @@ a{color:inherit;text-decoration:none}
     <button class="filter-btn" onclick="setFilter('Dubai',this)">Dubai</button>
     <button class="filter-btn" onclick="setFilter('Abu Dhabi',this)">Abu Dhabi</button>
     <button class="filter-btn" onclick="setFilter('Sharjah',this)">Sharjah</button>
+    <div style="width:100%;height:1px;background:#e5e7eb;margin:2px 0"></div>
+    <button class="filter-btn ef active" id="ef-all" onclick="setEventFilter('',this)">All events</button>
+    <button class="filter-btn ef" onclick="setEventFilter('Wedding',this)">💍 Wedding</button>
+    <button class="filter-btn ef" onclick="setEventFilter('Corporate Event',this)">🏢 Corporate</button>
+    <button class="filter-btn ef" onclick="setEventFilter('Birthday',this)">🎂 Birthday</button>
+    <button class="filter-btn ef" onclick="setEventFilter('Festival',this)">🎪 Festival</button>
+    <button class="filter-btn ef" onclick="setEventFilter('Gala Dinner',this)">🍽️ Gala</button>
+    <button class="filter-btn ef" onclick="setEventFilter('Hotel / Restaurant',this)">🏨 Hotel</button>
     <span class="results-count" id="resultsCount"></span>
     <select class="sort-select" onchange="sortArtists(this.value)">
       <option value="rating">Top Rated</option>
